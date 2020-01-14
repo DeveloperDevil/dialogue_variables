@@ -1,0 +1,13 @@
+<#switch DESTINATION_IATA>
+	<#case "BOS"><#assign MODULE_EXCLUDE = 0><#break>
+	<#case "JFK"><#assign MODULE_EXCLUDE = 0><#break>
+	<#case "LAX"><#assign MODULE_EXCLUDE = 0><#break>
+	<#case "LAS"><#assign MODULE_EXCLUDE = 0><#break>
+	<#case "FLL"><#assign MODULE_EXCLUDE = 0><#break>
+	<#case "OAK"><#assign MODULE_EXCLUDE = 0><#break>
+	<#case "MCO"><#assign MODULE_EXCLUDE = 0><#break>
+	<#case "SJU"><#assign MODULE_EXCLUDE = 0><#break>
+	<#case "STX"><#assign MODULE_EXCLUDE = 0><#break>
+	<#case "BKK"><#assign MODULE_EXCLUDE = 0><#break>
+	<#default><#assign MODULE_EXCLUDE = 1>
+</#switch>

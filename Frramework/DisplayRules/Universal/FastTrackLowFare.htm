@@ -1,0 +1,7 @@
+<#data BOOKINGS_01 as BOOKINGS_01 limit=1>
+<#filter BOOKING_GDSBOOKINGID = BOOKING_ID BOOKING_LOCALBOOKINGID_1 = LOCAL_BOOKING_ID>
+<#fields FT_FIRST_LEG_FLAG><#if BOOKINGS_01.FT_FIRST_LEG_FLAG == N><#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1></#if>
+</#data>
+
+<#-- NEW TEMPLATE RULE -->
+<#-- <#if FAST_TRACK_AIRPORTS?trim == "N" || FAST_TRACK_YN?trim == "N"><#assign MODULE_EXCLUDE = 1></#if> -->

@@ -1,0 +1,7 @@
+<#data AIRPORTS as AIRPORTS limit=1>
+<#filter AIRPORTCODE_IATA = DESTINATION_IATA>
+<#fields COUNTRYCODE><#if AIRPORTS.COUNTRYCODE != "US"><#assign MODULE_EXCLUDE = 1></#if>
+</#data>
+
+<#-- NEW TEMPLATE RULE -->
+<#-- <#if DESTINATION_COUNTRY_CODE?upper_case != "US"><#assign MODULE_EXCLUDE = 1></#if> -->
