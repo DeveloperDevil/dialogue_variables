@@ -1,0 +1,78 @@
+
+  <#if DV_DATA_ID?isnull>
+            <#global DV_DATA_ID="1511973178849">
+            <h1>
+                Show testdata, when not from program.
+        </h1>
+            </#if>
+  <#data ABANDON_BASKET as data>
+                <#filter ABAN_DATA_ID=DV_DATA_ID>
+                <#fields ABAN_BASKET_URL ABAN_DATA_ID>
+                <h1>Abandon basket data found      
+        </h1>
+        <#global ABAN_DATA_ID=data.ABAN_DATA_ID>
+        ABAN_DATA_ID: ${ABAN_DATA_ID}<br>
+        <br>
+        <#global ABAN_FIRSTNAME=data.ABAN_FIRSTNAME>
+        <br>
+        <#global ABAN_BASKET_URL=data.ABAN_BASKET_URL>
+        <br>
+            
+</#data> 
+               
+               
+               
+               
+
+<!--ABANDON BASKET-->
+<#if !MODULE.TRIP_INFO_DIVIDER_TOP?isnull>
+<tr>
+  <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td width="20" bgcolor="#f1f1f1" height="1" style="font-size:1px;line-height:1px;height:1px;"></td>
+        <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+        <td width="20" bgcolor="#f1f1f1" height="1" style="font-size:1px;line-height:1px;height:1px;"></td>
+      </tr>
+    </table></td>
+</tr>
+</#if>
+
+<tr>
+  <td class="one-column" style="box-sizing:inherit;padding-top:10px;padding-bottom:10px;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table bgcolor="#f1f1f1" cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; background-color:#f1f1f1;" >
+      
+      <tr>
+        <td style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table bgcolor="#ffffff" cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#ffffff;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; background-color:#ffffff;" >
+            <tr>
+              <td class="from_ab" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:10px;padding-left:10px;border-style:none;text-align:center;font-size:14px;line-height:18px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:18px;font-weight:bold; padding-top:10px; padding-bottom:0;line-height:35px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" >NYCALL</p></td>
+              <td align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;min-width:100%" ><span style="min-width:100% !important;"><a href="#" target="_blank" title="Fly away with Norwitchen" style="box-sizing:inherit;color:003D50;text-decoration:underline;font-family:Arial, Helvetica, Sans-serif;" ><img src="http://static.cdn.responsys.net/i2/responsysimages/content/nas/E_330x49_basket.jpg" alt="Fly away with Norwitchen" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;padding-top:0;text-align:center;background-color:#f1f1f1;color:#003d50; width:100%;max-width:330px;height:auto;" /></a></span></td>
+              <td class="to_ab" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:10px;padding-left:10px;border-style:none;text-align:center;font-size:14px;line-height:18px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:18px;font-weight:bold;padding-top:10px;padding-bottom:0;line-height:35px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" >LGW</p></td>
+            </tr>
+            <tr>
+              <td class="from_date" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;border-style:none;text-align:center;font-size:14px;line-height:18px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:14px;Margin-bottom:10px;padding-bottom:0;line-height:35px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" >9 Nov</p></td>
+              <td align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;min-width:100%" ><span style="min-width:100% !important;"><p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:22px;font-weight:bold;Margin-bottom:10px;padding-bottom:0;line-height:25px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" >London-Gatwick</p></span></td>
+              <td class="to_date" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;border-style:none;text-align:center;font-size:14px;line-height:14px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:14px;Margin-bottom:10px;padding-bottom:0;line-height:35px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" >21 Nov</p></td>
+            </tr>
+          </table></td>
+      </tr>
+      
+      
+      
+     
+    </table></td>
+</tr>
+  
+
+<#if !MODULE.TRIP_INFO_DIVIDER_BTM?isnull>
+<tr>
+  <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td width="20" bgcolor="#f1f1f1" height="1" style="font-size:1px;line-height:1px;height:1px;"></td>
+        <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+        <td width="20" bgcolor="#f1f1f1" height="1" style="font-size:1px;line-height:1px;height:1px;"></td>
+      </tr>
+    </table></td>
+</tr>
+</#if>
+
+
+<!--END OF ABANDON BASKET-->

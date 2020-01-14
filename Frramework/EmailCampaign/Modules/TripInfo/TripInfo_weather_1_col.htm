@@ -1,0 +1,449 @@
+<#--
+WeatherModule
+
+This module can only be launched if the campaign is fed data (entry-tracking) from a program.
+The variables that need to be entrytracked are named as:
+W_ARRIVAL_DATE
+W_STAY_TIME
+W_AIRPORT_IATA
+
+Without these variables, the module will be empty.
+
+
+Dependencies:
+CONTACT.LANGUAGEID
+
+DV_WEA_DEBUG: Forces this module to output its variables and logic. Default: N
+BEGIN_DATE: Force weather begin date, max of 15 days from today. Default: data driven from campaign input. Format: yyyy-MM-dd.
+STAY_TIME: Force trip stay time. Controls weather card show logic. Default: data driven from campaign input. Format: a float number.
+ARRIVAL_IATA: Force destination airport. Default: data driven from campaign input. Format: Default IATA code in a string.
+DV_WEA_FORCE_SKIP: Forces the module to skip content. Default: N
+
+-->
+<#-- TODO: handle data -->
+
+<#--lookahead/behind date rules-->
+<#assign dataValid=true>
+    <#if DV_WEA_DEBUG = "Y">
+        booking ID ${BOOKING_ID_DV}<br>
+    </#if>
+    <#data SQL_GLOBAL as SQL_GLOBAL_DATE limit=1>
+        <#filter BOOKING_GDSBOOKINGID = BOOKING_ID_DV>
+        <#fields BK_LAST_DEST_ARRIVAL_DATE>
+        <#assign ARRIVAL_DATE = SQL_GLOBAL_DATE.BK_LAST_DEST_ARRIVAL_DATE>
+    </#data>
+
+	<#assign DATE_MAX = dayadd(.today,1)>
+
+    <#-- Checking that the arrival date is 1 days into the furture-->
+    <#if ARRIVAL_DATE != DATE_MAX>
+		<#assign dataValid=false>
+    </#if>
+
+    <#assign ARRIVAL_DATE_FORMATTED = ARRIVAL_DATE?string("YYYY-MM-dd")>
+ 
+<#-- setting variables -->
+<#assign BEGIN_DATE = ARRIVAL_DATE_FORMATTED> 
+<#assign STAY_TIME = RETURN_DAYS>           
+<#assign ARRIVAL_IATA = DESTINATION_IATA>     
+
+<#if BEGIN_DATE?isnull>
+    <#if DV_WEA_DEBUG = "Y">
+        ${DATE_MAX} - ${ARRIVAL_DATE} - ${CONTACT.LANGUAGEID}<br>
+    </#if>
+    <#assign dataValid=false>
+</#if>
+
+<#if DESTINATION_IATA?isnull>
+    <#assign dataValid=false>
+</#if>
+
+<#if dataValid>
+    
+    <#assign BEGIN_DATE = BEGIN_DATE?datetime("yyyy-MM-dd")>
+    
+     <#-- Number/date convertion only works in en_US -->
+    <#setting locale="en_US">
+    <#assign STAY_TIME = STAY_TIME?replace(",", ".")?number?ceiling>
+	<#setting locale=CONTACT.LANGUAGEID>
+
+    <#assign LOOKAHEAD = 0>
+
+    <#if (STAY_TIME == 1)>
+        <#assign LOOKBEHIND = -2>
+    <#elseif STAY_TIME == 2 || STAY_TIME == 3>
+        <#assign LOOKBEHIND = -1>
+    <#else>
+        <#assign LOOKBEHIND = 0>
+    </#if>
+
+    <#-- macros -->
+    <#macro insertdayname dat>
+        ${dat?date("yyyy-MM-dd")?string("EEEE")}
+    </#macro>
+
+    <#macro insertdaymonth dat>
+        ${dat?date("yyyy-MM-dd")?string("dd")}. ${dat?date("yyyy-MM-dd")?string("MMM")}
+    </#macro>
+
+    <#macro numberfloorceil num1 num2>
+    <#-- Number conversion only works in en_US -->
+        <#setting locale="en_US">
+        <#if DV_SITE_COUNTRY = "US">
+            <#assign fnum1><@temp num1/></#assign>
+            <#assign fnum2><@temp num2/></#assign>
+            ${fnum1?number?floor}&deg;F&nbsp;&nbsp;&#150;&nbsp;&nbsp;${fnum2?number?ceiling}&deg;F
+        <#else>
+            ${num1?number?floor}&deg;C&nbsp;&nbsp;&#150;&nbsp;&nbsp;${num2?number?ceiling}&deg;C
+        </#if>
+        <#setting locale=CONTACT.LANGUAGEID>
+
+    </#macro>
+    
+    <#assign debug = "INPUT BEGIN_DATE (string): " + BEGIN_DATE + "<br>">
+    <#assign debug = debug + "PARSED BEGIN_DATE: " + BEGIN_DATE + "<br>">
+    <#assign debug = debug + "INPUT STAY_TIME (string): " + STAY_TIME +"<br>">
+    <#assign debug = debug + "PARSED STAY_TIME: " + STAY_TIME + "<br>">
+    <#--assign debug = debug + "CONTACT_PREFERENCES.CP_LANGUAGE_ISO2: " + CONTACT_PREFERENCES.CP_LANGUAGE_ISO2 + "<br>"-->
+    <#assign debug = debug + "INDPUT ARRIVAL_IATA: " + ARRIVAL_IATA + "<br>">
+    <#assign debug = debug + "LOOKBEHIND: " + LOOKBEHIND + "<br>">
+    <#assign debug = debug + "LOOKAHEAD: " + LOOKAHEAD + "<br>">
+     <#assign debug = debug + "START DATO: " + DEPARTURE_DATE + "<br>">
+    <#assign debug = debug + "START DATO: " + DV_DEPARTURE_DATE + "<br>">
+    <#assign debug = debug + "DAYS: " + RETURN_DAYS + "<br>">
+    <#assign debug = debug + "IATA: " + DESTINATION_IATA + "<br>">
+    <#assign debug = debug + "BOOKING: " + BOOKING_ID_DV + " : " + GLOBAL_BOOKING_ID + "<br>">
+    <#assign debug = debug + "ARRIVAL DATE ORIGINAL: " + ARRIVAL_DATE + "<br>">
+    <#assign debug = debug + "ARRIVEL DATE: " + ARRIVAL_DATE_FORMATTED + "<br>">
+    <#assign CARD_COUNTER = 0>
+    
+<tr>
+<td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >  
+    
+    <table class="wrapper_table" width="800" cellspacing="0" cellpadding="0" border="0" align="center" style="max-width: 800px">
+<tbody>
+    
+<tr>
+  <td class="content" width="800" bgcolor="#f1f1f1" style="background: #f1f1f1;">
+	<table cellspacing="0" cellpadding="0" border="0" class="mobile_centered_table">
+	  <tbody>
+		<tr>
+		  <td height="30" colspan="3">
+		  </td>
+		</tr>
+		<tr>
+		  <td width="40" class="padding">
+		  </td>
+		  <td class="content_row" width="718" align="center">
+			<table cellpadding="0" cellspacing="0" border="0">
+			  <tbody>
+				<tr>
+				  <td class="blue_text weight_500 raleway" style="color: #003D50; font-family: 'Raleway', Arial, sans-serif; font-size: 22px; font-weight: 500; line-height: 24px; text-align: center" align="center">
+					<#data AIRPORT_WEATHERDATA as WEATHER>
+					<#filter AW_AIRPORT_CODE = ARRIVAL_IATA AW_WEATHER_DATE = dayadd(BEGIN_DATE, (LOOKBEHIND + LOOKAHEAD))?string("yyyy-MM-dd")>
+					<#fields AW_CLOSEST_CITY AW_CITY_ID>
+						<#assign CLOSEST_CITY = WEATHER.AW_CLOSEST_CITY>
+                        <#assign CITY_ID = WEATHER.AW_CITY_ID?c>
+
+						<#-- CLOSEST CITY LOGIC? DV? DATA? STATIC CONTENT?-->
+						${MODULE.TRIP_INFO_ARRIVAL_TXT} ${CLOSEST_CITY}
+					</#data>
+				  </td>
+				</tr>
+				<tr>
+				  <td height="30">
+				  </td>
+				</tr>
+				<tr>
+				  <td align="center">
+					<table cellpadding="0" cellspacing="0" border="0">
+					  <tr>
+						<td class="stack_mobile" width="50%" valign="top" style="padding-bottom: 10px;">
+						  <table cellpadding="0" cellspacing="0" border="0">
+							<tr>
+							  <td>
+								<table cellpadding="0" cellspacing="0" border="0">
+								  <tr>
+									<td align="center" valign="top" width="172" height="234" style="background: #fff;">
+					  
+									  <#-- WAETHER CARD -->
+
+									  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+										  <#data AIRPORT_WEATHERDATA as WEATHER>
+										  <#filter AW_AIRPORT_CODE = ARRIVAL_IATA AW_WEATHER_DATE = dayadd(BEGIN_DATE, (LOOKBEHIND + LOOKAHEAD))?string("yyyy-MM-dd")>
+										  <#fields AW_WEATHER_DATE AW_ICONURL AW_DAY_TEMPERATURE AW_MAX_TEMPERATURE AW_CITY_ID>
+											  <#assign CARD_COUNTER = CARD_COUNTER + 1>
+                                              <#if WEATHER.AW_ICONURL == "">
+                                                  <#assign ICONURL = "http://static.cdn.responsys.net/i2/responsysimages/content/nas/weather_default.png">
+                                                  <#else>
+                                                      <#assign ICONURL = WEATHER.AW_ICONURL>
+                                                  </#if>
+										<tbody>
+										  <tr>
+											<td class="blue_text weight_500 raleway" style="padding-top:16px;text-align: center; font-family: 'Raleway', Arial, sans-serif; font-size: 18px; line-height: 1.3; color:#003D50;">
+												<@insertdayname dat=WEATHER.AW_WEATHER_DATE/>
+											</td>
+										  </tr>
+										  <tr>
+											<td style="padding-top:4px;text-align: center; font-family:Arial, sans-serif; font-size: 13px; line-height: 1.3; color:#D81939;">
+													<@insertdaymonth dat=WEATHER.AW_WEATHER_DATE/>
+											</td>
+										  </tr>
+										  <tr>
+											<td style="text-align: center;">
+											  <img src="${ICONURL}" alt="" width="132" height="132" style="display: inline-block;" />
+											</td>
+										  </tr>
+										  <tr>
+											<td style="padding-top:5px;padding-bottom: 20px;text-align: center; font-family:Arial, sans-serif; font-size: 15.1px; line-height: 1.3; color:#D81939;">
+													<@numberfloorceil num1=WEATHER.AW_DAY_TEMPERATURE  num2=WEATHER.AW_MAX_TEMPERATURE/>
+											</td>
+										  </tr>
+										</tbody>
+										</#data>
+									  </table>
+									  <#if LOOKBEHIND != 0>
+										  <#assign LOOKBEHIND = LOOKBEHIND + 1>
+									  <#else>
+										  <#assign LOOKAHEAD = LOOKAHEAD + 1 >
+									  </#if>
+									  <#-- WAETHER CARD END -->
+
+									</td>
+								  </tr>
+								</table>
+							  </td>
+							  <td width="10">
+								<img src="http://static.cdn.responsys.net/i2/responsysimages/content/nas/weather_spacer.gif" alt="" width="10" />
+							  </td>
+							  <td>
+								<table cellpadding="0" cellspacing="0" border="0">
+								  <tr>
+									<td align="center" valign="top" width="172" height="234" style="background: #fff;">
+					  
+									  <#-- WAETHER CARD -->
+
+									  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<#data AIRPORT_WEATHERDATA as WEATHER>
+											<#filter AW_AIRPORT_CODE = ARRIVAL_IATA AW_WEATHER_DATE = dayadd(BEGIN_DATE, (LOOKBEHIND + LOOKAHEAD))?string("yyyy-MM-dd")>
+											<#fields AW_WEATHER_DATE AW_ICONURL AW_DAY_TEMPERATURE AW_MAX_TEMPERATURE AW_CITY_ID>
+												<#assign CARD_COUNTER = CARD_COUNTER + 1>
+                                              <#if WEATHER.AW_ICONURL == "">
+                                                  <#assign ICONURL = "http://static.cdn.responsys.net/i2/responsysimages/content/nas/weather_default.png">
+                                                  <#else>
+                                                      <#assign ICONURL = WEATHER.AW_ICONURL>
+                                                  </#if>
+										<tbody>
+										  <tr>
+											<td class="blue_text weight_500 raleway" style="padding-top:16px;text-align: center; font-family: 'Raleway', Arial, sans-serif; font-size: 18px; line-height: 1.3; color:#003D50;">
+													<@insertdayname dat=WEATHER.AW_WEATHER_DATE/>
+											</td>
+										  </tr>
+										  <tr>
+											<td style="padding-top:4px;text-align: center; font-family:Arial, sans-serif; font-size: 13px; line-height: 1.3; color:#D81939;">
+													<@insertdaymonth dat=WEATHER.AW_WEATHER_DATE/>
+											</td>
+										  </tr>
+										  <tr>
+											<td style="text-align: center;">
+											  <img src="${ICONURL}" alt="" width="132" height="132" style="display: inline-block;" />
+											</td>
+										  </tr>
+										  <tr>
+											<td style="padding-top:5px;padding-bottom: 20px;text-align: center; font-family:Arial, sans-serif; font-size: 15.1px; line-height: 1.3; color:#D81939;">
+													<@numberfloorceil num1=WEATHER.AW_DAY_TEMPERATURE num2=WEATHER.AW_MAX_TEMPERATURE/>
+											</td>
+										  </tr>
+										</tbody>
+										</#data>
+									  </table>
+										<#if LOOKBEHIND != 0>
+											<#assign LOOKBEHIND = LOOKBEHIND + 1>
+										<#else>
+											<#assign LOOKAHEAD = LOOKAHEAD + 1 >
+										</#if>
+									  <#-- WAETHER CARD END -->
+
+									</td>
+								  </tr>
+								</table>
+							  </td>
+							</tr>
+						  </table>
+						</td>
+						<td class="nomobile" width="10">
+						  <img src="http://static.cdn.responsys.net/i2/responsysimages/content/nas/weather_spacer.gif" alt="" width="10" />
+						</td>
+						<td class="stack_mobile" width="50%" valign="top" style="padding-bottom: 6px;">
+						  <table cellpadding="0" cellspacing="0" border="0">
+							<tr>
+							  <td>
+								<table cellpadding="0" cellspacing="0" border="0">
+								  <tr>
+									<td align="center" valign="top" width="172" height="234" style="background: #fff;">
+					  
+									  <#-- WAETHER CARD -->
+
+									  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<#data AIRPORT_WEATHERDATA as WEATHER>
+											<#filter AW_AIRPORT_CODE = ARRIVAL_IATA AW_WEATHER_DATE = dayadd(BEGIN_DATE, (LOOKBEHIND + LOOKAHEAD))?string("yyyy-MM-dd")>
+											<#fields AW_WEATHER_DATE AW_ICONURL AW_DAY_TEMPERATURE AW_MAX_TEMPERATURE AW_CITY_ID>
+												<#assign CARD_COUNTER = CARD_COUNTER + 1>
+                                              <#if WEATHER.AW_ICONURL == "">
+                                                  <#assign ICONURL = "http://static.cdn.responsys.net/i2/responsysimages/content/nas/weather_default.png">
+                                                  <#else>
+                                                      <#assign ICONURL = WEATHER.AW_ICONURL>
+                                                  </#if>
+										<tbody>
+										  <tr>
+											<td class="blue_text weight_500 raleway" style="padding-top:16px;text-align: center; font-family: 'Raleway', Arial, sans-serif; font-size: 18px; line-height: 1.3; color:#003D50;">
+													<@insertdayname dat=WEATHER.AW_WEATHER_DATE/>
+											</td>
+										  </tr>
+										  <tr>
+											<td style="padding-top:4px;text-align: center; font-family:Arial, sans-serif; font-size: 13px; line-height: 1.3; color:#D81939;">
+													<@insertdaymonth dat=WEATHER.AW_WEATHER_DATE/>
+											</td>
+										  </tr>
+										  <tr>
+											<td style="text-align: center;">
+											  <img src="${ICONURL}" alt="" width="132" height="132" style="display: inline-block;" />
+											</td>
+										  </tr>
+										  <tr>
+											<td style="padding-top:5px;padding-bottom: 20px;text-align: center; font-family:Arial, sans-serif; font-size: 15.1px; line-height: 1.3; color:#D81939;">
+													<@numberfloorceil num1=WEATHER.AW_DAY_TEMPERATURE num2=WEATHER.AW_MAX_TEMPERATURE/>
+											</td>
+										  </tr>
+										</tbody>
+										</#data>
+									  </table>
+									  <#if LOOKBEHIND != 0>
+										 <#assign LOOKBEHIND = LOOKBEHIND + 1>
+									 <#else>
+										 <#assign LOOKAHEAD = LOOKAHEAD + 1 >
+									 </#if>
+
+									  <#-- WAETHER CARD END -->
+
+									</td>
+								  </tr>
+								</table>
+							  </td>
+							  <td width="10">
+								<img src="http://static.cdn.responsys.net/i2/responsysimages/content/nas/weather_spacer.gif" alt="" width="10" />
+							  </td>
+							  <td>
+								<table cellpadding="0" cellspacing="0" border="0">
+								  <tr>
+									<td align="center" valign="top" width="172" height="234" style="background: #fff;">
+					  
+									  <#-- WAETHER CARD -->
+
+									  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<#data AIRPORT_WEATHERDATA as WEATHER>
+											<#filter AW_AIRPORT_CODE = ARRIVAL_IATA AW_WEATHER_DATE = dayadd(BEGIN_DATE, (LOOKBEHIND + LOOKAHEAD))?string("yyyy-MM-dd")>
+											<#fields AW_WEATHER_DATE AW_ICONURL AW_DAY_TEMPERATURE AW_MAX_TEMPERATURE AW_CITY_ID>
+												<#assign CARD_COUNTER = CARD_COUNTER + 1>
+                                              <#if WEATHER.AW_ICONURL == "">
+                                                  <#assign ICONURL = "http://static.cdn.responsys.net/i2/responsysimages/content/nas/weather_default.png">
+                                                  <#else>
+                                                      <#assign ICONURL = WEATHER.AW_ICONURL>
+                                                  </#if>
+										<tbody>
+										  <tr>
+											<td class="blue_text weight_500 raleway" style="padding-top:16px;text-align: center; font-family: 'Raleway', Arial, sans-serif; font-size: 18px; line-height: 1.3; color:#003D50;">
+													<@insertdayname dat=WEATHER.AW_WEATHER_DATE/>
+											</td>
+										  </tr>
+										  <tr>
+											<td style="padding-top:4px;text-align: center; font-family:Arial, sans-serif; font-size: 13px; line-height: 1.3; color:#D81939;">
+													<@insertdaymonth dat=WEATHER.AW_WEATHER_DATE/>
+											</td>
+										  </tr>
+										  <tr>
+											<td style="text-align: center;">
+											  <img src="${ICONURL}" alt="" width="132" height="132" style="display: inline-block;" />
+											</td>
+										  </tr>
+										  <tr>
+											<td style="padding-top:5px;padding-bottom: 20px;text-align: center; font-family:Arial, sans-serif; font-size: 15.1px; line-height: 1.3; color:#D81939;">
+													<@numberfloorceil num1=WEATHER.AW_DAY_TEMPERATURE num2=WEATHER.AW_MAX_TEMPERATURE/>
+											</td>
+										  </tr>
+										</tbody>
+										</#data>
+									  </table>
+
+									  <#-- WAETHER CARD END -->
+
+									</td>
+								  </tr>
+								</table>
+							  </td>
+							</tr>
+						  </table>
+						</td>
+					  </tr>
+					</table>
+				  </td>
+				</tr>
+				<tr>
+				  <td height="20">
+				  </td>
+				</tr>
+				<tr> 
+				  <td align="center">
+					<table cellspacing="0" cellpadding="0" border="0">
+					 
+                          <tbody><tr><td class="Button_outer_td" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"><table bgcolor="#D81939" cellpadding="0" cellspacing="0" class="autowidth" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto; background-color:#D81939"><tbody><tr><td class="Button_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#D81939;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 31px 0 31px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#fffffe;"><!-- Office 365 [OWA] fix --><table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;"><tbody><tr><td align="center" height="50" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap"><p style="box-sizing:inherit;Margin:0;font-size:18px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;"><a href="${MODULE.TRIP_INFO_BTN_URL}" target="_blank" class="Button_white_link" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:18px;font-weight:bold;line-height:50px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;"><!--[if (gte mso 9)|(IE)]&gt;&lt;font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" &gt;&lt;![endif]-->${MODULE.TRIP_INFO_BTN_CTA}</a></p></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody>
+                          
+						
+					 
+					</table>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		  </td>
+		  <td width="40" class="padding">
+		  </td>
+		</tr>
+		<tr>
+		  <td height="40" colspan="3">
+		  </td>
+		</tr>
+	  </tbody>
+	</table>
+  </td>
+</tr>
+</tbody>
+</table>
+  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tbody>
+      <tr>
+        <td height="5" class="module_bottom-space" style="font-size: 1px; line-height: 1px">&nbsp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    
+  </td>
+</tr>
+</#if>
+<#--
+If debug is "Y", we dump all of our debugging data.
+-->
+    
+<#if DV_WEA_DEBUG = "Y">
+	Debug: <br>
+	<hr>
+		${debug}
+	<hr>
+</#if>
+
+<#if !DV_ALL_DEBUG?isnull && DV_ALL_DEBUG = "Y">
+    ok
+## File:modulewrapper.htm<br>
+DV_CAMPAIGN: ${DV_CAMPAIGN}, DV_SITE_BRAND: ${DV_SITE_BRAND}, DV_SITE_COUNTRY: ${DV_SITE_COUNTRY}<br>
+</#if>

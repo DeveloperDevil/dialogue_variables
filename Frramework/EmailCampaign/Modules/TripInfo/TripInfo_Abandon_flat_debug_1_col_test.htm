@@ -1,0 +1,117 @@
+
+ <#if DV_DEBUG_ABANDON == "Y">
+     RIID_: #${RIID_?c}#<br>
+     DATA_ID: #${DV_DATA_ID}#<br> 
+  </#if>
+  <#if DV_DATA_ID?isnull>         
+     <h1>UPS - Show testdata, when not from program.</h1>
+  </#if>
+  <#data ABANDON_BASKET as data>
+  <#filter ABAN_RIID_=RIID_  ABAN_DATA_ID=DV_DATA_ID?number>
+  <#fields ABAN_FIRSTNAME ABAN_BASKET_URL ABAN_DATA_ID ABAN_DEPARTUREDATE ABAN_RETURNDATE ABAN_ARRIVALAIRPORTCODE ABAN_AIRPORT_ARRIVAL ABAN_DEPARTUREAIRPORTCODE ABAN_AIRPORT_DEPARTURE>
+         
+        <#global ABAN_DATA_ID=data.ABAN_DATA_ID>
+        <#if DV_DEBUG_ABANDON == "Y">
+            <h1>Abandon basket data found           </h1>
+         ABAN_DATA_ID: ${data.ABAN_DATA_ID?c}<br>
+ 		ABAN_BASKET_URL: ${data.ABAN_BASKET_URL}<br>
+        </#if>
+        <br>
+        <#global ABAN_FIRSTNAME=data.ABAN_FIRSTNAME>
+        <br>
+        <#global ABAN_BASKET_URL=data.ABAN_BASKET_URL>
+        
+        <#global ABAN_DEPARTUREAIRPORTCODE=data.ABAN_DEPARTUREAIRPORTCODE>
+        <#global ABAN_AIRPORT_DEPARTURE=data.ABAN_AIRPORT_DEPARTURE>
+      <#--  ABAN_DATA_ID=DV_DATA_ID?number
+      <#global ABAN_DEPARTUREDATE=data.ABAN_DEPARTUREDATE?string("dd/MM")>-->
+        
+        <#global ABAN_AIRPORT_ARRIVAL=data.ABAN_AIRPORT_ARRIVAL>
+        <#global ABAN_ARRIVALAIRPORTCODE=data.ABAN_ARRIVALAIRPORTCODE>
+        <#--<#global ABAN_RETURNDATE=data.ABAN_RETURNDATE?string("dd/MM")>-->
+        
+        <br>
+            
+</#data> 
+               
+               
+               
+               
+
+<!--ABANDON BASKET-->
+<#if !MODULE.TRIP_INFO_DIVIDER_TOP?isnull>
+<tr>
+  <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td width="20" bgcolor="#f1f1f1" height="1" style="font-size:1px;line-height:1px;height:1px;"></td>
+        <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+        <td width="20" bgcolor="#f1f1f1" height="1" style="font-size:1px;line-height:1px;height:1px;"></td>
+      </tr>
+    </table></td>
+</tr>
+</#if>
+
+<tr>
+  <td class="one-column" style="box-sizing:inherit;padding-top:10px;padding-bottom:10px;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table bgcolor="#f1f1f1" cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; background-color:#f1f1f1;" >
+      
+      <tr>
+        <td style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table bgcolor="#ffffff" cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#ffffff;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; background-color:#ffffff;" >
+            <tr>
+              <td class="from_ab" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:10px;padding-left:10px;border-style:none;text-align:center;font-size:14px;line-height:18px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:18px;font-weight:bold; padding-top:10px; padding-bottom:0;line-height:35px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" >${ABAN_DEPARTUREAIRPORTCODE}</p></td>
+              <td align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;min-width:100%" ><span style="min-width:100% !important;"><a href="${ABAN_BASKET_URL?exec}" target="_blank" title="Fly away with Norwitchen" style="box-sizing:inherit;color:003D50;text-decoration:underline;font-family:Arial, Helvetica, Sans-serif;" ><img src="http://static.cdn.responsys.net/i2/responsysimages/content/nas/E_330x49_basket.jpg" alt="Fly away with Norwitchen" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;padding-top:0;text-align:center;background-color:#f1f1f1;color:#003d50; width:100%;max-width:330px;height:auto;" /></a></span></td>
+              <td class="to_ab" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:10px;padding-left:10px;border-style:none;text-align:center;font-size:14px;line-height:18px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:18px;font-weight:bold;padding-top:10px;padding-bottom:0;line-height:35px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" >${ABAN_ARRIVALAIRPORTCODE}</p></td>
+            </tr>
+            <tr>
+              <td class="from_date" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;border-style:none;text-align:center;font-size:14px;line-height:18px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:14px;Margin-bottom:10px;padding-bottom:0;line-height:35px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" >${ABAN_DEPARTUREDATE}</p></td>
+              <td align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;min-width:100%" ><span style="min-width:100% !important;"><p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:22px;font-weight:bold;Margin-bottom:10px;padding-bottom:0;line-height:25px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" >${ABAN_AIRPORT_DEPARTURE}-${ABAN_AIRPORT_ARRIVAL}</p></span></td>
+              <td class="to_date" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;border-style:none;text-align:center;font-size:14px;line-height:14px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:14px;Margin-bottom:10px;padding-bottom:0;line-height:35px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" ><#--${ABAN_RETURNDATE}--></p></td>
+            </tr>
+          </table></td>
+      </tr>
+      
+      
+      
+     
+    </table></td>
+</tr>
+  
+
+<#if !MODULE.TRIP_INFO_DIVIDER_BTM?isnull>
+<tr>
+  <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td width="20" bgcolor="#f1f1f1" height="1" style="font-size:1px;line-height:1px;height:1px;"></td>
+        <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+        <td width="20" bgcolor="#f1f1f1" height="1" style="font-size:1px;line-height:1px;height:1px;"></td>
+      </tr>
+    </table></td>
+</tr>
+</#if>
+
+
+<!--END OF ABANDON BASKET-->
+<tr>
+<td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+        <table bgcolor="#f1f1f1" cellpadding="0" cellspacing="0" width="100%" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; background-color:#f1f1f1;" >
+            <tr>
+                <td class="inner contents" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;" >
+                    <table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" ><tr>
+                <td style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+                    <table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" ><tr><td align="center" style="box-sizing:inherit;padding-top:20px;padding-bottom:10px;padding-right:20px;padding-left:20px;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+<!-- Dwarf: It should be possible to change between red and blue button -->
+<table cellpadding="0" cellspacing="0" class="ma"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" ><tr><td class="Button_outer_td" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table cellpadding="0" cellspacing="0" class="autowidth" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" ><tr><td class="Button_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#D81939;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 31px 0 31px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#fffffe;" ><!-- Office 365 [OWA] fix -->
+
+<table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" ><tr>
+  <td align="center" height="50" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:18px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('TRIP_INFO_BTN', 'URL='+MODULE.TRIP_INFO_BTN_URL?exec)}" target="_blank" class="Button_white_link" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:18px;font-weight:bold;line-height:50px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" ><!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]-->
+<!-- Dwarf: This thext should be available in module excel -->${MODULE.TRIP_INFO_BTN_CTA?exec}<!--[if (gte mso 9)|(IE)]></font><![endif]--></a></p></td></tr>
+</table>
+</td></tr></table>
+</td></tr></table>
+</td></tr></table>
+                </td>
+            </tr></table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

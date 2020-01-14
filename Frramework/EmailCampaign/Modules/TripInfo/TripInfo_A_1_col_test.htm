@@ -1,0 +1,17 @@
+<#assign data_type= "outbound">
+<#assign leg_type= "departure">
+<#assign data_outbound  = []>
+<#assign data_return = []>
+
+<#-- lets figure out if trip is return trip 
+	this decide how to use fields
+-->
+<#assign trip_type="oneway">
+<#data TRIPINFO as TRIPINFO> 
+ <#filter TRIPINFO_GDS_BOOKING_ID=BOOKING_ID TRIPINFO_LOCALBOOKINGID=LOCAL_BOOKING_ID>
+  <#fields TRIPINFO_HOME_FLAG_YN>
+<#if TRIPINFO.TRIPINFO_HOME_FLAG_YN?boolean("Y")>
+   <#assign trip_type="return">
+</#if>
+</#data>
+<tr><td>trip_type: ${trip_type}</td></tr>

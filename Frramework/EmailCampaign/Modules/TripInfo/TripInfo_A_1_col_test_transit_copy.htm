@@ -1,0 +1,414 @@
+<tr><td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+<div align="left">
+    
+<#-- Data test -->
+<#if 1=2>
+    <#-- cancelled flight-->
+    <#assign GDS_BOOKING_ID="NVYM8H">
+    <#assign LOCAL_BOOKING_ID="M3765">
+
+    <#-- 1 person - return trip -->
+    <#assign GDS_BOOKING_ID="P6XL6J">
+    <#assign LOCAL_BOOKING_ID="NVZ2P">
+
+
+    <#-- 1 person - return trip - transit outbound -->
+    <#assign GDS_BOOKING_ID="LEZX6C">
+    <#assign LOCAL_BOOKING_ID="010D6">
+
+
+    <#-- 3 person - return trip -->
+    <#assign GDS_BOOKING_ID="TO7HZK">
+    <#assign LOCAL_BOOKING_ID="RW4C5">
+
+
+    <#-- 1 person - One way - transit -->
+    <#assign GDS_BOOKING_ID="VEA8I2">
+    <#assign LOCAL_BOOKING_ID="0104V">
+    <#--  2 persons- return trip  - transit in and outbound-->
+    <#assign GDS_BOOKING_ID="WRVYZO">
+    <#assign LOCAL_BOOKING_ID="ED6MO">
+
+    <#-- 3 person - return trip -->
+    <#assign GDS_BOOKING_ID="TO7HZK">
+    <#assign LOCAL_BOOKING_ID="RW4C5">
+
+    <#-- 2 person - One way -->
+    <#assign GDS_BOOKING_ID="PWN74Z">
+    <#assign LOCAL_BOOKING_ID="YAWFM">
+
+
+    <#assign BOOKING_ID=GDS_BOOKING_ID>
+    <#assign LOCAL_BOOKING_ID=LOCAL_BOOKING_ID>
+</#if>
+
+GDS_BOOKING_ID: ${BOOKING_ID}<br>
+LOCAL_BOOKING_ID: ${LOCAL_BOOKING_ID}<br>
+      
+<#assign data_type= "outbound">
+<#assign leg_type= "departure">
+<#assign data_outbound  = []>
+<#assign data_return = []>
+
+
+<#data TRIPINFO as TRIPINFO> 
+ <#filter TRIPINFO_GDS_BOOKING_ID=BOOKING_ID TRIPINFO_LOCALBOOKINGID=LOCAL_BOOKING_ID>
+  <#fields 
+TRIPINFO_LEG_DEPARTURE_TIME 
+TRIPINFO_LEG_ARRIVAL_DATE
+TRIPINFO_MAIN_DESTINATION 
+TRIPINFO_LEG_NUMBER
+TRIPINFO_HOME_FLAG_YN 
+TRIPINFO_FIRST_LEG_IN_TRANSIT 
+TRIPINFO_FIRST_LEG_YN 
+TRIPINFO_LAST_LEG_YN 
+TRIPINFO_ORIGIN_LEG 
+TRIPINFO_DESTINATION_LEG 
+TRIPINFO_PASSENGER_NAMES
+TRIPINFO_TRANSIT  
+>
+<#--
+<br><br>  
+[BASE] <br>
+Type: ${data_type}<br>
+Home leg?: ${TRIPINFO.TRIPINFO_HOME_FLAG_YN}<br>
+TRIPINFO_MAIN_DESTINATION: ${TRIPINFO.TRIPINFO_MAIN_DESTINATION}<br>
+TRIPINFO_ORIGIN_LEG: ${TRIPINFO.TRIPINFO_ORIGIN_LEG}<br>
+PASSENGER_NAMES:${TRIPINFO.TRIPINFO_PASSENGER_NAMES}<br />
+TRANSIT: ${TRIPINFO.TRIPINFO_TRANSIT}<br>
+TRIPINFO_LEG_DEPARTURE_TIME: ${TRIPINFO.TRIPINFO_LEG_DEPARTURE_TIME}<br>
+TRIPINFO_LEG_ARRIVAL_DATE: ${TRIPINFO.TRIPINFO_LEG_ARRIVAL_DATE}<br>-->
+<#assign PASSENGER_NAMES = TRIPINFO.TRIPINFO_PASSENGER_NAMES>
+
+<#assign item_base= TRIPINFO>
+
+
+<#data AIRPORTS as AIRPORT>
+<#filter AIRPORTCODE_IATA = TRIPINFO.TRIPINFO_ORIGIN_LEG LANGUAGECODE=AIRPORT_LANG>
+<#fields AIRPORTNAME><#assign item_base= item_base+ {"ORIGIN_AIRPORT_NAME" : AIRPORT.AIRPORTNAME}></#data>
+
+
+<#data AIRPORTS as AIRPORT>
+<#filter AIRPORTCODE_IATA = TRIPINFO.TRIPINFO_DESTINATION_LEG LANGUAGECODE=AIRPORT_LANG>
+<#fields AIRPORTNAME><#assign item_base= item_base+ {"DESTINATION_AIRPORT_NAME" : AIRPORT.AIRPORTNAME}></#data>
+
+<#assign item = [item_base]>
+
+
+<#if data_type== 'outbound'>
+  <#assign data_outbound  = data_outbound  + item>
+</#if>
+
+<#if data_type == 'return'>
+ <#assign data_return = data_return + item>
+</#if>
+
+<#if TRIPINFO.TRIPINFO_MAIN_DESTINATION?boolean("1")>
+	<#assign data_type= "return">
+</#if>
+</#data>
+
+
+<br />
+<br />
+
+<#assign data_outbound_items  = []>
+<#assign data_return_items  = []>
+
+<#list data_outbound  as item>
+
+<!-- ${item.ORIGIN_AIRPORT_NAME} (${item.TRIPINFO_ORIGIN_LEG}) => ${item.DESTINATION_AIRPORT_NAME} (${item.TRIPINFO_DESTINATION_LEG}) <br>-->
+
+
+<#if item.TRIPINFO_MAIN_DESTINATION?boolean("1")>
+ <#if item.TRIPINFO_LEG_NUMBER == 1>
+   <#-- LEG is both departure and arrival. Make arrival row  (${item.TRIPINFO_FIRST_LEG_IN_TRANSIT})--<br>-->
+
+   <#assign item_base= item+ {"type" : "departure"}>
+   <#assign data_outbound_items  = data_outbound_items  + [item_base]>
+	<#--<#if item.TRIPINFO_FIRST_LEG_IN_TRANSIT?boolean("1")>
+        -- LEG is FIRST_LEG_IN_TRANSIT --<br>
+   		<#assign item_base= item+ {"type" : "transit_to"}>
+   		<#assign data_outbound_items  = data_outbound_items  + [item_base]>
+	<#else>-->
+        <#-- LEG is NOT FIRST_LEG_IN_TRANSIT --<br>-->
+        <#assign item_base= item_base+ {"type" : "arrival"}>
+		<#assign data_outbound_items  = data_outbound_items  + [item_base]>
+    <#-- </#if>-->
+ <#else>
+
+ 	<#-- Not first LEG, but main dest. Must be transit--<br>-->
+ 	<#assign item_base= item+ {"type" : "transit_from"}>
+	<#assign data_outbound_items  = data_outbound_items  + [item_base]>
+
+	<#assign item_base= item+ {"type" : "arrival"}>
+	<#assign data_outbound_items  = data_outbound_items  + [item_base]> 
+
+  
+ </#if>
+
+<#else>
+ <#if item.TRIPINFO_LEG_NUMBER == 1>
+
+   <#-- Not main, and first leg, we must be in departure--<br>-->
+  <#assign item_base= item+ {"type" : "departure"}>
+  <#assign data_outbound_items  = data_outbound_items  + [item_base]> 
+  <#if item.TRIPINFO_FIRST_LEG_IN_TRANSIT?boolean("1")>
+      	<#assign item_base= item+ {"type" : "transit_to"}>
+   		<#assign data_outbound_items  = data_outbound_items  + [item_base]>
+  <#else>    
+   		<#assign item_base= item+ {"type" : "arrival"}>
+  		<#assign data_outbound_items  = data_outbound_items  + [item_base]> 
+  </#if>
+<#else>
+ 	<#-- Not main, and NOT first leg, we must be in transit-- <br>-->
+ 	<#assign item_base= item+ {"type" : "transit_from"}>
+  	<#assign data_outbound_items  = data_outbound_items  + [item_base]>
+  	<#assign item_base= item+ {"type" : "arrival"}>
+  	<#assign data_outbound_items  = data_outbound_items  + [item_base]> 
+</#if>
+</#if>
+</#list>
+
+
+
+<#assign first_leg = 1>
+<#list data_return as item>
+
+<!-- ${item.ORIGIN_AIRPORT_NAME} (${item.TRIPINFO_ORIGIN_LEG}) => ${item.DESTINATION_AIRPORT_NAME} (${item.TRIPINFO_DESTINATION_LEG}) <br>-->
+
+
+
+<#if item.TRIPINFO_HOME_FLAG_YN == "Y">
+ <#if first_leg == 1>
+	--  #RETURN 1. LEG is both departure and arrival. Make arrival row<br>
+
+   <#assign item_base= item+ {"type" : "departure"}>
+   <#assign data_return_items  = data_return_items  + [item_base]>
+
+   <#if item.TRIPINFO_FIRST_LEG_IN_TRANSIT?boolean("1")>
+        --  #RETURN LEG is FIRST_LEG_IN_TRANSIT --<br>
+   		<#assign item_base= item+ {"type" : "transit_to"}>
+   		<#assign data_return_items  = data_return_items  + [item_base]>
+	<#else>
+        --  #RETURN LEG is NOT FIRST_LEG_IN_TRANSIT --<br>
+        <#assign item_base= item_base+ {"type" : "arrival"}>
+		<#assign data_return_items  = data_return_items  + [item_base]>
+    </#if>
+ <#else>
+
+ --#RETURN   Not first LEG, but main dest. Must be transit <br>
+ 	<#assign item_base= item+ {"type" : "transit_from"}>
+   <#assign data_return_items  = data_return_items  + [item_base]>
+
+    <#if item.TRIPINFO_FIRST_LEG_IN_TRANSIT?boolean("1")>
+      	<#assign item_base= item+ {"type" : "transit_to"}>
+   		<#assign data_return_items  = data_return_items  + [item_base]>
+  <#else>    
+   		<#assign item_base= item+ {"type" : "arrival"}>
+  		<#assign data_return_items  = data_return_items  + [item_base]> 
+  </#if>
+ </#if>
+
+<#else>
+ 	<#if first_leg  == 1>
+
+		<!-- # Not main, and first leg, we must be in departure-->
+		<#assign item_base= item+ {"type" : "departure"}>
+		<#assign data_return_items  = data_return_items  + [item_base]> 
+    	<#if item.TRIPINFO_FIRST_LEG_IN_TRANSIT?boolean("1")>
+      		<#assign item_base= item+ {"type" : "transit_to"}>
+   			<#assign data_return_items  = data_return_items  + [item_base]>
+  		<#else>    
+   			<#assign item_base= item+ {"type" : "arrival"}>
+  			<#assign data_return_items  = data_return_items  + [item_base]> 
+  		</#if>
+	<#else>
+		<!--# Not main, and NOT first leg, we must be in transit-->
+		<#assign item_base= item+ {"type" : "transit_from"}>
+		<#assign data_return_items  = data_return_items  + [item_base]>
+	</#if>
+</#if>
+ <#assign first_leg = 0>
+
+</#list>
+
+
+
+
+
+
+<tr>
+<td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+        <table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+            <tr>
+                <td class="inner contents" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;" >
+                    <table cellpadding="0" cellspacing="0" align="left" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                        <tr>
+                    <td align="left" class="Tripcard" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-weight:normal;font-size:18px;line-height:22px;mso-line-height-rule:exactly;color:#003d50;padding-top:0;padding-bottom:10px;padding-right:20px;padding-left:20px;" ><table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" ><tr><td bgcolor="#fffffe" class="Tripcard_Inner" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:20px;padding-left:20px;background-color:#fffffe;" ><table cellpadding="0" cellspacing="0" align="left" width="100%" bgcolor="#fffffe" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" ><tr><td class="Tripcard_Reference" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;padding-top:15px;padding-bottom:10px;padding-right:0;padding-left:0;font-size:18px;" ><!--[if (gte mso 9)|(IE)]><font color="#003d50" face="Arial, Helvetica, Sans-serif" size="3" style="box-sizing:inherit;font-weight:normal;color:#003d50;" ><![endif]-->
+<!-- Dwarf: This thext should be available in module excel -->Booking Reference: ${BOOKING_ID?exec} 
+<!-- Dwarf: This is the Booking number, automatically pulled from the booking --><!--[if (gte mso 9)|(IE)]></font><![endif]--></td></tr><tr><td class="Tripcard_H1" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;font-size:20px;padding-top:0;padding-bottom:5px;padding-right:0;padding-left:0;font-weight:bold;" ><!--[if (gte mso 9)|(IE)]><font color="#003d50" face="Arial, Helvetica, Sans-serif" size="5" style="box-sizing:inherit;font-weight:bold;color:#003d50;" ><![endif]-->
+       
+<!-- Dwarf: This thext should be available in module excel -->Outbound flight<!--[if (gte mso 9)|(IE)]></font><![endif]--></td></tr><tr>
+                        <td bgcolor="#003d50" height="2" class="Tripcard_Spacerline_blue" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;mso-line-height-rule:exactly;background-color:#003d50;" >&nbsp;</td>
+                      </tr>
+
+
+
+
+<#assign is_first = 1>
+<#list data_outbound_items  as item>
+<#assign is_first = 0> 
+<#if item.type != 'transit_from'>
+<tr><td class="Tripcard_Subheader" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;padding-top:5px;padding-bottom:5px;padding-right:0;padding-left:0;font-size:18px;line-height:22px;" ><!--[if (gte mso 9)|(IE)]><font color="#003d50" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;font-weight:normal;color:#003d50;" ><![endif]-->
+</#if>
+<#if item.type == 'departure'>
+Departure from
+<#assign airport>${item.ORIGIN_AIRPORT_NAME} (${item.TRIPINFO_ORIGIN_LEG})</#assign>
+<#assign time_of_event>${item.TRIPINFO_LEG_DEPARTURE_TIME?string("dd/MM/YYYY HH:mm")}</#assign>
+<#elseif item.type == 'transit_to'>
+Transit to
+<#assign airport>${item.DESTINATION_AIRPORT_NAME} (${item.TRIPINFO_DESTINATION_LEG})</#assign>
+<#assign time_of_event>${item.TRIPINFO_LEG_ARRIVAL_DATE?string("dd/MM/YYYY HH:mm")}</#assign>
+<#elseif item.type == 'transit_from'>
+<#assign airport="">
+<#-- 
+Transit from 
+<#assign airport>${item.ORIGIN_AIRPORT_NAME} (${item.TRIPINFO_ORIGIN_LEG})</#assign>
+-->
+<#assign time_of_event>${item.TRIPINFO_LEG_DEPARTURE_TIME?string("dd/MM/YYYY HH:mm")}</#assign>
+<#else>
+Arrival in
+<#assign airport>${item.DESTINATION_AIRPORT_NAME} (${item.TRIPINFO_DESTINATION_LEG })</#assign>
+<#assign time_of_event>${item.TRIPINFO_LEG_ARRIVAL_DATE?string("dd/MM/YYYY HH:mm")}</#assign>
+</#if>
+
+
+
+<!--[if (gte mso 9)|(IE)]></font><![endif]--></td></tr>
+<#if item.type != 'transit_from'>
+<tr><td class="Tripcard_Text" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:5px;padding-right:0;padding-left:0;font-weight:bold;font-size:18px;line-height:22px;" ><!--[if (gte mso 9)|(IE)]><font color="#003d50" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;font-weight:bold;color:#003d50;" ><![endif]-->
+${airport}
+
+<!--[if (gte mso 9)|(IE)]></font><![endif]--></td></tr>
+</#if>
+<tr><td class="Tripcard_Time" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0px;padding-right:20px;padding-left:0;text-wrap:none !important;white-space:nowrap !important;font-size:18px;line-height:22px;" nowrap="nowrap"><!--[if (gte mso 9)|(IE)]><font color="#003d50" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;font-weight:normal;color:#003d50;" ><![endif]-->
+${time_of_event}
+<!--[if (gte mso 9)|(IE)]></font><![endif]--></td></tr>
+<#if item.type != 'transit_to'>
+<tr>
+ <td height="10" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+</tr>   
+<tr>
+ <td bgcolor="#d8d8d8" height="2" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+</tr>
+</#if>
+</#list>
+
+
+
+
+<#if data_return_items?has_content>
+                      <tr><td height="10" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td></tr>
+                      <tr><td class="Tripcard_H1" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;font-size:20px;padding-top:0;padding-bottom:5px;padding-right:0;padding-left:0;font-weight:bold;" ><!--[if (gte mso 9)|(IE)]><font color="#003d50" face="Arial, Helvetica, Sans-serif" size="5" style="box-sizing:inherit;font-weight:bold;color:#003d50;" ><![endif]-->
+
+
+<!-- Dwarf: This thext should be available in module excel -->
+Return flight
+<!--[if (gte mso 9)|(IE)]></font><![endif]--></td></tr><tr>
+                        <td bgcolor="#003d50" height="2" class="Tripcard_Spacerline_blue" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;mso-line-height-rule:exactly;background-color:#003d50;" >&nbsp;</td>
+                      </tr>
+
+
+<#assign is_first = 1>
+<#list data_return_items  as item>
+<#assign is_first = 0>
+<#if item.type != 'transit_from'>
+<tr><td class="Tripcard_Subheader" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif; padding-top:5px; padding-bottom:5px;padding-right:0;padding-left:0;font-size:18px;line-height:22px;" ><!--[if (gte mso 9)|(IE)]><font color="#003d50" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;font-weight:normal;color:#003d50;" ><![endif]-->
+</#if>
+
+
+<#if item.type == 'departure'>
+Departure from
+<#assign airport>${item.ORIGIN_AIRPORT_NAME} (${item.TRIPINFO_ORIGIN_LEG})</#assign>
+<#assign time_of_event>${item.TRIPINFO_LEG_DEPARTURE_TIME?string("dd/MM/YYYY HH:mm")}</#assign> 
+<#elseif item.type == 'transit_to'>
+Transit to
+<#assign airport>${item.DESTINATION_AIRPORT_NAME} (${item.TRIPINFO_DESTINATION_LEG})</#assign>
+<#assign time_of_event>${item.TRIPINFO_LEG_ARRIVAL_DATE?string("dd/MM/YYYY HH:mm")}</#assign>
+<#elseif item.type == 'transit_from'>
+	<#assign airport="">
+	<#-- 
+	Transit from 
+	<#assign airport>${item.ORIGIN_AIRPORT_NAME} (${item.TRIPINFO_ORIGIN_LEG})</#assign>
+	-->
+	<#assign time_of_event>${item.TRIPINFO_LEG_DEPARTURE_TIME?string("dd/MM/YYYY HH:mm")}</#assign>
+<#else>
+Arrival in
+<#assign airport>${item.DESTINATION_AIRPORT_NAME} (${item.TRIPINFO_DESTINATION_LEG})</#assign>
+<#assign time_of_event>${item.TRIPINFO_LEG_ARRIVAL_DATE?string("dd/MM/YYYY HH:mm")}</#assign>  
+</#if>
+
+
+
+<!--[if (gte mso 9)|(IE)]></font><![endif]--></td></tr>
+<#if item.type != 'transit_from'>
+    <tr><td class="Tripcard_Text" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:5px;padding-right:0;padding-left:0;font-weight:bold;font-size:18px;line-height:22px;" ><!--[if (gte mso 9)|(IE)]><font color="#003d50" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;font-weight:bold;color:#003d50;" ><![endif]--><!-- Dwarf: This thext should be pulled from the table called AIRPORTS based on booking IATA from the SQL called SQL_MAX-->
+
+${airport}
+
+<!--[if (gte mso 9)|(IE)]></font><![endif]--></td></tr>
+</#if>                        
+<tr><td class="Tripcard_Time" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:10px;padding-right:20px;padding-left:0;text-wrap:none !important;white-space:nowrap !important;font-size:18px;line-height:22px;" nowrap="nowrap">
+
+${time_of_event} 
+
+</td></tr>
+<#if item.type != 'transit_to'>                        
+<tr>
+<td bgcolor="#d8d8d8" height="2" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+ </tr>
+</#if> 
+
+</#list>
+</#if>
+
+
+
+
+<tr><td style="box-sizing:inherit;padding-top:10px;padding-bottom:5px;padding-right:0;padding-left:0;font-weight:bold;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:18px;line-height:22px;" ><!--[if (gte mso 9)|(IE)]><font color="#003d50" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;font-weight:bold;color:#003d50;" ><![endif]-->
+<!-- Dwarf: This thext should be available in module excel -->
+Passengers
+
+<!--[if (gte mso 9)|(IE)]></font><![endif]--></td></tr><tr><td class="Tripcard_Time" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:10px;padding-right:20px;padding-left:0;font-size:18px;line-height:22px;" ><!--[if (gte mso 9)|(IE)]><font color="#003d50" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;font-weight:normal;color:#003d50;" ><![endif]-->
+<!-- Dwarf: This thext should be pulled from the SQL called SQL_MAX -->
+<#list PASSENGER_NAMES?split(",") as x>
+${x}<br>
+</#list><!--[if (gte mso 9)|(IE)]></font><![endif]--></td></tr> <tr>
+                        <td bgcolor="#d8d8d8" height="2" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+                      </tr><tr>
+                <td style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+                    <table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" ><tr><td align="center" style="box-sizing:inherit;padding-top:20px;padding-bottom:10px;padding-right:20px;padding-left:20px;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+<!-- Dwarf: It should be possible to change between red and blue button -->
+<table cellpadding="0" cellspacing="0" class="ma"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" ><tr><td class="Button_outer_td" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table cellpadding="0" cellspacing="0" class="autowidth" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" ><tr><td class="Button_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#D81939;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 31px 0 31px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#fffffe;" ><!-- Office 365 [OWA] fix -->
+
+<table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" ><tr>
+  <td align="center" height="50" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:18px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('TRIP_INFO_BTN', 'URL='+MODULE.TRIP_INFO_BTN_URL?exec)}" target="_blank" class="Button_white_link" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:18px;font-weight:bold;line-height:50px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" ><!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]-->
+<!-- Dwarf: This thext should be available in module excel -->View full reservation<!--[if (gte mso 9)|(IE)]></font><![endif]--></a></p></td></tr>
+</table>
+</td></tr></table>
+</td></tr></table>
+</td></tr></table>
+                </td>
+            </tr></table>
+                
+                </td></tr></table></td></tr></table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+
+
+</div></td></tr>
