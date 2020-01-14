@@ -1,0 +1,5 @@
+<#-- we hide PB for FLEX because they will have a different rule -->
+<#if FLEX_YES == "Y"><#assign MODULE_EXCLUDE = 1>
+<#elseif HAVE_PRIORITY_BOARDING == "Y"><#assign MODULE_EXCLUDE = 0>	
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>

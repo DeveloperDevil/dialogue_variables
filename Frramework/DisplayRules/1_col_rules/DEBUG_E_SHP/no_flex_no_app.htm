@@ -1,0 +1,3 @@
+<#if HAS_FLEX?isnull || APP_YN?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "N" && APP_YN?trim == "N"><#-- They do not have Flex ticket and they do not have app, include --><#assign MODULE_EXCLUDE = 0>
+<#else><#-- For all other scenarios, exclude --><#assign MODULE_EXCLUDE = 1></#if>

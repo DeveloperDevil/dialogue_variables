@@ -1,0 +1,4 @@
+<#if HAS_FLEX == "Y" || LOUNGE_AIRPORT_AVAIL == "N"><#-- They have Flex ticket or Lounge is not available, exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif LOUNGE_AIRPORT_AVAIL == "Y"><#-- Lounge is available, include --><#assign MODULE_EXCLUDE = 0>
+<#else><#-- For all other scenarios, exclude --><#assign MODULE_EXCLUDE = 1>
+</#if>

@@ -1,0 +1,16 @@
+<#-- This displayrule is used to display FT bulletpoint, if FT is not bought and it is available -->
+<#if HAS_FLEX?isnull || FAST_TRACK_FLAG?isnull || ONEWAY_YN?isnull || FAST_TRACK_AIRPORTS?isnull || FAST_TRACK_AIRPORTS_RETURN?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "Y" || FAST_TRACK_FLAG == 'Y' || HORIZON == 'A'><#-- They have Flex ticket, the horizon is A or they already have FT. Exclude --><#assign MODULE_EXCLUDE = 1>
+<#-- If it is a oneway booking, we check if FT is available on Outbound  -->
+<#elseif ONEWAY_YN == '1'>
+    <#if FAST_TRACK_AIRPORTS?trim == 'Y'><#-- FT is available for Outbound leg, include  --><#assign MODULE_EXCLUDE = 0>                
+    <#else><#-- FT is not available for Outbound leg, exclude  --><#assign MODULE_EXCLUDE = 1>
+    </#if>
+<#-- If it is a roundtrip booking, we check if FT is available on Outbound or Return leg  -->
+<#else>
+    <#if FAST_TRACK_AIRPORTS?trim == 'Y' || FAST_TRACK_AIRPORTS_RETURN?trim == 'Y'>
+        <#-- FT is available either for Outbound or Return leg, include  --><#assign MODULE_EXCLUDE = 0>
+    <#else><#-- FT is not available either for Outbound or Return leg, exclude  --><#assign MODULE_EXCLUDE = 1>
+    </#if>
+
+</#if>

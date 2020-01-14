@@ -1,0 +1,6 @@
+<#if HAS_FLEX == "N"><#assign MODULE_EXCLUDE = 1>
+<#elseif MEAL_AVAILABLE== "Y" && TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#assign MODULE_EXCLUDE = 0>
+<#elseif MEAL_AVAILABLE== "N" || MEAL_AVAILABLE?isnull><#if TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1></#if>
+<#elseif HAS_FLEX == "Y"><#assign MODULE_EXCLUDE = 0>
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>

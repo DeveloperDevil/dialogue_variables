@@ -1,0 +1,25 @@
+<#if HAS_FLEX == "N" || FAST_TRACK_FLAG == "Y"><#assign MODULE_EXCLUDE = 1><#-- They don't have Flex ticket or they already have FT, exclude -->
+<#elseif MEAL_AVAILABLE== "Y" && TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0 && FAST_TRACK_FLAG == "N"><#-- They have all ancillaries, but do not have FT. Include if FT is available-->
+    <#if ONEWAY_YN == '1' && FAST_TRACK_AIRPORTS?trim == 'N'><#-- FT is not available for outbound leg. Include.--><#assign MODULE_EXCLUDE = 0>
+    <#elseif ONEWAY_YN == '0'>
+        <#if FAST_TRACK_AIRPORTS?trim == 'N' && FAST_TRACK_AIRPORTS_RETURN?trim == 'N'><#-- FT is not available for outbound or return leg. Include.--><#assign MODULE_EXCLUDE = 0>
+        <#else><#-- FT is available. Exclude.--><#assign MODULE_EXCLUDE = 1>
+        </#if>
+    </#if>
+<#elseif MEAL_AVAILABLE== "N" || MEAL_AVAILABLE?isnull>
+    <#if TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0 && FAST_TRACK_FLAG == "N"><#-- They have all ancillaries, but do not have FT. Include if FT is available-->
+        <#if ONEWAY_YN == '1' && FAST_TRACK_AIRPORTS?trim == 'N'><#-- FT is not available for outbound leg. Include.--><#assign MODULE_EXCLUDE = 0>
+        <#elseif ONEWAY_YN == '0'>
+        	<#if FAST_TRACK_AIRPORTS?trim == 'N' || FAST_TRACK_AIRPORTS_RETURN?trim == 'N'><#-- FT is not available for outbound or return leg. Include.--><#assign MODULE_EXCLUDE = 0>
+        	<#else><#-- FT is available. Exclude.--><#assign MODULE_EXCLUDE = 1>
+        	</#if><#-- We don't know if it is oneway or return. Exclude.--><#assign MODULE_EXCLUDE = 1>
+        </#if>
+<#elseif HAS_FLEX == "Y" && FAST_TRACK_FLAG == "N"><#-- They have Flex ticket, but do not have FT. Include if FT is available-->
+    <#if ONEWAY_YN == '1' && FAST_TRACK_AIRPORTS?trim == 'N'><#-- FT is not available for outbound leg. Include.--><#assign MODULE_EXCLUDE = 0>
+    <#elseif ONEWAY_YN == '0'>
+        <#if FAST_TRACK_AIRPORTS?trim == 'N' && FAST_TRACK_AIRPORTS_RETURN?trim == 'N'><#-- FT is not available for outbound or return leg. Include.--><#assign MODULE_EXCLUDE = 0>
+        <#else><#-- FT is available. Exclude.--><#assign MODULE_EXCLUDE = 1>
+        </#if><#-- We don't know if it is oneway or return. Exclude.--><#assign MODULE_EXCLUDE = 1>
+    </#if>
+<#else><#-- For all other scenarios, exclude.--><#assign MODULE_EXCLUDE = 1>
+</#if>

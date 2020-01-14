@@ -1,0 +1,7 @@
+<#-- This displayrule is used to display different Reward info for customers with flex tickets but no reward membership -->
+<#if HAS_FLEX?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "N" || CONTACT.REWARD_YN?upper_case?trim == "Y"><#-- They don't have Flex ticket or they are Reward members. Exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "Y" && CONTACT.REWARD_YN?upper_case?trim == "N"><#-- They have Flex ticket and they are not Reward members. Include --><#assign MODULE_EXCLUDE = 0>
+<#elseif HAS_FLEX == "Y" && CONTACT.REWARD_YN?isnull><#-- They have Flex ticket and we don't know if they are Reward members. Include --><#assign MODULE_EXCLUDE = 0>
+<#else><#-- For all other scenarios, exclude  --><#assign MODULE_EXCLUDE = 1>
+</#if>
