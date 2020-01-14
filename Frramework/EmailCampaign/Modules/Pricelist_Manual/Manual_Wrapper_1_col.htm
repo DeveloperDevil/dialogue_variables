@@ -1,0 +1,34 @@
+<#-- MANUAL_PRICELIST_SHOW_DEFAULT is 1 in newsletter defaults-->
+<#if PREFFERED_AIRPORT?isnull>
+    <#assign PREFAIR = 'DEFAULT'>
+<#else>
+	<#assign PREFAIR = PREFFERED_AIRPORT?trim>
+</#if>
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET  FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields  MANUAL_VARIANT MANUAL_DISPLAY_RULE MANUAL_HEADLINE MANUAL_SUBHEADLINE MANUAL_COL1_TITLE MANUAL_COL2_TITLE MANUAL_COL3_TITLE MANUAL_DEST_1_NAME MANUAL_DEST_1_SUBTEXT MANUAL_DEST_1_URL MANUAL_COL2_DEST_1_PRICE MANUAL_COL3_DEST_1_PRICE MANUAL_DEST_2_NAME MANUAL_DEST_2_SUBTEXT MANUAL_DEST_2_URL MANUAL_COL2_DEST_2_PRICE MANUAL_COL3_DEST_2_PRICE MANUAL_DEST_3_NAME MANUAL_DEST_3_SUBTEXT MANUAL_DEST_3_URL MANUAL_COL2_DEST_3_PRICE MANUAL_COL3_DEST_3_PRICE MANUAL_DEST_4_NAME MANUAL_DEST_4_SUBTEXT MANUAL_DEST_4_URL MANUAL_COL2_DEST_4_PRICE MANUAL_COL3_DEST_4_PRICE MANUAL_DEST_5_NAME MANUAL_DEST_5_SUBTEXT MANUAL_DEST_5_URL MANUAL_COL2_DEST_5_PRICE MANUAL_COL3_DEST_5_PRICE MANUAL_DEST_6_NAME MANUAL_DEST_6_SUBTEXT MANUAL_DEST_6_URL MANUAL_COL2_DEST_6_PRICE MANUAL_COL3_DEST_6_PRICE MANUAL_DEST_7_NAME MANUAL_DEST_7_SUBTEXT MANUAL_DEST_7_URL MANUAL_COL2_DEST_7_PRICE MANUAL_COL3_DEST_7_PRICE MANUAL_DEST_8_NAME MANUAL_DEST_8_SUBTEXT MANUAL_DEST_8_URL MANUAL_COL2_DEST_8_PRICE MANUAL_COL3_DEST_8_PRICE MANUAL_SMALL_TEXT MANUAL_CALL_TO_ACTION MANUAL_URL>
+			<#assign MODULE_EXCLUDE = 0>
+			<#if !MODULE.MANUAL_VARIANT?isnull>
+				<#if !MODULE.MANUAL_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.MANUAL_DISPLAY_RULE+".htm">
+					<#recover>
+					 <#if !MODULE.MANUAL_DISPLAY_RULE?isnull 
+                            && (MODULE.MANUAL_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.MANUAL_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong PREFAIR, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>   
+	                </#if> 
+						 <#if !MODULE.MANUAL_DISPLAY_RULE?isnull 
+                           && MODULE.MANUAL_DISPLAY_RULE?lower_case == "default"
+                           && MANUAL_PRICELIST_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                          </#if> 	
+						</#attempt>
+				</#if>
+
+				<#if MODULE_EXCLUDE == 0><#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/pricelist_manual/Pricelist_"+MODULE.MANUAL_VARIANT+"_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!--error loading MANUAL module --></td></tr></#attempt>
+					<#global MANUAL_PRICELIST_SHOW_DEFAULT = 0>
+					</#if>
+				</#if>
+</#data>
