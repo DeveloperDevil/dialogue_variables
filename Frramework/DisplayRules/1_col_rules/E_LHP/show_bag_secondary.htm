@@ -1,0 +1,7 @@
+<#-- Used to hide secodary module if first module have bag offer, to avoid having two bag offers in the email -->
+<#if PREMIUM_YES == "Y" || TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0 || HAS_FLEX == "Y"><#assign MODULE_EXCLUDE = 1>
+<#elseif TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0><#assign MODULE_EXCLUDE = 1><#-- Bag is shown as first priority, meal and seat is already bought. We don't want to show bag. -->
+<#elseif TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number == 0><#assign MODULE_EXCLUDE = 0><#-- Meal is shown as first priority, seat is already bought. We want to show bag. -->
+<#elseif TESTING_BOOKING_NUMBER_OF_BAGS?number == 0><#assign MODULE_EXCLUDE = 0><#-- Seat is shown as first priority, meal and/or seat is not bought. We want to show bag. -->
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>
