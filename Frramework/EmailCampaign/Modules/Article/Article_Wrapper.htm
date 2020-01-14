@@ -1,0 +1,21 @@
+<#list SEGMENT?replace(" ","")?split("|") as CURRENT_SEGMENT>
+	<#if MODULE_LOADED=0>
+		<#data CAMPAIGN_FRAMEWORK as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET FRAMEWORK_SEGMENT=CURRENT_SEGMENT FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields ARTICLE_VARIANT ARTICLE_IMAGE ARTICLE_HEADLINE ARTICLE_TEXT ARTICLE_URL ARTICLE_CALL_TO_ACTION ARTICLE_BACKGROUND_COLOR ARTICLE_FONT_COLOR ARTICLE_DISPLAY_RULE>
+			<#if !MODULE.ARTICLE_VARIANT?isnull>
+				<#if !MODULE.ARTICLE_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.ARTICLE_DISPLAY_RULE+".htm">
+					<#recover>
+						<!-- error loading display rule -->
+					</#attempt>
+				</#if>
+				<#if MODULE_EXCLUDE == 0>
+                    <#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/article/article_"+MODULE.ARTICLE_VARIANT+".htm"><#assign MODULE_LOADED=1><#recover><!-- error loading hero module --></#attempt></#if>
+					
+                <#-- ARTICLE_SHOW_DEFAULT == 1 or NULL equals no content, 0 has content --> <#global ARTICLE_SHOW_DEFAULT = 0>
+                </#if>
+		</#data>
+	</#if>
+</#list>

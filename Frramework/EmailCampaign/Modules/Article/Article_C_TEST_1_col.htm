@@ -1,0 +1,73 @@
+<tr>
+  <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+      <tr>
+        <td class="inner contents" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;" ><table cellpadding="0" cellspacing="0" width="100%"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+            <tr>
+              <td valign="top"  bgcolor="${CAMPAIGN_BCG_CLR}" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:20px;padding-left:20px;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" width="100%"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                  <#if !MODULE.ARTICLE_DIVIDER_TOP?isnull>
+                  <tr>
+                    <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+                  </tr>
+                  </#if>
+                  <tr>
+                    <td height="10" style="box-sizing:inherit;font-size:10px;line-height:10px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td>
+                  </tr>
+                  <tr> <#if !MODULE.ARTICLE_IMAGE?isnull>
+                    <td width="100%" align="center" valign="top" style="box-sizing:inherit;padding-top:0;padding-bottom:10px;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><a href="${clickthrough('ARTICLE_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.ARTICLE_URL?exec)}" title="${MODULE.ARTICLE_CTA?exec}" target="_blank" style="box-sizing:inherit;color:#D81939;text-decoration:underline;font-family:Arial, Helvetica, Sans-serif;" ><img src="${MODULE.ARTICLE_IMAGE?exec}" height="auto" width="100%" class="Iconlist_Image"  border="0" alt="${MODULE.ARTICLE_ALT_TXT?exec}" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;display:block;width:100%;height:auto;" /></a></td></tr>
+                    </#if>
+                    <tr><td align="left" valign="top" class="m_ptop0 Iconlist_Heading" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;font-size:20px;line-height:22px;mso-line-height-rule:exactly;padding-top:0;padding-bottom:10px;padding-right:0;padding-left:0px;font-weight:bold;vertical-align:top;" ><#if !MODULE.ARTICLE_HEADING?isnull>${MODULE.ARTICLE_HEADING?exec}</#if>
+                      <table cellpadding="0" cellspacing="0" width="100%"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                        <#if !MODULE.ARTICLE_PARAGRAPH?isnull>
+                        <tr>
+                          <td class="Iconlist_Text" style="box-sizing:inherit;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:17px;line-height:22px;mso-line-height-rule:exactly;font-weight:normal;padding-top:10px;color:#003d50;" >${MODULE.ARTICLE_PARAGRAPH?exec}</td>
+
+                        </tr>
+                        <#elseif !MODULE.ARTICLE_INTRO?isnull>
+                        <tr>
+                          <td class="intro" style="box-sizing:inherit;border-style:none;font-size:20px;padding-top:10px;padding-bottom:0;padding-right:0;padding-left:0;line-height:22px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" >${MODULE.ARTICLE_INTRO?exec}</td>
+                        </tr>
+                        </#if><#if !MODULE.ARTICLE_BP1_TXT?isnull><!-- Icon list start -->
+                        <tr>
+                          <td style="padding-top:10px;"><table width="100%" cellpadding="0" cellspacing="0" border="0">
+                              <tr>
+                                <td height="6" style="box-sizing:inherit;font-size:6px;line-height:6px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td>
+                              </tr>
+                              <#if !MODULE.ARTICLE_BP1_TXT?isnull>
+                              <tr>
+                                <td width="22" align="left" style="box-sizing:inherit;padding-left:0;padding-top:2px;vertical-align:top;padding-bottom:0;padding-right:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><#if !MODULE.ARTICLE_BP_ICON?isnull><img src="${MODULE.ARTICLE_BP_ICON}" width="20" height="20" alt="" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;" /><#else><img src="http://static.cdn.responsys.net/i2/responsysimages/content/nas/tick_circle_blue_20px-20px.png" width="20" height="20" alt="" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;" /></#if></td>
+                                <td class="Iconlist_Bulletpoint" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:17px;line-height:20px;mso-line-height-rule:exactly;color:#003d50;padding-top:0;padding-bottom:0;padding-right:0;padding-left:17px;font-weight:normal;vertical-align:top;text-align:left;" ><p style="box-sizing:inherit;Margin:0;font-size:17px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:20px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" >${MODULE.ARTICLE_BP1_TXT?exec} <span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" ><!--[if (gte mso 9)|(IE)]>${MODULE.ARTICLE_BP1_TXT?exec} <#if !MODULE.ARTICLE_BP1_CTA?isnull><a href="${clickthrough('ARTICLE_BP1_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.ARTICLE_BP1_URL?exec)}" title="${MODULE.ARTICLE_BP1_CTA}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:17px;line-height:20px;padding-bottom:4px;font-weight:bold;" ></#if><![endif]--><!--[if !mso]><!--><#if !MODULE.ARTICLE_BP1_CTA?isnull><a href="${clickthrough('ARTICLE_BP1_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.ARTICLE_URL?exec)}" title="${MODULE.ARTICLE_BP1_CTA}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:17px;line-height:20px;padding-bottom:2px;font-weight:bold;mso-hide:all;"><!--><![endif]-->${MODULE.ARTICLE_BP1_CTA}</a></#if></span></p></td>
+                              </tr>
+                              <tr>
+                                <td height="6" style="box-sizing:inherit;font-size:6px;line-height:6px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td>
+                              </tr>
+                              </#if><#if !MODULE.ARTICLE_BP2_TXT?isnull>
+                              <tr>
+
+
+                                <td width="22" align="left" style="box-sizing:inherit;padding-left:0;padding-top:2px;vertical-align:top;padding-bottom:0;padding-right:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><#if !MODULE.ARTICLE_BP_ICON?isnull><img src="${MODULE.ARTICLE_BP_ICON}" width="20" height="20" alt="" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;" /><#else><img src="http://static.cdn.responsys.net/i2/responsysimages/content/nas/tick_circle_blue_20px-20px.png" width="20" height="20" alt="" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;" /></#if></td>
+                                <td class="Iconlist_Bulletpoint" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:17px;line-height:20px;mso-line-height-rule:exactly;color:#003d50;padding-top:0;padding-bottom:0;padding-right:0;padding-left:17px;font-weight:normal;vertical-align:top;text-align:left;" ><p style="box-sizing:inherit;Margin:0;font-size:17px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:20px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" >${MODULE.ARTICLE_BP2_TXT?exec} <span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" ><!--[if (gte mso 9)|(IE)]>${MODULE.ARTICLE_BP2_TXT?exec} <#if !MODULE.ARTICLE_BP2_CTA?isnull><a href="${clickthrough('ARTICLE_BP2_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.ARTICLE_BP2_URL?exec)}" title="${MODULE.ARTICLE_BP2_CTA}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:17px;line-height:20px;padding-bottom:4px;font-weight:bold;" ></#if><![endif]--><!--[if !mso]><!--><#if !MODULE.ARTICLE_BP2_CTA?isnull><a href="${clickthrough('ARTICLE_BP2_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.ARTICLE_BP2_URL?exec)}" title="${MODULE.ARTICLE_BP2_CTA}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:17px;line-height:20px;padding-bottom:2px;font-weight:bold;mso-hide:all;"><!--><![endif]-->${MODULE.ARTICLE_BP2_CTA}</a></#if></span></p></td>
+                              </tr>
+                              <tr>
+                                <td height="6" style="box-sizing:inherit;font-size:6px;line-height:6px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td>
+                              </tr>
+                              </#if>
+                            </table></td>
+                        </tr>
+                        </#if><#if !MODULE.ARTICLE_CTA?isnull>
+                        <tr>
+                          <td style="box-sizing:inherit;padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><p style="box-sizing:inherit;Margin:0;font-size:17px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-size:17px;line-height:22px;mso-line-height-rule:exactly;font-weight:normal;" ><!--[if (gte mso 9)|(IE)]><a href="${clickthrough('ARTICLE_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.ARTICLE_URL?exec)}" target="_blank" title="${MODULE.ARTICLE_CTA?exec}" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:17px;line-height:22px;padding-bottom:4px;font-weight:bold;" ><![endif]--><!--[if !mso]><!--><a href="${clickthrough('ARTICLE_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.ARTICLE_URL?exec)}" title="${MODULE.ARTICLE_CTA?exec}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:17px;line-height:22px;padding-bottom:2px;font-weight:bold;mso-hide:all;"><!--><![endif]-->${MODULE.ARTICLE_CTA?exec}</a></span></p></td>
+                        </tr>
+                        </#if>
+                      </table></td>
+                  </tr>
+                  <#if !MODULE.ARTICLE_DIVIDER_BTN?isnull>
+                  <tr>
+                    <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+                  </tr>
+                  </#if>
+                </table></td>
+            </tr>
+          </table></td>
+      </tr>
+    </table></td>
+</tr>

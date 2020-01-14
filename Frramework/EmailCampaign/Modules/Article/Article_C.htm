@@ -1,0 +1,38 @@
+<!-- // MOD 06a: START \\-->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="<#if MODULE.ARTICLE_BACKGROUND_COLOR?isnull>#D8D8D8<#else>${MODULE.ARTICLE_BACKGROUND_COLOR}</#if>">
+	<tr>
+		<td valign="top" style="padding:20px 20px 0 20px;" >
+			<table width="140" class="left m_w100pc" aria-labelledby="left" align="left" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td class="pclear" align="center" valign="top" style="padding:0 20px 0 0;"><a href="${clickthrough('ARTICLE_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.ARTICLE_URL?exec)}" target="_blank" style="text-decoration:none;"><img class="mb20" src="${MODULE.ARTICLE_IMAGE}" width="120" height="120" border="0" style="display:block;" /></a></td>
+				</tr>
+			</table>
+			<!--[if gte mso 9]></td><td><![endif]-->
+			<table width="460" class="left m_w100pc t_2coltxt" aria-labelledby="left" align="left" valign="middle" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td align="left" class="tac" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#333333;padding:0 0 20px 0;">
+						<span style="font-size:22px;line-height:24px;font-weight:bold;text-decoration:none;color:<#if MODULE.ARTICLE_FONT_COLOR?isnull>#003D50<#else>${MODULE.ARTICLE_FONT_COLOR}</#if>">
+${MODULE.ARTICLE_HEADLINE?exec}</span><br><br>
+						${MODULE.ARTICLE_TEXT?exec}<br><br>
+
+<#if !MODULE.ARTICLE_CALL_TO_ACTION?isnull>
+<a href="${clickthrough('ARTICLE_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.ARTICLE_URL?exec)}" target="_blank" style="font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:normal; text-align:left;text-decoration:none;-webkit-text-size-adjust:none;color:#d81939; text-decoration:none;">${MODULE.ARTICLE_CALL_TO_ACTION}</a>
+										
+
+
+</#if>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!-- // MOD 06a: END \\-->
+<!-- // MOD 06: bottom border \\-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td>
+						<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" style="font-size:1px;line-height:1px;" bgcolor="#d8d8d8">&nbsp;</td></tr></table>
+					</td>
+				</tr>
+			</table>

@@ -1,0 +1,47 @@
+<!-- // MOD 06a: START \\-->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="<#if MODULE.ARTICLE_BACKGROUND_COLOR?isnull>#e3e3e3<#else>${MODULE.ARTICLE_BACKGROUND_COLOR}</#if>">
+	<tr>
+		<td valign="top" style="padding:20px 20px 0 20px;" >
+			<table width="140" class="left m_w100pc" aria-labelledby="left" align="left" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td class="pclear" align="center" valign="top" style="padding:0 20px 0 0;"><img class="mb20" src="${MODULE.ARTICLE_IMAGE}" width="120" height="120" border="0" style="display:block;" /></td>
+				</tr>
+			</table>
+			<!--[if gte mso 9]></td><td><![endif]-->
+			<table width="460" class="left m_w100pc t_2coltxt" aria-labelledby="left" align="left" valign="middle" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td align="left" class="tac" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#333333;padding:0 0 20px 0;">
+						<span style="font-size:22px;line-height:24px;font-weight:bold;text-decoration:none;color:<#if MODULE.ARTICLE_FONT_COLOR?isnull>#003D50<#else>${MODULE.ARTICLE_FONT_COLOR}</#if>">
+${MODULE.ARTICLE_HEADLINE?exec}</span><br><br>
+						${MODULE.ARTICLE_TEXT?exec}<br><br>
+
+<#if !MODULE.ARTICLE_CALL_TO_ACTION?isnull>
+<table class="ma" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td style="padding:10px 0 2px 0;"><table class="ma" cellpadding="0" cellspacing="0" border="0">
+								  <tr>
+								    <td style="padding:10px 0 2px 0;"><a href="${clickthrough('ARTICLE_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.ARTICLE_URL?exec)}" target="_blank" style="font-size:16px;line-height:18px;font-weight: bold; text-decoration: underline; color: #063d4d
+;">${MODULE.ARTICLE_CALL_TO_ACTION}
+								      <!--[if gte mso 9]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]-->
+								      </a>
+					            </table></td>
+							</tr>
+					   	</table>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0"><tbody><tr><td class="t_h10px" height="20" style="font-size:1px;line-height:1px;mso-line-height-rule:exactly;-webkit-text-size-adjust:none;">&nbsp;</td></tr></tbody></table>
+                        
+</#if>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!-- // MOD 06a: END \\-->
+<!-- // MOD 06: bottom border \\-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td>
+						<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" style="font-size:1px;line-height:1px;" bgcolor="#d8d8d8">&nbsp;</td></tr></table>
+					</td>
+				</tr>
+			</table>
