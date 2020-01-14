@@ -1,0 +1,53 @@
+<!-- // SEARCH VARIANT D \\-->
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td><table width="320" class="left t_w100pc" aria-labelledby="left" align="left" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td valign="top" height="320" bgcolor="#e3e3e3"><table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" style="padding:20px;font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#003D50;"><span style="vertical-align:middle;font-weight:bold;font-size:22px;line-height:24px;">${MODULE.SEARCH_TYPE_HEADLINE}</span>&nbsp;&nbsp;&nbsp;<!--icon removed here--> 
+                  <span style="mso-line-height-rule:exactly;line-height:16px;"><br>
+                  &nbsp;<br>
+                  ${MODULE.SEARCH_TYPE_TEXT_1}<br>
+                  &nbsp;<br>
+                  </span> <#if !MODULE.SEARCH_TYPE_TEXT_LINK?isnull> <a href="${clickthrough('SEARCH_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.SEARCH_URL?exec)}" target="_blank"><span style="font-size:16px;line-height:18px;font-weight: bold; text-decoration: underline; color: #063d4d
+;">${MODULE.SEARCH_TYPE_TEXT_LINK?exec}</span><br>
+                  <br>
+                  </a> </#if> <span style="mso-line-height-rule:exactly;line-height:16px;">${MODULE.SEARCH_TYPE_TEXT_2}<br>
+                  &nbsp;<br>
+                  </span> <#if !MODULE.SEARCH_CALL_TO_ACTION?isnull>
+                  <table class="ma" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td style="padding:10px 0 2px 0;border-bottom:4px solid #003D50;">
+			                 				<table cellpadding="0" cellspacing="0" border="0">
+                                    						<tr>
+                                        	<td bgcolor="<#if MODULE.SEARCH_CTA_COLOR?isnull>D81939<#else>${MODULE.SEARCH_CTA_COLOR}</#if>"> <a href="${clickthrough('SEARCH_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.SEARCH_URL?exec)}" target="_blank" style="border:1px solid <#if MODULE.SEARCH_CTA_COLOR?isnull>#D81939<#else>${MODULE.SEARCH_CTA_COLOR}</#if>;color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:left;text-decoration:none;-webkit-text-size-adjust:none;padding:0 39px 0 13px;mso-padding-alt:10px 21px 10px 21px;">${MODULE.SEARCH_CALL_TO_ACTION}<!--[if gte mso 9]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--></a> 
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+					   	</table>
+                        
+                  </#if> </td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+      
+      <!--[if gte mso 9]></td><td><![endif]-->
+      <table width="320" class="left t_h" aria-labelledby="left" align="left" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td valign="top">
+                    <a href="${clickthrough('SEARCH_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.SEARCH_URL?exec)}" target="_blank"><img src="${MODULE.SEARCH_IMAGE}" width="320" height="320"></a>
+                    
+                    </td>
+				</tr>
+			</table>
+      
+      
+      </td>
+  </tr>
+</table>
+<!-- // SEARCH VARIANT D \\-->

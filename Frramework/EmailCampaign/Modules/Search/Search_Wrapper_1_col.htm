@@ -1,0 +1,37 @@
+<#-- SEARCH_SHOW_DEFAULT is 1 in newsletter defaults-->
+<#if PREFFERED_AIRPORT?isnull>
+    <#assign PREFAIR = 'DEFAULT'>
+<#else>
+	<#assign PREFAIR = PREFFERED_AIRPORT?trim>
+</#if>
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields SEARCH_VARIANT SEARCH_DISPLAY_RULE SEARCH_ICON_TYPE SEARCH_HEADING SEARCH_TXT_1 SEARCH_TXT_2 SEARCH_TXT_3 SEARCH_BTN_CLR SEARCH_CTA SEARCH_URL SEARCH_DEST_TXT SEARCH_DEP_TIME SEARCH_RETURN_TIME SEARCH_DIVIDER_TOP SEARCH_DIVIDER_BTM>
+			<#assign MODULE_EXCLUDE = 0>
+			<#if !MODULE.SEARCH_VARIANT?isnull>
+				<#if !MODULE.SEARCH_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.SEARCH_DISPLAY_RULE+".htm">
+					<#recover>
+					 <#if !MODULE.SEARCH_DISPLAY_RULE?isnull 
+                            && (MODULE.SEARCH_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.SEARCH_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong PREFAIR, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>   
+	                </#if>
+						 <#if !MODULE.SEARCH_DISPLAY_RULE?isnull 
+                           && MODULE.SEARCH_DISPLAY_RULE?lower_case == "default"
+                           && SEARCH_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                          </#if> 	
+						</#attempt>
+				</#if>
+				<#if MODULE_EXCLUDE == 0>
+                    <#if MODULE.SEARCH_ICON_TYPE?contains("http") || MODULE.SEARCH_ICON_TYPE?contains("${")><#assign SEARCH_IMG = MODULE.SEARCH_ICON_TYPE><#else><#assign SEARCH_IMG = "https://static.cdn.responsys.net/i2/responsysimages/nas" + MODULE.SEARCH_ICON_TYPE>
+                    </#if>
+                	<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/search/search_"+MODULE.SEARCH_VARIANT+"_1_col.htm">
+					<#include "cms://contentlibrary/!framework/emailcampaign/modules/spacer/spacer_d20t10_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!-- error loading search module --></td></tr></#attempt>
+					<#global SEARCH_SHOW_DEFAULT = 0>
+					</#if>
+			</#if>
+</#data>

@@ -1,0 +1,72 @@
+<!-- // MOD 12a: START \\-->
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td><table width="320" class="left t_w100pc" aria-labelledby="left" align="left" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td valign="top" height="320" bgcolor="#e3e3e3"><table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" style="padding:20px;font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#003D50;"><span style="vertical-align:middle;font-weight:bold;font-size:22px;line-height:24px;">${MODULE.SEARCH_TYPE_HEADLINE}</span>&nbsp;&nbsp;&nbsp;<!--icon removed here--> 
+                  <span style="mso-line-height-rule:exactly;line-height:16px;"><br>
+                  &nbsp;<br>
+                  ${MODULE.SEARCH_TYPE_TEXT_1}<br>
+                  &nbsp;<br>
+                  </span> <#if !MODULE.SEARCH_TYPE_TEXT_LINK?isnull> <a href="${clickthrough('SEARCH_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.SEARCH_URL?exec)}" target="_blank"><span style="font-size:16px;line-height:18px;font-weight: bold; text-decoration: underline; color: #063d4d
+;">${MODULE.SEARCH_TYPE_TEXT_LINK?exec}</span><br>
+                  <br>
+                  </a> </#if> <span style="mso-line-height-rule:exactly;line-height:16px;">${MODULE.SEARCH_TYPE_TEXT_2}<br>
+                  &nbsp;<br>
+                  </span> <#if !MODULE.SEARCH_CALL_TO_ACTION?isnull>
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td><table class="ma" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td style="padding:10px 0 2px 0;border-bottom:4px solid #003D50;"><table cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                  <td bgcolor="<#if MODULE.SEARCH_CTA_COLOR?isnull>D81939<#else>${MODULE.SEARCH_CTA_COLOR}</#if>"><a href="${clickthrough('SEARCH_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.SEARCH_URL?exec)}" target="_blank" style="border: <#if MODULE.SEARCH_CTA_COLOR?isnull>1px solid D81939<#else>1px solid ${MODULE.SEARCH_CTA_COLOR}</#if>;color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:left;text-decoration:none;-webkit-text-size-adjust:none;padding:0 39px 0 13px;mso-padding-alt:10px 21px 10px 21px;">${MODULE.SEARCH_CALL_TO_ACTION}<!--[if gte mso 9]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--></a></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table>
+                  </#if> </td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+      
+      <!--[if gte mso 9]></td><td><![endif]-->
+      
+      <table width="320" class="left t_h" aria-labelledby="left" align="left" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><a href="${clickthrough('SEARCH_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.SEARCH_URL?exec)}" target="_blank">
+            
+              <table width="320" class="left t_h" aria-labelledby="left" align="left" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="top" height="320" background="${MODULE.SEARCH_IMAGE}" style="background-repeat: no-repeat;background-size: cover;"><!--[if gte mso 9]>         
+						<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:320px;height:320px;">
+						<v:fill type="frame" src="${MODULE.SEARCH_IMAGE}" />
+						<v:textbox inset="0,0,0,0">
+						<![endif]-->
+                    
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td align="center" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#333333;padding:60px 20px 20px 20px;"><span style="font-weight:bold;font-size:22px;line-height:24px;color:#003D50;">${MODULE.SEARCH_HEADLINE}</span><br>
+                          <br>
+                          ${MODULE.SEARCH_PARAGRAPH} </td>
+                      </tr>
+                    </table>
+                    <!--[if gte mso 9]>
+						</v:textbox>
+						</v:rect>
+						<![endif]--></td>
+                </tr>
+              </table>
+         
+            </a></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<!-- // MOD 12a: END \\-->
