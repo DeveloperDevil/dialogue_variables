@@ -1,0 +1,63 @@
+<#-- ARTICLE_LARGE_SHOW_DEFAULT is 1 in newsletter defaults-->
+<#global SEGMENTED_MODULE = 'HERO'>
+<#if PREFFERED_AIRPORT?isnull>
+    <#assign PREFAIR = 'DEFAULT'>
+<#else>
+	<#assign PREFAIR = PREFFERED_AIRPORT?trim>
+</#if>
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields ARTICLE_LARGE_DISPLAY_RULE ARTICLE_LARGE_IMAGE ARTICLE_LARGE_IMAGE_SWAP ARTICLE_LARGE_URL	ARTICLE_LARGE_ALT_TXT ARTICLE_LARGE_HEADING ARTICLE_LARGE_INTRO ARTICLE_LARGE_CTA ARTICLE_LARGE_BTN_CLR ARTICLE_LARGE_TXT_CTA ARTICLE_LARGE_BP_ICON ARTICLE_LARGE_BP1_TXT ARTICLE_LARGE_BP1_CTA ARTICLE_LARGE_BP1_URL ARTICLE_LARGE_BP2_TXT ARTICLE_LARGE_BP2_CTA ARTICLE_LARGE_BP2_URL ARTICLE_LARGE_BP3_TXT ARTICLE_LARGE_BP3_CTA ARTICLE_LARGE_BP3_URL ARTICLE_LARGE_BP4_TXT ARTICLE_LARGE_BP4_CTA ARTICLE_LARGE_BP4_URL ARTICLE_LARGE_PARAGRAPH ARTICLE_LARGE_DIVIDER_TOP ARTICLE_LARGE_DIVIDER_BTM ARTICLE_LARGE_VARIANT>
+			<#assign MODULE_EXCLUDE = 0>
+			<#if !MODULE.ARTICLE_LARGE_VARIANT?isnull>
+				<#if !MODULE.ARTICLE_LARGE_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.ARTICLE_LARGE_DISPLAY_RULE+".htm">
+					<#recover>
+					 <#if !MODULE.ARTICLE_LARGE_DISPLAY_RULE?isnull 
+                            && (MODULE.ARTICLE_LARGE_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.ARTICLE_LARGE_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong PREFAIR, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>   
+	                </#if> 
+						 <#if !MODULE.ARTICLE_LARGE_DISPLAY_RULE?isnull 
+                           && MODULE.ARTICLE_LARGE_DISPLAY_RULE?lower_case == "default"
+                           && ARTICLE_LARGE_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                          </#if> 	
+						</#attempt>
+				</#if>
+
+				<#if MODULE_EXCLUDE == 0>
+                    <#data SEGMENTATION_1_COL as SEGMENTATION_1_COL><#filter SEGMENTATION_CAMPAIGN = CAMPAIGN><#fields SEGMENTATION_ID SEGMENTATION_CAMPAIGN SEGMENTATION_MARKET SEGMENTATION_MODULE SEGMENTATION_CATEGORY SEGMENTATION_COUNTRYCODE SEGMENTATION_IATA SEGMENTATION_ID SEGMENTATION_IMG SEGMENTATION_IMG_SWAP SEGMENTATION_MARKET SEGMENTATION_MODULE SEGMENTATION_URL><#if SEGMENTATION_1_COL.SEGMENTATION_MODULE == SEGMENTED_MODULE>
+
+
+
+
+SEGMENTATION_1_COL.SEGMENTATION_IATA: ${SEGMENTATION_1_COL.SEGMENTATION_IATA}: 
+	<#if SEGMENT_IMG_IS_SET == 'N'><#if SEGMENTATION_1_COL.SEGMENTATION_IATA?contains(AUDIENCE_DESTINATION_IATA)>SEGMENTATION_IATA: ${SEGMENTATION_1_COL.SEGMENTATION_IATA}<br>
+    	<#if SEGMENTATION_1_COL.SEGMENTATION_IMG?contains('http')><#global POPULAR_IMAGE = SEGMENTATION_1_COL.SEGMENTATION_IMG>
+    	<#else><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/nas' + SEGMENTATION_1_COL.SEGMENTATION_IMG>
+    	</#if><#assign SEGMENT_IMG_IS_SET = 'Y'>POPULAR_IMAGE: ${POPULAR_IMAGE}<br>
+	<#elseif SEGMENTATION_1_COL.SEGMENTATION_IATA?contains('DEFAULT')>
+    	<#if SEGMENTATION_1_COL.SEGMENTATION_IMG?contains('http')><#global POPULAR_IMAGE = SEGMENTATION_1_COL.SEGMENTATION_IMG>
+    	<#else><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/nas' + SEGMENTATION_1_COL.SEGMENTATION_IMG>
+    	</#if>POPULAR IMAGE: ${POPULAR_IMAGE}<br><#assign SEGMENT_IMG_IS_SET = 'Y'>
+	<#else><#global POPULAR_IMAGE = "https://static.cdn.responsys.net/i2/responsysimages/nas/contentlibrary/z_img/destination_images/e_nl_640x320_no_osl.jpg">POPULAR IMAGE: ${POPULAR_IMAGE}<br>
+	</#if>
+</#if></#if>
+</#data><#if MODULE.ARTICLE_LARGE_IMAGE?contains("http") || MODULE.ARTICLE_LARGE_IMAGE?contains("${")><#assign ARTICLE_LARGE_IMG = MODULE.ARTICLE_LARGE_IMAGE><#else><#assign ARTICLE_LARGE_IMG = "https://static.cdn.responsys.net/i2/responsysimages/nas" + MODULE.ARTICLE_LARGE_IMAGE>
+                    </#if>
+                    <#if MODULE.ARTICLE_LARGE_IMAGE_SWAP?contains("http") || MODULE.ARTICLE_LARGE_IMAGE_SWAP?contains("${")><#assign ARTICLE_LARGE_IMG_SWAP = MODULE.ARTICLE_LARGE_IMAGE_SWAP><#else><#assign ARTICLE_LARGE_IMG_SWAP = "https://static.cdn.responsys.net/i2/responsysimages/nas" + MODULE.ARTICLE_LARGE_IMAGE_SWAP>
+                    </#if>
+                    <#if !MODULE.ARTICLE_LARGE_BP_ICON?isnull>
+                        <#if MODULE.ARTICLE_LARGE_BP_ICON?contains("http") || MODULE.ARTICLE_LARGE_BP_ICON?contains("${")><#assign ARTICLE_LARGE_ICON = MODULE.ARTICLE_LARGE_BP_ICON>
+                        <#else><#assign ARTICLE_LARGE_ICON = "https://static.cdn.responsys.net/i2/responsysimages/nas" + MODULE.ARTICLE_LARGE_BP_ICON>
+                        </#if>
+                    <#else><#assign ARTICLE_LARGE_ICON = "http://static.cdn.responsys.net/i2/responsysimages/content/nas/tick_circle_20px-20px.png">
+                    </#if>
+					<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/articlelarge/article_large_"+MODULE.ARTICLE_LARGE_VARIANT+"_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!-- error loading article large module --></td></tr></#attempt>
+					<#global ARTICLE_LARGE_SHOW_DEFAULT = 0>
+					</#if>
+			</#if>
+		</#data>

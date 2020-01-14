@@ -1,0 +1,45 @@
+<#-- ARTICLE_LARGE_SHOW_DEFAULT is 1 in newsletter defaults-->
+<#if PREFFERED_AIRPORT?isnull>
+    <#assign PREFAIR = 'DEFAULT'>
+<#else>
+	<#assign PREFAIR = PREFFERED_AIRPORT?trim>
+</#if>
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields ARTICLE_LARGE_DISPLAY_RULE ARTICLE_LARGE_IMAGE ARTICLE_LARGE_IMAGE_SWAP ARTICLE_LARGE_URL	ARTICLE_LARGE_ALT_TXT ARTICLE_LARGE_HEADING ARTICLE_LARGE_INTRO ARTICLE_LARGE_CTA ARTICLE_LARGE_BTN_CLR ARTICLE_LARGE_TXT_CTA ARTICLE_LARGE_BP_ICON ARTICLE_LARGE_BP1_TXT ARTICLE_LARGE_BP1_CTA ARTICLE_LARGE_BP1_URL ARTICLE_LARGE_BP2_TXT ARTICLE_LARGE_BP2_CTA ARTICLE_LARGE_BP2_URL ARTICLE_LARGE_BP3_TXT ARTICLE_LARGE_BP3_CTA ARTICLE_LARGE_BP3_URL ARTICLE_LARGE_BP4_TXT ARTICLE_LARGE_BP4_CTA ARTICLE_LARGE_BP4_URL ARTICLE_LARGE_PARAGRAPH ARTICLE_LARGE_DIVIDER_TOP ARTICLE_LARGE_DIVIDER_BTM ARTICLE_LARGE_VARIANT>
+			<#assign MODULE_EXCLUDE = 0>
+			<#if !MODULE.ARTICLE_LARGE_VARIANT?isnull>
+				<#if !MODULE.ARTICLE_LARGE_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.ARTICLE_LARGE_DISPLAY_RULE+".htm">
+					<#recover>
+					 <#if !MODULE.ARTICLE_LARGE_DISPLAY_RULE?isnull 
+                            && (MODULE.ARTICLE_LARGE_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.ARTICLE_LARGE_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong PREFAIR, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>   
+	                </#if> 
+						 <#if !MODULE.ARTICLE_LARGE_DISPLAY_RULE?isnull 
+                           && MODULE.ARTICLE_LARGE_DISPLAY_RULE?lower_case == "default"
+                           && ARTICLE_LARGE_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                          </#if> 	
+						</#attempt>
+				</#if>
+
+				<#if MODULE_EXCLUDE == 0><#global SEGMENTED_IMAGE = SEGMENTED_IMAGE_ARTICLE_LARGE><#global SEGMENTED_HEADING = SEGMENTED_HEADING_ARTICLE_LARGE><#global SEGMENTED_INTRO = SEGMENTED_INTRO_ARTICLE_LARGE><#global SEGMENTED_PARAGRAPH = SEGMENTED_PARAGRAPH_ARTICLE_LARGE><#global SEGMENTED_URL = SEGMENTED_URL_ARTICLE_LARGE>
+                    <#if MODULE.ARTICLE_LARGE_IMAGE?contains("http") || MODULE.ARTICLE_LARGE_IMAGE?contains("${")><#assign ARTICLE_LARGE_IMG = MODULE.ARTICLE_LARGE_IMAGE><#else><#assign ARTICLE_LARGE_IMG = "https://static.cdn.responsys.net/i2/responsysimages/nas" + MODULE.ARTICLE_LARGE_IMAGE>
+                    </#if>
+                    <#if MODULE.ARTICLE_LARGE_IMAGE_SWAP?contains("http") || MODULE.ARTICLE_LARGE_IMAGE_SWAP?contains("${")><#assign ARTICLE_LARGE_IMG_SWAP = MODULE.ARTICLE_LARGE_IMAGE_SWAP><#else><#assign ARTICLE_LARGE_IMG_SWAP = "https://static.cdn.responsys.net/i2/responsysimages/nas" + MODULE.ARTICLE_LARGE_IMAGE_SWAP>
+                    </#if>
+                    <#if !MODULE.ARTICLE_LARGE_BP_ICON?isnull>
+                        <#if MODULE.ARTICLE_LARGE_BP_ICON?contains("http") || MODULE.ARTICLE_LARGE_BP_ICON?contains("${")><#assign ARTICLE_LARGE_ICON = MODULE.ARTICLE_LARGE_BP_ICON>
+                        <#else><#assign ARTICLE_LARGE_ICON = "https://static.cdn.responsys.net/i2/responsysimages/nas" + MODULE.ARTICLE_LARGE_BP_ICON>
+                        </#if>
+                    <#else><#assign ARTICLE_LARGE_ICON = "http://static.cdn.responsys.net/i2/responsysimages/content/nas/tick_circle_20px-20px.png">
+                    </#if>
+					<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/articlelarge/article_large_"+MODULE.ARTICLE_LARGE_VARIANT+"_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!-- error loading article large module --></td></tr></#attempt>
+					<#global ARTICLE_LARGE_SHOW_DEFAULT = 0>
+					</#if>
+			</#if>
+		</#data>
