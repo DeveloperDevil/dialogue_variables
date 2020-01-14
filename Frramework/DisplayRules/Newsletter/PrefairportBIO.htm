@@ -1,0 +1,1 @@
+<#if MARKET?trim == "ES"><#if PREFFERED_AIRPORT?isnull><#assign MODULE_EXCLUDE = 1><#elseif PREFFERED_AIRPORT?trim == "BIO"><#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1></#if><#else><#assign MODULE_EXCLUDE = 1></#if>

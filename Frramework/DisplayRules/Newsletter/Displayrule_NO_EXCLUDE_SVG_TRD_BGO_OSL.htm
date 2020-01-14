@@ -1,0 +1,7 @@
+<#if MARKET == 'NO'>
+    <#if PREFFERED_AIRPORT?isnull><#assign MODULE_EXCLUDE = 0>
+    <#elseif PREFFERED_AIRPORT?trim == "SVG" || PREFFERED_AIRPORT?trim == "TRD" || PREFFERED_AIRPORT?trim == "BGO" || PREFFERED_AIRPORT?trim == "OSL" || PREFFERED_AIRPORT?trim == "OSLALL"><#assign MODULE_EXCLUDE = 1>
+    <#else><#assign MODULE_EXCLUDE = 0>
+    </#if>
+<#else><#assign MODULE_EXCLUDE = 0>
+</#if>

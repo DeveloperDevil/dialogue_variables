@@ -1,0 +1,7 @@
+<#-- Rule to segment subject lines based on what country the customer has visited in the past. Will only work for campaign settings, and only for campaigns made by EmailCampaign_1_col_NEWSLETTER_A_SEGMENTED template -->
+<#include "cms://contentlibrary/!framework/global_variables/inclusion_files/iata_country.htm">
+<#if IATA_COUNTRY?exec?trim?upper_case == x?exec?trim?upper_case>
+    <#-- IATA_COUNTRY is made in the inclusion file "iata_country.htm", while x refers to a list made in the subject script in the campaign dasource, listing up the SEGMENT_RULES that are added in the CAMPAIGN_SETTINGS_1_COL table -->
+    <#assign MODULE_EXCLUDE = 0>
+    <#else><#assign MODULE_EXCLUDE = 1>
+    </#if>

@@ -1,0 +1,1 @@
+<#if MARKET == 'US'><#if PREFFERED_AIRPORT?isnull><#assign MODULE_EXCLUDE = 1><#elseif PREFFERED_AIRPORT?trim != "FLL" || PREFFERED_AIRPORT?trim != "FLLALL" || PREFFERED_AIRPORT?trim != "MCO"><#assign MODULE_EXCLUDE = 1><#else><#assign MODULE_EXCLUDE = 0></#if><#else><#assign MODULE_EXCLUDE = 1></#if>

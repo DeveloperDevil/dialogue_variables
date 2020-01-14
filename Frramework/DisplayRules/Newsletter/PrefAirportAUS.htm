@@ -1,0 +1,3 @@
+<#if PREFFERED_AIRPORT?isnull><#assign MODULE_EXCLUDE = 1>
+<#elseif PREFFERED_AIRPORT?trim == 'AUS'>
+<#assign MODULE_EXCLUDE = 0></#if>

@@ -1,0 +1,2 @@
+<#if PREFFERED_AIRPORT?isnull><#assign MODULE_EXCLUDE = 1>
+<#elseif PREFFERED_AIRPORT?trim == 'BOS' || PREFFERED_AIRPORT?trim == 'PVD' || PREFFERED_AIRPORT?trim == 'BDL' ><#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1></#if>
