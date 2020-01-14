@@ -1,0 +1,1091 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://www.norwegian.com/style-bundle/cms-brand.css">
+<style>
+	p{
+		margin: 0 0 0 0;
+		
+	}
+	
+h1 {
+	font-size: 40px;
+	margin: 0 0 0px 0;
+}
+.top-header {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+ul {
+	margin-top: 10px;
+}
+li {
+	margin-bottom: 10px;
+}
+.wrapper-div {
+	display: inline-flex;
+	width: 100%;
+}
+.left-div {
+	width: 33%;
+	float: left;
+	text-decoration: none;
+	margin: 0 20px 50px 0;
+	text-align: right;
+}
+.center-div {
+	background: url(https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif) center center no-repeat;
+	background-color: white;
+}
+.center-div, iframe {
+	width: 640px;
+	height: 800px;
+}
+.right-div {
+	width: 33%;
+	float: right;
+	margin: 0 20px 0 20px;
+}
+.descriptions {
+	display: none;
+}
+.default {
+	display: block;
+}
+<!--
+TABLE STYLE--> .table-guide {
+	border-collapse: collapse;
+	width: 100%;
+}
+.table-guide td, .table-guide th {
+	border: 1px solid #ddd;
+	padding: 8px;
+	vertical-align: top;
+	font-size: 14px;
+}
+.table-guide-first {
+	text-align: center;
+}
+.table-guide tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+.table-guide th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #003d50;
+	color: white;
+}
+.th-width {
+	width: 110px;
+}
+.inside-table, td.inside-table-first {
+	border: 0;
+	padding: 0px 5px 0px 0px;
+	vertical-align: top;
+	border-right: 1px solid #ddd;
+}
+.inside-table, td.inside-table-second {
+	border: 0;
+	padding: 0px 0px 0px 5px;
+	vertical-align: top;
+}
+.loading{
+	animation: blinker 1.5s linear infinite;
+}
+ @keyframes blinker {
+ 25% {
+ opacity: 0;
+}
+}
+</style>
+<title>Module Guide</title>
+</head>
+
+<body>
+<div class="top-header"> <a href="${form('module_guide')}" target="_blank">View in browser</a> </div>
+<div class="wrapper-div">
+<div class="left-div">
+  <h1 class="left">Modules</h1>
+  <ul>
+    <li class="list-mod" id="article"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGutAzfva6zbyvJGzerza4zgLWzfszbAzggzesgzeizczeTzbbK9I0HBBmuidRAs1CnnVXMtX%3DYQpglLjHJlTQGutAzfva6zbyvJGzerza4zgLWzfshNY8zfGvwbdvbLzaTmLT4StqlpWzfzeIYsMOVXyjLNpLOfhKLX%3DrhoHggHQrHlptHxIlpglLjgLlQJhu&_ei_=EqWMGK5Lp1u_gXeJFlcTtfuUkNlZFobJsYSgYPYKKUkYxXP2pxpIQd8cX3MJvBbp_obfXqippIMZLKjjH4nOqwmCy3YSa3z90KTroEE0J3wxaORT_ZKbBBo3RJ2Opcu0pIMMHIwiDlEYfX9PSrxTngwYbLMRkdyQh7rJANO3NANif2GQIK7PCYqme6TU0as-5AbwXWUDexRg-cVitgGcgAuLLVO0ABM0bsHmMeS08SUTmwQHZdM4yfKZwlXI9cJBYtchsl3bU1hbN35LadO_Y0qNZf1jKdtfwXR_.">ARTICLE</a></li>
+    <li class="list-mod" id="article-large"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGgNzgp7O1kKA3dvrE3IBG1LR3k9zbJ9lUezdvX4Azc02Nu1zbrTnjTtJaHRVXMtX%3DYQpglLjHJlTQGgNzgp7O1kKA3dvrE3IBG1LTCqzcBFBzfMUwIkn9IbOo3vzfh2PuAAaaJnVXyjLNpLOfhKLX%3DLjpJImjjPWYWxnuHptQJhu&_ei_=EnQzc83vXh3YuZPVjr6AtH_tMAKSPuovKgXcvSjtKTp-Wl5mjO53wsWlMAiyV-HE_OEt88R-LG-HDWUuOMhvojcBpMr4WCP1qQh3k0XD0aA4LtqgstsV_raUsVZQBKor-4e1MjM2MeYpHp4CmbuFUxfignhTjXDJ0Pg5_wS1ggMBLgai1C39BBo02BCmDS8-dl2Je9xX3jcqBLXaa7PbB9maFSC0B-WoJjv5P9Ajibcnj-td_7sNaALawqtKR8ofYas">ARTICLE LARGE</a></li>
+    <li class="list-mod" id="banner"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGmqkzbNS0MTuHa4vzfHPI8a8y2Rhvf0zfqO1NhCzem4zbHSDfnpWnl6gMWfVXMtX%3DYQpglLjHJlTQGmqkzbNS0MTuHa4vzfHPI8a8wvHCs5iAwX0SezcayqDNJ20bWgHawMteOVXyjLNpLOfhKLX%3DILJskXJhmjlgLPxohluHptQJhu&_ei_=Enbm-X_swrJhzZO46TZRuZvGh-LW7L3jiwqCHpQnvKg6echjIV0RCSzbh7ot4w-GSmxWeTT4NVbdWV8xhB-Pyzoo9DMraPi7b5FtaxgE1WjvAq1deyMQE3fo1f0aEIIPDNA_jsf0H30K4LlAa1KS157iAmAjwi2V2P0Fbi5Y2o9if-YO8N4HO-X_BTZ49Oq7YGfljcCeBFvS3-04Ji3-Riw45gskmYSX-Qc7YO9bFUZyxLNcqfk_XSWCN3Sjgv8YkPRqd3mD0KC4U3W6mcl3uw.">BANNER</a></li>
+    <li class="list-mod" id="bulletpoints"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGllaqUkWLoUvTLoAO1E4urDFFjzedaNbNpnnzczaGBqDJ6dl0FH5hJ11RVXyjLNpLOfhKLX%3DJLJptuHJxksPQJhuVXMtX%3DYQpglLjHJlTQGllaqUkWLoUvTLoAO1E4urDk5XpOPMUOvF1uT4dSbm2oR4uYdt6zeAn&_ei_=EmTUOwa1ULmLxlBKi7CTndDPi_Now9pcoU7EwmFMceFH4aZVpdf0k3rh7AUuA0j4-SpGYROtWVTSkJzOqzCd9J3tyJgMNFILjv5IKfrIa96i12gWuPoS4REg4OIprDNt-L2nln8PVFtYgVDFbAs0r62xrsIigastzDk6enSKm_AZHkezwvbsq7igXK63MMfiKaEwWo5lZlvcmYHTQuLlIUdboejc1ZA7ZO5LpBwlocEmv1Z1oEKmCq-Rkusz8-NgMF4SPWi8lwSOMnayZlxv--m-pWqNJA9YHZ2VREA08xFLDCBUMNKzTwdVvsW3Cc3bgsA4b-zqC2OJdKHH67Iy7R5GEmqlOR6RDCA25i1qXTQmRepcqP86gX2dMx7OkhHGABRDH3TdrfcsLIqgqHm3fQd8sN8UBg2N6C8.">BULLETPOINTS</a></li>
+    <li class="list-mod" id="button"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGrTzdMfFUnzbMq4I0YLUszecHs85hzfgrIIPl5R9zgLEmeCL4HzdzfNAEUzg0RVXMtX%3DYQpglLjHJlTQGrTzdMfFUnzbMq4I0YLUszecHgyzbBzaJrzcIAoBvSiwDOjf8OI1TINzcfXFfVXyjLNpLOfhKLX%3DLtpkHtHttmssHxohluHptQJhu&_ei_=EvXfY4cuTwW8GXB6jIkzEjFF8dNfJ6n07yyBTfYDEJurwK6T6luKrnHa5isxiwtb6r_yfYLEK9bux31DrIxpvy5eUbpdW2r86Mjg1U9CiMS-i7OvzvY7jCfmk0od6kYb2GSgsP1aLw51HJOieqIitl9O7-vv_fc7PO8WbhWY1ZYEFq5ISorkfuLMe-X-Zk6FYwGdui7tXYHyy8iihVJtfXY3ym6HWsga-At_DP8YXDtitF3BSWAmG4RgEyKKMkxU9US_uxCCJxVXxV_A-kkKpvDe6w_O0Mq3-H23.">BUTTON</a></li>
+    <li class="list-mod" id="cars"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGrNmcgojjEYzcsUddKe6aAmaNFscY8FkIBdIGSo8zazdzaFrC9T0ewYDVXMtX%3DYQpglLjHJlTQGrNmcgojjEYzcsUddKe6aAmasEqbaiW7tSlsD1S4wkCicGO8jnCYbVXyjLNpLOfhKLX%3DKpjlPihiSDBDxohluHptQJhu&_ei_=EmTUOwa1ULmLxlBKi7CTndBtPzbp7nwq3iIHz8ATGozhb724S8GwmjbsDvoEW2uk1gOheJzpwzXIzfgyv4eVL5Vqe8y7Ggqauw8P9sGLh5VyZojPoOujeBSKOL5nBM5AUrkczbYHF2eIykx5-C8HSA_qtBxQyJJBpN7JRNbDwBq1b-4xTdUKLBIOJE8RvwXzVoIYxSU_JAQxzo8gVrCdrCAuOLqEx2KYX2kGRUGJ0Wf_x2_90LL9I8TpoFO0Z71BZWQXeo-8_a-oI6BklYfoIzF1_tP3Oyp6BDvNSZ0jVz1Vk1lwsQT9BSpXSbGc4-Kh-IyuZSUtMOUniawEby296ANHTfsV9X3EK9fmCMKDdIOHYywx835GGFsiN5Or82d5mh3e6r5xVSZJevX2VXgwwYF_Allf3oq4-zvnADkliGhOwZp9WsA.">CARS</a></li>
+    <li class="list-mod" id="hero"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGzbzdPUbpzbzayzaWkzdYCuRBzeMtdazcn5FpmDn5dLjU8rNNSp5WWBRgzdb97fVXMtX%3DYQpglLjHJlTQGzbzdPUbpzbzayzaWkzdYCuRBzeMtcTpYJ5wUpYrzazg0Fst21LIMBdnjzgc2UjfVXyjLNpLOfhKLX%3DHklmjupsLxnuHptQJhu&_ei_=EkkK-8tIqPGWftMSu_qyBgDEzrxxHI48YjyyDW7Rx-7EeLVxhcsSRdRI3Mc5eWfc4jCR_ooppN9pQkX_wb13Y8-k6FzXQyFJrqEk7-Mf5t66uXzzrC1fVJRbrFe5U87uVsP7W_91kuYGvw7TdOWMn_a79Rja8QGu163MM_4GIWidKZ0ox2BLy7lwQUYHBmMUl6ndlNn66kbK8DwgO5zslZmcfwi0rJyCYIPHiwEyjYccBgQ1zxtP2rV08Ioix2ixGVn7jsNzLegKmBsWuYtkKA1COyEX2IlXWw.">HERO</a></li>
+    <li class="list-mod" id="hotels"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGkdzd1n2HJ42zf61KPsRkDYgrkd79rwvGt3ehqY9BFFXzfvMOEvg6WdgOVXyjLNpLOfhKLX%3DjLkLjNHlphgkxoLIjpKLHgQJhQmsVXMtX%3DYQpglLjHJlTQGkdzd1n2HJ42zf61KPsRkDYgozbkTcWsuOzfIzbHUFXY6zezczgPJPG8nokfWO&_ei_=EmTUOwa1ULmLxlBKi7CTndDKrODpe9baB4JI0LKo1OvanNZ_vRA0LtesLuCRhqR0_rEWdECDxGpuiVC5Lu-m53OG6jAZF6CEKVu76SRYtAA7p_rNmZY8Bk4UkbU94vhiVvnWgeWjsrjui_I753_1V9cUF5DDaTByCKzS5vW-mDVv06w6EzVJuRhiVhEZ-3s00yHz93q_FcOIC2F2Yy2emZtFUZQlZ-7ugyBDuBLn86EdNVYG7R626hdwU3OojWDAcpUwatYCGKxQz15W6lOxlqckzFXlcUn-rCMvZm2IoMZoF5B_gS8bxi4l_DgMjsTTgGm0wpEjioTjolu75ycl_61B5csn4URs9psBsbz93sa04MSBnKH-nW041ehfbwtLADJ-lHofta_IIawZinIFJn6J5M2HO8o0O6xuh9BCPzZ7PEwKC_uayBtEiwrUV3guNEBWQZXKS8OcFwNPQOIAi8_rwdIGYi_sO2R2nH21Zm_zfl6G1fOVXJ7JDxUJh_6FtqYCoGdKZ2jv9APt54rDs-Ds0W8rVpLsXW3v2QxE8EvmsI0a_f_MB2AvYqh6cOkRz9lLV4DMLykEloU55JmNMJrnDdJu9pEIII7AsPhepMfLFwZudZGkQlqusl3lQlI.">HOTELS</a></li>
+    <li class="list-mod" id="personalization"><a target="main-window" href="https://air.norwegian.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlTQGjuvq8t5jied3wzceHhA76mzaWqtzcNJWGRRYtza9r0Hklqwzd8hfzaoRgtRVXtpKX%3DSRDDAWT&_ei_=EmTUOwa1ULmLxlBKi7CTndDKrODpe9baB4JI0LKo1OvanNZ_vRA0LtesLuCRhqR0_rEWdECDxGpuiVC5Lu-m53OG6jAZF6CEKVu76SRYtAA7p_rNmZY8Bk4UkbU94vhiVvnWgeWjsrjui_I753_1V9cUF5DDaTByCKzS5vW-mDVv06w6EzVJuRhiVhEZ-3s00yHz93q_FcOIC2F2Yy2emZtFUZQlZ-7ugyBDuBLn86EdNVYG7R626hdwU3OojWDAcpUwatYCGKxQz15W6lOxlqepKJmp3gLk5srmKPE8VRvMnHtl6FDdaoXDrBzu29PamXIiZ-avWG77IYULIfLiXg4fxIvsFP6hpm-gKvOqvMfxVDhy-o7ZqQwqTSg3Q_43qbvzdWZczgVh406S3R4uRwec9xyE3o89HWvvFa-egNI_e2bvzUKCnd_Z2x2prTv4E6_EjmBJIQsnZ7byeb80jlfil0Wz4HZtLitnlRyef7lXaoknDJos4lZBnxRlPWxZ1nDfSbzftOB1dhUDvHdueX1hxI5lXzRp1bF5SOLZWM1gpy6WXhH63REy2hCXklRI0VOQrAPqQR8awGmuOE3Gmzwav_jeKAQm4fZVe_q1KvOgi9CjqF090LHaLRp9Ymy9hzxD0zOlxo6UzXQTeLzYQswv4cm8qxwQ7Q1G3lbfE3dGLTNfmo2cB-yby2DEyiT62ro4FJ0jJpbFVJJ72M.">PERSONALIZATION</a></li>
+    <li class="list-mod" id="pricelist"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGNzgFhn01LdM6Jo0HYdzcBgm52bnyqd89dFzeo8jPlMPl9mAHmogu5I6OVXyjLNpLOfhKLX%3DHkpmgpHTSSxhgLlQLmVXMtX%3DYQpglLjHJlTQGNzgFhn01LdM6Jo0HYdzcBgmzdATmzg2NDjzcLLzdRTUa8uA0RgzevTrgLIJn&_ei_=Eg7tQcx4RL9X3kogokES7ls2GOdg0lT2TPDRS_UBT6HCTDCavM_0JkzQH71F-qQ6ERe5nCXyQrd6xd-zlOB7CYGomjjtLfg0Xj_bV0oOpzkfVLuLlVYgtk6TfN2iajZxK9Ya_xPun6oHlsVVLs1GWLN7pcbj3pS89S1pYo56JjQYVvZeHBepA-0EsT-YusC75hBFPPkyjeT8h9DrXSFB0pL4AJPkOflYrK81t3JcMSGGyrMVV9VTmC5J2UwukFL9xc82.">PRICELIST &amp; PROMOLIST</a></li>
+    <li class="list-mod" id="pricelist-manual"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGjnaoP8vfTBpOSfbnkXC3IJr4u4p3NzgzgBzeTIzdzcLazgXvDze8HIqq4sPOVXMtX%3DYQpglLjHJlTQGjnaoP8vfTBpOSfbnkXC3IKDzgXzaNDKPJ04kMv3IRXnOuaOLzaHRdMMfVXyjLNpLOfhKLX%3DJLtpHQjhkLxtpNLQJhQms&_ei_=Ev5s9ipnLy9QbcGdF-YDQa37Se86qFi_m-jWgZSj0WvGLmjrN0rTVJ3ZAD25CyxUos3zhinTYDjxPRC_NvX8nzV4uM214MKo1irfuAsooYCN-gn__ZFxQjykw_uPaqIFJUWUbOlEjB0Z5rDBjSELiih6nmK0GDwNTjwWu1ZDZ7HF7qSHMLXK59hWE1een3hCZ8e5FCDh-_TrocEYZLgb2xiFDQ0FdAQDIqmLJF2AddIyZt_B-9JAt8kItatNgJvSDQBJMyHAXBHrHe4.">MANUAL PRICELIST &amp; MANUAL PROMOLIST </a></li>
+    <li class="list-mod" id="search"><a target="main-window" href="https://air.norwegian.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlTQGnSEzgIajGh8gMOkeaiMzfzbDWyI2zbDzeUk9YzaLios8aze6bIM2RkiyugmnVXtpKX%3DSRBYWRT&_ei_=EmTUOwa1ULmLxlBKi7CTndDKrODpe9baB4JI0LKo1OvanNZ_vRA0LtesLuCRhqR0_rEWdECDxGpuiVC5Lu-m53OG6jAZF6CEKVu76SRYtAA7p_rNmZY8Bk4UkbU94vhiVvnWgeWjsrjui_I753_1V9cUF5DDaTByCKzS5vW-mDVv06w6EzVJuRhiVhEZ-3s00yHz93q_FcOIC2F2Yy2emZtFUZQlZ-7ugyBDuBLn86EdNVYG7R626hdwU3OojWDAcpUwatYCGKxQz15W6lOxlqepKJmp3gLk5srmKPE8VRvMnHtl6FDdaoXDrBzu29PamXIiZ-avWG77IYULIfLiXg4fxIvsFP6hpm-gKvOqvMfxVDhy-o7ZqQwqTSg3Q_43qbvzdWZczgVh406S3R4uRwec9xyE3o89HWvvFa-egNI_e2bvzUKCnd_Z2x2prTv4E6_EjmBJIQsnZ7byeb80jlfil0Wz4HZtLitnlRyef7lXaoknDJos4lZBnxRlPWxZ1nDfSbzftOB1dhUDvHdueX1hxI5lXzRp1bF5SOLZWM1gpy6WXhH63REy2hCXklRI0VOQrAPqQR8awGmuOE3Gmzwav_jeKAQm4fZVe_q1KvOgpW0lDPEg8ScVm6v21g9d5kJXxbvD3Z_QwpV9UMcAVjJZpWw584lwOGttH8poBggRng2Nyknr_Xi3_p2310w_a8l8bw.">SEARCH</a></li>
+    <li class="list-mod" id="text"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGi09AmzcH0yPaIfoSYzcPqvzfsHzeP8tSItzbs2TwzcecytXDbzbzavpaNW5DnVXMtX%3DYQpglLjHJlTQGi09AmzcH0yPaIfoSYzcPqvzfgppAc8JGPeTBYvjHsKt015J0q6zezaPC2OVXyjLNpLOfhKLX%3DJLJptuHJxksPQJhu&_ei_=EmTUOwa1ULmLxlBKi7CTndDPi_Now9pcoU7EwmFMceFH4aZVpdf0k3rh7AUuA0j4-SpGYROtWVTSkJzOqzCd9J3tyJgMNFILjv5IKfrIa96i12gWuPoS4REg4OIprDNt-L2nln8PVFtYgVDFbAs0r62xrsIigastzDk6enSKm_AZHkezwvbsq7igXK63MMfiKaEwWo5lZlvcmYHTQuLlIUdboejc1ZA7ZO5LpBwlocEmv1Z1oEKmCq-Rkusz8-NgMF4SPWi8lwSOMnayZlxv--m-pWqNJA9YHZ2VREA08xFLDCBUMNKzTwdVvsW3Cc3bgsA4b-zqC2OJdKHH67Iy7R5GEmqlOR6RDCA25i1qXTQmRepcqP86gX2dMx7OkhHGABRDH3TdrfcsLIqgqHm3fQd8sN8UBg2N6C8.">TEXT</a></li>
+    <li class="list-mod" id="tripinfo"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGhsHHYLLzcMWipzaybaUKfze6fzbccd0pwzePOsYzfmof3oXzdeaX6OzfKrpLOVXyjLNpLOfhKLX%3DjLkLjNHlphgkxoLIjpKLHgQJhQmsVXMtX%3DYQpglLjHJlTQGhsHHYLLzcMWipzaybaUKfze6yYNR3UbaXNyR4rAOgX56Dzcy3yaIO1BhO&_ei_=EmTUOwa1ULmLxlBKi7CTndDKrODpe9baB4JI0LKo1OvanNZ_vRA0LtesLuCRhqR0_rEWdECDxGpuiVC5Lu-m53OG6jAZF6CEKVu76SRYtAA7p_rNmZY8Bk4UkbU94vhiVvnWgeWjsrjui_I753_1V9cUF5DDaTByCKzS5vW-mDVv06w6EzVJuRhiVhEZ-3s00yHz93q_FcOIC2F2Yy2emZtFUZQlZ-7ugyBDuBLn86EdNVYG7R626hdwU3OojWDAcpUwatYCGKxQz15W6lOxlqckzFXlcUn-rCMvZm2IoMZoF5B_gS8bxi4l_DgMjsTTgGm0wpEjioTjolu75ycl_61B5csn4URs9psBsbz93sa04MSBnKH-nW041ehfbwtLADJ-lHofta_IIawZinIFJn6J5M2HO8o0O6xuh9BCPzZ7PEwKC_uayBtEiwrUV3guNEBWQZXKS8OcFwNPQOIAi8_rwdIGYi_sO2R2nH21Zm_zfl6G1fOVXJ7JDxUJh_6FtqYCoGdKZ2jv9APt54rDs-Ds0W8rVpLsXW3v2QxE8EvmsI0a_f_MB2AvYqh6cOkRz9lLV4DMLykEloU55JmNMJrnDdJu9pEIII7AsPhepMfLFwZudZGkQlqusl3lQlI.">TRIPINFO</a></li>
+  </ul>
+  <h1 class="left">Templates</h1>
+  <ul>
+    <li class="list-mod" id="emergency"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGhwFzgDnezgMHzgIeu3mKRiATyzeRP1r3jTt4f6azc2zedqjWrEN3wEnnw9PqWVXyjLNpLOfhKLX%3DRSRAURCRRTRxgHNLjQJhuVXMtX%3DYQpglLjHJlTQGhwFzgDnezgMHzgIeu3mKRiATvzg7UvD7XbM3ryzenw3Hmzcf4pPsgH6GjIh4o&_ei_=Em-y2Rn1aZeSgiaImgV3N-o3jaFuQ-K88T-F0Jk7JkpJFjixUZqHPLhS0bOLGe92UEP4sSuZDS5TEYbYvQAiJBocrRuk6mOT00861DLkIXZmCqTnShWw8UORNo5FgNOJFBNfIuptIgzaBqPMVQ0N_R1NqGljZAHs-31s4qDPPDA7d5rd3IQkefem7fI9h937cNjpzxSuEowbTGxA5wYw4rykym3qRPBuhp9O0ak8MDegnXGvhy3kbhs7OSyAFcR55bhggkoEdrU.">EMERGENCY TEMPLATE / BASIC TEMPLATE</a></li>
+    <li class="list-mod" id="newsletter_a"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGmICjSRn44Ntb0pn9zfhJuoCjiThzd1E3njRw8rh9Wg9KizczgYf5hHa5SAWVXMtX%3DYQpglLjHJlTQGmICjSRn44Ntb0pn9zfhJuoH3b8SKzbBOHdCzcqgzdtIrTUKaRu7fYNwnWY2&_ei_=EsUPdLY2MpH7ej5g_hXLsjQgAyrUt_u98kDGlsVSWGdrQnNUZsEdOz_YQ26YY6GrIkeJaodmocv8slPNwlCWVMyBK0xd5MDVDLidalM_7ZjRCP5hgB4_3n_0lhkOg6HOirn14zhYLlPYSBLwSGF3Oqivp8P8F7p3vlgpuQSUMb-2FMrOphRE428b8gNxs6_WY5nuVkv7.">NEWSLETTER A TEMPLATE</a></li>
+    <li class="list-mod" id="newsletter_a_segmented"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGmICjSRn44Ntb0pn9zfhJuoCjiThzd1E3njRw8rh9Wg9KizczgYf5hHa5SAWVXMtX%3DYQpglLjHJlTQGmICjSRn44Ntb0pn9zfhJuoH3b8SKzbBOHdCzcqgzdtIrTUKaRu7fYNwnWY2&_ei_=EsUPdLY2MpH7ej5g_hXLsjQgAyrUt_u98kDGlsVSWGdrQnNUZsEdOz_YQ26YY6GrIkeJaodmocv8slPNwlCWVMyBK0xd5MDVDLidalM_7ZjRCP5hgB4_3n_0lhkOg6HOirn14zhYLlPYSBLwSGF3Oqivp8P8F7p3vlgpuQSUMb-2FMrOphRE428b8gNxs6_WY5nuVkv7.">NEWSLETTER A SEGMENTED TEMPLATE</a></li>
+    <li class="list-mod" id="newsletter_b"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGmICjSRn44Ntb0pn9zfhJuoCjiThzd1E3njRw8rh9Wg9KizczgYf5hHa5SAWVXMtX%3DYQpglLjHJlTQGmICjSRn44Ntb0pn9zfhJuoH3b8SKzbBOHdCzcqgzdtIrTUKaRu7fYNwnWY2&_ei_=EsUPdLY2MpH7ej5g_hXLsjQgAyrUt_u98kDGlsVSWGdrQnNUZsEdOz_YQ26YY6GrIkeJaodmocv8slPNwlCWVMyBK0xd5MDVDLidalM_7ZjRCP5hgB4_3n_0lhkOg6HOirn14zhYLlPYSBLwSGF3Oqivp8P8F7p3vlgpuQSUMb-2FMrOphRE428b8gNxs6_WY5nuVkv7.">NEWSLETTER B TEMPLATE</a></li>
+    <li class="list-mod" id="dialogues"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGrJHOCpsdynC1YKzgpWGsnEyIzbAi931wJo1aUIzeNwu9eqhh9CyzdOFfMzeqLi45pYKzeGcoCVXMtX%3DYQpglLjHJlTQGjYl02TvrBzasrzffUACgOzgPzfnflUmUubDJbHf8zfPMIa0plkuFM4IlXzczd1bR8bv6sSMOC&_ei_=EmTUOwa1ULmLxlBKi7CTndAAf28qkbZEipC00yGmekEbfHu3dNVs10S0Ly-CbIdPPtzwWNR0XeleCxbUE0uOrIVRaF4Joxh97GKcEVRpzPS0_-x0b4C0rKB-jtBimHusLHMLmY9n0kjD5-ZXuqQk1SZrK5JNDF7KNXbw6CXqkHt9M2fKM5RYK_YKCCy2ITs7bOO4TVRrjFu9N8q4VsEKzGfofr_UnpD4qg3Un3R-RF8rb1-6xbGYeAQKuuVtdvi2A8HrSXcPsp1SS2MPM4par907kbr0wH7AvnLmQOv7y6yE1Kmw3i7Gsv3X5Nq0u2lmWfXiOzTAnOKhxozOUe7ygUI_pExxHVIIENBqoLPtDpf4i6sO0_pAswRIb5Xu8-eQcimy54t_FGHACIDAhanrElk4zcoC-apR-aRmps7Qrc39KAAR2onxwrDly7mZmoxURpDxBkVin_wBf2251fI8YcwlT2xXsEQaOwbE5SQ.">DIALOGUES TEMPLATE</a></li>
+    <li class="list-mod" id="dialogues_lh"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGkwza0SyJi2ze35IjmFzgOibX8FpC7Nai0mzcIwuEohH2HdnCrnAlNzb3PUaKRk77muYn7wSfVXMtX%3DYQpglLjHJlTQGpYzbzfJhmzcM1l6NzbzbknrNgrzbDrJeyGG14X91UcRFvnzbqXRjaWRps9SzgzdG2fLUeqUInOC&_ei_=EmTUOwa1ULmLxlBKi7CTndAStpNTNAbMRccPnOx7javCu-d0uUE4dnYbe1zq56wS57nygU2zJpqidmteJjFw8zoVqwaB2l4qkTEqm_vCwCpmVu5q1fZb12gVrlAe2bzbrvM9Xqahc6PDPVBrSM1eS7qI0zjE_yAblQcfkKSCsQvN2uaayCirNvdi_vkLORtmBn4xHP-D1WogrlxwPuJ2uMw4XFE2-IDipln9RPbIqfRpyzsNaYTYeBxSqFeCTSnlin02QSaDSMWgUUVSzjIszggf3euBhLx6lKFxqx7eglArCxS40-mmSfLNMKUUKB89bZ6vU2EQFb49ydvvpRkHvDG2Oy3dHL5Wuy37mgDv1MaLspmK1S4JI0hyRHi9iWHfYgsvLdX_fjJ28ZRpab_Rkx8hTQUcbwm0fmSZeLQgLDjaOisYJSBdn6UlbUbYmCs32bDHLlvedHdR2gNEjiKYjX1-vR3GqnmZbD6MlJTBiMe_0IDvam5PDH6hyDbVjuEz2CEo4pt_X2VkdQSTs2X4CsCN9_yW9w.">LONG HAUL DIALOGUES TEMPLATE</a></li>
+    <li class="list-mod" id="corp"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGpOgnGNAOBs3wzg5zf8Frg2vMvzbkg8r21IdHhdzfzcNeABYiOId7zcuWdThAAVXyjLNpLOfhKLX%3DrujuHjlpgLFxohluHptQJhuVXMtX%3DYQpglLjHJlTQGhUwIyruMXCjwly2A5bg4sSOq0czbPzgNXbAu4MSD7u4GrJmSzfPu7wLO&_ei_=Egko9OwO6G2wkUmQzUWWe_W919LpxNskoQAibQ_-0CTZk9gFKWsiq7qweRHAYjPC2LvxDf8Xke1vztBE6iCGeWGFT1r915L7Lu4.">CORPORATE / AGENT TEMPLATE</a></li>
+  </ul>
+  <h1 class="left">Surveys</h1>
+  <ul>
+    <li class="list-mod" id="like-dislike"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGtAsl6OFNL8k4zbShtO5wqpncuqHDY3DzbAzbaTtiUs5k9OB4kDl9pwqBnFVXyjLNpLOfhKLX%3DFQHtumkHOpxohluHptQJhuVXMtX%3DYQpglLjHJlTQGtAsl6OFNL8k4zbShtO5wqppvBSczczfsE3UN93o0vPNtKquLzc01d67MaO7&_ei_=EqSPdxbEOfzYKJSgi3_-Kt4GzqVBQVuN1sbNIXo9PtRC1PqXybfdQxbE96Y4EoQ-XRE5goleBd1sLv_1AJAYyakl4bzJkgFhUgAeVwFhC4WF9GZHF0gWYaMgUV0Y_9a9Ps6DWiJfk_6inTQ7NWEqiX8SZDWFXo_3Rmead2Lwy7mvILmKdELusvh41uWeEP5UC39BDPvdxWzMXMKHentGR-ulnlOr-50uwtaROGsT1tGt4zisiUuwurqF8npmCrqrBNeQHznAQ6RnMglwDfh0LVo_KiWJE-cR_MxoaKU74WJn1PlDStVp_FCOag.">Like / Dislike</a></li>
+	  <li class="list-mod" id="wifi-survey"><a target="main-window" href="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGkghza9zekJuzbWTvEkuR2iAY3Rzf9KvgTAa4EFwD60Nu4NhTEMzcKf3fL5zaWVXyjLNpLOfhKLX%3DRSRAURCRRTRxgHNLjQJhuVXMtX%3DYQpglLjHJlTQGkghza9zekJuzbWTvEkuR2iAYzegEmXyfAtlzdbS1BPIwAULUIi2CNHwCjIBo&_ei_=EoRSNnwBdJEGRLj_BOpHY7fgCSEzEDMMhpnBWVi3a9liTLsB8ZfY8c48VDu8-ELQoeaIkKvCNi1gVf64naZG9oknPyAC27xZ1CxKE5osErWZCw3idZRsjUZ686EFQ5-uV_Ej2Xkwo9NUo_dSDyj6-hLg1ytzRoGmcDGDP6fgv8IqsXmfS4_tuyhZikBV6plQFqoR8UixokwV0EHFd5pmUewmmcvsd-ncCXfFTxFWkXehS0C6aCbtAOtfaudwpYLbvUlV3cI.">WiFi survey</a></li>
+  </ul>
+</div>
+<div class="center-div">
+  <iframe name="main-window" id="iframe" src="https://air.norwegian.com/pub/sf/FormLink?_ri_=X0Gzc2X%3DYQpglLjHJlTQGutAzfva6zbyvJGzerza4zgLWzfszbAzggzesgzeizczeTzbbK9I0HBBmuidRAs1CnnVXMtX%3DYQpglLjHJlTQGutAzfva6zbyvJGzerza4zgLWzfshNY8zfGvwbdvbLzaTmLT4StqlpWzfzeIYsMOVXyjLNpLOfhKLX%3DrhoHggHQrHlptHxIlpglLjgLlQJhu&_ei_=EqWMGK5Lp1u_gXeJFlcTtfuUkNlZFobJsYSgYPYKKUkYxXP2pxpIQd8cX3MJvBbp_obfXqippIMZLKjjH4nOqwmCy3YSa3z90KTroEE0J3wxaORT_ZKbBBo3RJ2Opcu0pIMMHIwiDlEYfX9PSrxTngwYbLMRkdyQh7rJANO3NANif2GQIK7PCYqme6TU0as-5AbwXWUDexRg-cVitgGcgAuLLVO0ABM0bsHmMeS08SUTmwQHZdM4yfKZwlXI9cJBYtchsl3bU1hbN35LadO_Y0qNZf1jKdtfwXR_." frameBorder="0" style="border:1px solid #929292;"></iframe>
+  
+  <!--LOADING MODULE TEXT-->
+  <!--div under the iframe-->
+  <div class="loadingMessage descriptions default loading">Loading <strong>ARTICLE</strong> module...</div>
+</div>
+<div class="right-div">
+  <div class="descriptions default" name="article">
+    <h1 class="left loadingMessage">ARTICLE <span class='loading'>Loading</span></h1>
+    <table class="table-guide" cellpadding="0" cellspacing="0" border="0">
+      
+        <th>Variant</th>
+        <th class="th-width">Purpose</th>
+        <th>Field Info</th>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>Use with image and bulletpoints</td>
+        <td><table class="inside-table" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td class="inside-table-first">ARTICLE_IMAGE</td>
+              <td class="inside-table-second">Any image 120px x 120px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_BP_ICON</td>
+              <td class="inside-table-second">Any image 20px x 20px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_DIVIDER_TOP</td>
+              <td class="inside-table-second">Y = creates a horizontal line<br>
+                S = creates a space</td>
+            </tr>
+          </table></td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">B</td>
+        <td>Smaller image than variant A</td>
+        <td><table class="inside-table" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td class="inside-table-first">ARTICLE_IMAGE</td>
+              <td class="inside-table-second">Any image 50px x 50px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_BP_ICON</td>
+              <td class="inside-table-second">Any image 20px x 20px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_DIVIDER_TOP</td>
+              <td class="inside-table-second">Y = creates a horizontal line<br>
+                S = creates a space</td>
+            </tr>
+          </table></td>
+      </tr>
+    </table><br><br><h3>Font sizes used:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      <tr>
+        <td class="table-guide-first">A and B</td>
+        <td>ARTICLE_HEADING</td>
+        <td>20px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A and B</td>
+        <td>ARTICLE_INTRO</td>
+        <td>19px</td><td>26px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A and B</td>
+        <td>ARTICLE_PARAGRAPH, ARTICLE_CTA, ARTICLE_BP_TXT/CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      
+    </table>
+  </div>
+  <div class="descriptions" name="article-large">
+    <h1 class="left loadingMessage">ARTICLE LARGE</h1>
+    <p>Currently this module only works in <strong>Newsletters</strong>, to add this to the <strong>Dialogues</strong> requires around 2 hours work and we probably need to create a new template position file. Work is also needed to add code into the header to show/hide the image for <strong>variants B and C</strong>. 17/07/18 JM</p><br><br><table class="table-guide" cellpadding="0" cellspacing="0" border="0">
+      
+        <th>Variant</th>
+        <th class="th-width">Purpose</th>
+        <th>Field Info</th>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>Use with image and bulletpoints</td>
+        <td><table class="inside-table" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_IMAGE</td>
+              <td class="inside-table-second">Any image 640px x 320px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_BP_ICON</td>
+              <td class="inside-table-second">Any image 20px x 20px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_DIVIDER_TOP</td>
+              <td class="inside-table-second">Y = creates a horizontal line<br>
+                S = creates a space</td>
+            </tr>
+          </table></td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">B</td>
+        <td>Quadratic image for laptop, Rectangular image for cell phone</td>
+        <td><table class="inside-table" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_IMAGE</td>
+              <td class="inside-table-second">Any image 300px x 300px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_IMAGE_SWAP</td>
+              <td class="inside-table-second">Any image 640px x 320px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_BP_ICON</td>
+              <td class="inside-table-second">Any image 20px x 20px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_DIVIDER_TOP</td>
+              <td class="inside-table-second">Y = creates a horizontal line<br>
+                S = creates a space</td>
+            </tr>
+          </table></td>
+      </tr><tr>
+        <td class="table-guide-first">C</td>
+        <td>Quadratic image for for both laptop and cell phone</td>
+        <td><table class="inside-table" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_IMAGE</td>
+              <td class="inside-table-second">Any image 300px x 300px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_IMAGE_SWAP</td>
+              <td class="inside-table-second">Any image 300px x 300px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_BP_ICON</td>
+              <td class="inside-table-second">Any image 20px x 20px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">ARTICLE_LARGE_DIVIDER_TOP</td>
+              <td class="inside-table-second">Y = creates a horizontal line<br>
+                S = creates a space</td>
+            </tr>
+          </table></td>
+      </tr>
+    </table><br><br><h3>Font sizes used:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>ARTICLE_LARGE_HEADING</td>
+        <td>24px</td><td>30px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>ARTICLE_LARGE_INTRO</td>
+        <td>19px</td><td>26px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>ARTICLE_LARGE_PARAGRAPH, ARTICLE_LARGE_TXT_CTA, ARTICLE_LARGE_BP_TXT/CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>ARTICLE_LARGE_CTA (button)</td>
+        <td>17px</td><td>50px</td>
+      </tr>
+      
+    </table>
+  </div>
+  <div class="descriptions" name="banner">
+    <h1 class="left loadingMessage">BANNER</h1>
+    <p>BANNER Variant A is image only. Variant B,C and D uses BANNER_PARAGRAPH for large text. Variant C uses BANNER_ALT_TXT for sub text</p><br><br><h3>Font sizes used:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+        <tr>
+        <td class="table-guide-first">B abd C</td>
+        <td>BANNER_PARAGRAPH</td>
+        <td>30px</td><td>34px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">C</td>
+        <td>BANNER_ALT_TXT</td>
+        <td>17px</td><td>20px</td>
+      </tr><tr>
+        <td class="table-guide-first">D</td>
+        <td>BANNER_PARAGRAPH</td>
+        <td>25px</td><td>34px</td>
+      </tr>
+      </table>
+  </div>
+  <div class="descriptions" name="bulletpoints">
+    <h1 class="left loadingMessage">BULLETPOINTS</h1>
+    <table class="table-guide" cellpadding="0" cellspacing="0" border="0">
+      
+        <th>Variant</th>
+        <th class="th-width">Purpose</th>
+        <th>Field Info</th>
+      <tr>
+        <td class="table-guide-first">A B, and C</td>
+        <td>Use in combinations with text modules</td>
+        <td><table class="inside-table" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td class="inside-table-first">BULLETPOINTS_ICON</td>
+              <td class="inside-table-second">Any image 20px x 20px</td>
+            </tr>
+            <tr>
+              <td class="inside-table-first">BULLETPOINTS_DIVIDER_TOP</td>
+              <td class="inside-table-second">Y = creates a horizontal line<br>
+                S = creates a space</td>
+            </tr>
+          </table></td>
+      </tr>
+      
+    </table><br><br><h3>Font sizes used:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+        <tr>
+        <td class="table-guide-first">A B, and C</td>
+        <td>BULLETPOINTS_TXT, BULLETPOINTS_CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      </table>
+  </div>
+  <div class="descriptions" name="button">
+    <h1 class="left loadingMessage">BUTTON</h1>
+    <p><strong>Variant A</strong> for a GREY background</p>
+	<p><strong>Variant B</strong> for a WHITE background</p><br><br><h3>Font sizes used:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+        <tr>
+        <td class="table-guide-first">A and B</td>
+        <td>BUTTON_CTA</td>
+        <td>17px</td><td>50px</td>
+      </tr>
+      </table>
+  </div>
+  <div class="descriptions" name="cars">
+    <h1 class="left loadingMessage">CARS</h1>
+    <p>Images and most of the text are loaded from a Cartrawler API. Option to show or hide logo images, and how many cars to be displayed. The "/day" text and button CTA text must be added</p><br><br><h3>Font sizes used:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>CAR_DAY_TEXT</td>
+        <td>22px</td><td>24px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>CAR_BTN_CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  <div class="descriptions" name="hero">
+    <h1 class="left loadingMessage">HERO</h1>
+    <p>This is the hero module</p><h3>Font sizes used:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>HERO_HEADING</td>
+        <td>24px</td><td>30px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>HERO_INTRO_TXT</td>
+        <td>19px</td><td>26px</td>
+      </tr>
+      <tr>
+       <tr>
+        <td class="table-guide-first">A</td>
+        <td>HERO_PARAGRAPH, HERO_TXT_CTA, HERO_BTN_CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">B</td>
+        <td>HERO_HEADING</td>
+        <td>30px</td><td>36px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">B</td>
+        <td>HERO_PARAGRAPH, HERO_TXT_CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">C</td>
+        <td>HERO_HEADING</td>
+        <td>30px</td><td>36px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">C</td>
+        <td>HERO_PARAGRAPH, HERO_BTN_CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">D</td>
+        <td>HERO_HEADING</td>
+        <td>30px</td><td>36px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">D</td>
+        <td>HERO_PARAGRAPH, HERO_BTN_CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE1</td>
+        <td>HERO_HEADING</td>
+        <td>55px</td><td>60px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE1</td>
+        <td>HERO_INTRO_TXT</td>
+        <td>35px</td><td>40px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE1</td>
+        <td>HERO_PARAGRAPH</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE1</td>
+        <td>HERO_TXT_CTA</td>
+        <td>110px</td><td>110px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE2</td>
+        <td>HERO_HEADING</td>
+        <td>140px</td><td>142px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE2</td>
+        <td>HERO_INTRO_TXT</td>
+        <td>60px</td><td>62px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE2</td>
+        <td>HERO_PARAGRAPH</td>
+        <td>17px</td><td>30px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE2</td>
+        <td>HERO_TXT_CTA</td>
+        <td>40px</td><td>55px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE3</td>
+        <td>HERO_HEADING</td>
+        <td>140px</td><td>142px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE3</td>
+        <td>HERO_INTRO_TXT</td>
+        <td>40px</td><td>50px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE3</td>
+        <td>HERO_PARAGRAPH</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE4</td>
+        <td>HERO_HEADING</td>
+        <td>140px</td><td>152px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE4</td>
+        <td>HERO_INTRO_TXT</td>
+        <td>35px</td><td>40px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE4</td>
+        <td>HERO_PARAGRAPH</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE4</td>
+        <td>HERO_TXT_CTA</td>
+        <td>35px</td><td>42px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE5</td>
+        <td>HERO_HEADING</td>
+        <td>140px</td><td>142px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE5</td>
+        <td>HERO_PARAGRAPH</td>
+        <td>17px</td><td>30px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">SALE5</td>
+        <td>HERO_TXT_CTA</td>
+        <td>40px</td><td>55px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">NEW_ROUTE</td>
+        <td>HERO_HEADING</td>
+        <td>50px</td><td>60px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">NEW_ROUTE</td>
+        <td>HERO_INTRO_TXT</td>
+        <td>40px</td><td>45px</td>
+      </tr> <tr>
+        <td class="table-guide-first">NEW_ROUTE</td>
+        <td>HERO_PARAGRAPH</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">NEW_ROUTE</td>
+        <td>HERO_TXT_CTA</td>
+        <td>40px</td><td>55px</td>
+      </tr>
+      
+    </table>
+  </div>
+  <div class="descriptions" name="hotels">
+    <h1 class="left loadingMessage">HOTELS</h1>
+    <p>Images and most of the text are loaded from an API hosted by IT department. Option to show how many hotels to be displayed and how many stars the hotels(s) should have. The "Guest rating" text must be translated and added into static table or script. The button CTA text must be added</p><br><br><h3>Font sizes used:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>CAR_BTN_CTA</td>
+        <td>17px</td><td>50px</td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  <div class="descriptions" name="personalization">
+    <h1 class="left loadingMessage">PERSONALIZATION</h1>
+    <p>PERSONALIZATION description</p><br><br><h3>Font sizes used:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      
+      <tr>
+        <td class="table-guide-first">A and B</td>
+        <td>PERSONALIZATION_PROFILE_Y_CTA</td>
+        <td>14px</td><td>18px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A and B</td>
+        <td>PERSONALIZATION_PROFILE_N_CTA</td>
+        <td>14px</td><td>18px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A and B</td>
+        <td>PERSONALIZATION_CASHPOINT_TXT</td>
+        <td>14px</td><td>18px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A and B</td>
+        <td>PERSONALIZATION_NOT_REWARD_TXT</td>
+        <td>14px</td><td>18px</td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  <div class="descriptions" name="pricelist">
+    <h1 class="left loadingMessage">PRICELIST &amp; PROMOLIST</h1>
+    <p>This is the PRICELIST module</p><br><br><h3>Font sizes used in Pricelist:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      
+      <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>PRICELIST_HEADLINE</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>PRICELIST_PREMIUM_HEADLINE</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>PRICELIST_LOWFARE_HEADLINE</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>Link with underline</td>
+        <td>17px</td><td>23px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>PRICELIST_SUB_TXT</td>
+        <td>13px</td><td>n/a</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>PRICELIST_SMALL_TXT</td>
+        <td>12px</td><td>16px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>PRICELIST_BTN_CTA</td>
+        <td>17px</td><td>50px</td>
+      </tr></table>
+      <br><br><p>This is the PROMOLIST module</p><h3>Font sizes used in Promolist:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      
+      <tr>
+        <td class="table-guide-first">B and D</td>
+        <td>PROMOLIST_HEADLINE</td>
+        <td>32px</td><td>50px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">C and E</td>
+        <td>PROMOLIST_HEADLINE</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">B, C, D and E</td>
+        <td>PROMOLIST_PARAGRAPH</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">B and D</td>
+        <td>DEP_CITY / DEST_CITY</td>
+        <td>20px</td><td>24px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">B and D</td>
+        <td>PROMOLIST_SUB_TXT</td>
+        <td>17px</td><td>26px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">B and D</td>
+        <td>Pricepoint</td>
+        <td>24px</td><td>n/a</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">B and D</td>
+        <td>PROMOLIST_SMALL_TXT</td>
+        <td>12px</td><td>16px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">B and D</td>
+        <td>PROMOLIST_TXT_CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr></table>
+  </div>
+  <div class="descriptions" name="pricelist-manual">
+    <h1 class="left loadingMessage">PRICELIST MANUAL</h1>
+    <p>This is the PRICELIST MANUAL module</p><br><br><h3>Font sizes used in Pricelist:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      
+      <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>MANUAL_HEADLINE</td>
+        <td>32px</td><td>50px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>MANUAL_SUBHEADLINE</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>MANUAL_COL1_TITLE, MANUAL_COL2_TITLE, MANUAL_COL3_TITLE</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>Link with underline</td>
+        <td>17px</td><td>23px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>Price-points</td>
+        <td>17px</td><td>23px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>PRICELIST_SUB_TXT</td>
+        <td>13px</td><td>n/a</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>PRICELIST_SMALL_TXT</td>
+        <td>12px</td><td>16px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">D and C</td>
+        <td>PRICELIST_BTN_CTA</td>
+        <td>17px</td><td>50px</td>
+      </tr></table>
+      <br><br><p>This is the PROMOLIST MANUAL module</p><h3>Font sizes used in Promolist:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      
+      <tr>
+        <td class="table-guide-first">A and D</td>
+        <td>PROMO_MAN_HEADLINE</td>
+        <td>32px</td><td>50px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A and D</td>
+        <td>PROMO_MAN_SUBHEADLINE</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A and D</td>
+        <td>DEP_CITY / DEST_CITY</td>
+        <td>20px</td><td>24px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A and D</td>
+        <td>MODULE.PROMO_MAN_DEST_[1, 2, 3 and 4]_SUBTEXT</td>
+        <td>17px</td><td>26px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A and D</td>
+        <td>PROMO_MAN_DEST_[1, 2, 3 and 4]_PRICE</td>
+        <td>24px</td><td>n/a</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A and D</td>
+        <td>PROMO_MAN_SMALL_TEXT</td>
+        <td>12px</td><td>16px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A and D</td>
+        <td>PROMO_MAN_CALL_TO_ACTION</td>
+        <td>17px</td><td>20px</td>
+      </tr></table>
+  </div>
+  <div class="descriptions" name="search">
+    <h1 class="left loadingMessage">SEARCH</h1>
+    <p>SEARCH text</p><br><br><h3>Font sizes used in Promolist:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      
+      <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>SEARCH_HEADING</td>
+        <td>26px</td><td>28px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>SEARCH_TXT_[1, 2 and 3]</td>
+        <td>16px</td><td>18px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>DESTINATION_NAME / SEARCH_DEST_TXT</td>
+        <td>18px</td><td>18px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>ARRIVAL_DATE_SEARCH_INPUT / SEARCH_DEP_TIME</td>
+        <td>18px</td><td>18px</td>
+      </tr>
+            <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>RETURN_DATE_SEARCH_INPUT / SEARCH_RETURN_TIME</td>
+        <td>18px</td><td>18px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>SEARCH_CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A, B and C</td>
+        <td>SEARCH_COMMERCIAL_TEXT</td>
+        <td>14px</td><td>n/a</td>
+      </tr></table>
+  </div>
+  <div class="descriptions" name="text">
+    <h1 class="left loadingMessage">TEXT</h1>
+    <p>This is the text module</p><br><br><h3>Font sizes used in Text:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      
+      <tr>
+        <td class="table-guide-first">A, B, C and EMERGENCY</td>
+        <td>TEXT_HEADER</td>
+        <td>24px</td><td>30px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A, B, C and EMERGENCY</td>
+        <td>TEXT_INTRO</td>
+        <td>19px</td><td>26px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A, B, C and EMERGENCY</td>
+        <td>TEXT_SUBHEADER_LEFT</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A, B, C and EMERGENCY</td>
+        <td>TEXT_PARAGRAPH</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A, B, C and EMERGENCY</td>
+        <td>TEXT_TXT_CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A, B, C and EMERGENCY</td>
+        <td>TEXT_BTN_CTA</td>
+        <td>17px</td><td>20px</td>
+      </tr></table>
+  </div>
+  <div class="descriptions" name="tripinfo">
+    <h1 class="left loadingMessage">TRIPINFO</h1>
+    <p>tripinfo description</p><br><br><h3>Font sizes used in Tripinfo:</h3><table class="table-guide" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <th>Variant</th>
+        <th class="th-width">Field</th>
+        <th>Font size</th><th>Line-height</th></tr>
+      
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>TRIP_INFO_REF_TXT</td>
+        <td>17px</td><td>n/a</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A</td>
+        <td>TRIP_INFO_OUTB_TXT</td>
+        <td>20px</td><td>n/a</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>TRIP_INFO_DEPFROM_TXT</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>From - To fields</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>Date fields</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A</td>
+        <td>TRIP_INFO_TRANSIT_TXT</td>
+        <td>17px</td><td>20px;</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A</td>
+        <td>TRIP_INFO_ARRIVAL_TXT</td>
+        <td>17px</td><td>20px;</td>
+      </tr>
+       <tr>
+        <td class="table-guide-first">A</td>
+        <td>TRIP_INFO_RETURN_TXT</td>
+        <td>25px</td><td>n/a</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>TRIP_INFO_OUTB_TXT</td>
+        <td>25px</td><td>n/a</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>Passengers field</td>
+        <td>17px</td><td>20px</td>
+      </tr>
+      <tr>
+        <td class="table-guide-first">A</td>
+        <td>TRIP_INFO_BTN_CTA</td>
+        <td>17px</td><td>50px</td>
+      </tr></table>
+  </div>
+  <div class="descriptions" name="emergency">
+    <h1 class="left loadingMessage">EMERGENCY TEMPLATE</h1>
+    <p>In case we need to send out an emergency email campaign (i.e in case of an accident etc.) we must use the EMERGENCY Header and the EMERGENCY text variant:
+    <ol>
+      <li>Use the template called EmailCampaign_1_col_BASIC_INFO when creating the campaign</li>
+      <li>Go to the cmpaign's data source, and change the value for the custom variable EMERGENCY_MODE from 'N' to 'Y'</li>
+      <li>Add the TEXT module, and use variant name EMERGENCY</li>
+    </ol>
+    .
+    </p>
+    <h1 class="left loadingMessage">BASIC TEMPLATE</h1>
+    <p>The same template can be used for other information campaigns, that is not an emergency, but where we want to "strip" away Unsubscribe, soscial media etc. In that case, do not change the value for EMERGENCY_MODE in the data source, and use the normal set of content module variants.</p>
+  </div>
+  <div class="descriptions" name="newsletter_a">
+    <h1 class="left loadingMessage">NEWSLETTER A TEMPLATE</h1>
+    <p>Use this when creating newsletter campaigns: EmailCampaign_1_col_NEWSLETTER_A</p>
+  </div>
+  <div class="descriptions" name="newsletter_a_segmented">
+    <h1 class="left loadingMessage">NEWSLETTER A SEGMENTED TEMPLATE</h1>
+    <p>Use this when creating newsletter campaigns that are segmented on booking information (not CDP data): EmailCampaign_1_col_NEWSLETTER_A<br>
+      </p>
+  </div>
+  <div class="descriptions" name="newsletter_b">
+    <h1 class="left loadingMessage">NEWSLETTER B TEMPLATE</h1>
+    <p>Use this only when doing testing on new newsletter campaigns: EmailCampaign_1_col_NEWSLETTER_B</p>
+  </div>
+  <div class="descriptions" name="dialogues">
+    <h1 class="left loadingMessage">DIALOGUES TEMPLATE</h1>
+    <p>Use this for creating Short Haul dialogues and dialogues not based on a booking (i.e. Happy Birthday): EmailCampaign_1_Col_Dialogues</p>
+  </div>
+  <div class="descriptions" name="dialogues_lh">
+    <h1 class="left loadingMessage">DIALOGUES TEMPLATE</h1>
+    <p>Use this for creating Long Haul dialogues: EmailCampaign_1_Col_Dialogues_LH</p>
+  </div>
+  <div class="descriptions" name="corp">
+    <h1 class="left loadingMessage">CORPORATE/AGENT TEMPLATE</h1>
+    <p>Use this for creating Corporate or Agent newsletters: EmailCampaignCorporate</p>
+  </div>
+  <div class="descriptions" name="like-dislike">
+    <h1 class="left loadingMessage">Like / Dislike project</h1>
+    <h2 class="left">Idea:</h2>
+    <p>Put Like and Dislike buttons under any module, enable the customer to give us feedback on the content they receive. Save data to table in responsys (JM 26/09/18)</p>
+    <ul class="list">
+      <li>In <strong>Newsletter Test folder</strong>, campaign <strong>like_dislike_jm</strong></li>
+      <li>Form created is called <strong>Survey like jm</strong></li>
+      <li>We use survey.js to create the form, then we style it in the html. The html is stored in campaigns - <strong>like_yes</strong> and <strong>like_no</strong></li>
+      <li><strong>Code for the form link</strong> Unfortunately I cannot print here in the html because responsys tries to run the code, look in this source code in the comment or in the <strong>HERO variant A_like</strong> 
+        <#--		${form('like_yes', {'usedb':true})}&CAMPAIGN_NAME=${CAMPAIGN?exec}&MODULE_NAME=HERO&MODULE_HEADLINE=${MODULE.HERO_HEADLINE?exec}&MODULE_VARIANT=${MODULE.HERO_VARIANT?exec}&MODULE_BODY_TEXT=${MODULE.HERO_INTRO_TXT?exec}&WEBVERSION_EMAIL=${clickthrough('WEBVERSION')?url('ISO-8859-1')}
+        
+        AND
+        
+        
+        ${form('like_no', {'usedb':true})}&CAMPAIGN_NAME=${CAMPAIGN?exec}&MODULE_NAME=HERO&MODULE_HEADLINE=${MODULE.HERO_HEADLINE?exec}&MODULE_VARIANT=${MODULE.HERO_VARIANT?exec}&MODULE_BODY_TEXT=${MODULE.HERO_INTRO_TXT?exec}&WEBVERSION_EMAIL=${clickthrough('WEBVERSION')?url('ISO-8859-1')}--> <br>
+        which are placed in the module code, in this case <strong>HERO variant A_like</strong></li>
+      <li>The form is saving data in <strong>!FrameworkSurvey SURVEY LIKE </strong>supplemental table in <strong>two parts: </strong><br>
+        <strong>Part 1:</strong> When a customer clicks like or dislike we save: <br>
+        RIID_<br>
+        Q_LIKE <br>
+        CAMPAIGN_NAME<br>
+        EMAIL <br>
+        MARKET <br>
+        MODULE_NAME <br>
+        MODULE_HEADLINE <br>
+        MODULE_VARIANT <br>
+        MODULE_BODY_TEXT<br>
+        WEBVERSION_EMAIL - we are able to save the webversion link in the data table.<br>
+        <strong>Part 2:</strong> When customer fills out the form<br>
+        LIKEQ1<br>
+        LIKEQ2<br>
+        LIKEQ3<br>
+        DISLIKEQ1<br>
+        DISLIKEQ2<br>
+        DISLIKEQ3<br>
+        - All questions and design of the form can be edited. </li>
+      <li><strong>On form completion</strong> the customer will see a "Thankyou page" then the webversion of the original email will load. </li>
+    </ul>
+  </div>
+	<div class="descriptions" name="wifi-survey">
+    <h1 class="left loadingMessage">WiFi Survey</h1>
+    
+    <p>To be launched December 2018.</p>
+    <ul class="list">
+      <li>In <strong>!FrameworkSurvey</strong>, campaign <strong>wifi_survey_real</strong></li>
+      <li>Form created is called <strong>wifi_form</strong></li>
+      <li>We use survey.js to create the form, then we style it in the html. The html is stored in a html file called - <strong>wifi_survey.html</strong> in /contentlibrary/!mastersurvey/wifi_survey.htm</li>
+      
+        	
+    </ul>
+		<hr>
+	<h4>How to make a survey?</h4>
+	<ol>
+		<li>Create in survey.js</li>
+		<li>Style it using previous forms styling code and call to Norwegian css file (use wifi form here)</li>
+		<li>Create supplemental table to receive answers with correct columns</li>
+		<li>Create form in responsys</li>
+		<li>In form settings, save to results table created (number 3)</li>
+		<li>Add survey.js code with html styled into a html file inside responsys</li>
+		<li>Link form to use this html document</li>
+		<p style="font-style:italic; font-weight: bold">Now you should have a form, html preview, results table. All you need is the link to the form.</p>
+		<li>Add the form use criptic code to the forms sendData code. (function sendDataToResponsys(survey))</li>
+		<li>Create your url to the form, eg could be like: dollarsign{form('wifi_form', "CAMPAIGN_NAME=" + CAMPAIGN, "G_MARKET=" + MARKET, "EMAIL_ADDRESS=" + EMAIL_ADDRESS_)}</li>
+		<li>Add this url to a campaign, test the link, it should open up your form. TEST TEST TEST the form to see you have values and auto reloads after completion. Good luck!</li>
+        	
+    </ol>
+		
+		
+		
+		
+  </div>
+</div>
+</body>
+<script>
+$(document).ready(function() {
+
+$("li.list-mod").click(function(){
+	//hide the default
+	$("div.default").hide();
+	//get id of li link, hide all description divs, show the one last clicked, show the loading text
+	var getid = $(this).attr('id');
+	console.log(getid);
+	$('div.descriptions').hide();
+	$('div.descriptions[name="'+getid+'"]').show();
+	//change loading message
+	var upper_get = getid.toUpperCase();
+	$('div.loadingMessage, h1.loadingMessage').show().html(upper_get+ "<span class='loading'> Loading</span>")
+	});
+	
+	//hide loading message after loaded
+	$('#iframe').load(function () {
+    $('span.loading, div.loadingMessage').hide();
+	$('h1.loadingMessage').css("animation", "none");
+	});
+
+});
+
+</script>
+</html>

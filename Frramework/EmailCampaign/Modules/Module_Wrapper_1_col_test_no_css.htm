@@ -1,0 +1,188 @@
+<#assign MODULE_LOADED=0>
+<#assign MODULE_EXCLUDE=0>
+<#-- Module: ${CAMPAIGN_TEMPLATE.TEMPLATE_MODULE}-->
+
+<#switch CAMPAIGN_TEMPLATE.TEMPLATE_MODULE?upper_case>
+
+	<#case "HERO">
+		<#attempt>
+	
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/hero/hero_wrapper_1_col.htm">
+		
+			<#recover>
+			
+		</#attempt>
+		
+<#break>
+
+	<#case "BULLETPOINTS">
+		<#attempt>
+	
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/iconlist/bulletpoints_wrapper_1_col.htm">
+	
+			<#recover>
+	
+		</#attempt>
+		
+	<#break>
+
+<#case "PRICELIST_MANUAL">
+		<#attempt>
+		
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/pricelist_manual/manual_wrapper_1_col.htm">
+		
+			<#recover>
+		</#attempt>
+		
+	<#break>
+
+	<#case "PERSONALIZATION">
+		<#attempt>
+	
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/personalization/personalization_wrapper_1_col.htm">
+	
+			<#recover>
+	
+		</#attempt>
+	<#break>
+
+	<#case "PRICELIST">
+		<#attempt>
+	
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/pricelist/pricelist_wrapper_1_col.htm">
+	
+			<#recover>
+	
+		</#attempt>
+	<#break>
+
+<#case "PROMOLIST">
+		<#attempt>
+	
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/promolist/promolist_wrapper_1_col.htm">
+	
+			<#recover>
+	
+		</#attempt>
+		
+	<#break>
+    
+    <#case "PROMO_MAN">
+		<#attempt>
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/promolist_manual/promo_man_wrapper_1_col.htm">
+
+			<#recover>
+	
+		</#attempt>
+	<#break>
+
+	<#case "TEXT">
+		<#attempt>
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/text/text_wrapper_1_col.htm">
+
+			<#recover>
+
+		</#attempt>
+		
+	<#break>
+
+	<#case "BANNER">
+		<#attempt>
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/banner/banner_wrapper_1_col.htm">
+
+			<#recover>
+
+		</#attempt>
+	
+	<#break>
+
+	<#case "ARTICLE">
+		<#attempt>
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/article/article_wrapper_1_col.htm">
+
+			<#recover>
+
+		</#attempt>
+		
+	<#break>
+
+<#case "ARTICLE_LARGE">
+		<#attempt>
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/articlelarge/article_large_wrapper_1_col.htm">
+
+			<#recover>
+
+		</#attempt>
+		
+	<#break>
+
+<#case "TRIPINFO">
+	
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/tripinfo/tripinfo_wrapper_1_col.htm">
+
+		
+		
+	<#break>
+	
+	<#case "CARS">
+		<#attempt>
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/cars/cars_wrapper_1_col.htm">
+
+			<#recover>
+
+		</#attempt>
+		
+	<#break>
+
+	<#case "HOTELS">
+		<#attempt>
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/hotels/hotels_wrapper_1_col.htm">
+
+			<#recover>
+	
+		</#attempt>
+		
+	<#break>
+
+	<#case "SEARCH">
+		<#attempt>
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/search/search_wrapper_1_col.htm">
+	
+			<#recover>
+	
+		</#attempt>
+		
+	<#break>
+
+<#case "BUTTON">
+		<#attempt>
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/button/button_wrapper_1_col.htm">
+
+			<#recover>
+	
+		</#attempt>
+		
+	<#break>
+
+	<#case "SPACER">
+		<#attempt>
+
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/spacer/spacer_d20t10_1_col.htm">
+
+			<#recover>
+
+		</#attempt>
+		
+	<#break>
+
+</#switch>
