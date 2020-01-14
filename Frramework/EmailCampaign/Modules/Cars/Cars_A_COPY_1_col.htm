@@ -1,0 +1,98 @@
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+	<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET>
+	<#fields CAR_DAY_TEXT CAR_NUMBEROF_CARS CAR_BTN_CTA><#-- start - setting variables for CarTrawler request -->
+	<#assign ct_priceunit_locale = MODULE.CAR_DAY_TEXT>  <#-- 'day' in customer's locale (price displayed is a daily price -->
+	<#assign ct_language = CARTRAWLER_LANG?exec?trim>  <#-- Customer's language code (two-digit)  -->
+	<#assign ct_pickup_location = DESTINATION_IATA?exec?trim>  <#-- IATA-code -->
+	<#assign ct_currency = BOOKING_CURRENCY?exec?trim>  <#-- Customer's currency -->
+	<#assign ct_customer_country = WEBPAGE_MARKET>  <#-- Customer's country code  -->
+	<#assign ct_pickup_datetime = DEPARTURE_DATE_HOTEL?exec?datetime>  <#-- Date and time of car pickup -->
+	<#assign ct_return_datetime = RETURN_DATE_HOTEL?exec?datetime>  <#-- Date and time of car return -->
+	<#assign ct_passengers = NUMBER_OF_PASSENGERS?exec>  <#-- Number of passengers -->
+	<#assign ct_cars = NUMBEROFCARS?exec>  <#-- Number of cars to show -->
+	<#assign ct_tracking_code = CAMPAIGN>  <#-- For tracking car orders - e.g. campaign name or booking id -->
+<#-- end - setting variables for CarTrawler request -->
+
+<#assign ct_url><#join><#compress>http://cars.cartrawler.com/norwegian-new/widget?type=xml&clientId=759205&lang=${ct_language}&locCode=${ct_pickup_location}&num=${ct_cars}&curr=${ct_currency}&residencyId=${ct_customer_country}&pkDateTime=${ct_pickup_datetime?string("yyyyMMddHHmm")}&rtDateTime=${ct_return_datetime?string("yyyyMMddHHmm")}&passengers=${ct_passengers}&encoding=utf8&orderId=${ct_tracking_code}</#compress></#join></#assign>
+<#attempt>
+	<#assign ct_xml = parsexml(load(ct_url, "UTF-8"))>
+	<#assign ct_bookingurl = ct_xml.data.moreoffersurl>
+    <tr>
+  <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+      <tr>
+        <td class="Social_Inner" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:20px;padding-left:20px;" ><table width="100%" cellpadding="0" cellspacing="0" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+            <tr>
+              <td class="inner contents h2" align="left" style="box-sizing:inherit;text-align:left;padding-top:20px;padding-bottom:3px;padding-right:0;padding-left:0;border-style:none;font-size:18px;font-weight:bold;Margin-bottom:0;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" > ${ct_xml.data.detail.displayTitle} - ${ct_xml.data.detail.locationName} </td>
+            </tr>
+          </table></td>
+      </tr>
+    </table></td>
+</tr>
+<#list ct_xml.data.cars.car as car>
+<tr>
+  <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+      <tr>
+        <td class="inner contents" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;" ><table cellpadding="0" cellspacing="0" width="100%"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+            <tr>
+              <td valign="top" style="box-sizing:inherit;padding-top:8px;padding-bottom:0;padding-right:20px;padding-left:20px;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" width="100%" bgcolor="#fffffe"  border="0" style="box-sizing:inherit;padding-top:10px;padding-bottom:5px;padding-right:0;padding-left:0;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                  <tr>
+                    <td width="15%" align="center" valign="top" class="Article_Image" style="box-sizing:inherit;min-width:160px !important;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:10px;padding-bottom:10px;padding-right:20px;padding-left:20px;" ><table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                        <tr>
+                          <td style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><a href="${clickthrough('CAR','URL='+ct_bookingurl)}" target="_blank" style="box-sizing:inherit;color:#D81939;text-decoration:underline;font-family:Arial, Helvetica, Sans-serif;" ><img src="${car.img}" width="100" height="auto" class="Iconlist_Image"  border="0" alt="${car.model}" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;display:block;width:100%;height:auto;" /></a></td>
+                        </tr>
+                        <tr>
+                          <td align="center" style="box-sizing:inherit;padding-top:5px;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><img src="${car.vendorimg}" width="60" height="21" alt="" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;" /></td>
+                        </tr>
+                      </table></td>
+                    <td align="left" valign="top" class="m_ptop0" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" width="100%"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                        <tr>
+                          <td style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:2px;padding-right:0;padding-left:0;" ><!--[if (gte mso 9)|(IE)]><a href="${clickthrough('CAR','URL='+ct_bookingurl)}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;line-height:30px;font-size:18px;padding-bottom:4px;font-weight:bold;" ><![endif]--><!--[if !mso]><!--><a href="${clickthrough('CAR','URL='+ct_bookingurl)}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;line-height:30px;font-size:18px;padding-bottom:4px;font-weight:bold;mso-hide:all;"><!--><![endif]-->${car.type}</a></span></td>
+                        </tr>
+                        <tr>
+                          <td class="Carfeed_Text" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;font-size:18px;line-height:26px;mso-line-height-rule:exactly;padding-top:10px;padding-bottom:5px;padding-right:5px;padding-left:0;font-weight:normal;text-decoration:none;display:inline-block;" >${car.model}</td>
+                        </tr>
+                        <tr>
+                          <td class="Carfeed_Price" style="box-sizing:inherit;border-style:none;color:#003D50;font-family:Arial, Helvetica, Sans-serif;font-size:22px;line-height:22px;mso-line-height-rule:exactly;padding-top:5px;padding-bottom:5px;padding-right:5px;padding-left:0;font-weight:bold;text-decoration:none;display:inline-block;" >${car.price} / ${ct_priceunit_locale}</td>
+                        </tr>
+                      </table></td>
+                    
+                    <!--BUTTON HERE-->
+                    <td align="left" valign="top" class="hide m_ptop0" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                        <tr>
+                          <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" width="100%" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                              <tr>
+                                <td class="inner contents" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;" ><table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                                    <tr>
+                                      <td align="right" style="box-sizing:inherit;padding-top:30px;padding-bottom:20px;padding-right:20px;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" class="ma" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" >
+                                          <tr>
+                                            <td class="Button_outer_td" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table bgcolor="#D81939" cellpadding="0" cellspacing="0" class="autowidth" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto; background-color:#D81939" >
+                                                <tr>
+                                                  <td class="Button_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#D81939;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 31px 0 31px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#fffffe;" ><!-- Office 365 [OWA] fix -->
+                                                    
+                                                    <table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                                                      <tr>
+                                                        <td align="center" height="50" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:18px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('CAR','URL='+ct_bookingurl)}" target="_blank" class="Button_white_link" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:18px;font-weight:bold;line-height:50px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" ><!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]--> <#if !MODULE.CAR_BTN_CTA?isnull>${MODULE.CAR_BTN_CTA?exec?trim}<#else>Book now</#if><!--[if (gte mso 9)|(IE)]></font><![endif]--></a></p></td>
+                                                      </tr>
+                                                    </table></td>
+                                                </tr>
+                                              </table></td>
+                                          </tr>
+                                        </table></td>
+                                    </tr>
+                                  </table></td>
+                              </tr>
+                            </table></td>
+                        </tr>
+                      </table></td>
+                     </tr>
+                </table></td>
+            </tr>
+          </table></td>
+      </tr>
+    </table></td>
+</tr>
+</#list>
+
+<#recover>
+error loading cars -->
+</#attempt></#data>

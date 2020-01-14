@@ -1,0 +1,27 @@
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET  FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields CAR_VARIANT CAR_DISPLAY_RULE CAR_DAY_TEXT CAR_NUMBEROF_CARS CAR_LOGO_YN CAR_DIVIDER_TOP CAR_DIVIDER_BTM CAR_BTN_CTA>
+			<#if !MODULE.CAR_VARIANT?isnull>
+				<#if !MODULE.CAR_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.CAR_DISPLAY_RULE+".htm">
+					<#recover>
+						<#if !MODULE.CAR_DISPLAY_RULE?isnull 
+                            && (MODULE.CAR_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.CAR_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong segment, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>   
+	                </#if> 
+						 <#if !MODULE.CAR_DISPLAY_RULE?isnull 
+                           && MODULE.CAR_DISPLAY_RULE?lower_case == "default"
+                           && CAR_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                          </#if> 
+					</#attempt>
+				</#if>
+				<#if MODULE_EXCLUDE == 0>
+					<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/cars/cars_"+MODULE.CAR_VARIANT+"_1_col.htm">
+				<#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!-- error loading car module --></#attempt><#-- CAR_SHOW_DEFAULT == 1 or NULL equals no content, 0 has content --><#global CAR_SHOW_DEFAULT = 0><#global CAR_HAVE_CONTENT='YES'>	
+				</#if>
+			</#if>
+</#data>
