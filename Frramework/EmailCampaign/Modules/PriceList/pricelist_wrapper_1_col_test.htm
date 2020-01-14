@@ -1,0 +1,48 @@
+<#if DV_DEBUG_ALL = 'Y'>
+    Running: pricelist_wrapper_1_col_test.htm (Pos:${CAMPAIGN_TEMPLATE.TEMPLATE_POSITION})
+<br /></#if>
+<#-- PRICELIST_SHOW_DEFAULT is 1 in newsletter defaults-->
+<#if PREFFERED_AIRPORT?isnull>
+    <#assign PREFAIR = 'DEFAULT'>
+<#else>
+	<#assign PREFAIR = PREFFERED_AIRPORT?trim>
+</#if>
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields  PRICELIST_VARIANT PRICELIST_DISPLAY_RULE PRICELIST_SEGMENT_RULE PRICELIST_PREMIUM PRICELIST_HEADLINE PRICELIST_PREMIUM_HEADLINE PRICELIST_LOWFARE_HEADLINE PRICELIST_BEFORE_DEP_TXT PRICELIST_BEFORE_DEST_TXT PRICELIST_AFTER_DEST_TXT PRICELIST_SUB_TXT PRICELIST_SMALL_TXT PRICELIST_BTN_CTA PRICELIST_BTN_URL PRICELIST_BTN_CLR PRICELIST_DIVIDER_BTM PRICELIST_DIVIDER_TOP PRICELIST_WEEK PRICELIST_YEAR PRICELIST_SHOW_IATA_YN PRICELIST_SHOW_DEP_YN>
+			<#assign MODULE_EXCLUDE = 0>
+          <#if DV_DEBUG_ALL = 'Y'>
+              Module found. Variant: ${MODULE.PRICELIST_VARIANT}. 
+          </#if>
+			<#if !MODULE.PRICELIST_VARIANT?isnull>
+				<#if !MODULE.PRICELIST_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.PRICELIST_DISPLAY_RULE+".htm">
+                        Rule: ${MODULE_EXCLUDE}
+					<#recover>
+					 <#if !MODULE.PRICELIST_DISPLAY_RULE?isnull 
+                            && (MODULE.PRICELIST_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.PRICELIST_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong PREFAIR, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>  
+                        module excluded.
+	                </#if> 
+						 <#if !MODULE.PRICELIST_DISPLAY_RULE?isnull 
+                           && MODULE.PRICELIST_DISPLAY_RULE?lower_case == "default"
+                           && PRICELIST_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                              module excluded.
+                          </#if> 	
+						</#attempt>
+				</#if>
+
+				<#if MODULE_EXCLUDE == 0>
+                    <#attempt> 
+                    module included.
+                   <#include "cms://contentlibrary/!framework/emailcampaign/modules/pricelist/pricelist_"+MODULE.PRICELIST_VARIANT+"_1_col_test.htm">
+                   <#recover>Error loading pricelist module: pricelist_${MODULE.PRICELIST_VARIANT}_1_col_test.htm</#attempt>
+					<#global PRICELIST_SHOW_DEFAULT = 0>
+					</#if>
+				</#if>
+           <br>
+</#data>

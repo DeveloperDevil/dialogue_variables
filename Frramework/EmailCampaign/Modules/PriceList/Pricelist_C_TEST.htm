@@ -1,0 +1,61 @@
+<!-- // MOD 02b: START \\-->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td align="left" style="padding:0 20px 0 20px;font-family:Arial, Helvetica, Sans-serif;font-weight:bold;font-size:22px;line-height:24px;color:#003D50;"><#if !MODULE.PRICELIST_HEADLINE?isnull>${MODULE.PRICELIST_HEADLINE?exec}</#if></td>
+        </tr>
+      </table>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-weight:normal;font-size:14px;line-height:16px;color:#003D50;padding:20px;">
+                 <#if !MODULE.PRICELIST_PARAGRAPH?isnull> ${MODULE.PRICELIST_PARAGRAPH?exec}<br>&nbsp;<br></#if>
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr><td>
+                   <#escape x as x?html>     
+                <#data REVENUE_PRICES as REVENUE_PRICES><#filter MARKET1 = MARKET CAMPAIGN_NAME = CAMPAIGN><#fields FROM_IATA LOWFARE_PRICE TO_IATA TRAVEL_PERIOD_START LINK_TO CURRENCY><table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    
+                      <tr>
+                        <td colspan="2" bgcolor="#d8d8d8" height="2" style="font-size:1px;line-height:1px;background-color:#d8d8d8;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          <a href="http://www.norwegian.com/${WEBPAGE_MARKET?lower_case?trim}/${WEBPAGE_URL_PATH?trim}/?D_City=${REVENUE_PRICES.FROM_IATA?exec?trim}&A_City=${REVENUE_PRICES.TO_IATA?exec?trim}&D_Day=${REVENUE_PRICES.LINK_TO?string[0..1]}&D_Month=${REVENUE_PRICES.LINK_TO?string[6..9]}${REVENUE_PRICES.LINK_TO?string[3..4]}&R_Day=${REVENUE_PRICES.LINK_TO?string[0..1]?number+14}&R_Month=${REVENUE_PRICES.LINK_TO?string[6..9]}${REVENUE_PRICES.LINK_TO?string[3..4]}&IncludeTransit=false&AgreementCodeFK=-1&CurrencyCode=${REVENUE_PRICES.CURRENCY}" target="_blank" style="color:#D81939;">${MODULE.PRICELIST_DEST_1_NAME} <#data AIRPORTS as AIRPORTS><#filter AIRPORTCODE_IATA = REVENUE_PRICES.FROM_IATA LANGUAGECODE = MARKET><#fields CITY>from ${AIRPORTS.CITY} (${REVENUE_PRICES.FROM_IATA})</#data> ${MODULE.PRICELIST_DEST_2_NAME} <#data AIRPORTS as AIRPORTS><#filter AIRPORTCODE_IATA = REVENUE_PRICES.TO_IATA LANGUAGECODE = MARKET><#fields CITY>${AIRPORTS.CITY} (${REVENUE_PRICES.TO_IATA}) </#data></a> <td align="right" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;"><strong><@nas.price REVENUE_PRICES.LOWFARE_PRICE MARKET/></strong></td>
+                      </tr></table><br /></#data>
+                   </#escape>
+                   </td> </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>                  
+          </td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td style="padding:0 20px 20px 20px;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding:0 0 2px 0;border-bottom:4px solid #003D50;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td bgcolor="#D81939">                    
+                        <a href="${clickthrough('PRICELIST_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.PRICELIST_URL)}" style="border:1px solid #D81939;color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:left;text-decoration:none;-webkit-text-size-adjust:none;padding:0 39px 0 13px;mso-padding-alt:10px 21px 10px 21px;">${MODULE.PRICELIST_CALL_TO_ACTION?exec}<!--[if gte mso 9]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]-->
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- // MOD 02b: END \\-->

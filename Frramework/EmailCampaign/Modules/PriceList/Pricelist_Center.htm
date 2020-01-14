@@ -1,0 +1,182 @@
+<!-- // Pricelist_Center start \\-->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td align="left" style="padding:0 20px 0 20px;font-family:Arial, Helvetica, Sans-serif;font-weight:bold;font-size:22px;line-height:24px;color:#003D50;">${MODULE.PRICELIST_HEADLINE?exec}</td>
+        </tr>
+      </table>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                  
+                    <tr>
+                    <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-weight:normal;font-size:14px;line-height:16px;color:#003D50;padding:20px; text-align:center"><b>${MODULE.PRICELIST_PARAGRAPH?exec}</b>
+                              
+                              </td>
+                              </tr>
+                              </table>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+          <td>
+            <table class="t_w50pc m_w100pc left" aria-labelledby="left" align="left" width="320" cellpadding="0" cellspacing="0" border="0">
+           
+                    
+            
+              <tr>
+                <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-weight:normal;font-size:14px;line-height:16px;color:#003D50;padding:0 20px 0 20px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <#if !MODULE.PRICELIST_DEST_1_NAME?isnull>
+                      <tr>
+                        <td colspan="2" bgcolor="#d8d8d8" height="2" style="font-size:1px;line-height:1px; background-color:#d8d8d8;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          <#if !MODULE.PRICELIST_DEST_1_URL?isnull><a href="${clickthrough('PRICELIST_DEST_1_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.PRICELIST_DEST_1_URL)}" target="_blank" style="color:#D81939;">${MODULE.PRICELIST_DEST_1_NAME}</a><#else>${MODULE.PRICELIST_DEST_1_NAME}</#if> ${MODULE.PRICELIST_DEST_1_TEXT}
+                        </td>
+                        <td align="right" style="white-space:nowrap; font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          ${MODULE.PRICELIST_DEST_1_PRICE}
+                        </td>
+                      </tr>
+                      </#if>
+                    <#if !MODULE.PRICELIST_DEST_2_NAME?isnull>
+                      <tr>
+                        <td colspan="2" bgcolor="#d8d8d8" height="2" style="font-size:1px;line-height:1px;background-color:#d8d8d8;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          <#if !MODULE.PRICELIST_DEST_2_URL?isnull><a href="${clickthrough('PRICELIST_DEST_2_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.PRICELIST_DEST_2_URL)}" target="_blank" style="color:#D81939;">${MODULE.PRICELIST_DEST_2_NAME}</a><#else>${MODULE.PRICELIST_DEST_2_NAME}</#if> ${MODULE.PRICELIST_DEST_2_TEXT}
+                        </td>
+                        <td align="right" style="white-space:nowrap; font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          ${MODULE.PRICELIST_DEST_2_PRICE}
+                        </td>
+                      </tr>
+                      </#if>
+                    <#if !MODULE.PRICELIST_DEST_3_NAME?isnull>
+                      <tr>
+                        <td colspan="2" bgcolor="#d8d8d8" height="2" style="font-size:1px;line-height:1px;background-color:#d8d8d8;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          <#if !MODULE.PRICELIST_DEST_3_URL?isnull><a href="${clickthrough('PRICELIST_DEST_3_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.PRICELIST_DEST_3_URL)}" target="_blank" style="color:#D81939;">${MODULE.PRICELIST_DEST_3_NAME}</a><#else>${MODULE.PRICELIST_DEST_3_NAME}</#if> ${MODULE.PRICELIST_DEST_3_TEXT}
+                        </td>
+                        <td align="right" style="white-space:nowrap; font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          ${MODULE.PRICELIST_DEST_3_PRICE}
+                        </td>
+                      </tr>
+                      </#if>
+                    <#if !MODULE.PRICELIST_DEST_4_NAME?isnull>
+                      <tr>
+                        <td colspan="2" bgcolor="#d8d8d8" height="2" style="font-size:1px;line-height:1px;background-color:#d8d8d8;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          <#if !MODULE.PRICELIST_DEST_4_URL?isnull><a href="${clickthrough('PRICELIST_DEST_4_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.PRICELIST_DEST_4_URL)}" target="_blank" style="color:#D81939;">${MODULE.PRICELIST_DEST_4_NAME}</a><#else>${MODULE.PRICELIST_DEST_4_NAME}</#if> ${MODULE.PRICELIST_DEST_4_TEXT}
+                        </td>
+                        <td align="right" style="white-space:nowrap; font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          ${MODULE.PRICELIST_DEST_4_PRICE}
+                        </td>
+                      </tr>
+                      </#if>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <!--[if gte mso 9]></td><td><![endif]--> 
+            <table class="t_w50pc m_w100pc left" aria-labelledby="left" align="left" width="320" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-weight:normal;font-size:14px;line-height:16px;color:#003D50;padding:0 20px 20px 20px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <#if !MODULE.PRICELIST_DEST_5_NAME?isnull>
+                      <tr>
+                        <td colspan="2" bgcolor="#d8d8d8" height="2" style="font-size:1px;line-height:1px;background-color:#d8d8d8;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          <#if !MODULE.PRICELIST_DEST_5_URL?isnull><a href="${clickthrough('PRICELIST_DEST_5_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.PRICELIST_DEST_5_URL)}" target="_blank" style="color:#D81939;">${MODULE.PRICELIST_DEST_5_NAME}</a><#else>${MODULE.PRICELIST_DEST_5_NAME}</#if> ${MODULE.PRICELIST_DEST_5_TEXT}
+                        </td>
+                        <td align="right" style="white-space:nowrap; font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                         ${MODULE.PRICELIST_DEST_5_PRICE}
+                        </td>
+                      </tr>
+                      </#if>
+                    <#if !MODULE.PRICELIST_DEST_6_NAME?isnull>
+                      <tr>
+                        <td colspan="2" bgcolor="#d8d8d8" height="2" style="font-size:1px;line-height:1px;background-color:#d8d8d8;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          <#if !MODULE.PRICELIST_DEST_6_URL?isnull><a href="${clickthrough('PRICELIST_DEST_6_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.PRICELIST_DEST_6_URL)}" target="_blank" style="color:#D81939;">${MODULE.PRICELIST_DEST_6_NAME}</a><#else>${MODULE.PRICELIST_DEST_6_NAME}</#if> ${MODULE.PRICELIST_DEST_6_TEXT}
+                        </td>
+                        <td align="right" style="white-space:nowrap; font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          ${MODULE.PRICELIST_DEST_6_PRICE}
+                        </td>
+                      </tr>
+                      </#if>
+                    <#if !MODULE.PRICELIST_DEST_7_NAME?isnull>
+                      <tr>
+                        <td colspan="2" bgcolor="#d8d8d8" height="2" style="font-size:1px;line-height:1px;background-color:#d8d8d8;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          <#if !MODULE.PRICELIST_DEST_7_URL?isnull><a href="${clickthrough('PRICELIST_DEST_7_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.PRICELIST_DEST_7_URL)}" target="_blank" style="color:#D81939;">${MODULE.PRICELIST_DEST_7_NAME}</a><#else>${MODULE.PRICELIST_DEST_7_NAME}</#if> ${MODULE.PRICELIST_DEST_7_TEXT}
+                        </td>
+                        <td align="right" style="white-space:nowrap; font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          ${MODULE.PRICELIST_DEST_7_PRICE}
+                        </td>
+                      </tr>
+                      </#if>
+                    <#if !MODULE.PRICELIST_DEST_8_NAME?isnull>
+                      <tr>
+                        <td colspan="2" bgcolor="#d8d8d8" height="2" style="font-size:1px;line-height:1px;background-color:#d8d8d8;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          <#if !MODULE.PRICELIST_DEST_8_URL?isnull><a href="${clickthrough('PRICELIST_DEST_8_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.PRICELIST_DEST_8_URL)}" target="_blank" style="color:#D81939;">${MODULE.PRICELIST_DEST_8_NAME}</a><#else>${MODULE.PRICELIST_DEST_8_NAME}</#if> ${MODULE.PRICELIST_DEST_8_TEXT}
+                        </td>
+                        <td align="right" style="white-space:nowrap; font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#063d4d;padding:10px 0 10px 0;">
+                          ${MODULE.PRICELIST_DEST_8_PRICE}
+                        </td>
+                      </tr>
+                      </#if>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <#if !MODULE.PRICELIST_URL?isnull>
+	<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+                    <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" width="100%" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                        <tr>
+                          <td class="inner contents" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;" ><table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                              <tr>
+                                <td align="center" style="box-sizing:inherit;padding-top:10px;padding-bottom:10px;padding-right:20px;padding-left:20px;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" class="ma" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" >
+                                    <tr>
+                                      <td class="Button_outer_td" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table cellpadding="0" cellspacing="0" class="autowidth" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                                          <tr>
+                                            <td class="Button_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#D81939;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 31px 0 31px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#fffffe;" ><!-- Office 365 [OWA] fix -->
+                                              
+                                              <table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                                                <tr>
+                                                  <td align="center" height="33" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:15px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('PRICELIST_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.PRICELIST_URL)}" target="_blank" class="Button_white_link" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" ><!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]-->${MODULE.PRICELIST_CALL_TO_ACTION?exec}<!--[if (gte mso 9)|(IE)]></font><![endif]--></a></p></td>
+                                                </tr>
+                                              </table></td>
+                                          </tr>
+                                        </table></td>
+                                    </tr>
+                                  </table></td>
+                              </tr>
+                            </table></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                  </table>
+      
+      </#if>
+    </td>
+  </tr>
+</table>
+<!-- // Pricelist_Center END \\-->

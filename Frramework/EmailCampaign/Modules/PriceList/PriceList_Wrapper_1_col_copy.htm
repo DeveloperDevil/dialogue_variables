@@ -1,0 +1,14 @@
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields  PRICELIST_VARIANT PRICELIST_DISPLAY_RULE PRICELIST_SEGMENT_RULE PRICELIST_PREMIUM PRICELIST_HEADLINE PRICELIST_PREMIUM_HEADLINE PRICELIST_LOWFARE_HEADLINE PRICELIST_BEFORE_DEP_TXT PRICELIST_BEFORE_DEST_TXT PRICELIST_AFTER_DEST_TXT PRICELIST_SUB_TXT PRICELIST_SMALL_TXT PRICELIST_BTN_CTA PRICELIST_BTN_URL PRICELIST_BTN_CLR PRICELIST_DIVIDER_BTM PRICELIST_DIVIDER_TOP PRICELIST_WEEK PRICELIST_YEAR PRICELIST_SHOW_IATA_YN PRICELIST_SHOW_DEP_YN>
+			<#if !MODULE.PRICELIST_VARIANT?isnull>
+<#if !MODULE.PRICELIST_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.PRICELIST_DISPLAY_RULE+".htm">
+					<#recover>
+						<!-- error loading display rule -->
+					</#attempt>
+				</#if>
+
+				<#if MODULE_EXCLUDE == 0><#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/pricelist/pricelist_"+MODULE.PRICELIST_VARIANT+"_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"> error loading pricelist module --></td></tr></#attempt></#if></#if>
+</#data>
