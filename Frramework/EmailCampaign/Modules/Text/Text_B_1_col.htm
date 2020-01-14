@@ -1,0 +1,286 @@
+<tr>
+  <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+  <table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; background-color:${CAMPAIGN_BCG_CLR};" >
+    <#if MODULE.TEXT_DIVIDER_TOP?upper_case == "Y"><#if MODULE.TEXT_BCG_CLR?lower_case == "white">
+    <tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+      <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr><tr>
+      
+     <td width="20" bgcolor="#fffffe"></td><td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: #fffffe;" >&nbsp;</td><td width="20" bgcolor="#fffffe"></td>      
+    </tr>
+    <#else>
+    <tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td><td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td><td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td>
+    </tr>
+    </#if>
+    
+    <#if MODULE.TEXT_BCG_CLR?lower_case == "white"><tr>
+            <td width="20" bgcolor="#fffffe" height="1" style="font-size:1px;line-height:1px;height:1px;">&nbsp;</td>
+            
+            <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+            
+            <td width="20" bgcolor="#fffffe" height="1" style="font-size:1px;line-height:1px;height:1px;">&nbsp;</td></tr>
+            <#else><tr>
+            <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="1" style="font-size:1px;line-height:1px;height:1px;">&nbsp;</td>
+            
+            <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+            
+            <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="1" style="font-size:1px;line-height:1px;height:1px;">&nbsp;</td></tr></#if>
+   <#elseif MODULE.TEXT_DIVIDER_TOP?upper_case == "S"><#if MODULE.TEXT_BCG_CLR?lower_case == "white">
+   <tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+      <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="20" bgcolor="#fffffe" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+      <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: #fffffe;" >&nbsp;</td>
+      <td width="20" bgcolor="#fffffe" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr>
+    <#else><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+      <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr></#if></#if>
+    <#if !MODULE.TEXT_HEADER?isnull><#if MODULE.TEXT_BCG_CLR?lower_case == "white">
+    <tr>
+      <td width="20" bgcolor="#fffffe" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td><td class="contents intro" align="center" style="height: 20px; line-height: 20px;font-size: 20px; background-color: #fffffe;text-align: center"><p class="heading" align="center" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:24px;font-weight:bold;Margin-bottom:10px;padding-left:0;padding-right:0;padding-top:10px;padding-bottom:0;line-height:30px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;text-align: center" >${MODULE.TEXT_HEADER}</p></td><td width="20" bgcolor="#fffffe" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr><tr>
+      <td width="20" bgcolor="#fffffe" height="10" style="font-size:10px;line-height:10px;height:10px;">&nbsp;</td>
+      <td height="10" style="box-sizing:inherit;font-size:10px;line-height:10px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: #fffffe;" >&nbsp;</td>
+      <td width="20" bgcolor="#fffffe" height="10" style="font-size:10px;line-height:10px;height:10px;">&nbsp;</td>
+    </tr><#else><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td><td class="contents intro" align="center" style="height: 20px; line-height: 20px;font-size: 20px; background-color: ${CAMPAIGN_BCG_CLR};text-align: center;padding-left: 20px; padding-right: 20px;padding-top: 0;padding-bottom: 0;margin: 0;"><p class="heading" align="center" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:24px;font-weight:bold;padding: 0;line-height:30px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;text-align: center;margin: 0" >${MODULE.TEXT_HEADER}</p></td><td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="10" style="font-size:10px;line-height:10px;height:10px;">&nbsp;</td>
+      <td height="10" style="box-sizing:inherit;font-size:10px;line-height:10px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="10" style="font-size:10px;line-height:10px;height:10px;">&nbsp;</td>
+    </tr>
+    </#if></#if>
+    <#if !MODULE.TEXT_INTRO?isnull>
+    <#if MODULE.TEXT_BCG_CLR?lower_case == "white"><tr>
+      <td width="20" bgcolor="#fffffe"></td>
+      <td class="contents intro" 
+      bgcolor="#fffffe" style="box-sizing:inherit;padding-left:20px;padding-right: 20px;border-style:none;text-align:center;font-size:19px;padding-top:0;padding-bottom:0;line-height:20px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;background-color:#fffffe;">
+      ${MODULE.TEXT_INTRO}
+      </td>
+      <td width="20" bgcolor="#fffffe"></td>
+    </tr><tr>
+      <td width="20" bgcolor="#fffffe" height="10" style="font-size:10px;line-height:10px;height:10px;">&nbsp;</td>
+      <td height="10" style="box-sizing:inherit;font-size:10px;line-height:10px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: #fffffe;" >&nbsp;</td>
+      <td width="20" bgcolor="#fffffe" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr><#else><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td>
+      <td class="contents intro" 
+      bgcolor="${CAMPAIGN_BCG_CLR}" style="box-sizing:inherit;padding-left:20px;padding-right: 20px;border-style:none;text-align:center;font-size:19px;padding-top:0;padding-bottom:0;line-height:20px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;background-color:${CAMPAIGN_BCG_CLR};margin: 0;">
+      ${MODULE.TEXT_INTRO}
+      </td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td>
+    </tr><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="10" style="font-size:10px;line-height:10px;height:10px;">&nbsp;</td>
+      <td height="10" style="box-sizing:inherit;font-size:10px;line-height:10px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr></#if></#if>
+    <#if !MODULE.TEXT_SUBHEADER_LEFT?isnull>
+    <#if MODULE.TEXT_BCG_CLR?lower_case == "white">
+    <tr>
+      <td width="20" bgcolor="#fffffe"></td>
+      <td 
+      bgcolor="#fffffe" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:8px;padding-bottom:8px;font-size:18px;font-weight:bold;background-color:#fffffe;padding-right:0;padding-left:0;">
+      ${MODULE.TEXT_SUBHEADER_LEFT}
+      </td>
+      <td width="20" bgcolor="#fffffe"></td>
+    </tr><tr>
+      <td width="20" bgcolor="#fffffe" height="10" style="font-size:10px;line-height:10px;height:10px;">&nbsp;</td>
+      <td height="10" style="box-sizing:inherit;font-size:10px;line-height:10px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: #fffffe;" >&nbsp;</td>
+      <td width="20" bgcolor="#fffffe" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr><#else><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td>
+      <td 
+      bgcolor="${CAMPAIGN_BCG_CLR}" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:8px;padding-bottom:8px;font-size:18px;font-weight:bold;background-color:${CAMPAIGN_BCG_CLR};padding-right:0;padding-left:0;">
+      ${MODULE.TEXT_SUBHEADER_LEFT}
+      </td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td>
+    </tr><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="10" style="font-size:10px;line-height:10px;height:10px;">&nbsp;</td>
+      <td height="10" style="box-sizing:inherit;font-size:10px;line-height:10px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr>
+    </#if></#if>
+    
+    <#if !MODULE.TEXT_PARAGRAPH?isnull>
+    <#if MODULE.TEXT_BCG_CLR?lower_case == "white">
+    <tr>
+      <td width="20" bgcolor="#fffffe"></td>
+      <td 
+      bgcolor="#fffffe" align="left" style="box-sizing:inherit;padding-top:0;padding-bottom:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#fffffe;padding-right:0;padding-left:0;font-size:17px;line-height:20px;">
+      <p style="box-sizing:inherit;Margin:0;font-size:18px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:10px;line-height:20px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" >${MODULE.TEXT_PARAGRAPH}</p>
+      </td>
+      <td width="20" bgcolor="#fffffe"></td>
+    </tr><tr>
+      <td width="20" bgcolor="#fffffe" height="10" style="font-size:10px;line-height:10px;height:10px;">&nbsp;</td>
+      <td height="10" style="box-sizing:inherit;font-size:10px;line-height:10px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: #fffffe;" >&nbsp;</td>
+      <td width="20" bgcolor="#fffffe" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr>
+    <#else>
+    <tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td>
+      <td 
+      bgcolor="${CAMPAIGN_BCG_CLR}" align="left" style="box-sizing:inherit;padding-top:0;padding-bottom:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:${CAMPAIGN_BCG_CLR};padding-right:0;padding-left:0;font-size:17px;line-height:20px;">
+      <p style="box-sizing:inherit;Margin:0;font-size:18px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:10px;line-height:20px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" >${MODULE.TEXT_PARAGRAPH}</p>
+      </td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td>
+    </tr><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="10" style="font-size:10px;line-height:10px;height:10px;">&nbsp;</td>
+      <td height="10" style="box-sizing:inherit;font-size:10px;line-height:10px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr>
+    </#if></#if>
+     <#if !MODULE.TEXT_TXT_CTA?isnull || !MODULE.TEXT_BTN_CTA?isnull> <#if MODULE.TEXT_BCG_CLR?lower_case == "white"><tr>
+      <td width="20" bgcolor="#fffffe"></td>
+      <td class="inner contents" 
+      bgcolor="#fffffe" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;background-color:#fffffe;" >
+      <table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+        <#if !MODULE.TEXT_TXT_CTA?isnull && !MODULE.TEXT_PARAGRAPH?contains('TEXT_LINK')>
+        <tr>
+          <td align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:30px;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><p style="box-sizing:inherit;Margin:0;font-size:17px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:20px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" ><!--[if (gte mso 9)|(IE)]><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:17px;line-height:20px;padding-bottom:4px;font-weight:bold;" ><![endif]--><!--[if !mso]><!--><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" title="${MODULE.TEXT_TXT_CTA}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:17px;line-height:20px;padding-bottom:2px;font-weight:bold;mso-hide:all;"><!--><![endif]-->${MODULE.TEXT_TXT_CTA}</a></span></p></td>
+        </tr>
+        <#elseif !MODULE.TEXT_BTN_CTA?isnull>
+        <tr>
+          <td align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:30px;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><#if MODULE.TEXT_BTN_CLR?isnull || MODULE.TEXT_BTN_CLR?lower_case == "red">
+            <table cellpadding="0" cellspacing="0" class="ma"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" >
+              <tr>
+                <td class="Button_outer_td" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table bgcolor="#D81939" cellpadding="0" cellspacing="0" class="autowidth" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto; background-color:#D81939" >
+                    <tr>
+                      <td class="Button_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#D81939;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 31px 0 31px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#fffffe;" ><!-- Office 365 [OWA] fix -->
+                        <table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                          <tr>
+                            <td align="center" height="50" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:17px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:20px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" class="Button_white_link" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:18px;font-weight:bold;line-height:50px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" ><!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]-->${MODULE.TEXT_BTN_CTA?exec}<!--[if (gte mso 9)|(IE)]></font><![endif]--></a></p></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <#elseif MODULE.TEXT_BTN_CLR?lower_case == "blue">
+            <table cellpadding="0" cellspacing="0" class="ma"  border="0" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" >
+              <tr>
+                <td class="Button_blue_outer_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:transparent;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table cellpadding="0" cellspacing="0" class="autowidth" border="0" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                    <tr>
+                      <td class="Button_blue_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#003D50;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 20px 0 20px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><!-- Office 365 [OWA] fix -->
+                        
+                        <table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                          <tr>
+                            <td align="center" height="50" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:17px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:20px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" class="Button_white_link1" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:18px;font-weight:bold;line-height:50px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" > 
+                                <!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]--> 
+                                ${MODULE.TEXT_BTN_CTA?exec} 
+                                <!--[if (gte mso 9)|(IE)]></font><![endif]--> 
+                                </a></p></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            </#if> </td>
+        </tr></#if>
+      </table>
+      </td>
+      <td width="20" bgcolor="#fffffe"></td>
+    </tr><#else><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td>
+      <td class="inner contents" 
+      bgcolor="${CAMPAIGN_BCG_CLR}" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;background-color:${CAMPAIGN_BCG_CLR};" >
+      <table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;background-color:${CAMPAIGN_BCG_CLR};" >
+        <#if !MODULE.TEXT_TXT_CTA?isnull>
+        <tr>
+          <td align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:30px;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><p style="box-sizing:inherit;Margin:0;font-size:17px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:20px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" ><!--[if (gte mso 9)|(IE)]><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:17px;line-height:20px;padding-bottom:4px;font-weight:bold;" ><![endif]--><!--[if !mso]><!--><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" title="${MODULE.TEXT_TXT_CTA}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:17px;line-height:20px;padding-bottom:2px;font-weight:bold;mso-hide:all;"><!--><![endif]-->${MODULE.TEXT_TXT_CTA}</a></span></p></td>
+        </tr>
+        <#elseif !MODULE.TEXT_BTN_CTA?isnull>
+        <tr>
+          <td align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:30px;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><#if MODULE.TEXT_BTN_CLR?isnull || MODULE.TEXT_BTN_CLR?lower_case == "red">
+            <table cellpadding="0" cellspacing="0" class="ma"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" >
+              <tr>
+                <td class="Button_outer_td" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table bgcolor="#D81939" cellpadding="0" cellspacing="0" class="autowidth" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto; background-color:#D81939" >
+                    <tr>
+                      <td class="Button_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#D81939;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 31px 0 31px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#fffffe;" ><!-- Office 365 [OWA] fix -->
+                        <table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                          <tr>
+                            <td align="center" height="50" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:17px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:20px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" class="Button_white_link" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:18px;font-weight:bold;line-height:50px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" ><!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]-->${MODULE.TEXT_BTN_CTA?exec}<!--[if (gte mso 9)|(IE)]></font><![endif]--></a></p></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <#elseif MODULE.TEXT_BTN_CLR?lower_case == "blue">
+            <table cellpadding="0" cellspacing="0" class="ma"  border="0" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" >
+
+              <tr>
+                <td class="Button_blue_outer_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:transparent;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table cellpadding="0" cellspacing="0" class="autowidth" border="0" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                    <tr>
+                      <td class="Button_blue_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#003D50;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 20px 0 20px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#fffffe;" ><!-- Office 365 [OWA] fix -->
+                        
+                        <table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                          <tr>
+                            <td align="center" height="50" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:17px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:20px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" class="Button_white_link1" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:18px;font-weight:bold;line-height:50px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" > 
+                                <!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]--> 
+                                ${MODULE.TEXT_BTN_CTA?exec} 
+                                <!--[if (gte mso 9)|(IE)]></font><![endif]--> 
+                                </a></p></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            </#if> </td>
+        </tr></#if>
+      </table>
+      </td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td>
+    </tr></#if></#if>
+    
+		<#if MODULE.TEXT_DIVIDER_BTM?upper_case == "Y">
+    
+    <#if MODULE.TEXT_BCG_CLR?lower_case == "white"><tr>
+            <td width="20" bgcolor="#fffffe" height="1" style="font-size:1px;line-height:1px;height:1px;">&nbsp;</td>
+            
+            <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+            
+            <td width="20" bgcolor="#fffffe" height="1" style="font-size:1px;line-height:1px;height:1px;">&nbsp;</td></tr><tr>
+      
+     <td width="20" bgcolor="#fffffe"></td><td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: #fffffe;" >&nbsp;</td><td width="20" bgcolor="#fffffe"></td>      
+    </tr><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+      <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr>
+            <#else><tr>
+            <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="1" style="font-size:1px;line-height:1px;height:1px;">&nbsp;</td>
+            
+            <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+            
+            <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="1" style="font-size:1px;line-height:1px;height:1px;">&nbsp;</td></tr><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td><td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td><td width="20" bgcolor="${CAMPAIGN_BCG_CLR}"></td>
+    </tr></#if>
+   <#elseif MODULE.TEXT_DIVIDER_BTM?upper_case == "S"><#if MODULE.TEXT_BCG_CLR?lower_case == "white">
+   
+    <tr>
+      <td width="20" bgcolor="#fffffe" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+      <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: #fffffe;" >&nbsp;</td>
+      <td width="20" bgcolor="#fffffe" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+      <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr>
+    <#else><tr>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+      <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; background-color: ${CAMPAIGN_BCG_CLR};" >&nbsp;</td>
+      <td width="20" bgcolor="${CAMPAIGN_BCG_CLR}" height="20" style="font-size:20px;line-height:20px;height:20px;">&nbsp;</td>
+    </tr></#if></#if>
+		</table></td></tr>
+   

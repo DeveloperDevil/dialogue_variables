@@ -1,0 +1,15 @@
+<h1>${MODULE.TEXT_HEADLINE?exec}</h1>
+
+<p>${MODULE.TEXT_PARAGRAPH?exec}</p>
+
+<ul>
+<li>${MODULE.TEXT_BULLET_1}</li>
+<li>${MODULE.TEXT_BULLET_2}</li>
+<li>${MODULE.TEXT_BULLET_3}</li>
+<li>${MODULE.TEXT_BULLET_4}</li>
+<li>${MODULE.TEXT_BULLET_5}</li>
+</ul>
+
+<p><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL)}" target="_blank">${MODULE.TEXT_CALL_TO_ACTION}</a></p>
+
+<hr>

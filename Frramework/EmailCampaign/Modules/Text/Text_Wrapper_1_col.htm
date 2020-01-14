@@ -1,0 +1,34 @@
+<#-- TEXT_SHOW_DEFAULT is 1 in newsletter defaults-->
+<#if PREFFERED_AIRPORT?isnull>
+    <#assign PREFAIR = 'DEFAULT'>
+<#else>
+	<#assign PREFAIR = PREFFERED_AIRPORT?trim>
+</#if>
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET  FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields TEXT_VARIANT TEXT_DISPLAY_RULE TEXT_HEADER TEXT_INTRO TEXT_SUBHEADER_LEFT TEXT_PARAGRAPH TEXT_TXT_CTA TEXT_BTN_CTA TEXT_BTN_CLR TEXT_URL TEXT_DIVIDER_TOP	TEXT_DIVIDER_BTM TEXT_BCG_CLR>
+			<#assign MODULE_EXCLUDE = 0>
+			<#if !MODULE.TEXT_VARIANT?isnull>
+				<#if !MODULE.TEXT_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.TEXT_DISPLAY_RULE+".htm">
+					<#recover>
+					 <#if !MODULE.TEXT_DISPLAY_RULE?isnull 
+                            && (MODULE.TEXT_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.TEXT_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong PREFAIR, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>   
+	                </#if> 
+						 <#if !MODULE.TEXT_DISPLAY_RULE?isnull 
+                           && MODULE.TEXT_DISPLAY_RULE?lower_case == "default"
+                           && TEXT_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                          </#if> 	
+						</#attempt>
+				</#if>
+                <#if MODULE_EXCLUDE == 0><#if campaign.name == 'DEBUG_E_ABANDONED_BASKET' || campaign.name == 'E_ABANDONED_BASKET_A' || campaign.name == 'E_ABANDONED_BASKET'><#global SEGMENTED_HEADING = SEGMENTED_HEADING_TEXT?exec><#global SEGMENTED_PARAGRAPH = SEGMENTED_PARAGRAPH_TEXT?exec><#global SEGMENTED_INTRO = SEGMENTED_INTRO_TEXT?exec><#global SEGMENTED_URL = SEGMENTED_URL_TEXT?exec></#if><#attempt><#include "cms://contentlibrary/!framework/global_variables/inclusion_files/text_link.htm"><#recover></#attempt>
+					<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/text/text_"+MODULE.TEXT_VARIANT+"_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!-- error loading text module --></td></tr></#attempt>
+					<#global TEXT_SHOW_DEFAULT = 0>
+					</#if>
+			</#if>
+</#data>

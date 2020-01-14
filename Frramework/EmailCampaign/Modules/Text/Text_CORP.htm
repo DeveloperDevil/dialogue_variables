@@ -1,0 +1,43 @@
+<!-- // MOD TEXT A: START \\ -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td bgcolor="${MODULE.TEXT_BACKGROUND_COLOR}" align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:<#if MODULE.TEXT_FONT_COLOR?isnull>#333333<#else>${MODULE.TEXT_FONT_COLOR}</#if>;padding:0 10px 10px 10px;">
+<#if !MODULE.TEXT_HEADLINE?isnull>
+						<span style="color:<#if MODULE.TEXT_FONT_COLOR?isnull>#003D50<#else>${MODULE.TEXT_FONT_COLOR}</#if>;font-weight:bold;font-size:19px;line-height:24px;">${MODULE.TEXT_HEADLINE?exec}</span><br>&nbsp;<br>
+</#if>
+<#if !MODULE.TEXT_HEADLINE_SECONDARY?isnull>
+						<span style="color:<#if MODULE.TEXT_FONT_COLOR?isnull>#003D50<#else>${MODULE.TEXT_FONT_COLOR}</#if>;font-weight:bold;font-size:18px;line-height:20px;">${MODULE.TEXT_HEADLINE_SECONDARY?exec}</span><br>&nbsp;<br>
+</#if>
+<#if !MODULE.TEXT_PARAGRAPH?isnull>
+						<span style="color:<#if MODULE.TEXT_FONT_COLOR?isnull>#003D50<#else>${MODULE.TEXT_FONT_COLOR}</#if>;">${MODULE.TEXT_PARAGRAPH?exec}</span><br>
+</#if>
+<#if !MODULE.TEXT_CALL_TO_ACTION?isnull>
+						<table class="ma" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td style="padding:10px 0 2px 0;"><table class="ma" cellpadding="0" cellspacing="0" border="0">
+								  <tr>
+								    <td style="padding:10px 0 2px 0;"><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.TEXT_URL?exec)}" target="_blank" style="font-family:Arial, Helvetica, Sans-serif; font-size:16px;line-height:18px;font-weight: bold; text-decoration: underline; color: #063d4d;">${MODULE.TEXT_CALL_TO_ACTION}</a>
+					            </table></td>
+							</tr>
+					   	</table>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0"><tbody><tr><td class="t_h10px" height="10" style="font-size:1px;line-height:1px;mso-line-height-rule:exactly;-webkit-text-size-adjust:none;">&nbsp;</td></tr></tbody></table>
+                        
+</#if>
+					</td>				
+				</tr><#if !MODULE.TEXT_BACKGROUND_COLOR?isnull><tr><td height="20" style="height:20px;line-height:20px;font-size:20px;background-color:#f1f1f1f1 !important;">&nbsp;</td></tr></#if>
+			</table>
+		</td>
+	</tr>
+</table>
+<!-- // MOD TEXT A: END \\ -->
+<!-- // MOD 06: bottom border \\-->
+			<#if DIVIDER?isnull><table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td>
+						<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" style="font-size:1px;line-height:1px;" bgcolor="#d8d8d8">&nbsp;</td></tr></table>
+					</td>
+				</tr>
+			</table></#if>

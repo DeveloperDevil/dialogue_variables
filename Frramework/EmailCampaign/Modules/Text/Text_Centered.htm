@@ -1,0 +1,39 @@
+<!-- // MOD TEXT CENTERED: START \\ -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td bgcolor="${MODULE.TEXT_BACKGROUND_COLOR}" align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:<#if MODULE.TEXT_FONT_COLOR?isnull>#333333<#else>${MODULE.TEXT_FONT_COLOR}</#if>;padding:20px 10px 10px 10px; text-align:center">
+<#if !MODULE.TEXT_HEADLINE?isnull>
+						<span style="color:<#if MODULE.TEXT_FONT_COLOR?isnull>#003D50<#else>${MODULE.TEXT_FONT_COLOR}</#if>;font-weight:bold;font-size:19px;line-height:24px;">${MODULE.TEXT_HEADLINE?exec}</span><br>&nbsp;<br>
+</#if>
+<#if !MODULE.TEXT_HEADLINE_SECONDARY?isnull>
+						<span style="color:<#if MODULE.TEXT_FONT_COLOR?isnull>#003D50<#else>${MODULE.TEXT_FONT_COLOR}</#if>;font-weight:bold;font-size:18px;line-height:20px;">${MODULE.TEXT_HEADLINE_SECONDARY?exec}</span><br>&nbsp;<br>
+</#if>
+<#if !MODULE.TEXT_PARAGRAPH?isnull>
+						<span style="color:#003D50">${MODULE.TEXT_PARAGRAPH?exec}</span><br>&nbsp;<br>
+</#if>
+<#if !MODULE.TEXT_CALL_TO_ACTION?isnull>
+						<table class="ma" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td style="padding:10px 0 2px 0;border-bottom:4px solid #003D50;">
+			                 				<table cellpadding="0" cellspacing="0" border="0">
+                                    						<tr>
+                                        	<td bgcolor="<#if MODULE.TEXT_CTA_COLOR?isnull>#D81939<#else>${MODULE.TEXT_CTA_COLOR}</#if>"><#if MODULE.TEXT_CTA_COLOR?isnull><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" style="border:1px solid #D81939;color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:left;text-decoration:none;-webkit-text-size-adjust:none;padding:0 39px 0 13px;mso-padding-alt:10px 21px 10px 21px;">${MODULE.TEXT_CALL_TO_ACTION}<!--[if gte mso 9]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--></a><#else><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" style="border:1px solid ${MODULE.TEXT_CTA_COLOR};color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:left;text-decoration:none;-webkit-text-size-adjust:none;padding:0 39px 0 13px;mso-padding-alt:10px 21px 10px 21px;">${MODULE.TEXT_CALL_TO_ACTION}<!--[if gte mso 9]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--></a></#if>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+					   	</table>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0"><tbody><tr><td class="t_h10px" height="20" style="font-size:1px;line-height:1px;mso-line-height-rule:exactly;-webkit-text-size-adjust:none;">&nbsp;</td></tr></tbody></table>
+                        
+</#if>
+					</td>				
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!-- // MOD TEXT CENTERED: END \\ -->

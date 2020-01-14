@@ -1,0 +1,67 @@
+<!-- // MOD TEXT A: START \\ -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td bgcolor="${MODULE.TEXT_BACKGROUND_COLOR}" align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px; text-align:center; color:<#if MODULE.TEXT_FONT_COLOR?isnull>#333333<#else>${MODULE.TEXT_FONT_COLOR}</#if>;padding:20px 10px 10px 10px;">
+<#if !MODULE.TEXT_HEADLINE?isnull>
+						<span style="color:<#if MODULE.TEXT_FONT_COLOR?isnull>#003D50<#else>${MODULE.TEXT_FONT_COLOR}</#if>;font-weight:bold;font-size:19px;line-height:24px;">${MODULE.TEXT_HEADLINE?exec}</span><br>&nbsp;<br>
+</#if>
+<#if !MODULE.TEXT_HEADLINE_SECONDARY?isnull>
+						<span style="color:<#if MODULE.TEXT_FONT_COLOR?isnull>#003D50<#else>${MODULE.TEXT_FONT_COLOR}</#if>;font-weight:bold;font-size:18px;line-height:20px;">${MODULE.TEXT_HEADLINE_SECONDARY?exec}</span><br>&nbsp;<br>
+</#if>
+<#if !MODULE.TEXT_PARAGRAPH?isnull>
+						<span style="color:#003D50">${MODULE.TEXT_PARAGRAPH?exec}</span><br>&nbsp;<br>
+</#if>
+
+					</td>				
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<#if !MODULE.TEXT_CALL_TO_ACTION?isnull>
+					<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+                    <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" width="100%" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                        <tr>
+                          <td class="inner contents" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;" ><table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                              <tr>
+                                <td align="center" style="box-sizing:inherit;padding-top:10px;padding-bottom:10px;padding-right:20px;padding-left:20px;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table cellpadding="0" cellspacing="0" class="ma" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" >
+                                    <tr>
+                                      <td class="Button_outer_td" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table cellpadding="0" cellspacing="0" class="autowidth" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                                          <tr>
+                                            <td class="Button_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#D81939;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 31px 0 31px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#fffffe;" ><!-- Office 365 [OWA] fix -->
+                                              
+                                              <table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                                                <tr>
+                                                  <td align="center" height="33" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:15px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" class="Button_white_link" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" ><!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]-->${MODULE.TEXT_CALL_TO_ACTION}<!--[if (gte mso 9)|(IE)]></font><![endif]--></a></p></td>
+                                                </tr>
+                                              </table></td>
+                                          </tr>
+                                        </table></td>
+                                    </tr>
+                                  </table></td>
+                              </tr>
+                            </table></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                  </table>
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0"><tbody><tr><td class="t_h10px" height="20" style="font-size:1px;line-height:1px;mso-line-height-rule:exactly;-webkit-text-size-adjust:none;">&nbsp;</td></tr></tbody></table>
+                        
+</#if>
+
+
+
+<!-- // MOD TEXT A: END \\ -->
+<!-- // MOD 06: bottom border \\-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td>
+						<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" style="font-size:1px;line-height:1px;" bgcolor="#d8d8d8">&nbsp;</td></tr></table>
+					</td>
+				</tr>
+			</table>

@@ -1,0 +1,226 @@
+<!-- // MOD TEXT E: START \\ -->
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td bgcolor="${MODULE.TEXT_BACKGROUND_COLOR}" align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:<#if MODULE.TEXT_FONT_COLOR?isnull>#003D50<#else>${MODULE.TEXT_FONT_COLOR}</#if>;padding:30px 10px 0px 10px;"><#if !MODULE.TEXT_HEADLINE?isnull> <span style="color:<#if MODULE.TEXT_FONT_COLOR?isnull>#003D50<#else>${MODULE.TEXT_FONT_COLOR}</#if>;font-weight:bold;font-size:22px;line-height:24px;">${MODULE.TEXT_HEADLINE?exec}</span><br>
+            &nbsp;<br>
+            </#if>
+            <#if !MODULE.TEXT_HEADLINE_SECONDARY?isnull> <span style="color:<#if MODULE.TEXT_FONT_COLOR?isnull>#333333<#else>${MODULE.TEXT_FONT_COLOR}</#if>;font-weight:bold;font-size:18px;line-height:20px;">${MODULE.TEXT_HEADLINE_SECONDARY?exec}</span><br>
+            &nbsp;<br>
+            </#if>
+            <#if !MODULE.TEXT_PARAGRAPH?isnull>
+           <span style="color:#333333;">${MODULE.TEXT_PARAGRAPH?exec}</span> <br>
+            &nbsp;<br>
+            </#if> </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<!--  single-column bulletted text -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:16px;line-height:17px;color:#333333;padding:0px 20px 20px 10px;"><table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td height="6" style="font-size:6px;line-height:6px;">&nbsp;</td>
+              </tr>
+<#if !MODULE.TEXT_BULLET_1?isnull>
+              <tr>
+                <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td><table align="left" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="center" valign="middle" width="22" height="22" background="images/bluedot_21x21.png" style="background-repeat: no-repeat; background-position: center top; text-align:center;"><!--[if gte mso 9]>         
+												<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:21px;height:21px;">
+												<v:fill type="frame" src="http://static.cdn.responsys.net/i2/responsysimages/nas/contentlibrary/!framework/emailcampaign/modules/text/text_E/images/bluedot_21x21.png" color="#f1f1f1" />
+												<v:textbox inset="0,0,0,0">
+												<![endif]-->
+                              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                  <td align="center" valign="middle" width="22" height="22" style="font-family:Arial, Helvetica, Sans-serif; font-size:15px; color: #FFFFFF;">1</td>
+                                </tr>
+                              </table>
+                              <!--[if gte mso 9]>
+												</v:textbox>
+												</v:rect>
+												<![endif]--></td>
+                          </tr>
+                        </table>
+                        <table cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="left" valign="middle" style="font-family:Arial, Helvetica, Sans-serif; font-size: 14px; line-height: 16px; color: #333333; padding: 0 0 0 15px;"><#if !MODULE.TEXT_BULLET_1_URL?isnull><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_BULLET_1_URL?exec)}" target="_blank" style="color: #d81939; text-decoration:none">${MODULE.TEXT_BULLET_1?exec}</a></#if><#if !MODULE.TEXT_BULLET_SEC_1?isnull> ${MODULE.TEXT_BULLET_SEC_1?exec}</#if></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td height="6" style="font-size:6px;line-height:6px;">&nbsp;</td>
+              </tr></#if>
+              <#if !MODULE.TEXT_BULLET_2?isnull>
+              <tr>
+                <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td><table align="left" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="center" valign="middle" width="22" height="22" background="images/bluedot_21x21.png" style="background-repeat: no-repeat; background-position: center top; text-align:center;"><!--[if gte mso 9]>         
+												<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:21px;height:21px;">
+												<v:fill type="frame" src="http://static.cdn.responsys.net/i2/responsysimages/nas/contentlibrary/!framework/emailcampaign/modules/text/text_E/images/bluedot_21x21.png" color="#f1f1f1" />
+												<v:textbox inset="0,0,0,0">
+												<![endif]-->
+                              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                  <td align="center" valign="middle" width="22" height="22" style="font-family:Arial, Helvetica, Sans-serif; font-size:15px; color: #FFFFFF;">2</td>
+                                </tr>
+                              </table>
+                              <!--[if gte mso 9]>
+												</v:textbox>
+												</v:rect>
+												<![endif]--></td>
+                          </tr>
+                        </table>
+                        <table cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="left" valign="middle" style="font-family:Arial, Helvetica, Sans-serif; font-size: 14px; line-height: 16px; color: #333333; padding: 0 0 0 15px;"><#if !MODULE.TEXT_BULLET_2_URL?isnull><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_BULLET_2_URL?exec)}" target="_blank" style="color: #d81939; text-decoration:none">${MODULE.TEXT_BULLET_2?exec}</a></#if><#if !MODULE.TEXT_BULLET_SEC_2?isnull> ${MODULE.TEXT_BULLET_SEC_2?exec}</#if></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td height="6" style="font-size:6px;line-height:6px;">&nbsp;</td>
+              </tr>
+              </#if>
+              <#if !MODULE.TEXT_BULLET_3?isnull>
+              <tr>
+                <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td><table align="left" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="center" valign="middle" width="22" height="22" background="images/bluedot_21x21.png" style="background-repeat: no-repeat; background-position: center top; text-align:center;"><!--[if gte mso 9]>         
+												<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:21px;height:21px;">
+												<v:fill type="frame" src="http://static.cdn.responsys.net/i2/responsysimages/nas/contentlibrary/!framework/emailcampaign/modules/text/text_E/images/bluedot_21x21.png" color="#f1f1f1" />
+												<v:textbox inset="0,0,0,0">
+												<![endif]-->
+                              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                  <td align="center" valign="middle" width="22" height="22" style="font-family:Arial, Helvetica, Sans-serif; font-size:15px; color: #FFFFFF;">3</td>
+                                </tr>
+                              </table>
+                              <!--[if gte mso 9]>
+												</v:textbox>
+												</v:rect>
+												<![endif]--></td>
+                          </tr>
+                        </table>
+                        <table cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="left" valign="middle" style="font-family:Arial, Helvetica, Sans-serif; font-size: 14px; line-height: 16px; color: #333333; padding: 0 0 0 15px;"><#if !MODULE.TEXT_BULLET_3_URL?isnull><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_BULLET_3_URL?exec)}" target="_blank" style="color: #d81939; text-decoration:none">${MODULE.TEXT_BULLET_3?exec}</a></#if><#if !MODULE.TEXT_BULLET_SEC_3?isnull> ${MODULE.TEXT_BULLET_SEC_3?exec}</#if></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td height="6" style="font-size:6px;line-height:6px;">&nbsp;</td>
+              </tr>
+              </#if>
+              <#if !MODULE.TEXT_BULLET_4?isnull>
+              <tr>
+                <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td><table align="left" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="center" valign="middle" width="22" height="22" background="images/bluedot_21x21.png" style="background-repeat: no-repeat; background-position: center top; text-align:center;"><!--[if gte mso 9]>         
+												<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:21px;height:21px;">
+												<v:fill type="frame" src="http://static.cdn.responsys.net/i2/responsysimages/nas/contentlibrary/!framework/emailcampaign/modules/text/text_E/images/bluedot_21x21.png" color="#f1f1f1" />
+												<v:textbox inset="0,0,0,0">
+												<![endif]-->
+                              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                  <td align="center" valign="middle" width="22" height="22" style="font-family:Arial, Helvetica, Sans-serif; font-size:15px; color: #FFFFFF;">4</td>
+                                </tr>
+                              </table>
+                              <!--[if gte mso 9]>
+												</v:textbox>
+												</v:rect>
+												<![endif]--></td>
+                          </tr>
+                        </table>
+                        <table cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="left" valign="middle" style="font-family:Arial, Helvetica, Sans-serif; font-size: 14px; line-height: 16px; color: #333333; padding: 0 0 0 15px;"><#if !MODULE.TEXT_BULLET_4_URL?isnull><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_BULLET_4_URL?exec)}" target="_blank" style="color: #d81939; text-decoration:none">${MODULE.TEXT_BULLET_4?exec}</a></#if><#if !MODULE.TEXT_BULLET_SEC_4?isnull> ${MODULE.TEXT_BULLET_SEC_4?exec}</#if></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td height="6" style="font-size:6px;line-height:6px;">&nbsp;</td>
+              </tr>
+              </#if>
+              <#if !MODULE.TEXT_BULLET_5?isnull>
+              <tr>
+                <td><table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td><table align="left" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="center" valign="middle" width="22" height="22" background="images/bluedot_21x21.png" style="background-repeat: no-repeat; background-position: center top; text-align:center;"><!--[if gte mso 9]>         
+												<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:21px;height:21px;">
+												<v:fill type="frame" src="http://static.cdn.responsys.net/i2/responsysimages/nas/contentlibrary/!framework/emailcampaign/modules/text/text_E/images/bluedot_21x21.png" color="#f1f1f1" />
+												<v:textbox inset="0,0,0,0">
+												<![endif]-->
+                              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                  <td align="center" valign="middle" width="22" height="22" style="font-family:Arial, Helvetica, Sans-serif; font-size:15px; color: #FFFFFF;">5</td>
+                                </tr>
+                              </table>
+                              <!--[if gte mso 9]>
+												</v:textbox>
+												</v:rect>
+												<![endif]--></td>
+                          </tr>
+                        </table>
+                        <table cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="left" valign="middle" style="font-family:Arial, Helvetica, Sans-serif; font-size: 14px; line-height: 16px; color: #333333; padding: 0 0 0 15px;"><#if !MODULE.TEXT_BULLET_5_URL?isnull><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_BULLET_5_URL?exec)}" target="_blank" style="color: #d81939; text-decoration:none">${MODULE.TEXT_BULLET_5?exec}</a></#if><#if !MODULE.TEXT_BULLET_SEC_5?isnull> ${MODULE.TEXT_BULLET_SEC_5?exec}</#if></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td height="6" style="font-size:6px;line-height:6px;">&nbsp;</td>
+              </tr>
+              </#if>
+              <#if !MODULE.TEXT_CALL_TO_ACTION?isnull><tr>
+                <td>
+                  <table class="ma" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="padding:20px 0 2px 0;border-bottom:4px solid #003D50;"><table cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td bgcolor="<#if MODULE.TEXT_CTA_COLOR?isnull>#D81939<#else>${MODULE.TEXT_CTA_COLOR}</#if>"><a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" style="border:1px solid <#if MODULE.TEXT_CTA_COLOR?isnull>#D81939<#else>${MODULE.TEXT_CTA_COLOR}</#if>;color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:left;text-decoration:none;-webkit-text-size-adjust:none;padding:0 39px 0 13px;mso-padding-alt:10px 21px 10px 21px;">${MODULE.TEXT_CALL_TO_ACTION?exec}<!--[if gte mso 9]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--></a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table>
+                   </td>
+              </tr></#if>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<!-- // MOD TEXT E: END \\ -->
+<!-- // MOD 06: bottom border \\-->
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td>
+						<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" style="font-size:1px;line-height:1px;" bgcolor="#d8d8d8">&nbsp;</td></tr></table>
+					</td>
+				</tr>
+			</table>
+
