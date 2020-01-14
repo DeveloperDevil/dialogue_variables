@@ -1,0 +1,3 @@
+<#if PREMIUM_FLEX_YN == 'Y'><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "Y" && PREMIUM_YES == "N">	<#assign MODULE_EXCLUDE = 0>
+<#else><#assign MODULE_EXCLUDE = 1></#if>

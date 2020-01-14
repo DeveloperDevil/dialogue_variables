@@ -1,0 +1,5 @@
+<#--shows if customer has all anc except PB and PB is available for their airports. Used in E_MAX_LH_7DB, E_MAX_LH_7DB_CHASER, E_MAX_LH_RET_HOME 23/07/2018 JM-->
+<#if PREMIUM_YES == "Y" || HAS_FLEX == "Y"><#assign MODULE_EXCLUDE = 1>
+	<#elseif TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0 && HAVE_PRIORITY_BOARDING == "N" && AIR_HAS_PB == "Y"><#assign MODULE_EXCLUDE = 0>
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>

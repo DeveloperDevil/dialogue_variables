@@ -1,0 +1,14 @@
+<#if DESTINATION_US == "Y">
+    <#if HAS_FLEX == "Y"><#assign MODULE_EXCLUDE = 0>
+    <#elseif HAS_FLEX == "N">
+        <#if MEAL_AVAILABLE == 'Y'>
+            <#if TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1>
+            </#if>
+        <#elseif MEAL_AVAILABLE?isnull || MEAL_AVAILABLE == 'N'><#-- Note: 'All Ancillary' can only include food if it is possible to pre-order food for that flight, else 'All Ancillary' means just seat and bag' -->
+            <#if TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1>
+            </#if>
+        <#else><#assign MODULE_EXCLUDE = 1>
+        </#if>
+    <#else><#assign MODULE_EXCLUDE = 1></#if>
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>

@@ -1,0 +1,7 @@
+<#if PREMIUM_YES == "Y" || HORIZON == "D" || HORIZON == "E" || HORIZON == "F" || HAS_FLEX == 'Y'><#assign MODULE_EXCLUDE = 1>
+<#elseif TESTING_BOOKING_NUMBER_OF_BAGS?number == 0 || TESTING_BOOKING_NUMBER_OF_MEALS?number == 0 || TESTING_BOOKING_NUMBER_OF_SEATS?number == 0>
+    <#if PLUSGRADE_YN == 'N'><#assign MODULE_EXCLUDE = 0>
+    <#else><#assign MODULE_EXCLUDE = 1>
+    </#if>
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>

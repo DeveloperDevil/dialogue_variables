@@ -1,0 +1,5 @@
+<#if PREMIUM_YES != "Y" && HAS_FLEX != "Y">
+	<#assign MODULE_EXCLUDE = 0>
+<#else><#assign MODULE_EXCLUDE = 1></#if>
+
+<#-- 2.7.2018 comment BW: Why is this rule called no_anc? A better name would be no_prem_flex, as only passangers with PremiumFlex tickets are included -->
