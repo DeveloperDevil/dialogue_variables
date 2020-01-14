@@ -1,0 +1,32 @@
+<#-- start - define customer variables -->
+
+<#-- HOTEL_LOCALE -->
+<#if MARKET == "NO"><#global HOTEL_LOCALE = "no_NO"><#elseif MARKET == "ROW"><#global HOTEL_LOCALE = "en_IE"><#else><#global HOTEL_LOCALE = CONTACT.LANGUAGEID?string[0..1]?lower_case?trim></#if> 
+
+
+<#assign ean_min_stars = 3>
+<#assign ean_currency = CURRENCY?trim>
+<#assign ean_locale = HOTEL_LOCALE?trim>
+<#assign ean_departure_iata = DEPARTURE_IATA?trim>
+<#assign ean_destination_iata = DESTINATION_IATA?trim>
+<#assign ean_destination_id = DESTINATION_ID>
+<#assign ean_destination_country = HOTEL_LANG?trim>
+<#assign ean_passengers = NUMBER_OF_PASSENGERS?string?trim>
+<#assign ean_numberofadults = NUMBER_OF_ADULTS?string?trim>
+<#--<#assign ean_numberofchildren = NUMBER_OF_CHILDREN?string?trim>
+<#assign ean_numberofinfants = NUMBER_OF_INFANTS?string?trim> -->
+<#assign ean_arrival_date = MAIN_LEG_ARRIVAL_DATE_HOTEL?trim>
+<#assign ean_return_date = RETURN_DATE_HOTEL?trim>
+<#assign ean_purchase_date = PURCHASE_DATE?trim>
+<#assign ean_pos = "NORWEGIAN_">
+<#assign ean_cid = "501164">
+<#assign nas_api_request_url>https://responsys-01:9CxkXH2579gK@services.norwegian.com/accommodation/search/get?currency=${ean_currency}&numberOfResults=4&marketCountryCode=${MARKET}&languageIdentifier=${ean_locale}&destinationAirportCode=${ean_destination_iata}&checkinDate=${ean_arrival_date}&checkoutDate=${ean_return_date}&originAirportCode=${ean_departure_iata}&numberOfAdults=${ean_numberofadults}&purchaseDate=${ean_purchase_date}&trafficSourceCategory=web&trafficSourceSubCategory=responsys&arrivingFlightDate=${ean_arrival_date}</#assign>
+
+<#attempt>
+<#assign nas_api_json = load("${nas_api_request_url?exec}", "UTF-8")?eval>
+<#assign ean_hotelscom_url=nas_api_json.destinationDeeplink>
+${ean_hotelscom_url}
+<#recover>https://hotels.norwegian.com/search.do?pos=NORWEGIAN_${MARKET}&locale=${ean_locale}&q-check-in=${ean_arrival_date}&q-check-out=${ean_return_date}&q-rooms=1&q-room-0-adults=2&destination-id=${ean_destination_id}&wapb3=|c.${ean_cid}|l.${ean_locale}|t.web|s.responsys&flightOutboundDate=${ean_arrival_date}&flightNumOfPassengers=${ean_passengers}&flightAirportOrigin=${ean_departure_iata}&flightPurchaseDate=${ean_purchase_date}</#attempt>
+<#--<#attempt>
+<#assign nas_api_json = 'https://hotels.norwegian.com/search.do?pos=NORWEGIAN_' + MARKET + '&locale=' +ean_locale +'&q-check-in=' +ean_arrival_date +' &q-check-out=' + ean_return_date + '&q-rooms=1&q-room-0-adults=2&destination-id=' + ean_destination_id + '&wapb3=|c.' + ean_cid + '|l.' + ean_locale + '|t.web|s.responsys&flightOutboundDate=' + ean_arrival_date + '&flightNumOfPassengers=' + ean_passengers + '&flightAirportOrigin=' + ean_departure_iata + '&flightPurchaseDate=' + ean_purchase_date><#recover>http://www.google.com</#attempt>${nas_api_json}-->
+<#--https://hotels.norwegian.com?pos=NORWEGIAN_${MARKET}&locale=${ean_locale}-->

@@ -1,0 +1,41 @@
+<#-- start - define customer variables -->
+
+<#assign ean_min_stars = 3>
+<#assign ean_currency = BOOKING_CURRENCY?trim>
+<#assign ean_locale = HOTEL_LOCALE?trim>
+<#assign ean_departure_iata = DEPARTURE_IATA?trim>
+<#assign ean_destination_iata = DESTINATION_IATA?trim>
+<#assign ean_destination_id = DESTINATION_ID>
+<#assign ean_destination_country = HOTEL_LANG?trim>
+<#assign ean_passengers = 2>
+<#assign ean_departure_date = DEPARTURE_DATE_HOTEL>
+<#assign ean_arrival_date = DEPARTURE_DATE_HOTEL>
+<#assign ean_return_date = RETURN_DATE_HOTEL>
+<#assign ean_purchase_date = PURCHASE_DATE>
+<#assign ean_pos = "NORWEGIAN_">
+<#assign ean_cid = "501164">
+
+<#-- end - define customer variables -->
+
+
+<#assign ean_request_url><#join><#compress>
+	https://w3k7pvrd6a.execute-api.eu-west-1.amazonaws.com/prod/HotelsProxy?pos=${ean_pos}${ean_destination_country?upper_case}&locale=${ean_locale?trim}&q-check-in=${ean_departure_date?date?string("yyyy-MM-dd")?trim}&q-check-out=${ean_return_date?date?string("yyyy-MM-dd")?trim}&destination-id=${ean_destination_id?trim}&flightNumOfPassengers=${ean_passengers?trim}&flightOutboundDate=${ean_departure_date?date?string("yyyy-MM-dd")?trim}&flightInboundDate=${ean_return_date?date?string("yyyy-MM-dd")?trim}&wap3=%7Cc.${ean_cid?trim}%7Cl.${ean_locale?trim}%7Ct.email%7Cs.${CAMPAIGN?trim}&flightPurchaseDate=${ean_purchase_date?date?string("yyyy-MM-dd")?trim}&flightAirportOrigin=${ean_departure_iata?trim}
+</#compress></#join></#assign>
+<#attempt>
+
+<#assign ean_json = load("${ean_request_url?exec}", "UTF-8")>
+
+<#recover>
+can't load json
+</#attempt>
+<#assign ean_hotelscom_url>${ean_json?exec}</#assign>
+
+
+
+<tr>
+<td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >        
+
+<h1>Hotels</h1>
+<a href ="${clickthrough('BANNER_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+ean_hotelscom_url?exec?trim)}" target="_blank">Hotel_link_request</a>
+	</td>
+</tr>

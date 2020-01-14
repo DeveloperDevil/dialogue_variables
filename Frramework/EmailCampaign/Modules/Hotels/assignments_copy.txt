@@ -1,0 +1,26 @@
+<#-- start - define customer variables -->
+
+<#assign ean_min_stars = 3>
+<#assign ean_currency = CURRENCY?trim>
+<#assign ean_locale = HOTEL_LOCALE?trim>
+<#assign ean_departure_iata = DEPARTURE_IATA?trim>
+<#assign ean_destination_iata = DESTINATION_IATA?trim>
+<#assign ean_destination_id = DESTINATION_ID>
+<#assign ean_destination_country = HOTEL_LANG?trim>
+<#assign ean_passengers = 2>
+<#assign ean_departure_date = DEPARTURE_DATE_HOTEL?trim>
+<#assign ean_arrival_date = DEPARTURE_DATE_HOTEL?trim>
+<#assign ean_return_date = RETURN_DATE_HOTEL?trim>
+<#assign ean_purchase_date = PURCHASE_DATE?trim>
+<#assign ean_pos = "NORWEGIAN_">
+<#assign ean_cid = "501164">
+
+<#-- end - define customer variables -->
+<#attempt><#assign ean_request_url>https://w3k7pvrd6a.execute-api.eu-west-1.amazonaws.com/prod/HotelsProxy?pos=${ean_pos}${ean_destination_country?upper_case}&locale=${ean_locale?trim}&q-check-in=${ean_departure_date}&q-check-out=${ean_return_date}&destination-id=${ean_destination_id?trim}&flightNumOfPassengers=${ean_passengers?trim}&flightOutboundDate=${ean_departure_date}&flightInboundDate=${ean_return_date}&wap3=%7Cc.${ean_cid?trim}%7Cl.${ean_locale?trim}%7Ct.email%7Cs.${CAMPAIGN?trim}&flightPurchaseDate=${ean_purchase_date}&flightAirportOrigin=${ean_departure_iata?trim}</#assign><#recover><!--can't assign ean_request_url --></#attempt>
+<#attempt>
+
+<#assign ean_json = load("${ean_request_url?exec}", "UTF-8")>
+
+<#recover>can't load json </#attempt>
+<#attempt><#if ean_destination_country?exec == "NO"><#assign ean_hotelscom_url>${ean_json?exec?replace("norwegian.com","norwegian.no")}</#assign><#else><#assign ean_hotelscom_url>${ean_json?exec}</#assign></#if>${ean_hotelscom_url?exec?trim}<#recover><!--can't assign ean_hotelscom_url--></#attempt>
+

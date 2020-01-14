@@ -1,0 +1,35 @@
+<#-- start - define customer variables -->
+
+<#-- HOTEL_LOCALE -->
+<#if MARKET == "NO"><#global HOTEL_LOCALE = "no_NO"><#elseif MARKET == "ROW"><#global HOTEL_LOCALE = "en_IE"><#else><#global HOTEL_LOCALE = CONTACT.LANGUAGEID?string[0..1]?lower_case?trim></#if> 
+
+
+<#assign ean_min_stars = 3>
+<#assign ean_currency = CURRENCY?trim>
+<#assign ean_locale = HOTEL_LOCALE?trim>
+<#assign ean_departure_iata = DEPARTURE_IATA?trim>
+<#assign ean_destination_iata = DESTINATION_IATA?trim>
+<#assign ean_destination_id = DESTINATION_ID>
+<#assign ean_destination_country = HOTEL_LANG?trim>
+<#assign ean_passengers = NUMBER_OF_PASSENGERS?string?trim>
+<#assign ean_numberofadults = NUMBER_OF_ADULTS?string?trim>
+<#--<#assign ean_numberofchildren = NUMBER_OF_CHILDREN?string?trim>
+<#assign ean_numberofinfants = NUMBER_OF_INFANTS?string?trim> -->
+<#assign ean_arrival_date = MAIN_LEG_ARRIVAL_DATE_HOTEL?trim>
+<#assign ean_return_date = RETURN_DATE_HOTEL?trim>
+<#assign ean_purchase_date = PURCHASE_DATE?trim>
+<#assign ean_pos = "NORWEGIAN_">
+<#assign ean_cid = "501164">
+
+<#assign nas_api_request_url>https://below-t-01:4wzuHh5ezNA6@services.stage.norwegian.com/accommodation/search/get?numberOfResults=4&currency=${ean_currency}&marketCountryCode=${MARKET}&languageIdentifier=${ean_locale}&destinationAirportCode=${ean_destination_iata}&checkinDate=${ean_arrival_date}&checkoutDate=${ean_return_date}&originAirportCode=${ean_departure_iata}&numberOfAdults=${ean_numberofadults}&purchaseDate=${ean_purchase_date}&trafficSourceCategory=web&trafficSourceSubCategory=responsys&arrivingFlightDate=${ean_arrival_date}</#assign>
+${nas_api_request_url}
+<#--
+<#assign nas_api_json = load(nas_api_request_url)>
+-->
+<#--
+<#attempt>
+<#assign nas_api_json = load(nas_api_request_url, "UTF-8")?eval>
+<#assign ean_hotelscom_url=nas_api_json.destinationDeeplink>
+${ean_hotelscom_url}
+<#recover>https://www.norwegian.com/uk/</#attempt>
+-->

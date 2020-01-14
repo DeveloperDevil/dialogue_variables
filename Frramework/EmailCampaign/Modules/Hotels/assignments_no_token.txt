@@ -1,0 +1,24 @@
+<#-- copy to include: <#include "cms://contentlibrary/!framework/emailcampaign/modules/hotels/assignments_no_token.txt"> -->
+
+<#-- start - define customer variables -->
+<#global ean_min_stars = 3>
+<#global ean_currency = CURRENCY?trim>
+<#global ean_locale = HOTEL_LOCALE?trim>
+<#global ean_departure_iata = DEPARTURE_IATA?trim>
+<#global ean_destination_iata = DESTINATION_IATA?trim>
+<#global ean_destination_id = DESTINATION_ID>
+<#global ean_destination_country = HOTEL_LANG?trim>
+<#global ean_passengers = 2>
+<#global ean_departure_date = DEPARTURE_DATE_HOTEL?trim>
+<#global ean_arrival_date = DEPARTURE_DATE_HOTEL?trim>
+<#global ean_return_date = RETURN_DATE_HOTEL?trim>
+<#global ean_purchase_date = PURCHASE_DATE?trim>
+<#global ean_pos = "NORWEGIAN_">
+<#global ean_cid = "501164">
+
+<#-- end - define customer variables -->
+
+
+<#global ean_url ="https://hotels.norwegian.com/search.do?pos=" + ean_pos + HOTEL_LANG?trim?upper_case + "&destination-id=" + ean_destination_id + "&flightNumOfPassengers=" + ean_passengers + "&flightOutboundDate=" + ean_departure_date + "&flightInboundDate=" + ean_return_date + "&q-check-out=" + ean_return_date + "&flightAirportOrigin=" + ean_destination_iata + "&flightPurchaseDate=" + ean_purchase_date + "&q-check-in=" + ean_arrival_date + "&wap3=|c.501164|l." + ean_locale + "|t.email|s." + campaign.name + "&flightOutboundDate=" + ean_departure_date + "&locale=" + ean_locale>
+
+<#attempt><#if MARKET == "NO"><#global ean_hotelscom_url>${ean_url?exec?replace("norwegian.com","norwegian.no")}</#global><#else><#global ean_hotelscom_url>${ean_url?exec}</#global></#if>${ean_hotelscom_url?exec?trim}<#recover><!--can't assign ean_hotelscom_url--></#attempt>

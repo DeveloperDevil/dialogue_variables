@@ -1,0 +1,15 @@
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET  FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields HOTEL_VARIANT HOTEL_DISPLAY_RULE HOTEL_NUMBEROF_HOTELS HOTEL_NUMBEROFSTARS HOTEL_DIVIDER_TOP HOTEL_DIVIDER_BTM HOTEL_BTN_CTA>
+			<#if !MODULE.HOTEL_VARIANT?isnull>
+				<#if !MODULE.HOTEL_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.HOTEL_DISPLAY_RULE+".htm">
+					<#recover>
+						<!-- error loading display rule -->
+					</#attempt>
+				</#if>
+				<#if MODULE_EXCLUDE == 0>
+					<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/hotels/hotels_"+MODULE.HOTEL_VARIANT+"_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0">error loading HOTEL module --></td></tr></#attempt><#global HOTELS_SHOW_DEFAULT = 0><#assign HOTEL_HAVE_CONTENT = 'YES'></#if>
+			</#if>
+</#data>

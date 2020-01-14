@@ -1,0 +1,115 @@
+<#-- start - define customer variables -->
+
+<#assign ean_min_stars = 3>
+<#assign ean_currency = "DKK">
+<#assign ean_locale = "da_DK">
+<#assign ean_departure_iata = "BCN">
+<#assign ean_destination_iata = "CPH">
+<#assign ean_destination_country = "DK">
+<#assign ean_passengers = 2>
+<#assign ean_departure_date = dayadd(.now, 5)>
+<#assign ean_arrival_date = dayadd(.now, 6)>
+<#assign ean_return_date = dayadd(.now, 20)>
+<#assign ean_purchase_date = .now>
+
+<#-- end - define customer variables -->
+
+<#-- start - define Expedia/Hotels.com variables -->
+
+<#assign ean_cid = "501164">
+<#assign ean_apikey = "1lt6r7j68i42q8ca23434k4erp">
+<#assign ean_secret = "3k75h6mo0m624">
+<#assign ean_ts = ((.now?long)/1000)?round?c>
+<#assign ean_sig = messagedigest(ean_apikey + ean_secret + ean_ts, "MD5","hex")>
+<#assign ean_results = 3>
+<#assign ean_hotelscom_token = messagedigest(ean_departure_date?string("yyyy-MM-dd") + "-" + ean_return_date?string("yyyy-MM-dd") + "-" + ean_passengers + "-" + ean_departure_iata + "-" + ean_purchase_date?string("yyyy-MM-dd"), "SHA256","hex")>
+
+<#-- end - define Expedia/Hotels.com variables -->
+
+
+<#assign ean_request_url>
+	http://api.ean.com/ean-services/rs/hotel/v3/list<#t>
+	?sig=${ean_sig}<#t>
+	&apiKey=${ean_apikey}<#t>
+	&cid=${ean_cid}<#t>
+	&minStarRating=${ean_min_stars}<#t>
+	&charSet=UTF-8<#t>
+	&customerIpAddress=<#t>
+	&customerUserAgent=<#t>
+	&customerSessionId=<#t>
+	&locale=${ean_locale}<#t>
+	&currencyCode=${ean_currency}<#t>
+	&numberOfResults=${ean_results}<#t>
+	&city=${ean_destination_iata}<#t>
+	&stateProvinceCode=<#t>
+	&countryCode=${ean_destination_country}<#t>
+	&arrivalDate=${ean_arrival_date?string("MM/dd/yyyy")}<#t>
+	&departureDate=${ean_return_date?string("MM/dd/yyyy")}<#t>
+	&room1=${ean_passengers}<#t>
+	&_type=json<#t>
+</#assign>
+
+<#assign ean_hotelscom_url>
+	https://hotels.norwegian.com/search.do<#t>
+	?q-destination=${ean_destination_iata}<#t>
+	&q-check-in=${ean_arrival_date?string("yyyy-MM-dd")}<#t>
+	&q-check-out=${ean_return_date?string("yyyy-MM-dd")}<#t>
+	&q-rooms=1&q-room[0]-adults=${ean_passengers}<#t>
+	&wapb3=<#t>
+		|c.${ean_cid}<#t>
+		|l.${ean_locale}<#t>
+		|t.email<#t>
+		|s.${CAMPAIGN}<#t>
+	&flightOutboundDate=${ean_departure_date?string("yyyy-MM-dd")}<#t>
+	&flightInboundDate=${ean_return_date?string("yyyy-MM-dd")}<#t>
+	&flightNumOfPassengers=${ean_passengers}<#t>
+	&flightAirportOrigin=${ean_departure_iata}<#t>
+	&flightPurchaseDate=${ean_purchase_date?string("yyyy-MM-dd")}<#t>
+	&token=${ean_hotelscom_token}<#t>
+	&locale=${ean_locale}<#t>
+</#assign>
+
+
+
+<tr>
+<td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+        <table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+            <tr><td class="Social_Inner" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:20px;padding-left:20px;" ><table width="100%" cellpadding="0" cellspacing="0" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" ><tr>
+                <td class="inner contents h2" align="left" style="box-sizing:inherit;text-align:left;padding-top:20px;padding-bottom:3px;padding-right:0;padding-left:0;border-style:none;font-size:18px;font-weight:bold;Margin-bottom:0;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" >
+
+<h1>Hotels</h1>
+
+<a href="${ean_request_url}" target="_blank">EAN REST</a><br>
+<a href="${ean_hotelscom_url}" target="_blank">EAN BOOKING</a>
+
+<#attempt>
+
+<#assign ean_json = load("http://automation.dwarf.dk/hotels.php", "UTF-8")>
+
+<#recover>
+can't load json
+</#attempt>
+
+<#attempt>
+<#--	<#assign ean_load = load(ean_url, "UTF-8")>-->
+	<#assign ean_load = load("http://automation.dwarf.dk/hotel.xml", "UTF-8")>
+	<p><a href="${ean_url}" target="_blank">EAN</a></p>
+
+	<#assign ean_xml = parsexml(ean_load)>
+
+<ul>
+<#list ean_xml.Hotels.HotelList.HotelSummary as hotel>
+<li>${hotel.name}</li>
+</#list>
+</ul>
+
+<#recover>
+	<p>Can't load EAN xml</p>
+</#attempt>
+
+
+                </td></tr></table></td>
+            </tr>
+        </table>
+    </td>
+</tr>

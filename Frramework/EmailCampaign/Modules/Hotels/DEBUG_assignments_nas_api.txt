@@ -1,0 +1,46 @@
+<#-- start - define customer variables -->
+
+<#-- HOTEL_LOCALE -->
+<#attempt><#if MARKET == "NO"><#global HOTEL_LOCALE = "no_NO"><#elseif MARKET == "ROW"><#global HOTEL_LOCALE = "en_IE"><#else><#global HOTEL_LOCALE = CONTACT.LANGUAGEID?string[0..1]?lower_case?trim></#if> 
+<#recover><#global HOTEL_LOCALE = "en_IE">
+</#attempt>
+
+<#assign ean_min_stars = '3'>
+<#if CURRENCY?isnull><#skip 'Currency is missing'><#else><#assign ean_currency = CURRENCY?trim></#if>
+<#if HOTEL_LOCALE?isnull><#skip 'Hotel_locale is missing'><#else><#assign ean_locale = HOTEL_LOCALE?trim></#if>
+<#if DEPARTURE_IATA?isnull><#skip 'Departure_iata is missing'><#else><#assign ean_departure_iata = DEPARTURE_IATA?trim></#if>
+<#if DESTINATION_IATA?isnull><#skip 'Destination_iata is missing'><#else><#assign ean_destination_iata = DESTINATION_IATA?trim></#if>
+<#if DESTINATION_ID?isnull><#skip 'Destination_ID is missing'><#else><#assign ean_destination_id = DESTINATION_ID></#if>
+<#if HOTEL_LANG?isnull><#skip 'Hotel_lang is missing'><#else><#assign ean_destination_country = HOTEL_LANG?trim></#if>
+<#if NUMBER_OF_PASSENGERS?isnull><#skip 'Number_of_passengers is missing'><#else><#assign ean_passengers = NUMBER_OF_PASSENGERS?string?trim></#if>
+<#assign ean_numberofadults = '2'>
+<#--<#assign ean_numberofchildren = NUMBER_OF_CHILDREN?string?trim>
+<#assign ean_numberofinfants = NUMBER_OF_INFANTS?string?trim> -->
+<#if DEPARTURE_DATE_HOTEL?isnull><#skip 'Departure_date_hotel is missing'><#else><#assign ean_arrival_date = MAIN_LEG_ARRIVAL_DATE_HOTEL?trim></#if>
+<#if RETURN_DATE_HOTEL?isnull><#skip 'Return_date_hotel is missing'><#else><#assign ean_return_date = RETURN_DATE_HOTEL?trim></#if>
+<#if PURCHASE_DATE?isnull><#skip 'Purchase_date is missing'><#else><#assign ean_purchase_date = PURCHASE_DATE?trim></#if>
+<#assign ean_pos = "NORWEGIAN_">
+<#assign ean_cid = "501164">
+<#assign ean_sub_category = campaign.name>
+<#assign nas_api_request_url>https://responsys-01:9CxkXH2579gK@services.norwegian.com/accommodation/search/get?numberOfResults=4&currency=${ean_currency}&marketCountryCode=${MARKET}&languageIdentifier=${ean_locale}&destinationAirportCode=${ean_destination_iata}&checkinDate=${ean_arrival_date}&checkoutDate=${ean_return_date}&originAirportCode=${ean_departure_iata}&numberOfAdults=${ean_numberofadults}&purchaseDate=${ean_purchase_date}&trafficSourceCategory=web&trafficSourceSubCategory=${ean_sub_category}&arrivingFlightDate=${ean_arrival_date}</#assign>
+
+<#-- <#attempt>-->
+<#if nas_api_request_url?isnull><#skip 'nas_api_json is missing'>
+<#else>
+    <#assign nas_api_jsonDATA = load(nas_api_request_url?exec, "UTF-8")>
+    <br><br>${nas_api_jsonDATA}
+   
+    
+    <#-- <#assign nas_api_json = nas_api_jsonDATA?eval> -->
+    
+    
+</#if>
+
+<#--    
+    <#assign nas_api_json_new = nas_api_json.destinationDeeplink>
+<#if nas_api_json_new?isnull><#skip 'nas_api_json_new is missing'><#else><#assign ean_hotelscom_url=nas_api_json_new></#if>
+<#if ean_hotelscom_url?isnull><#skip 'ean_hotelscom_url is missing'><#else>${ean_hotelscom_url}</#if>
+<#recover>https://hotels.norwegian.com/search.do?pos=NORWEGIAN_${MARKET}&locale=${ean_locale}&q-check-in=${ean_arrival_date}&q-check-out=${ean_return_date}&q-rooms=1&q-room-0-adults=2&destination-id=${ean_destination_id}&wapb3=|c.${ean_cid}|l.${ean_locale}|t.web|s.${ean_sub_category}&flightOutboundDate=${ean_arrival_date}&flightNumOfPassengers=${ean_passengers}&flightAirportOrigin=${ean_departure_iata}&flightPurchaseDate=${ean_purchase_date}</#attempt>
+<#attempt>
+<#assign nas_api_json = 'https://hotels.norwegian.com/search.do?pos=NORWEGIAN_' + MARKET + '&locale=' +ean_locale +'&q-check-in=' +ean_arrival_date +' &q-check-out=' + ean_return_date + '&q-rooms=1&q-room-0-adults=2&destination-id=' + ean_destination_id + '&wapb3=|c.' + ean_cid + '|l.' + ean_locale + '|t.web|s.' + ean_sub_category + '&flightOutboundDate=' + ean_arrival_date + '&flightNumOfPassengers=' + ean_passengers + '&flightAirportOrigin=' + ean_departure_iata + '&flightPurchaseDate=' + ean_purchase_date><#recover>http://www.google.com</#attempt>${nas_api_json}-->
+<#--https://hotels.norwegian.com?pos=NORWEGIAN_${MARKET}&locale=${ean_locale}-->
