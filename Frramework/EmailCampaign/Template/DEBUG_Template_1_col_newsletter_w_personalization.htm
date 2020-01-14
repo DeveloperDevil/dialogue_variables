@@ -1,0 +1,10 @@
+<#import "cms://contentlibrary/!framework/common/common.htm" as nas>
+
+<@nas.minify>
+<#if EMERGENCY_MODE == 'Y'><#include "black_emergency_header_1_col.htm"><#else><#include "cms://contentlibrary/!framework/emailcampaign/template/header_1_col_newsletter_w_personalization.htm"></#if>
+
+<#include "cms://contentlibrary/!framework/emailcampaign/template/Content_Basic_1_col.htm">
+
+<#if campaign.name == "E_URGENT_BOOKING_CANCELLED_2018_ONLY_PNR"><#include "cms://contentlibrary/!framework/emailcampaign/template/footer_1_col_no_links.htm"><#else><#include "cms://contentlibrary/!framework/emailcampaign/template/footer_1_col.htm"></#if>
+
+</@nas.minify>

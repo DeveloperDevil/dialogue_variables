@@ -1,0 +1,17 @@
+<#import "cms://contentlibrary/!framework/common/common.htm" as nas>
+
+<#if !DV_ALL_DEBUG?isnull && DV_ALL_DEBUG = "Y">
+## File:template_1_col.htm<br>
+CAMPAIGN: ${CAMPAIGN}, MARKET: ${MARKET}<br>
+</#if>
+
+
+
+<@nas.minify>
+<#if DEBUG_MODE == "Y"><#include "cms://contentlibrary/!framework/emailcampaign/template/header_1_col_debug.htm"><#else><#include "cms://contentlibrary/!framework/emailcampaign/template/header_1_col.htm"></#if>
+
+<#include "cms://contentlibrary/!framework/emailcampaign/template/content_1_col.htm">
+
+<#include "cms://contentlibrary/!framework/emailcampaign/template/footer_1_col_test.htm">
+
+</@nas.minify>

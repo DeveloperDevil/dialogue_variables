@@ -1,0 +1,18 @@
+<#import "cms://contentlibrary/!framework/common/common.htm" as nas>
+<#data FRAMEWORK_STATIC as STATIC>
+	<#filter STATIC_MARKET = MARKET>
+	<#fields STATIC_LOGO_TEXT STATIC_LOGO_URL STATIC_UNSUBSCRIBE_TEXT STATIC_WEBVERSION_TEXT>
+<#assign LOGO_TEXT = STATIC.STATIC_LOGO_TEXT>
+	<#assign LOGO_URL = STATIC.STATIC_LOGO_URL>
+	<#assign UNSUBSCRIBE_TEXT = STATIC.STATIC_UNSUBSCRIBE_TEXT>
+	<#assign WEBVERSION_TEXT = STATIC.STATIC_WEBVERSION_TEXT>
+</#data>
+<@nas.minify>
+
+<#include "cms://contentlibrary/!framework/emailcampaign/template/header_hidden_preheader.htm">
+
+<#include "cms://contentlibrary/!framework/emailcampaign/template/content.htm">
+
+<#include "cms://contentlibrary/!framework/emailcampaign/template/footer.htm">
+
+</@nas.minify>

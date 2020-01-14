@@ -1,0 +1,21 @@
+<#import "cms://contentlibrary/!framework/common/common.htm" as nas>
+<#data FRAMEWORK_STATIC as STATIC>
+	<#filter STATIC_MARKET = MARKET>
+	<#fields STATIC_LOGO_TEXT STATIC_LOGO_URL STATIC_UNSUBSCRIBE_TEXT STATIC_WEBVERSION_TEXT>
+<#assign LOGO_TEXT = STATIC.STATIC_LOGO_TEXT>
+	<#assign LOGO_URL = STATIC.STATIC_LOGO_URL>
+	<#assign UNSUBSCRIBE_TEXT = STATIC.STATIC_UNSUBSCRIBE_TEXT>
+	<#assign WEBVERSION_TEXT = STATIC.STATIC_WEBVERSION_TEXT>
+    <#-- SERVER TIME CORRECTION --><#setting time_zone="GMT-7">
+</#data>
+<@nas.minify>
+
+<#if CAMPAIGN_TYPE == "HOLIDAY"><#include "cms://contentlibrary/!framework/emailcampaign/template/header_holiday.htm">
+<#elseif CAMPAIGN_TYPE == "hero_fix2"><#include "cms://contentlibrary/!framework/emailcampaign/template/header_hero_fix.htm">
+<#elseif CAMPAIGN_TYPE == "welcome_nl"><#include "cms://contentlibrary/!framework/emailcampaign/template/header_welcome_nl.htm"><#else><#include "cms://contentlibrary/!framework/emailcampaign/template/header_hidden_preheader.htm"></#if>
+
+<#include "cms://contentlibrary/!framework/emailcampaign/template/content.htm">
+
+<#if CAMPAIGN_TYPE == "HOLIDAY"><#include "cms://contentlibrary/!framework/emailcampaign/template/footer_holiday.htm"><#else><#include "cms://contentlibrary/!framework/emailcampaign/template/footer.htm"></#if>
+
+</@nas.minify>

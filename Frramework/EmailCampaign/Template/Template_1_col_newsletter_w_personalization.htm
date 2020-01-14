@@ -1,0 +1,10 @@
+<#import "cms://contentlibrary/!framework/common/common.htm" as nas>
+
+<@nas.minify>
+<#if campaign.name == '2019_W07_NORDICS_VALENTINE-SALE_SE-B' && MARKET == 'SE'><#include "cms://contentlibrary/!framework/emailcampaign/template/header_1_col_newsletter_w_personalization_gmail.htm"><#elseif campaign.name == 'TEST_GMAIL_PROMO_TAB'><#include "cms://contentlibrary/!framework/emailcampaign/template/debug_header_1_col_newsletter_w_personalization_gmail.htm"><#else><#include "cms://contentlibrary/!framework/emailcampaign/template/header_1_col_newsletter_w_personalization.htm"></#if>
+
+<#include "cms://contentlibrary/!framework/emailcampaign/template/Content_Basic_1_col.htm">
+
+<#if campaign.name == "E_URGENT_BOOKING_CANCELLED_2018_ONLY_PNR"><#include "cms://contentlibrary/!framework/emailcampaign/template/footer_1_col_no_links.htm"><#else><#include "cms://contentlibrary/!framework/emailcampaign/template/footer_1_col.htm"></#if>
+
+</@nas.minify>
