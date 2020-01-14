@@ -1,0 +1,16 @@
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields BUTTON_VARIANT BUTTON_DISPLAY_RULE BUTTON_CLR BUTTON_CTA BUTTON_URL>
+		<#if !MODULE.BUTTON_CTA?isnull>
+<#if !MODULE.BUTTON_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.BUTTON_DISPLAY_RULE+".htm">
+					<#recover>
+						<!-- error loading display rule -->
+					</#attempt>
+				</#if>
+<#if MODULE_EXCLUDE == 0>
+				<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/button/button_"+MODULE.BUTTON_VARIANT+"_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!-- error loading button module --></td></tr></#attempt>			
+			<#global BUTTON_SHOW_DEFAULT = 0></#if>
+</#if>
+</#data>
