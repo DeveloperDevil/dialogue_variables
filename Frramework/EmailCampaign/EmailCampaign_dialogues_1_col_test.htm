@@ -1,0 +1,11 @@
+<#if campaign.name == 'TEXT_VARIANTS_DEMO'><#elseif campaign.name == 'DEBUG_E_MAX_LH_2DA' || campaign.name == 'DEBUG_E_MAX_LH_5DA' || campaign.name == 'DEBUG_E_LHP_12DB'><#include "cms://contentlibrary/!framework/global_variables/debug_dialogue_variables_bw.htm"><#elseif campaign.name == 'CAR_VARIANTS_DEMO'><#include "cms://contentlibrary/!framework/global_variables/dialogue_variables.htm"><#else><#include "cms://contentlibrary/!framework/global_variables/dialogue_variables.htm">
+<#--<#include "cms://contentlibrary/!framework/global_variables/dialogue_variables" + G_CAMPAIGN_STATE_PREFIX + ".htm">--></#if>
+<#if campaign.name == "DEBUG_E_LHP_1DA" || campaign.name == "DEBUG_E_LHP_1DB"><#if DEBUG_MODE == 'Y'><#include "cms://contentlibrary/!framework/global_variables/test_html/lhp_test.htm"><br>PLUSGRADE_YN: ${PLUSGRADE_YN}<br><#else></#if></#if>
+<#--<#if campaign.name == 'DEBUG_E_SH_6DB'>nas_api_request_url: ${nas_api_request_url}<br>
+ean_hotelscom_url: ${ean_hotelscom_url}<br><br>
+HOTEL_URL: ${HOTEL_URL}</#if>-->
+<#--<#if campaign.name == 'CUSTOMER_EXPERIENCE_SURVEY_2018_LINKTEST'>${BK_PERSON_AGE?exec}</#if>-->
+<#--<#include "cms://contentlibrary/!framework/global_variables/test_html/passenger_name.htm">-->
+<#include "cms://contentlibrary/!framework/emailcampaign/template/Template_1_col_dialogue_test.htm">
+<#include "cms://contentlibrary/!framework/global_variables/inclusion_files/skip_code_dialogues_test.htm">
+
