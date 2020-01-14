@@ -1,0 +1,3 @@
+<#if HAS_INFANTS?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_INFANTS?trim == "Y"><#-- They are travelling with infants, include --><#assign MODULE_EXCLUDE = 0>
+<#else><#-- For all other scenarios, exclude --><#assign MODULE_EXCLUDE = 1></#if>

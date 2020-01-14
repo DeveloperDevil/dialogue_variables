@@ -1,0 +1,6 @@
+<#-- This displayrule is used to sell Bag in secondary module (i. e Article), for some or none ancillaries bookings that misses both seat and bag. Bag is then sold in the primary module (i.e Hero) -->
+<#if HAS_FLEX?isnull || TESTING_BOOKING_NUMBER_OF_SEATS?isnull || TESTING_BOOKING_NUMBER_OF_BAGS?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "Y" || TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0  || TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#assign MODULE_EXCLUDE = 1><#-- They have Flex ticket,they don't have seat or bag. Exclude -->
+<#elseif TESTING_BOOKING_NUMBER_OF_SEATS?number == 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number == 0><#-- They have are missing both seat and bag. Include --><#assign MODULE_EXCLUDE = 0>
+<#else><#-- Any other scenarios, exclude --><#assign MODULE_EXCLUDE = 1>
+</#if>

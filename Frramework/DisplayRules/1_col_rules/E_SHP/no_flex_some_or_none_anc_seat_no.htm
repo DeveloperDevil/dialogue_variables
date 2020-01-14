@@ -1,0 +1,6 @@
+<#-- This displayrule is used to sell seat for some or none ancillaries bookings -->
+<#if HAS_FLEX?isnull || TESTING_BOOKING_NUMBER_OF_SEATS?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "Y" || TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0><#assign MODULE_EXCLUDE = 1><#-- They have Flex ticket or they already have seat, exclude -->
+<#elseif TESTING_BOOKING_NUMBER_OF_SEATS?number == 0><#-- They are missing seat, include --><#assign MODULE_EXCLUDE = 0>
+<#else><#-- Any other scenarios, exclude --><#assign MODULE_EXCLUDE = 1>
+</#if>

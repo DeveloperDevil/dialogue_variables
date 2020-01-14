@@ -1,0 +1,35 @@
+<#-- This displayrule is used to sell FT, if available, in secondary module for some or none ancillaries bookings -->
+<#if HAS_FLEX?isnull || TESTING_BOOKING_NUMBER_OF_SEATS?isnull || TESTING_BOOKING_NUMBER_OF_BAGS?isnull || FAST_TRACK_FLAG?isnull || TESTING_BOOKING_NUMBER_OF_MEALS?isnull || FAST_TRACK_AIRPORTS?isnull || MEAL_AVAILABLE?isnull || FAST_TRACK_AIRPORTS_RETURN?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "Y" || FAST_TRACK_FLAG == 'Y'><#-- They have Flex ticket or they already have FT, exclude --><#assign MODULE_EXCLUDE = 1>
+<#-- We need to exclude bookings with all ancillaries. If meal is available, we include meal in the all ancillaries exclusion --> 
+<#elseif MEAL_AVAILABLE == 'Y'>
+    <#if TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0 && TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0><#-- Have all ancillaries, exclude  --><#assign MODULE_EXCLUDE = 1>
+    <#-- If they miss one of the ancillaries, we check if it is a oneway booking or a roundtrip booking, and if FT is available -->
+    <#elseif ONEWAY_YN == '1'>
+        <#-- If it is a oneway booking, we check if FT is available on Outbound leg or not-->
+        <#if FAST_TRACK_AIRPORTS?trim == 'Y'><#-- FT is available. Include --><#assign MODULE_EXCLUDE = 0>
+        <#else><#-- FT is not available for Outbound leg, exclude  --><#assign MODULE_EXCLUDE = 1>
+        </#if>
+        <#-- If it is a roundtrip booking, we check if FT is available either on Outbound or Return leg -->
+    <#else>
+        <#if FAST_TRACK_AIRPORTS?trim == 'Y' || FAST_TRACK_AIRPORTS_RETURN?trim == 'Y'><#-- FT is available either on Outbound or Return leg. Include --><#assign MODULE_EXCLUDE = 0>
+        <#else><#-- FT is available neither for Outbound or Return leg, exclude  --><#assign MODULE_EXCLUDE = 1>
+        </#if>
+    </#if>
+    <#-- We need to exclude bookings with all ancillaries. If meal is not available, we don't include meal in the all ancillaries exclusion --> 
+<#elseif MEAL_AVAILABLE == 'N'>
+    <#if TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#-- Have all ancillaries, exclude  --><#assign MODULE_EXCLUDE = 1>
+    <#-- If they miss one of the ancillaries, we check if it is a oneway booking or a roundtrip booking, and if FT is available -->
+    <#elseif ONEWAY_YN == '1'>
+        <#-- If it is a oneway booking, we check if FT is available on Outbound leg or not-->
+        <#if FAST_TRACK_AIRPORTS?trim == 'Y'><#-- FT is available. Include --><#assign MODULE_EXCLUDE = 0>
+        <#else><#-- FT is not available for Outbound leg, exclude  --><#assign MODULE_EXCLUDE = 1>
+        </#if>
+        <#-- If it is a roundtrip booking, we check if FT is available either on Outbound or Return leg -->
+    <#else>
+        <#if FAST_TRACK_AIRPORTS?trim == 'Y' || FAST_TRACK_AIRPORTS_RETURN?trim == 'Y'><#-- FT is available either on Outbound or Return leg. Include --><#assign MODULE_EXCLUDE = 0>
+        <#else><#-- FT is available neither for Outbound or Return leg, exclude  --><#assign MODULE_EXCLUDE = 1>
+        </#if>
+    </#if>
+<#else><#-- All other scenarios, exclude  --><#assign MODULE_EXCLUDE = 1>
+</#if>

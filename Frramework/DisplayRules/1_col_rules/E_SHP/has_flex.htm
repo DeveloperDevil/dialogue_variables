@@ -1,0 +1,5 @@
+<#-- This displayrule is used to display FT bullet point for those who have bought FT -->
+<#if HAS_FLEX?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "Y"><#-- They have Flex ticket, include --><#assign MODULE_EXCLUDE = 0>
+<#else><#-- For all other scenarios, exclude  --><#assign MODULE_EXCLUDE = 1>
+</#if>

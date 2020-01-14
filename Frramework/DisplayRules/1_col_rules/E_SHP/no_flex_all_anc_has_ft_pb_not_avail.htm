@@ -1,0 +1,10 @@
+<#-- This displayrule is used to show generic content for all ancillaries bookings that already have FT and PB is not available -->
+<#if HAS_FLEX?isnull || FAST_TRACK_FLAG?isnull || ONEWAY_YN?isnull || FAST_TRACK_AIRPORTS?isnull || MEAL_AVAILABLE?isnull || FAST_TRACK_AIRPORTS_RETURN?isnull || TESTING_BOOKING_NUMBER_OF_MEALS?isnull || TESTING_BOOKING_NUMBER_OF_SEATS?isnull || TESTING_BOOKING_NUMBER_OF_BAGS?isnull || HAVE_PRIORITY_BOARDING?isnull || HAVE_PRIORITY_BOARDING_BUNDLE?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "Y" || FAST_TRACK_FLAG != 'Y' || HAVE_PRIORITY_BOARDING == 'Y' || HAVE_PRIORITY_BOARDING_BUNDLE == 'Y' || AIR_HAS_PB == 'Y'><#-- They have Flex ticket, they don't have FT, PB is available or they already have PB. Exclude --><#assign MODULE_EXCLUDE = 1>
+        <#-- If meal is available, we need to include that in all ancillaries  -->
+        <#if MEAL_AVAILABLE == 'Y' && TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#-- They have all ancilleries, and PB is not available. Include --><#assign MODULE_EXCLUDE = 0>
+        <#elseif MEAL_AVAILABLE == 'N' && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#-- They have all ancilleries, and PB is not available. Include --><#assign MODULE_EXCLUDE = 0>
+        <#else><#-- They are missing at least one ancillary, exclude  --><#assign MODULE_EXCLUDE = 1>
+        </#if>    
+<#-- For all other scenarios, exclude  --><#assign MODULE_EXCLUDE = 1>
+</#if>

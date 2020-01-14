@@ -1,0 +1,11 @@
+<#if HAS_FLEX == "Y" || HORIZON == "A" || HORIZON == "B"><#assign MODULE_EXCLUDE = 1>
+    <#elseif MEAL_AVAILABLE == 'Y' && TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#assign MODULE_EXCLUDE = 1>
+    <#elseif MEAL_AVAILABLE == 'N' && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#assign MODULE_EXCLUDE = 1>
+    <#elseif MEAL_AVAILABLE == 'Y' && TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0>
+        <#if TESTING_BOOKING_NUMBER_OF_SEATS?number == 0 || TESTING_BOOKING_NUMBER_OF_BAGS?number == 0><#assign MODULE_EXCLUDE = 0>
+        <#else><#assign MODULE_EXCLUDE = 1></#if>
+    <#elseif MEAL_AVAILABLE == 'N'><#if TESTING_BOOKING_NUMBER_OF_SEATS?number == 0 || TESTING_BOOKING_NUMBER_OF_BAGS?number == 0><#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1></#if>
+    <#--john fix 14/01/19, preview was missing hero when horizon D, MEAL_AVAILABLE: Y, TESTING_BOOKING_NUMBER_OF_MEALS: 0, so added below elseif. It fixed the preview, then I tested E_SH_2DA 25 previews and saw no double heros or errors. -->
+    <#elseif MEAL_AVAILABLE == 'Y' && TESTING_BOOKING_NUMBER_OF_MEALS?number == 0><#assign MODULE_EXCLUDE = 0>
+    <#else><#assign MODULE_EXCLUDE = 1>
+</#if>

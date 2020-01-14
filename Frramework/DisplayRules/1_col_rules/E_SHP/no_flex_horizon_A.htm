@@ -1,0 +1,5 @@
+<#if HORIZON == "A" && HAS_FLEX == "N">
+<#assign MODULE_EXCLUDE = 0>
+<#elseif HORIZON != "A" && HAS_FLEX == "N" && ONLINE_CHECKIN_AVAILABLE_YN == 'N'><#assign MODULE_EXCLUDE = 0>
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>

@@ -1,0 +1,10 @@
+<#-- This displayrule is used to sell meal, if available, for some or none ancillaries bookings that already have seat and bag -->
+<#if HAS_FLEX?isnull || TESTING_BOOKING_NUMBER_OF_MEALS?isnull || TESTING_BOOKING_NUMBER_OF_SEATS?isnull || TESTING_BOOKING_NUMBER_OF_BAGS?isnull || MEAL_AVAILABLE?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "Y" || TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0><#assign MODULE_EXCLUDE = 1><#-- They have Flex ticket or they already have meal, exclude -->
+<#elseif TESTING_BOOKING_NUMBER_OF_SEATS?number == 0 || TESTING_BOOKING_NUMBER_OF_BAGS?number == 0><#-- They are missing seat or bag, exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#-- They have both seat and bag, we then check if meal is available -->
+    <#if MEAL_AVAILABLE == 'Y'><#-- If meal is available, include --><#assign MODULE_EXCLUDE = 0>
+    <#else><#-- If meal is not available, exclude --><#assign MODULE_EXCLUDE = 1>
+    </#if>
+<#else><#-- Any other scenarios, exclude --><#assign MODULE_EXCLUDE = 1>
+</#if>

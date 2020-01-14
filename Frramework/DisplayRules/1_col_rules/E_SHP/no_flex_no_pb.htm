@@ -1,0 +1,6 @@
+<#-- This displayrule is used to display PB bullet point, if they have bought it -->
+<#if HAS_FLEX?isnull || HAVE_PRIORITY_BOARDING?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == "Y" || HAVE_PRIORITY_BOARDING == 'Y' || HAVE_PRIORITY_BOARDING_BUNDLE == 'Y' || AIR_HAS_PB?trim != 'Y'><#-- They have FLEX, PB is not available or the already have PB. Exclude --><#assign MODULE_EXCLUDE = 1><#-- We check if PB is available -->
+<#elseif AIR_HAS_PB?trim == 'Y'><#--If PB is available, include --><#assign MODULE_EXCLUDE = 0>    
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>
