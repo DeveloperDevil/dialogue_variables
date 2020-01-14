@@ -1,0 +1,33 @@
+<#-- PROMOLIST_SHOW_DEFAULT is 1 in newsletter defaults-->
+<#if PREFFERED_AIRPORT?isnull>
+    <#assign PREFAIR = 'DEFAULT'>
+<#else>
+	<#assign PREFAIR = PREFFERED_AIRPORT?trim>
+</#if>
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields PROMOLIST_VARIANT PROMOLIST_WEEK PROMOLIST_YEAR PROMOLIST_DISPLAY_RULE PROMOLIST_SEGMENT_RULE PROMOLIST_HEADLINE PROMOLIST_BEFORE_DEP_TXT PROMOLIST_BEFORE_DEST_TXT PROMOLIST_AFTER_DEST_TXT PROMOLIST_SUB_TXT PROMOLIST_PARAGRAPH PROMOLIST_CLR PROMOLIST_SMALL_TXT PROMOLIST_TXT_CTA PROMOLIST_URL PROMOLIST_DIVIDER_TOP PROMOLIST_DIVIDER_BTM PROMOLIST_SHOW_IATA_YN>
+			<#assign MODULE_EXCLUDE = 0>
+			<#if !MODULE.PROMOLIST_VARIANT?isnull>
+				<#if !MODULE.PROMOLIST_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.PROMOLIST_DISPLAY_RULE+".htm">
+					<#recover>
+					 <#if !MODULE.PROMOLIST_DISPLAY_RULE?isnull 
+                            && (MODULE.PROMOLIST_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.PROMOLIST_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong PREFAIR, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>   
+	                </#if> 
+						 <#if !MODULE.PROMOLIST_DISPLAY_RULE?isnull 
+                           && MODULE.PROMOLIST_DISPLAY_RULE?lower_case == "default"
+                           && PROMOLIST_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                          </#if> 	
+						</#attempt>
+				</#if>
+				<#if MODULE_EXCLUDE == 0><#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/promolist/promolist_"+MODULE.PROMOLIST_VARIANT+"_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!--error loading PROMOLIST module --></td></tr></#attempt>
+					<#global PROMOLIST_SHOW_DEFAULT = 0>
+					</#if>
+				</#if>
+</#data>
