@@ -1,0 +1,39 @@
+<#-- BANNER_SHOW_DEFAULT is 1 in newsletter defaults-->
+<#if PREFFERED_AIRPORT?isnull>
+    <#assign PREFAIR = 'DEFAULT'>
+<#else>
+	<#assign PREFAIR = PREFFERED_AIRPORT?trim>
+</#if>
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields BANNER_VARIANT BANNER_DISPLAY_RULE BANNER_TYPE BANNER_IMAGE BANNER_IMAGE_SWAP BANNER_URL BANNER_ALT_TXT BANNER_PARAGRAPH BANNER_DIVIDER_TOP BANNER_DIVIDER_BTM BANNER_BCG_COLOR>
+		<#assign MODULE_EXCLUDE = 0>
+			<#if !MODULE.BANNER_VARIANT?isnull>
+				<#if !MODULE.BANNER_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.BANNER_DISPLAY_RULE+".htm">
+					<#recover>
+					 <#if !MODULE.BANNER_DISPLAY_RULE?isnull 
+                            && (MODULE.BANNER_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.BANNER_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong PREFAIR, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>   
+	                </#if> 
+						 <#if !MODULE.BANNER_DISPLAY_RULE?isnull 
+                           && MODULE.BANNER_DISPLAY_RULE?lower_case == "default"
+                           && BANNER_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                          </#if> 	
+						</#attempt>
+				</#if>
+<#if MODULE_EXCLUDE == 0><#global SEGMENTED_IMAGE = SEGMENTED_IMAGE_BANNER><#global SEGMENTED_HEADING = SEGMENTED_HEADING_BANNER><#global SEGMENTED_INTRO = SEGMENTED_INTRO_BANNER><#global SEGMENTED_PARAGRAPH = SEGMENTED_PARAGRAPH_BANNER><#global SEGMENTED_URL = SEGMENTED_URL_BANNER>
+    <#if MODULE.BANNER_IMAGE?contains("http") || MODULE.BANNER_IMAGE?contains("${")><#assign BANNER_IMG = MODULE.BANNER_IMAGE><#else><#assign BANNER_IMG = "https://static.cdn.responsys.net/i2/responsysimages/nas" + MODULE.BANNER_IMAGE>
+                    </#if>
+                    <#if MODULE.BANNER_IMAGE_SWAP?contains("http") || MODULE.BANNER_IMAGE_SWAP?contains("${")><#assign BANNER_IMG_SWAP = MODULE.BANNER_IMAGE_SWAP><#else><#assign BANNER_IMG_SWAP = "https://static.cdn.responsys.net/i2/responsysimages/nas" + MODULE.BANNER_IMAGE_SWAP>
+                    </#if>
+				<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/banner/banner_"+MODULE.BANNER_VARIANT+"_1_col.htm">
+				<#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0">error loading banner module --></td></tr></#attempt>
+				<#global BANNER_SHOW_DEFAULT = 0>
+			</#if>
+</#if>
+		</#data>

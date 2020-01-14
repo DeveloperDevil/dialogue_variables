@@ -1,0 +1,27 @@
+<#if MODULE.BANNER_BCG_COLOR?isnull><#assign BCG_COLOR ="#D81939"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "red"><#assign BCG_COLOR ="#D81939"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "blue"><#assign BCG_COLOR ="#003D50"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "black"><#assign BCG_COLOR ="#000000"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "green"><#assign BCG_COLOR ="#238E00"><#else><#assign BCG_COLOR ="#D81939"></#if><#if MODULE.BANNER_BCG_COLOR?isnull><#assign STRIPE_COLOR ="#003D50"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "red"><#assign STRIPE_COLOR ="#003D50"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "blue"><#assign STRIPE_COLOR ="#D81939"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "black"><#assign STRIPE_COLOR ="#333333"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "green"><#assign STRIPE_COLOR ="#D81939"><#else><#assign STRIPE_COLOR ="#003D50"></#if><tr>
+<td class="one-column" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-align: center" >
+        <table align="center" cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; text-align: center !important; background-color: ${CAMPAIGN_BCG_CLR};" >
+            <tr>
+                <#if MODULE.BANNER_TYPE?isnull><td bgcolor="f1f1f1" width="20" style="width: 20px;background-color: ${CAMPAIGN_BCG_CLR} !important;">&nbsp;</td></#if><!-- Lotus 8 fix, nested table with background color --><td background="${MODULE.BANNER_IMAGE}" bgcolor="${BCG_COLOR?exec?trim}" style="background-color: ${BCG_COLOR?exec?trim};background-color:${BCG_COLOR?exec?trim};background:repeating-linear-gradient(
+  135deg,${BCG_COLOR?exec?trim},${BCG_COLOR?exec?trim} 40px,${STRIPE_COLOR?exec?trim} 40px,${STRIPE_COLOR?exec?trim} 80px) !important;"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="inner contents" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;font-size: 32px;font-weight: bold; padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center; min-height:80px;text-decoration: none;<#if MODULE.BANNER_TYPE?upper_case == 'P'>max-width:640px;<#else>max-width:600px;</#if>" >
+                 
+  <!--[if gte mso 9]>
+  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="<#if MODULE.BANNER_TYPE?upper_case == 'P'>width:640px;<#else>width:600px;</#if>height:80px;background-color:${BCG_COLOR?exec?trim};background:repeating-linear-gradient(
+  135deg,${BCG_COLOR?exec?trim},${BCG_COLOR?exec?trim} 40px,${STRIPE_COLOR?exec?trim} 40px,${STRIPE_COLOR?exec?trim} 80px) !important;">
+    <v:fill type="tile" src="${MODULE.BANNER_IMAGE}" color="${BCG_COLOR?exec?trim}" />
+    <v:textbox inset="0,0,0,0">
+  <![endif]-->
+  <div style="padding-right:20px;padding-left:20px;">
+
+ <!--[if gte mso 9|(IE)]><table align="center" cellpadding="0" cellspacing="0" width="100%" height:80px; border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; text-align: center !important;padding:0;">
+<tr><td  height="18" style="height:18px;padding:0;">&nbsp;</td></tr><tr><td><center style="color:#fffffe;font-family:Arial, Helvetica, Sans-serif; font-weight:bold;font-size: 32px;line-height:34px !important;padding:0;padding:0;"><![endif]--><a class="" href="${clickthrough('BANNER_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.BANNER_URL?exec)}"
+style="padding-bottom: 36px; padding-top: 36px;color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif; font-weight:bold;font-size: 32px; line-height:34px !important;text-align:center;text-decoration:none;width:100%;-webkit-text-size-adjust:none;background-repeat: no-repeat;max-width: 600px;"><font class="" style="font-family:Arial, Helvetica, Sans-serif;color:#fffffe;font-size: 32px;font-weight: bold;text-decoration: none;line-height:34px !important;text-align: center;padding:0;">${MODULE.BANNER_PARAGRAPH?exec}</font></a><!--[if gte mso 9|(IE)]></center></td></tr><tr><td  height="18" style="height:18px;padding:0;">&nbsp;</td></tr></table><![endif]-->  </div>
+  <!--[if gte mso 9]>
+    </v:textbox>
+  </v:rect>
+  <![endif]-->
+</td>
+  
+
+               
+				</tr></table></td><#if MODULE.BANNER_TYPE?isnull><td bgcolor="f1f1f1" width="20" style="width: 20px;background-color: ${CAMPAIGN_BCG_CLR} !important;">&nbsp;</td></#if></tr><#if MODULE.BANNER_TYPE?isnull><tr><td height="20" colspan="3" style="height: 20px; line-height: 20px; font-size: 20px;">&nbsp;</td></tr><#else><tr><td height="20" style="height: 20px; line-height: 20px; font-size: 20px;">&nbsp;</td></tr></#if></table></td></tr>

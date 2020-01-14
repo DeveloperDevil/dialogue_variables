@@ -1,0 +1,47 @@
+<#if MODULE.BANNER_BCG_COLOR?isnull><#assign BCG_COLOR ="#D81939"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "red"><#assign BCG_COLOR ="#D81939"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "blue"><#assign BCG_COLOR ="#003D50"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "black"><#assign BCG_COLOR ="#000000"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "green"><#assign BCG_COLOR ="#238E00"><#else><#assign BCG_COLOR ="#D81939"></#if><#if MODULE.BANNER_BCG_COLOR?isnull><#assign STRIPE_COLOR ="#003D50"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "red"><#assign STRIPE_COLOR ="#003D50"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "blue"><#assign STRIPE_COLOR ="#D81939"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "black"><#assign STRIPE_COLOR ="#333333"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "green"><#assign STRIPE_COLOR ="#D81939"><#else><#assign STRIPE_COLOR ="#003D50"></#if>
+
+
+
+
+<tr>
+<td class="one-column" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-align: center" >
+        <table align="center" cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; text-align: center !important; background-color: ${CAMPAIGN_BCG_CLR};" >
+            <tr>
+                <#if MODULE.BANNER_TYPE?isnull>
+                <td bgcolor="f1f1f1" width="20" style="width: 20px;background-color: ${CAMPAIGN_BCG_CLR} !important;"></td></#if>
+               	<td>
+                
+                <div class="show-for-outlook-banner" style=" display:none; text-align: center;">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                <td valign="top" align="center" background="${MODULE.BANNER_IMAGE?exec}" height="80" style="background-repeat: no-repeat;background-position:center center;">
+                <!--[if gte mso 9]>
+  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" href="${clickthrough('BANNER_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.BANNER_URL?exec)}"  style="height:80px;v-text-anchor:middle;
+                <#if MODULE.BANNER_TYPE?isnull>width:600px;<#else>width:640px;</#if>" fill="true" stroke="false" style="width:640px;">
+    <v:fill type="tile" src="${MODULE.BANNER_IMAGE?exec}" color="${BCG_COLOR?exec?trim}" /><w:anchorlock/>
+    <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><center style="color:#fffffe;font-family:Arial, Helvetica, Sans-serif; font-weight:bold;font-size: 32px;">${MODULE.BANNER_PARAGRAPH?exec}
+  <![endif]-->
+  <div>
+    <a href="${clickthrough('BANNER_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.BANNER_URL?exec)}" style="color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif; font-weight:bold;font-size: 32px; line-height:80px;text-align:center;text-decoration:none;width:100%;-webkit-text-size-adjust:none;mso-hide:all;background-repeat: no-repeat;"><font style="font-family:Arial, Helvetica, Sans-serif;color:#fffffe;font-size: 32px;font-weight: bold;text-decoration: none;text-align: center">${MODULE.BANNER_PARAGRAPH?exec}</font></a>
+               </div>
+  <!--[if gte mso 9]>
+    </center></v:textbox>
+  </v:rect>
+  <![endif]--> </td></tr></table>
+                </div>
+                
+                            <div class="hide-for-outlook-banner" style="mso-hide:all">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="mso-hide:all">
+                            <tr>
+                            <td valign="top" align="center" background="${MODULE.BANNER_IMAGE_SWAP?exec}" height="320"  style="mso-hide:all; background-repeat: no-repeat;background-position:center center; background-size:cover;width: 100%; padding-top: 10px; height: 92px; max-width: 489px;"><a href="${clickthrough('BANNER_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.BANNER_URL?exec)}"
+style="color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif; font-weight:bold;font-size: 28px; line-height:35px;text-align:center;text-decoration:none;width:100%; mso-hide:all"><font style="font-family:Arial, Helvetica, Sans-serif;color:#fffffe;font-size: 28px;font-weight: bold;text-decoration: none;text-align: center; mso-hide:all">${MODULE.BANNER_PARAGRAPH?exec}</font></a>
+                            </td></tr></table>
+                            </div>
+                
+                
+                </td>
+                
+                
+                
+                
+                <#if MODULE.BANNER_TYPE?isnull><td bgcolor="f1f1f1" width="20" style="width: 20px;background-color: ${CAMPAIGN_BCG_CLR} !important;"></td></#if></tr><#if MODULE.BANNER_TYPE?isnull><tr><td height="20" colspan="3" style="height: 20px; line-height: 20px; font-size: 20px;">&nbsp;</td></tr><#else><tr><td height="20" style="height: 20px; line-height: 20px; font-size: 20px;">&nbsp;</td></tr></#if></table></td></tr>

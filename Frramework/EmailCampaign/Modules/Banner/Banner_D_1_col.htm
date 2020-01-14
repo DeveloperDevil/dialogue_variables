@@ -1,0 +1,52 @@
+<!-- BANNER VARIANT D. BANNER_IMG and BANNER_IMG_SWAP are made in the BANNER module wrapper --><#if MODULE.BANNER_BCG_COLOR?isnull><#assign BCG_COLOR ="#D81939"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "red"><#assign BCG_COLOR ="#D81939"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "blue"><#assign BCG_COLOR ="#003D50"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "black"><#assign BCG_COLOR ="#000000"><#elseif MODULE.BANNER_BCG_COLOR?lower_case == "green"><#assign BCG_COLOR ="#238E00"><#else><#assign BCG_COLOR ="#D81939"></#if><#if MODULE.BANNER_DIVIDER_TOP?upper_case == "Y">
+<tr>
+  <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="20px;"></td>
+        <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+        <td width="20px;"></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td>
+</tr>
+<#elseif MODULE.BANNER_DIVIDER_TOP?upper_case == "S">
+<tr>
+  <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td>
+</tr>
+</#if>
+<tr>
+  <td class="one-column" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-align: center" ><table align="center" cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; text-align: center !important; background-color: ${CAMPAIGN_BCG_CLR};" >
+      <tr> <#if MODULE.BANNER_TYPE?isnull>
+        <td bgcolor="f1f1f1" width="20" style="width: 20px;background-color: ${CAMPAIGN_BCG_CLR} !important;">&nbsp;</td>
+        </#if><!-- Lotus 8 fix, nested table with background color -->
+        <td bgcolor="${BCG_COLOR?exec?trim}" style="background-color: ${BCG_COLOR?exec?trim};"><table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr><td height="34" bgcolor="${BCG_COLOR?exec?trim}" style="height: 34px; line-height: 34px; font-size: 34px;background-color: ${BCG_COLOR?exec?trim};">&nbsp;</td></tr><tr>
+              <td class="inner contents Banner_padding" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;font-size: 25px;font-weight: bold; padding-top:0;padding-bottom:0;padding-right:20px;padding-left:20px;text-align:center; background-color:${BCG_COLOR?exec?trim};text-decoration: none;<#if MODULE.BANNER_TYPE?upper_case == 'P'>max-width:640px;<#else>max-width:600px;</#if>"> 
+                  
+                  <a class="" href="${clickthrough('BANNER_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.BANNER_URL?exec)}"
+style="background-color:${BCG_COLOR?exec?trim};padding-bottom: 0; padding-top: 0;color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif; font-weight:bold;font-size: 25px; line-height:34px !important;text-align:center;text-decoration:none !important;width:100%;<#if MODULE.BANNER_TYPE?isnull>max-width:600px;<#else>max-width:640px;</#if>;-webkit-text-size-adjust:none;background-repeat: no-repeat;padding-top: 0;padding-bottom: 0;" target="_blank"><font class="" style="font-family:Arial, Helvetica, Sans-serif;color:#fffffe;font-size: 25px;font-weight: bold;text-decoration: none;line-height:34px !important;text-align: center;text-decoration:none !important;">${MODULE.BANNER_PARAGRAPH?exec}</font></a>
+            </tr><tr><td height="34" background="${BCG_COLOR?exec?trim}" style="height: 34px; line-height: 34px; font-size: 34px;background-color: ${BCG_COLOR?exec?trim};">&nbsp;</td></tr>
+          </table></td>
+        <#if MODULE.BANNER_TYPE?isnull>
+        <td bgcolor="f1f1f1" width="20" style="width: 20px;background-color: ${CAMPAIGN_BCG_CLR} !important;">&nbsp;</td>
+        </#if></tr>
+      
+    </table></td>
+</tr>
+<#if MODULE.BANNER_DIVIDER_BTM?upper_case == "Y">
+<tr>
+  <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="20px;"></td>
+        <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+        <td width="20px;"></td>
+      </tr>
+    </table></td>
+</tr>
+<!--[if (gte mso 9)|(IE)]><tr><td height="20" colspan="3" style="height: 20px; line-height: 20px; font-size: 20px;">&nbsp;</td></tr><![endif]--><#elseif MODULE.BANNER_DIVIDER_BTM?upper_case == "S">
+<tr>
+  <td height="20" style="box-sizing:inherit;font-size:20px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td>
+</tr>
+</#if>

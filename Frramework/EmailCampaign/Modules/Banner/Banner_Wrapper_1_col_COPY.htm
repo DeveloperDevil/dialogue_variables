@@ -1,0 +1,17 @@
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields BANNER_VARIANT BANNER_DISPLAY_RULE BANNER_TYPE BANNER_IMAGE BANNER_IMAGE_SWAP BANNER_URL BANNER_ALT_TXT BANNER_PARAGRAPH BANNER_DIVIDER_TOP BANNER_DIVIDER_BTM BANNER_BCG_COLOR>
+		<#if !MODULE.BANNER_IMAGE?isnull>
+<#if !MODULE.BANNER_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.BANNER_DISPLAY_RULE+".htm">
+					<#recover>
+						<!-- error loading display rule -->
+					</#attempt>
+				</#if>
+<#if MODULE_EXCLUDE == 0>
+				<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/banner/banner_"+MODULE.BANNER_VARIANT+"_1_col.htm">
+				<#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0">error loading banner module --></td></tr></#attempt>
+			</#if>
+</#if>
+		</#data>
