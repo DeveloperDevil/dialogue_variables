@@ -1,0 +1,33 @@
+<!-- // MOD 05a: START \\-->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<table width="317"  class="left t_2col m_w100pc" aria-labelledby="left" align="left" cellpadding="0" cellspacing="0" border="0">
+				<tr><td align="left"><img class="w100pc" src="${MODULE.TWOCOLUMN_IMAGE_1}" border="0" style="display:block;" width="317"/></td></tr>
+				<tr><td align="center" valign="top" height="180" bgcolor="#ffffff" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#333333;padding:10px 20px 20px 20px;">
+					<span style="font-weight:bold;font-size:22px;line-height:24px;color:<#if MODULE.TWOCOLUMN_FONT_COLOR_1?isnull>#003D50<#else>${MODULE.TWOCOLUMN_FONT_COLOR_1}</#if>;">${MODULE.TWOCOLUMN_HEADLINE_1?exec}</span><br><br>
+					${MODULE.TWOCOLUMN_PARAGRAPH_1?exec}
+					<#if !MODULE.TWOCOLUMN_CALL_TO_ACTION_1?isnull><br /><br /><table cellpadding="0" cellspacing="0" border="0"><tr><td><a href="${clickthrough('TWOCOLUMN_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.TWOCOLUMN_URL_1?exec)}" target="_blank"><span style="font-size:16px;line-height:18px;font-weight: bold; text-decoration: underline; color: #063d4d
+;">${MODULE.TWOCOLUMN_CALL_TO_ACTION_1?exec}</span><br>
+                  <br>
+                  </a></td></tr></table><#/if>
+				</td></tr>
+			</table>
+			<!--[if gte mso 9]></td><td><![endif]-->
+			<table class="left m_h" aria-labelledby="left" align="left" width="4" cellpadding="0" cellspacing="0" border="0"><tr><td>&nbsp;</td></tr></table>
+			<!--[if gte mso 9]></td><td><![endif]-->
+			<table width="317" class="left t_2col m_w100pc" aria-labelledby="left" align="left" cellpadding="0" cellspacing="0" border="0">
+				<tr><td align="right"><img class="w100pc" src="${MODULE.TWOCOLUMN_IMAGE_2}" border="0" style="display:block;" width="317"/></td></tr>
+				<tr><td align="center" valign="top" height="180" bgcolor="#ffffff" style="font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:16px;color:#333333;padding:10px 20px 20px 20px;">
+					<span style="font-weight:bold;font-size:22px;line-height:24px;color:<#if MODULE.TWOCOLUMN_FONT_COLOR_2?isnull>#003D50<#else>${MODULE.TWOCOLUMN_FONT_COLOR_2}</#if>;">${MODULE.TWOCOLUMN_HEADLINE_2?exec}</span><br><br>
+					${MODULE.TWOCOLUMN_PARAGRAPH_2?exec}
+					<#if !MODULE.TWOCOLUMN_CALL_TO_ACTION_2?isnull><br /><br /><table cellpadding="0" cellspacing="0" border="0"><tr><td><a href="${clickthrough('TWOCOLUMN_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.TWOCOLUMN_URL_2?exec)}" target="_blank"><span style="font-size:16px;line-height:18px;font-weight: bold; text-decoration: underline; color: #063d4d
+;">${MODULE.TWOCOLUMN_CALL_TO_ACTION_2?exec}</span><br>
+                  <br>
+                  </a></td></tr></table></#if>
+				</td></tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!-- // MOD 05a: END \\-->
