@@ -1,0 +1,1 @@
+<#if DESTINATION_COUNTRY_CODE?trim?upper_case != "AR" && DESTINATION_COUNTRY_CODE?trim?upper_case != "TH"&& DESTINATION_COUNTRY_CODE?trim?upper_case != "SG"><#if MARKET== 'US' && DESTINATION_COUNTRY_CODE?trim?upper_case == 'US' && REGISTERED_PASSPORT_YN == "Y"><#assign MODULE_EXCLUDE = 1><#else><#assign MODULE_EXCLUDE = 0></#if><#else><#assign MODULE_EXCLUDE = 1></#if>

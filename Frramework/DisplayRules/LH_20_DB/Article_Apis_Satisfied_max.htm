@@ -1,0 +1,4 @@
+<#-- apis satisfied means they have registered their passport -->
+<#data TEST_BOOKING as TEST_BOOKING limit=1><#filter TEST_BOOKING_RIID_ = RIID_><#fields APIS_NOT_SATISFIED><#if TEST_BOOKING.APIS_NOT_SATISFIED?isnull><#assign MODULE_EXCLUDE = 1><#elseif TEST_BOOKING.APIS_NOT_SATISFIED?number gt 0 && DESTINATION_COUNTRY_CODE?trim?upper_case == "US"><#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1></#if></#data>
+<#-- NEW TEMPLATE CODE -->
+<#-- <#if APIS_SATISFIED = "Y"><assign MODULE_EXCLUDE = 1><#else><#assign MODULE_EXCLUDE = 0></#if> -->

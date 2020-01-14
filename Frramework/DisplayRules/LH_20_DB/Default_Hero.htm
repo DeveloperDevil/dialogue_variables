@@ -1,0 +1,4 @@
+<#if NULL_VALUES?trim == "Y"><#assign MODULE_EXCLUDE = 1><#elseif  TEST_SEAT?number == 0 || TEST_BAGS?number == 0 || TEST_MEAL?number == 0><#assign MODULE_EXCLUDE = 1><#elseif PREMIUM_YES?trim == "N"><#assign MODULE_EXCLUDE = 1><#elseif HOTEL_YES?trim == "N"><#assign MODULE_EXCLUDE = 1></#if>
+
+<#-- NEW TEMPLATE CODE -->
+<#-- <#if NULL_VALUES?trim == "Y"><#assign MODULE_EXCLUDE = 1><#elseif  TESTING_BOOKING_NUMBER_OF_SEATS?number == 0 || TESTING_BOOKING_NUMBER_OF_BAGS?number == 0 || TESTING_BOOKING_NUMBER_OF_MEALS?number == 0><#assign MODULE_EXCLUDE = 1><#elseif PREMIUM_YES?trim == "N"><#assign MODULE_EXCLUDE = 1><#elseif HOTEL_YES?trim == "N"><#assign MODULE_EXCLUDE = 1></#if> -->
