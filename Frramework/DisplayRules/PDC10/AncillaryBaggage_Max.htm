@@ -1,0 +1,6 @@
+<#data SQL_MAX as SQL_MAX limit=1>
+<#filter BOOKING_GDSBOOKINGID = BOOKING_ID BOOKING_LOCALBOOKINGID_1 = LOCAL_BOOKING_ID>
+<#fields BOOKING_NUMBER_OF_BAGS><#if NULL_VALUES?trim =="N" && SQL_MAX.BOOKING_NUMBER_OF_BAGS?number gt 0><#assign MODULE_EXCLUDE = 1></#if></#data>
+
+<#-- NEW TEMPLATE CODE -->
+<#-- <#if NULL_VALUES?trim =="N" && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#assign MODULE_EXCLUDE = 1></#if> -->
