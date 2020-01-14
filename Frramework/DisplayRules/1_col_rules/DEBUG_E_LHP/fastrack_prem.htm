@@ -1,0 +1,5 @@
+<#if PREMIUM_YES == "N"><#assign MODULE_EXCLUDE = 1>
+	<#elseif FAST_TRACK_AIRPORTS?trim == "N" && FAST_TRACK_AIRPORTS_RETURN?trim == "N"><#assign MODULE_EXCLUDE = 1>
+	<#elseif FAST_TRACK_AIRPORTS?trim == "N" && FAST_TRACK_AIRPORTS_RETURN?trim == "Y" && ONEWAY_YN == "1"><#assign MODULE_EXCLUDE = 1>
+	<#elseif FAST_TRACK_AIRPORTS?trim == "Y" || FAST_TRACK_AIRPORTS_RETURN?trim == "Y"><#assign MODULE_EXCLUDE = 0>	
+<#else><#assign MODULE_EXCLUDE = 1></#if>

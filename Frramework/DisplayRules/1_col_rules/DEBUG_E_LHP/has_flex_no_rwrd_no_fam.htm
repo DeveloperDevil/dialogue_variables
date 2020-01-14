@@ -1,0 +1,7 @@
+<#if HAS_FLEX?isnull || CONTACT.REWARD_YN?isnull || NUMBER_OF_CHILDREN?isnull || NUMBER_OF_INFANTS?isnull><#-- We are missing data (NULL values), exclude --><#assign MODULE_EXCLUDE = 1>
+<#elseif NUMBER_OF_CHILDREN?number == 0 && NUMBER_OF_INFANTS?number == 0><#-- They are not travelling with children or infants -->
+    <#if (HAS_FLEX == 'Y' || PREMIUM_FLEX_YN == 'Y') && CONTACT.REWARD_YN?upper_case?trim == "N"><#-- They have Flex ticket and they are not Reward members, include --><#assign MODULE_EXCLUDE = 0>
+    <#else><#-- They do not have Flex ticket or are Reward members, exclude --><#assign MODULE_EXCLUDE = 1>
+    </#if>
+<#else><#-- For all other scenarios, exclude --><#assign MODULE_EXCLUDE = 1>
+</#if>

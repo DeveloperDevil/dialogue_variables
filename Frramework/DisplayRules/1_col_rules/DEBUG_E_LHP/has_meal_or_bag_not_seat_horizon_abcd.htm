@@ -1,0 +1,3 @@
+<#if PREMIUM_YES == "Y" || HAS_FLEX == "Y" || TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0 || HORIZON == "E" || HORIZON == "F"><#assign MODULE_EXCLUDE = 1><#elseif TESTING_BOOKING_NUMBER_OF_SEATS?number == 0 && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0><#assign MODULE_EXCLUDE = 0><#elseif TESTING_BOOKING_NUMBER_OF_SEATS?number == 0 && TESTING_BOOKING_NUMBER_OF_MEALS?number gt 0><#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1></#if>
+
+

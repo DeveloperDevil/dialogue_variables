@@ -1,0 +1,1 @@
+<#if PREMIUM_YES == "Y"><#assign MODULE_EXCLUDE = 1><#elseif LOUNGE_AIRPORTS?trim == "N" && LOUNGE_AIRPORTS_RETURN?trim == "N"><#assign MODULE_EXCLUDE = 1><#elseif ONEWAY_YN == "1" && LOUNGE_AIRPORTS?trim == "N"><#assign MODULE_EXCLUDE = 1><#else><#assign MODULE_EXCLUDE = 0></#if>

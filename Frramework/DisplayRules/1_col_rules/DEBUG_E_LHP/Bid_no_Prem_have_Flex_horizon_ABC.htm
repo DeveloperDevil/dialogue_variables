@@ -1,0 +1,4 @@
+<#if PREMIUM_YES == "Y" HORIZON == "D" || HORIZON == "E" || HORIZON == "F" || HAS_FLEX == 'N'><#assign MODULE_EXCLUDE = 1>
+<#elseif HAS_FLEX == 'Y' && PLUSGRADE_YN == 'N'><#assign MODULE_EXCLUDE = 0>
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>

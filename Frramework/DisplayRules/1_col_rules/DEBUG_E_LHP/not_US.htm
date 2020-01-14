@@ -1,0 +1,1 @@
+<#data AIRPORTS as AIRPORTS limit=1><#filter AIRPORTCODE_IATA = DESTINATION_IATA><#fields COUNTRYCODE><#if AIRPORTS.COUNTRYCODE == "US"><#assign MODULE_EXCLUDE = 1><#else><#assign MODULE_EXCLUDE = 0></#if></#data>
