@@ -1,0 +1,8 @@
+<#data BOOKINGS_01 as BOOKINGS_01 limit=1>
+<#filter BOOKING_GDSBOOKINGID = BOOKING_ID BOOKING_LOCALBOOKINGID_1 = LOCAL_BOOKING_ID>
+<#fields BOOKING_ROUTE_AREA>
+<#if BOOKINGS_01.BOOKING_ROUTE_AREA?trim[0..2]?lower_case == "med"><#assign MODULE_EXCLUDE = 1></#if>
+</#data>
+
+<#-- NEW TEMPLATE RULE -->
+<#-- <#if SUN_AND_SEA == "Y"><#assign MODULE_EXCLUDE = 1></#if> -->
