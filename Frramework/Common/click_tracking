@@ -1,0 +1,56 @@
+<#macro add_link_param param value>
+ 	<#if g_link_param?isnull>
+		<#assign g_link_param = []>
+		<#assign param_item = {"param" : param, "value" : value}>
+    	<#assign g_link_param = g_link_param + [param_item]>
+    <#else>
+    	<#assign tmp = []>
+        <#assign action = 'append'/>
+
+        <#list g_link_param as gp>
+			<#if gp.param = param>
+                <#assign action = 'update'/>
+			</#if>
+        </#list>
+
+		<#if action = 'append'>
+    		<#assign param_item = {"param" : param, "value" : value}>
+            <#assign g_link_param = g_link_param + [param_item]>
+        <#else>
+        	<#list g_link_param as gp>
+                <#if gp.param = param>
+                    <#assign param_item_update = {"param" : param, "value" : value}>
+                <#else>
+                    <#assign param_item_update = {"param" : gp.param, "value" : gp.value}>
+                </#if>
+                <#assign tmp = tmp + [param_item_update]>
+            </#list> 
+            <#assign g_link_param = tmp>
+        </#if>
+    </#if>    
+</#macro>
+
+<#macro reset_link_param name>
+	<#assign g_link_param = []>
+</#macro>
+
+<#macro click_raw name url>
+    <#assign main_url = url>
+   <#-- main_url: ${main_url}<br>-->
+
+	<#assign param_separator = '?'>
+	<#if main_url?index_of("?") gt 0>
+        <#assign param_separator = '&'>
+    </#if>
+
+   <#list g_link_param as param>
+        <#--Param: ${param.param} =  ${param.value}<br>-->
+		<#assign main_url = main_url + param_separator + param.param + "=" + param.value>
+        <#assign param_separator = '&'>
+    </#list>
+    <#-- main_url: ${main_url?exec}<br> -->
+	<#--${clickthrough(name,"URL=" + main_url)}-->
+    ${main_url?exec}
+</#macro>
+     
+<#macro click name url><#assign value><@click_raw name=name url=url/></#assign>${value?trim}</#macro>
