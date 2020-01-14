@@ -1,0 +1,4 @@
+<#data SQL_MAX as SQL_MAX><#filter BOOKING_GDSBOOKINGID2 = BOOKING_ID BOOKING_LOCALBOOKINGID_1 = LOCAL_BOOKING_ID><#fields BOOKING_RENTALCAR><#if SQL_MAX.BOOKING_RENTALCAR?trim?upper_case == "Y"><#assign MODULE_EXCLUDE = 1></#if></#data>
+
+<#-- NEW TEMPLATE CODE -->
+<#-- <#if HAS_CAR_RENTAL == "Y"><#assign MODULE_EXCLUDE = 1></#if> -->
