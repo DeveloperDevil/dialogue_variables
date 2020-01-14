@@ -1,0 +1,7 @@
+<#if PREMIUM_YES == "Y" && ONEWAY_YN == "1" && DEPARTURE_IATA == "BCN">
+<#assign MODULE_EXCLUDE = 0>
+<#elseif PREMIUM_YES == "Y" && ONEWAY_YN == "0">
+	<#if DEPARTURE_IATA == "BCN" || DESTINATION_IATA == "BCN">
+	<#assign MODULE_EXCLUDE = 0>
+	<#else><#assign MODULE_EXCLUDE = 1></#if>
+<#else><#assign MODULE_EXCLUDE = 1></#if>
