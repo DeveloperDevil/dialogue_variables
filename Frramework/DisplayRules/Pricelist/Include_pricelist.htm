@@ -1,0 +1,3 @@
+<#data REVENUE_PRICES as REVENUE_PRICES limit = 1>
+          <#filter MARKET1=MARKET CAMPAIGN_NAME = CAMPAIGN>
+          <#fields SEGMENTATION_RULE><#assign SHOW_PRICE = 0><#if REVENUE_PRICES.SEGMENTATION_RULE?isnull><#assign SHOW_PRICE = 1></#if><#if CONTACT.PREFFERED_AIRPORT?trim == REVENUE_PRICES.SEGMENTATION_RULE?trim><#assign SHOW_PRICE = 1></#if><#if REVENUE_PRICES.SEGMENTATION_RULE?trim?lower_case == "promolist"><#assign SHOW_PRICE = 0></#if></#data>
