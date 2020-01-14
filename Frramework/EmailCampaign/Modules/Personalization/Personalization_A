@@ -1,0 +1,80 @@
+<!-- // MOD 11: START \\ -->
+<table bgcolor="#ffffff" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td style="padding:0 7px 0 7px;" valign="top" align="center">
+            <table aria-labelledby="left" class="left w50pc t_w50pc m_w100pc" width="199" cellpadding="0" cellspacing="0" border="0" align="left">
+                <tr>
+                    <td style="padding:0 7px 0 7px">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                               <#if !MODULE.PERSONALIZATION_NAME?isnull> <td align="left" style="font-family:Arial, Helvetica, Sans-serif;color:#2c515e;font-size:14px;line-height:16px;border-bottom:1px solid #d8d8d8;padding:10px 0 10px 10px;">
+                                    <b>${MODULE.PERSONALIZATION_NAME}</b>
+                                    <br> ${CONTACT.FIRSTNAME?capitalize?exec}  ${CONTACT.LASTNAME?capitalize?exec}
+                                </td></#if>
+                            </tr>
+                            <tr>
+                                <#if !MODULE.PERSONALIZATION_EMAIL?isnull> <td align="left" style="font-family:Arial, Helvetica, Sans-serif;color:#2c515e;font-size:14px;line-height:16px;border-bottom:1px solid #d8d8d8;padding:10px 0 10px 10px;">
+                                    <b>${MODULE.PERSONALIZATION_EMAIL}</b>
+                                    <br /> <#if CONTACT.EMAIL?length lt 25>${CONTACT.EMAIL}<#else>${CONTACT.EMAIL?string[0..22]+ "..."} </#if>
+                                </td></#if>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!--[if gte mso 9]></td><td style="padding:0 7px 0 7px;" valign="top" align="center"><![endif]-->
+            <table aria-labelledby="left" class="left w50pc t_w50pc m_w100pc" width="200" cellpadding="0" cellspacing="0" border="0" align="left">
+                <tr>
+                    <td style="padding:0 7px 0 7px">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                               <td align="left" style="font-family:Arial, Helvetica, Sans-serif;color:#2c515e;font-size:14px;line-height:16px;<#if CONTACT.REWARD_YN == "N" >padding:10px 0 6px 10px;<#else>padding:10px 0 10px 10px;</#if><#if CONTACT.REWARD_YN == "Y" >border-bottom:1px solid #d8d8d8;</#if>">
+                                   <b>${MODULE.PERSONALIZATION_REWARD_NO}</b>
+                                    <br><#if CONTACT.REWARD_YN == "Y" >${CONTACT.REWARD_NUMBER?c}<#else>${MODULE.PERSONALIZATION_NOT_RWD_TXT}</#if>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="font-family:Arial, Helvetica, Sans-serif;color:#2c515e;font-size:14px;line-height:16px;border-bottom:1px solid #d8d8d8;<#if CONTACT.REWARD_YN == "N" >padding:0 0 10px 10px;<#else>padding:10px 0 10px 10px;</#if>">
+                                    <#if CONTACT.REWARD_YN == "Y" ><b>${MODULE.PERSONALIZATION_CASHPOINT}</b><br />${CASHPOINTS}<#else><a href="${MODULE.PERSONALIZATION_NOT_RWD_URL?exec}" target="_blank" style="color:#003D50;"><b>${MODULE.PERSONALIZATION_NOT_RWD_LINK}</b></a></#if>
+                                    
+                            </tr>
+                            <tr>
+                                <#if !MODULE.PERSONALIZATION_LINK_TEXT?isnull><td align="left" class="bbgrey" style="font-family:Arial, Helvetica, Sans-serif;color:#2c515e;font-size:14px;line-height:16px;padding:10px 0 10px 10px;">
+                                    <b style="text-decoration:underline;"><a href="${PERSONALIZATION_URL?exec}" target="_blank" style="color:#003D50;"> ${MODULE.PERSONALIZATION_LINK_TEXT}</a></b>
+                                </td></#if>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!--[if gte mso 9]></td><td style="padding:0 7px 0 7px;" valign="top" align="center"><![endif]-->
+            <table aria-labelledby="left" class="left t_w100pc m_w100pc" width="199" cellpadding="0" cellspacing="0" border="0" align="left">
+                <tr>
+                    <td valign="" style="padding:0 7px 0 7px">
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <#if !MODULE.PERSONALIZATION_NEXT_FLIGHT?isnull> <td align="left" style="font-family:Arial, Helvetica, Sans-serif;color:#2c515e;font-size:14px;line-height:16px;border-bottom:1px solid #d8d8d8;padding:10px 0 10px 10px;">
+                                    <b>${MODULE.PERSONALIZATION_NEXT_FLIGHT}</b>
+                                    <br> ${DESTINATION_NAME?exec} 
+                                </td></#if>
+                            </tr>
+                            <tr>
+                               <#-- SERVER TIME CORRECTION --><#setting time_zone='US/Pacific-New'> <#if !MODULE.PERSONALIZATION_TRVL_DATE?isnull><td align="left" style="font-family:Arial, Helvetica, Sans-serif;color:#2c515e;font-size:14px;line-height:16px;border-bottom:1px solid #d8d8d8;padding:10px 0 10px 10px;">
+                                     <b>${MODULE.PERSONALIZATION_TRVL_DATE}</b>
+                                    <br> ${NEXT_FLIGHT?exec}  
+                                </td></#if>
+                            </tr>
+                            <tr>
+                                <#if !MODULE.PERSONALIZATION_REF_NO?isnull><td align="left" style="font-family:Arial, Helvetica, Sans-serif;color:#2c515e;font-size:14px;line-height:16px;padding:10px 0 10px 10px;">                                     
+<b>${MODULE.PERSONALIZATION_REF_NO}</b>
+                                    <br>  ${BOOKING_ID?exec} 
+                                </td></#if>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<!-- // MOD 11: END \\-->
