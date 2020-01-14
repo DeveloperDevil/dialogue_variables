@@ -1,0 +1,29 @@
+<!-- // MOD TEXT B: START \\ -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td bgcolor="${MODULE.TEXT_BACKGROUND_COLOR}" align="left" style="font-family:Arial, Helvetica, Sans-serif;font-size:15px;line-height:17px;color:#000000;padding:20px;">
+						<span style="color:${MODULE.TEXT_HEADING_COLOR};font-weight:bold;font-size:28px;line-height:30px;">${MODULE.TEXT_HEADLINE}</span><br>&nbsp;<br>
+						${MODULE.TEXT_PARAGRAPH}<br>&nbsp;<br>
+<#if !MODULE.TEXT_CALL_TO_ACTION?isnull>
+						<table class="ma" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td style="padding:10px 0 2px 0;border-bottom:4px solid #003D50;">
+			                 				<table cellpadding="0" cellspacing="0" border="0">
+                                    						<tr>
+                                        	<td bgcolor="#D81939"> <a href="${clickthrough('TEXT_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank" style="border:1px solid #D81939;color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:left;text-decoration:none;-webkit-text-size-adjust:none;padding:0 39px 0 13px;mso-padding-alt:10px 21px 10px 21px;">${MODULE.TEXT_CALL_TO_ACTION}<!--[if gte mso 9]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--></a> 
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+					   	</table>
+</#if>
+					</td>				
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
