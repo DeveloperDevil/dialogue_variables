@@ -1,0 +1,33 @@
+<#-- PROMO_MAN_SHOW_DEFAULT is 1 in newsletter defaults-->
+<#if PREFFERED_AIRPORT?isnull>
+    <#assign PREFAIR = 'DEFAULT'>
+<#else>
+	<#assign PREFAIR = PREFFERED_AIRPORT?trim>
+</#if>
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET  FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+          <#fields  PROMO_MAN_VARIANT PROMO_MAN_DISPLAY_RULE PROMO_MAN_HEADLINE PROMO_MAN_SUBHEADLINE PROMO_MAN_DEST_1_NAME PROMO_MAN_DEST_1_SUBTEXT PROMO_MAN_DEST_1_URL PROMO_MAN_DEST_1_PRICE PROMO_MAN_DEST_2_NAME PROMO_MAN_DEST_2_SUBTEXT PROMO_MAN_DEST_2_URL PROMO_MAN_DEST_2_PRICE PROMO_MAN_DEST_3_NAME PROMO_MAN_DEST_3_SUBTEXT PROMO_MAN_DEST_3_URL PROMO_MAN_DEST_3_PRICE PROMO_MAN_DEST_4_NAME PROMO_MAN_DEST_4_SUBTEXT PROMO_MAN_DEST_4_URL PROMO_MAN_DEST_4_PRICE PROMO_MAN_SMALL_TEXT PROMO_MAN_CALL_TO_ACTION PROMO_MAN_BG_COLOR PROMO_MAN_CTA_URL>
+			<#assign MODULE_EXCLUDE = 0>
+			<#if !MODULE.PROMO_MAN_VARIANT?isnull>
+				<#if !MODULE.PROMO_MAN_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.PROMO_MAN_DISPLAY_RULE+".htm">
+					<#recover>
+					 <#if !MODULE.PROMO_MAN_DISPLAY_RULE?isnull 
+                            && (MODULE.PROMO_MAN_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.PROMO_MAN_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong PREFAIR, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>   
+	                </#if> 
+						 <#if !MODULE.PROMO_MAN_DISPLAY_RULE?isnull 
+                           && MODULE.PROMO_MAN_DISPLAY_RULE?lower_case == "default"
+                           && PROMO_MAN_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                          </#if> 	
+						</#attempt>
+				</#if>
+				<#if MODULE_EXCLUDE == 0><#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/promolist_manual/"+MODULE.PROMO_MAN_VARIANT+"_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!--error loading PROMO_MAN module --></td></tr></#attempt>
+					<#global PROMO_MAN_SHOW_DEFAULT = 0>
+					</#if>
+				</#if>
+</#data>
