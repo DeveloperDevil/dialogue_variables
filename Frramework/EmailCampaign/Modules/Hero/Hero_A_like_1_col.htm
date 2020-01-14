@@ -1,0 +1,155 @@
+<!-- Main Module / HERO A-->
+<#if MODULE.HERO_DIVIDER_TOP?upper_case == "Y">
+<tr>
+  <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="20px;"></td>
+        <td bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+        <td width="20px;"></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td height="20" style="box-sizing:inherit;font-size:18px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td>
+</tr>
+<#elseif MODULE.HERO_DIVIDER_TOP?upper_case == "S">
+<tr>
+  <td height="20" style="box-sizing:inherit;font-size:18px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td>
+</tr>
+</#if>
+<tr>
+  <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table bgcolor="#f1f1f1" cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; background-color:#f1f1f1;" >
+      <#if !MODULE.HERO_IMAGE?isnull>
+      <tr>
+        <td class="full-width-image" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;min-width:100%" ><span style="min-width:100% !important;"><a <#if MODULE.HERO_URL?isnull>href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_IMAGE_URL?exec)}"<#else>href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}"</#if> target="_blank" title="${MODULE.HERO_IMAGE_ALT_TXT?exec}" style="box-sizing:inherit;color:003D50;text-decoration:underline;font-family:Arial, Helvetica, Sans-serif;" ><#if MODULE.HERO_IMAGE?contains("http")><img src="${HERO_IMG}" width="100%" height="auto" alt="${MODULE.HERO_IMAGE_ALT_TXT?exec}" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;width:100%;max-width:640px;height:auto;padding-top:0;padding-bottom:10px;text-align:center;background-color:#f1f1f1;color:#003d50;" /><#else><img src="https://static.cdn.responsys.net/i2/responsysimages/nas${HERO_IMG}" width="100%" height="auto" alt="${MODULE.HERO_IMAGE_ALT_TXT?exec}" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;width:100%;max-width:640px;height:auto;padding-top:0;padding-bottom:10px;text-align:center;background-color:#f1f1f1;color:#003d50;" /></#if></a></span></td>
+      </tr>
+      </#if> 
+      
+      <!--[if (gte mso 9)|(IE)]><tr>
+        <td>&nbsp;</td>
+      </tr><![endif]-->
+      
+      <tr>
+        <td class="contents intro ph60" align="center" style="box-sizing:inherit;padding-top:0; padding-right:40px;padding-left:40px;border-style:none;text-align:center;font-size: 17px;line-height: 23px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><#--DEBUG PRINT OUT DISPLAY RULE NAME BEING USED -->
+          <#if PRINT_OUT_NAME == "Y">${MODULE.HERO_DISPLAY_RULE?exec}</#if>
+          <#if !MODULE.HERO_HEADLINE?isnull>
+          <p class="heading" style="box-sizing:inherit;Margin:0;color:#003D50;font-size:24px;font-weight:bold;Margin-bottom:10px;padding-top:10px;padding-bottom:0;line-height:30px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;" >${MODULE.HERO_HEADLINE?exec}</p>
+          </#if>
+          <#if !MODULE.HERO_INTRO_TXT?isnull>${MODULE.HERO_INTRO_TXT?exec}</#if> </td>
+      </tr>
+      <#-- this code to add padding bottom on if there are now CTA, needed for BULLETPOINTS when white background and other campaigns -->
+      <#if MODULE.HERO_BTN_CTA?isnull && MODULE.HERO_TXT_CTA?isnull>
+      <tr>
+        <td class="contents intro ph60" align="center" style="box-sizing:inherit;padding-top:0; padding-bottom:20px; padding-right:40px;padding-left:40px;border-style:none;text-align:center;font-size: 17px;line-height: 23px;font-weight:normal;font-stretch:wider;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ></td>
+      </tr>
+      </#if>
+    </table></td>
+</tr>
+<#if !MODULE.HERO_BTN_CTA?isnull>
+<tr>
+  <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table bgcolor="#f1f1f1" cellpadding="0" cellspacing="0" width="100%" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; background-color:#f1f1f1;" >
+      <tr>
+        <td class="inner contents" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;" ><table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+            <tr>
+              <td align="center" style="box-sizing:inherit;padding-top:20px;padding-bottom:10px;padding-right:20px;padding-left:20px;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><#if !MODULE.HERO_TXT_CTA?isnull>
+                <p style="box-sizing:inherit;Margin:0;font-size:18px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" ><!--[if (gte mso 9)|(IE)]><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:18px;line-height:22px;padding-bottom:4px;font-weight:bold;" ><![endif]--><!--[if !mso]><!--><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" title="${MODULE.HERO_TXT_CTA}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:18px;line-height:22px;padding-bottom:2px;font-weight:bold;mso-hide:all;"><!--><![endif]-->${MODULE.HERO_TXT_CTA}</a></span></p>
+                <#elseif !MODULE.HERO_BTN_CTA?isnull><#if MODULE.HERO_BTN_CLR?isnull || MODULE.HERO_BTN_CLR?lower_case == "red">
+                <table cellpadding="0" cellspacing="0" class="ma"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" >
+                  <tr>
+                    <td class="Button_outer_td" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table bgcolor="#D81939" cellpadding="0" cellspacing="0" class="autowidth" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto; background-color:#D81939" >
+                        <tr>
+                          <td class="Button_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#D81939;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 31px 0 31px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#fffffe;" ><!-- Office 365 [OWA] fix -->
+                            <table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                              <tr>
+                                <td align="center" height="50" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:18px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" class="Button_white_link" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:18px;font-weight:bold;line-height:50px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" ><!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]-->${MODULE.HERO_BTN_CTA?exec}<!--[if (gte mso 9)|(IE)]></font><![endif]--></a></p></td>
+                              </tr>
+                            </table></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                </table>
+                <#elseif MODULE.HERO_BTN_CLR?lower_case == "blue">
+                <table cellpadding="0" cellspacing="0" class="ma"  border="0" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;padding-bottom:10px;width:auto;" >
+                  <tr>
+                    <td class="Button_blue_outer_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:transparent;padding-top:0 !important;padding-bottom:2px !important;padding-right:0 !important;padding-left:0 !important;border-bottom-color:#003d50;border-bottom-width:4px !important;border-bottom-style:solid;line-height:0;font-size:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><table cellpadding="0" cellspacing="0" class="autowidth" border="0" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                        <tr>
+                          <td class="Button_blue_inner_td" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;background-color:#003D50;padding-top:0;padding-bottom:0;padding-right:25px;padding-left:25px;mso-padding-alt:0 20px 0 20px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" ><!-- Office 365 [OWA] fix -->
+                            
+                            <table cellpadding="0" cellspacing="0" border="0" align="center" class="autowidth" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;width:auto;" >
+                              <tr>
+                                <td align="center" height="50" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" ><p style="box-sizing:inherit;Margin:0;font-size:18px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;" ><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" class="Button_white_link1" style="box-sizing:inherit;color:#fffffe;font-family:Arial, Helvetica, Sans-serif;font-size:18px;font-weight:bold;line-height:50px;mso-line-height-rule:exactly;text-align:center;-webkit-text-size-adjust:none;vertical-align:middle;text-decoration:none;border:none;" > 
+                                    <!--[if (gte mso 9)|(IE)]><font color="white" face="Arial, Helvetica, Sans-serif" size="4" style="box-sizing:inherit;vertical-align:middle;text-align:center; font-weight:bold;" ><![endif]--> 
+                                    ${MODULE.HERO_BTN_CTA?exec} 
+                                    <!--[if (gte mso 9)|(IE)]></font><![endif]--> 
+                                    </a></p></td>
+                              </tr>
+                            </table></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                </table>
+                </#if></#if> </td>
+            </tr>
+          </table></td>
+      </tr>
+    </table></td>
+</tr>
+</#if>
+
+
+
+<!--LIKE OF DISLIKE THIS-->
+<tr>
+  <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:20px;padding-left:20px;border-style:none;font-family:Arial, Helvetica, Sans-serif; font-weight:bold;" ><table valign="middle" width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="24" nowrap align="left" valign="middle" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;mso-line-height-rule:exactly;border-style:none; font-size: 14px; white-space: nowrap;"><table align="left" valign="top" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td nowrap height="24" align="left" valign="middle" style=";box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;mso-line-height-rule:exactly;border-style:none;white-space: nowrap;">
+				  <a href="${form('like_yes', {'usedb':true})}&CAMPAIGN_NAME=${CAMPAIGN?exec}&MODULE_NAME=HERO&MODULE_HEADLINE=${MODULE.HERO_HEADLINE?exec}&MODULE_VARIANT=${MODULE.HERO_VARIANT?exec}&MODULE_BODY_TEXT=${MODULE.HERO_INTRO_TXT?exec}&WEBVERSION_EMAIL=${clickthrough('WEBVERSION')?url('ISO-8859-1')}" target="_blank" style="text-decoration:none; white-space: nowrap;">
+					  <img src="https://static.cdn.responsys.net/i2/responsysimages/content/nas/icon-positive_24px.png" width="24" height="24" alt="" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic; font-size: 0; display:block; white-space: nowrap;" /></a></td>
+              <td width="5" style="padding: 0; margin: 0;">&nbsp;</td>
+              <td nowrap height="24" align="left" valign="middle" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;mso-line-height-rule:exactly;border-style:none; text-align: left; vertical-align: top; white-space: nowrap;font-weight:bold;"><span nowrap align="left" class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:2px;padding-right:0;padding-left:0;vertical-align: top; white-space: nowrap;font-weight:bold;" > 
+                <!--[if (gte mso 9)|(IE)]><a href="${form('like_yes', {'usedb':true})}&CAMPAIGN_NAME=${CAMPAIGN?exec}&MODULE_NAME=HERO&MODULE_HEADLINE=${MODULE.HERO_HEADLINE?exec}&MODULE_VARIANT=${MODULE.HERO_VARIANT?exec}&MODULE_BODY_TEXT=${MODULE.HERO_INTRO_TXT?exec}&WEBVERSION_EMAIL=${clickthrough('WEBVERSION')?url('ISO-8859-1')}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;padding-bottom:2px;font-weight:bold;margin-right: 5px;font-size: 14px; text-align: left;vertical-align: middle; white-space: nowrap;" ><![endif]--> 
+                <!--[if !mso]><!--> 
+                <a href="${form('like_yes', {'usedb':true})}&CAMPAIGN_NAME=${CAMPAIGN?exec}&MODULE_NAME=HERO&MODULE_HEADLINE=${MODULE.HERO_HEADLINE?exec}&MODULE_VARIANT=${MODULE.HERO_VARIANT?exec}&MODULE_BODY_TEXT=${MODULE.HERO_INTRO_TXT?exec}&WEBVERSION_EMAIL=${clickthrough('WEBVERSION')?url('ISO-8859-1')}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;padding-bottom:2px;font-weight:bold;mso-hide:all;font-size: 14px;white-space: nowrap;"> 
+                <!--><![endif]-->I like this </a></span></td>
+            </tr>
+          </table></td>
+        <td width="100%"></td>
+        <td height="24" align="right" valign="middle" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;mso-line-height-rule:exactly;border-style:none; font-size: 14px;"><table align="right" valign="top" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td height="24" nowrap align="right" valign="middle" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;mso-line-height-rule:exactly;border-style:none; font-size: 14px;"><a href="${form('like_no', {'usedb':true})}&CAMPAIGN_NAME=${CAMPAIGN?exec}&MODULE_NAME=HERO&MODULE_HEADLINE=${MODULE.HERO_HEADLINE?exec}&MODULE_VARIANT=${MODULE.HERO_VARIANT?exec}&MODULE_BODY_TEXT=${MODULE.HERO_INTRO_TXT?exec}&WEBVERSION_EMAIL=${clickthrough('WEBVERSION')?url('ISO-8859-1')}" target="_blank" style="text-decoration:none; white-space: nowrap;"><img src="https://static.cdn.responsys.net/i2/responsysimages/content/nas/icon-negative_24px.png" height="24" alt="" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic; font-size: 0; display:block; text-align: right;" /></a></td>
+              <td width="5" style="padding: 0; margin: 0;">&nbsp;</td>
+              <td nowrap height="24" align="right" valign="middle" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;mso-line-height-rule:exactly;border-style:none; vertical-align: top; white-space: nowrap;font-weight:bold;"><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:2px;vertical-align: top; font-weight:bold;" > 
+                <!--[if (gte mso 9)|(IE)]><a href="${form('like_no', {'usedb':true})}&CAMPAIGN_NAME=${CAMPAIGN?exec}&MODULE_NAME=HERO&MODULE_HEADLINE=${MODULE.HERO_HEADLINE?exec}&MODULE_VARIANT=${MODULE.HERO_VARIANT?exec}&MODULE_BODY_TEXT=${MODULE.HERO_INTRO_TXT?exec}&WEBVERSION_EMAIL=${clickthrough('WEBVERSION')?url('ISO-8859-1')}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;padding-bottom:2px;font-weight:bold;margin-right: 5px;font-size: 14px; vertical-align: middle; white-space: nowrap;" ><![endif]--> 
+                <!--[if !mso]><!--> 
+                <a href="${form('like_no', {'usedb':true})}&CAMPAIGN_NAME=${CAMPAIGN?exec}&MODULE_NAME=HERO&MODULE_HEADLINE=${MODULE.HERO_HEADLINE?exec}&MODULE_VARIANT=${MODULE.HERO_VARIANT?exec}&MODULE_BODY_TEXT=${MODULE.HERO_INTRO_TXT?exec}&WEBVERSION_EMAIL=${clickthrough('WEBVERSION')?url('ISO-8859-1')}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;padding-bottom:2px;font-weight:bold;mso-hide:all;font-size: 14px; white-space: nowrap;"> 
+                <!--><![endif]-->I don't like this</a></span></td>
+            </tr>
+          </table></td>
+      </tr>
+    </table></td>
+</tr>
+
+
+
+
+
+<#if MODULE.HERO_DIVIDER_BTN?upper_case == "Y">
+<tr>
+  <td style="padding: 0px 20px 20px 20px"><table width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td bgcolor="#d8d8d8" height="1" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+      </tr>
+    </table></td>
+</tr>
+<#elseif MODULE.HERO_DIVIDER_BTN?upper_case == "S">
+<tr>
+  <td height="20" style="box-sizing:inherit;font-size:18px;line-height:20px;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >&nbsp;</td>
+</tr>
+</#if> 
+
+
+	
+
+<!-- Main Module / HERO A END-->

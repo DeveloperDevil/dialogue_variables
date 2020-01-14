@@ -1,0 +1,36 @@
+<!-- // MOD 01g: START \\-->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td valign="top" align="left" background="${MODULE.HERO_IMAGE?exec}" height="318" style="background-repeat: no-repeat;background-position:center center; background-color:#909090; padding:0 20px 0 20px;">
+			<!--[if gte mso 9]>         
+			<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:640px;height:320px;">
+			<v:fill type="frame" src="${MODULE.HERO_IMAGE?exec}" />
+			<v:textbox inset="0,0,0,0">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center">
+			<![endif]-->
+			<table class="t_w90pc" width="405" cellpadding="0" cellspacing="0" border="0"><tr><td align="left" style="font-family:Arial, Helvetica, Sans-serif;color:<#if MODULE.HERO_FONT_COLOR?isnull>#003D50<#else>${MODULE.HERO_FONT_COLOR?exec}</#if>;font-size:17px;line-height:19px;padding:40px 0 0 0;">
+				
+<a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" style="font-size:34px;line-height:36px; font-family:Arial, Helvetica, Sans-serif; font-weight:bold; color:<#if MODULE.HERO_FONT_COLOR?isnull>#003D50<#else>${MODULE.HERO_FONT_COLOR?exec}</#if>; text-decoration:none;">${MODULE.HERO_HEADLINE?exec}</a><br>&nbsp;<br>
+				${MODULE.HERO_PARAGRAPH?exec}
+<#if !MODULE.HERO_CALL_TO_ACTION?isnull>
+<br>&nbsp;<br>
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td style="padding:0 0 2px 0;border-bottom:4px solid #003D50;">
+							<table cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="<#if MODULE.HERO_CTA_COLOR?isnull>D81939<#else>${MODULE.HERO_CTA_COLOR}</#if>">                    
+								<#if MODULE.HERO_CTA_COLOR?isnull><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.HERO_URL?exec)}" target="_blank" style="border:1px solid #D81939;color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:left;text-decoration:none;-webkit-text-size-adjust:none;padding:0 39px 0 13px;mso-padding-alt:10px 21px 10px 21px;">${MODULE.HERO_CALL_TO_ACTION}<!--[if gte mso 9]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--></a><#else><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.HERO_URL?exec)}" target="_blank" style="border:1px solid;color:#fffffe;display:block;font-family:Arial, Helvetica, Sans-serif;font-size:15px;font-weight:bold;line-height:33px;mso-line-height-rule:exactly;text-align:left;text-decoration:none;-webkit-text-size-adjust:none;padding:0 39px 0 13px;mso-padding-alt:10px 21px 10px 21px;">${MODULE.HERO_CALL_TO_ACTION}<!--[if gte mso 9]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--></a></#if>
+							</td></tr></table>
+						</td>
+					</tr>
+				</table>
+</#if>
+				</td></tr></table>
+				<!--[if gte mso 9]>
+				</td></tr></table>
+			</v:textbox>
+			</v:rect>
+			<![endif]-->
+		</td>
+	</tr>
+</table>
+<!-- // MOD 01g: END \\-->

@@ -1,0 +1,13 @@
+<img src="${MODULE.HERO_IMAGE}">
+
+<h1>${MODULE.HERO_HEADLINE?exec}</h1>
+
+<p>${MODULE.HERO_PARAGRAPH?exec}</p>
+
+<p><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank">${MODULE.HERO_CALL_TO_ACTION}</a></p>
+
+<h2>${MODULE.HERO_DEST_1_HEADLINE}</h2>
+<p>${MODULE.HERO_DEST_1_TEXT}</p>
+<p><a href="${clickthrough('HERO_DEST_1_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, "URL="+MODULE.HERO_DEST_1_URL)}" target="_blank"><strike>${MODULE.HERO_DEST_1_PRICE_NORMAL}</strike> ${MODULE.HERO_DEST_1_PRICE_CAMPAIGN}</a></p>
+
+<hr>

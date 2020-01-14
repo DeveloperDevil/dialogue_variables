@@ -1,0 +1,68 @@
+<!-- // MOD 01c: START \\-->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td class="d_hero1c_bg" align="center" background="${MODULE.HERO_IMAGE}" height="318" style="background-repeat: no-repeat;background-position:center bottom;" valign="top">
+			<!--[if gte mso 9]>         
+			<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:640px;height:320px;">
+			<v:fill type="frame" src="${MODULE.HERO_IMAGE}" />
+			<v:textbox inset="0,0,0,0">
+			<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td valign="top" align="left">
+			<![endif]-->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="m_p0" valign="top" align="left"><table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                
+                <td class="m_hero1c_bg_${CAMPAIGN_TEMPLATE.TEMPLATE_POSITION}" valign="top" align="left"><table class="left hero1c_l m_w100pc" aria-labelledby="left" align="left" cellpadding="0" cellspacing="0" border="0" width="450">
+                    <tr>
+                      <td class="hero1c_lcont" align="left" valign="top" style="font-family:Arial, Helvetica, Sans-serif; color:<#if MODULE.HERO_FONT_COLOR?isnull>#003D50<#else>${MODULE.HERO_FONT_COLOR}</#if>;font-size:17px;line-height:19px;padding:20px 60px 0 20px;">
+                      
+                      <a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" style="font-size:34px;line-height:36px; font-family:Arial, Helvetica, Sans-serif; font-weight:bold;color:<#if MODULE.HERO_FONT_COLOR?isnull>#003D50<#else>${MODULE.HERO_FONT_COLOR?exec}</#if>; text-decoration:none;">${MODULE.HERO_HEADLINE?exec}</a> <br>
+                        &nbsp;<br>
+                        ${MODULE.HERO_PARAGRAPH?exec} </td>
+                    </tr>
+                  </table>
+                  
+                  <!--[if gte mso 9]></td><td><![endif]-->
+                  
+                  <table class="right m_wHero_Box" width="150" aria-labelledby="right" align="right" cellpadding="0" cellspacing="0" border="0">
+                    <#if !MODULE.HERO_DEST_1_HEADLINE?isnull>
+                    <tr>
+                      <td class="m_hauto" valign="top" align="left" style="v-text-anchor:bottom;padding: 145px 0px 2px 0;border-bottom: 4px solid #003D50;width: 155px;"><a href="${clickthrough('HERO_DEST_1_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_DEST_1_URL?exec)}" target="_blank" style="text-decoration:none;"><table bgcolor="<#if MODULE.HERO_BOX_COLOR?isnull>#D81939<#else>${MODULE.HERO_BOX_COLOR}</#if>" class="right" width="155" aria-labelledby="right" align="right" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td height="153" valign="bottom">
+                            
+                            
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                  <td style="padding:13px;color:#ffffff;font-family:Arial, Helvetica, Sans-serif;font-size:19px;line-height:21px;word-wrap:break-word;"><a href="${clickthrough('HERO_DEST_1_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_DEST_1_URL?exec)}" target="_blank" style="text-decoration:none;color:#ffffff;"> <b>${MODULE.HERO_DEST_1_HEADLINE}</b><br>
+                                    <span style="font-size:12px;">${MODULE.HERO_DEST_1_TEXT}</span></a> <!--[if gte mso 9]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td width="13" style="font-size:1px;line-height:1px;mso-line-height-rule:exactly;-webkit-text-size-adjust:none;">&nbsp;</td><td><![endif]-->
+                                    
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                      <tr>
+                                        <td height="2" bgcolor="#ffffff" style="font-size:1px;line-height:1px;mso-line-height-rule:exactly;-webkit-text-size-adjust:none;">&nbsp;</td>
+                                      </tr>
+                                    </table>
+                                    
+                                    <!--[if gte mso 9]></td></tr></table><![endif]-->
+                                    
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                      <tr>
+                                        <td height="10" style="font-size:10px;line-height:10px;">&nbsp;</td>
+                                      </tr>
+                                    </table>
+                                    <a href="${clickthrough('HERO_DEST_1_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_DEST_1_URL?exec)}" target="_blank" style="text-decoration:none;color:#ffffff;"> <b>${MODULE.HERO_DEST_1_PRICE_CAMPAIGN}</b></a></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                        </table></td></a><td style="padding-right:12px;">&nbsp;</td>
+                    </tr></#if>
+                    </table></td>
+                 </tr> <!--[if gte mso 9]></td><![endif]-->
+            </table></td>
+        </tr>
+      </table>
+       <!--[if gte mso 9]> </td></tr></table> </v:textbox> </v:rect> <![endif]--></td>
+  </tr>
+</table>
+<!-- // MOD 01c: END \\--> 

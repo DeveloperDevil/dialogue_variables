@@ -1,0 +1,38 @@
+<#-- HERO_SHOW_DEFAULT is 1 in newsletter defaults-->
+<#assign SEGMENT_IMG_IS_SET = 'N'>
+<#if PREFFERED_AIRPORT?isnull>
+    <#assign PREFAIR = 'DEFAULT'>
+<#else>
+	<#assign PREFAIR = PREFFERED_AIRPORT?trim>
+</#if>
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET  FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+			<#fields HERO_DISPLAY_RULE HERO_IMAGE HERO_IMAGE_SWAP HERO_IMAGE_ALT_TXT HERO_IMAGE_URL HERO_HEADLINE HERO_INTRO_TXT HERO_PARAGRAPH HERO_TXT_CTA HERO_URL HERO_BTN_CLR HERO_BTN_CTA HERO_BCG_CLR HERO_VARIANT HERO_DIVIDER_BTN HERO_DIVIDER_TOP>
+            <#assign MODULE_EXCLUDE = 0>
+	<#if !MODULE.HERO_VARIANT?isnull>
+        <#if !MODULE.HERO_DISPLAY_RULE?isnull >
+				<#attempt>
+                    <#include "cms://contentlibrary/!framework/displayrules/"+MODULE.HERO_DISPLAY_RULE+".htm">
+					<#recover>
+                    <#if !MODULE.HERO_DISPLAY_RULE?isnull 
+                            && (MODULE.HERO_DISPLAY_RULE?lower_case != PREFAIR?lower_case) 
+                            && MODULE.HERO_DISPLAY_RULE?lower_case != "default">
+                        <#-- wrong segment, and not default. Lets exlude-->
+                        <#assign MODULE_EXCLUDE = 1>   
+	                </#if> 
+						 <#if !MODULE.HERO_DISPLAY_RULE?isnull 
+                           && MODULE.HERO_DISPLAY_RULE?lower_case == "default"
+                           && HERO_SHOW_DEFAULT  = 0>
+                              <#assign MODULE_EXCLUDE = 1> 
+                          </#if> 
+                    </#attempt>
+		</#if>					
+        <#if MODULE_EXCLUDE == 0>
+       <#global POPULAR_HERO_IMAGE = "https://static.cdn.responsys.net/i2/responsysimages/nas/contentlibrary/z_img/destination_images/e_nl_640x320_no_agp.jpg">POPULAR_HERO_IMAGE: ${POPULAR_HERO_IMAGE}<br>
+					<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/hero/hero_"+MODULE.HERO_VARIANT+"_1_col.htm">
+					<#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!-- error loading hero module --></td></tr></#attempt>
+                    <#-- HERO_SHOW_DEFAULT == 1 or NULL equals no content, 0 has content --> <#global HERO_SHOW_DEFAULT = 0><#assign HAVE_CONTENT='YES'>
+			</#if>
+	
+	</#if>
+</#data>

@@ -1,0 +1,121 @@
+<!-- Main red Module / HERO NEW ROUTE. HERO_IMG IS MADE IN THE HERO MODULE WRAPPER -->
+<#if MODULE.HERO_BCG_CLR?isnull><#assign BCG_COLOR ="#D81939"><#elseif MODULE.HERO_BCG_CLR?lower_case == "red"><#assign BCG_COLOR ="#D81939"><#elseif MODULE.HERO_BCG_CLR?lower_case == "blue"><#assign BCG_COLOR ="#003D50"><#elseif MODULE.HERO_BCG_CLR?lower_case == "black"><#assign BCG_COLOR ="#000000"><#elseif MODULE.HERO_BCG_CLR?lower_case == "green"><#assign BCG_COLOR ="#238E00"><#else><#assign BCG_COLOR ="#D81939">
+                   </#if>
+                   
+                    <#if MODULE.HERO_DIVIDER_TOP?upper_case == "S"><tr><td height="20" style="height:20px;line-height:20px;font-size:17px;background-color:${CAMPAIGN_BCG_CLR};">&nbsp;</td></tr>  
+                    </#if> 
+<#if !MODULE.HERO_IMAGE?isnull><tr>
+<td class="one-column" align="center" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-align: center" >
+        <table align="center" cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; text-align: center !important; background-color: ${CAMPAIGN_BCG_CLR};" >
+            <tr>
+                <!-- Lotus 8 fix, nested table with background color --><td height="320" bgcolor="${BCG_COLOR?exec?trim}" style="background-color: ${BCG_COLOR?exec?trim};height:320px; background-image: "><table width="100%" cellpadding="0" cellspacing="0" border="0" background="${HERO_IMG?exec}" style="background-image: url('${HERO_IMG?exec}'); background-repeat: no-repeat;"><tr><!-- T-Online and Yahoo! on OSX needs the background image on this td, while fre.fr needs it on the surrounding table, so we need to add it both places --><td  class="inner contents" background="${HERO_IMG?exec}" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;font-size: 32px;font-weight: bold; padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center; height:320px;text-decoration: none;max-width:640px; background-image: '${HERO_IMG?exec}' " >
+                 <!-- Outlook does not support background images. Instead, we create a table cell and use the image as fill color -->
+  <!--[if gte mso 9]>
+  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:640px;height:320px;background-color:${BCG_COLOR?exec?trim};">
+    <v:fill type="tile" src="${HERO_IMG?exec}" color="${BCG_COLOR?exec?trim}" />
+    <v:textbox inset="0,0,0,0">
+  <![endif]-->
+  <div style="padding-right:0;padding-left:20px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="320"><tr>
+                            <td height="20" colspan="2" style="font-size: 20px; height: 20px; line-height: 20px; mso-line-height-rule:exactly;"></td>
+                            
+                          </tr><tr><td>&nbsp;</td><td height="150" width="150" align="right" valign="top"; style="vertical-align: top;text-align: right;"><a <#if !MODULE.HERO_URL?isnull> href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" title="${MODULE.HERO_IMAGE_ALT_TXT}" style="box-sizing:inherit;color:fffffe;text-decoration:underline;font-family:Arial, Helvetica, Sans-serif;" ><#else> href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_IMAGE_URL?exec)}" target="_blank" title="${MODULE.HERO_IMAGE_ALT_TXT}" style="box-sizing:inherit;color:fffffe;text-decoration:underline;font-family:Arial, Helvetica, Sans-serif;" ></#if><img src="http://static.cdn.responsys.net/i2/responsysimages/content/nas/150x150_blue_circle_new_route_${MARKET?upper_case}.png" width="100%" alt="${MODULE.HERO_IMAGE_ALT_TXT?exec}" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;width:100%;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:right;color:#fffffe;font-size: 17px; display:block;" /></a></td><td width="20" style="width: 20px;">&nbsp;</td></tr><tr><td>&nbsp;</td><td height="150" width="150" align="right"></td><td width="20" style="width: 20px;">&nbsp;</td></tr></table>
+   </div>
+  <!--[if gte mso 9]>
+    </v:textbox>
+  </v:rect>
+  <![endif]-->
+</td>
+  
+
+               
+				</tr></table></td></tr></table></td></tr></#if> 
+                     
+                      <tr>
+  <td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><table bgcolor="${CAMPAIGN_BCG_CLR}" cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; background-color:${CAMPAIGN_BCG_CLR};b" >
+      <tr>
+        <td class="full-width-image" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;min-width:100%" ><table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${BCG_COLOR}"  style="background-repeat: no-repeat;background-color:${BCG_COLOR}">
+            <tr>
+              <td width="100%" valign="top">
+                
+                <div>
+                  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="20">&nbsp;</td>
+                      <td><table bgcolor="${BCG_COLOR}" cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;color:#fffffe !important;" >
+                          <tr>
+                            <td class="inner contents" style="box-sizing:inherit;border-style:none;font-family:Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;color:#fffffe !important;" ><table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;color:#fffffe !important;" >
+                                <tr>
+                                  <td height="35" style="box-sizing:inherit;padding-left:20px;padding-right:20px;border-style:none;font-family:ArHelvetica, Sans-serif;font-weight:normal;font-size:35px;line-height:30px;mso-line-height-rule:exactly;color:#fffffe !important;padding-top:0;padding-bottom:0" >&nbsp;</td>
+                                </tr>
+                                <#if !MODULE.HERO_HEADLINE?isnull>
+                                <tr>
+                                  <td align="center" class="Hero_inner_red_box ph60" style="box-sizing:inherit;padding-left:20px;padding-right:20px;border-style:none;font-family:ArHelvetica, Sans-serif;font-weight:normal;font-size:50px;line-height:60px;mso-line-height-rule:exactly;color:#fffffe !important;padding-top:0;padding-bottom:0;" ><p class="heading" style="box-sizing:inherit;color:#fffffe !important;Margin:0;padding-left:20px;padding-right:20px;font-size:50px;font-weight:bold;Margin-bottom:10px;padding-top:0;padding-bottom:0;line-height:60px;mso-line-height-rule:exactly;font-family:Helvetica, Sans-serif;" ><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Helvetica, Sans-serif;text-decoration:none;color:#fffffe;font-size:50px;line-height:60px;mso-line-height-rule:exactly;font-weight:bold;"><font color="white">${MODULE.HERO_HEADLINE?exec}</font></a></p></td>
+                                </tr>
+                                </#if><#if !MODULE.HERO_INTRO_TXT?isnull>
+           <tr>
+              <td align="center" class="Hero_inner_red_box ph60" style="box-sizing:inherit;padding-left:20px;padding-right:20px;border-style:none;font-family:ArHelvetica, Sans-serif;font-weight:normal;font-size:40px;line-height:45px;mso-line-height-rule:exactly;color:#fffffe !important;;background-color:${BCG_COLOR} !important;padding-top:0;padding-bottom:0;" ><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Helvetica, Sans-serif;text-decoration:none;color:#fffffe;font-size:40px;line-height:45px;mso-line-height-rule:exactly;font-weight:bold;"><font color="white">${MODULE.HERO_INTRO_TXT?exec}</font></a></td>
+            </tr>
+            </#if>
+                                <#if !MODULE.HERO_PARAGRAPH?isnull> <tr>
+                                  <td height="15" style="box-sizing:inherit;padding-left:20px;padding-right:15px;border-style:none;font-family:ArHelvetica, Sans-serif;font-weight:normal;font-size:15px;line-height:15px;mso-line-height-rule:exactly;color:#fffffe !important;padding-top:0;padding-bottom:0" >&nbsp;</td>
+                                </tr><tr>
+                                  <td align="center" class="Hero_inner_red_box ph60" style="box-sizing:inherit;padding-left:20px;padding-right:20px;border-style:none;font-family:ArHelvetica, Sans-serif;font-weight:normal;font-size:17px;line-height:20px;mso-line-height-rule:exactly;color:#fffffe !important;padding-top:0;padding-bottom:0;" >
+                                    
+                                    <p style="box-sizing:inherit;color:#fffffe !important;Margin:0;font-size:17px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:20px;mso-line-height-rule:exactly;font-family:Helvetica, Sans-serif;" ><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Helvetica, Sans-serif;text-decoration:none;color:#fffffe;font-size:17px;line-height:20px;mso-line-height-rule:exactly;font-weight:normal;"><font color="white">${MODULE.HERO_PARAGRAPH?exec}</font></a></p>
+                                    </td>
+                                </tr></#if>
+                                <#if !MODULE.HERO_TXT_CTA?isnull>
+                                <tr>
+                                  <td height="15" style="box-sizing:inherit;padding-left:20px;padding-right:20px;border-style:none;font-family:ArHelvetica, Sans-serif;font-weight:normal;font-size:15px;line-height:15px;mso-line-height-rule:exactly;color:#fffffe !important;padding-top:0;padding-bottom:0" >&nbsp;</td>
+                                </tr> <tr>
+                                  <td align="center" class="Hero_inner_red_box ph60" style="box-sizing:inherit;padding-left:20px;padding-right:20px;border-style:none;font-family:ArHelvetica, Sans-serif;font-weight:normal;font-size:40px;line-height:55px;mso-line-height-rule:exactly;color:#fffffe !important;padding-top:0;padding-bottom:0;" ><p style="box-sizing:inherit;Margin:0;font-size:40px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;line-height:55px;mso-line-height-rule:exactly;font-family:Helvetica, Sans-serif;color:#fffffe;" ><span class="owa_link_span_white" style="box-sizing:inherit;border-bottom-width:5px;border-bottom-style:solid;border-bottom-color:#fffffe;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" ><!--[if (gte mso 9)|(IE)]><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Helvetica, Sans-serif;text-decoration:underline;color:#fffffe;font-size:40px;line-height:55px;mso-line-height-rule:exactly;padding-bottom:4px;font-weight:bold;" ><![endif]--><!--[if !mso]><!--><a href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Helvetica, Sans-serif;text-decoration:none;color:#fffffe;font-size:40px;line-height:55px;mso-line-height-rule:exactly;padding-bottom:5px;font-weight:bold;mso-hide:all;"><!--><![endif]-->${MODULE.HERO_TXT_CTA?exec}</a></span></p>
+                                    <!--[if (gte mso 12)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="20">&nbsp;</td></tr></table><![endif]--></#if>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                  <td height="35" style="box-sizing:inherit;padding-left:20px;padding-right:20px;border-style:none;font-family:ArHelvetica, Sans-serif;font-weight:normal;font-size:35px;line-height:30px;mso-line-height-rule:exactly;color:#fffffe !important;padding-top:0;padding-bottom:0" >&nbsp;</td>
+                                </tr>
+                                
+                              </table></td>
+                          </tr>
+                        </table></td>
+                      <td width="20">&nbsp;</td>
+                    </tr>
+                  </table>
+                </div>
+                
+                </td>
+            </tr>
+          </table></td>
+      </tr>
+    </table></td>
+</tr>
+<#if MODULE.HERO_DIVIDER_BTN?upper_case == "Y">                      
+<tr>
+<td class="one-column" align="center" style="box-sizing:inherit;padding-top:40px;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-align: center" >
+    <table align="center" cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important; text-align: center !important; background-color: ${CAMPAIGN_BCG_CLR};" >
+            <tr>
+                <!-- Lotus 8 fix, nested table with background color --><td background="${HERO_IMG?exec}" height="320" bgcolor="${BCG_COLOR?exec?trim}" style="background-color: ${BCG_COLOR?exec?trim};background-color:${BCG_COLOR?exec?trim};background:repeating-linear-gradient(
+  135deg,${BCG_COLOR?exec?trim},${BCG_COLOR?exec?trim} 40px,${STRIPE_COLOR?exec?trim} 40px,${STRIPE_COLOR?exec?trim} 80px) !important;height:320px;"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="inner contents" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;color:#fffffe;font-size: 32px;font-weight: bold; padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center; min-height:80px;text-decoration: none;max-width:640px;" >
+                 
+  <!--[if gte mso 9]>
+  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:640px;height:320px;background-color:${BCG_COLOR?exec?trim};background:repeating-linear-gradient(
+  135deg,${BCG_COLOR?exec?trim},${BCG_COLOR?exec?trim} 40px,${STRIPE_COLOR?exec?trim} 40px,${STRIPE_COLOR?exec?trim} 320px) !important;">
+    <v:fill type="tile" src="${HERO_IMG?exec}" color="${BCG_COLOR?exec?trim}" />
+    <v:textbox inset="0,0,0,0">
+  <![endif]-->
+  <div style="padding-right:20px;padding-left:20px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="320"><tr><td>&nbsp;</td><td height="150" width="150" align="right"><a <#if !MODULE.HERO_URL?isnull> href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_URL?exec)}" target="_blank" title="${MODULE.HERO_IMAGE_ALT_TXT}" style="box-sizing:inherit;color:#fffffe;text-decoration:underline;font-family:Arial, Helvetica, Sans-serif;" ><#else> href="${clickthrough('HERO_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.HERO_IMAGE_URL?exec)}" target="_blank" title="${MODULE.HERO_IMAGE_ALT_TXT}" style="box-sizing:inherit;color:#fffffe;text-decoration:underline;font-family:Arial, Helvetica, Sans-serif;" ></#if><img src="http://static.cdn.responsys.net/i2/responsysimages/content/nas/150x150_blue_circle_new_route_${MARKET?upper_case}.png" width="50%" alt="${MODULE.HERO_IMAGE_ALT_TXT?exec}" style="box-sizing:inherit;border-style:none;-ms-interpolation-mode:bicubic;width:100%;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;color:#fffffe;display:block;font-size: 17px;" /></a></td></tr><tr><td>&nbsp;</td><td height="130" width="150" align="right"></td></tr></table>
+   </div>
+  <!--[if gte mso 9]>
+    </v:textbox>
+  </v:rect>
+  <![endif]-->
+</td>
+  
+
+               
+</tr></table></td></tr><tr><td height="20" colspan="3" style="height: 20px; line-height: 20px; font-size: 20px;">&nbsp;</td></tr></table></td></tr> </#if><#if MODULE.HERO_DIVIDER_BTN?upper_case == "S"><tr><td height="20" style="height:20px;line-height:20px;font-size:17px;background-color:${CAMPAIGN_BCG_CLR};">&nbsp;</td></tr>  
+                    </#if>
