@@ -1,0 +1,124 @@
+<#assign MODULE_LOADED=0>
+<#assign MODULE_EXCLUDE=0>
+
+<#switch CAMPAIGN_TEMPLATE.TEMPLATE_MODULE?upper_case>
+
+	<#case "HERO">
+		<!-- hero start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/hero/hero_wrapper.htm">
+			<#-- HERO_SHOW_DEFAULT == 1 or NULL equals no content, 0 has content --> <#if HERO_SHOW_DEFAULT == 1 || HERO_SHOW_DEFAULT?isnull><#global HERO_HAVE_CONTENT='NO'><#else><#global HERO_HAVE_CONTENT='YES'></#if>
+			<#recover><#global HERO_HAVE_CONTENT='NO'>
+			<!-- error loading module -->
+		</#attempt>
+		<!-- hero end -->
+	<#break>
+
+	<#case "ICONLIST">
+		<!-- iconlist start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/iconlist/iconlist_wrapper.htm">
+			<#-- ICONLIST_SHOW_DEFAULT == 1 or NULL equals no content, 0 has content --> <#if ICONLIST_SHOW_DEFAULT == 1 || ICONLIST_SHOW_DEFAULT?isnull><#global ICONLIST_HAVE_CONTENT='NO'><#else><#global ICONLIST_HAVE_CONTENT='YES'></#if>
+			<#recover><#global ICONLIST_HAVE_CONTENT='NO'>
+			<!-- error loading module -->
+		</#attempt>
+		<!-- iconlist end -->
+	<#break>
+
+	<#case "PERSONALIZATION">
+		<!-- personalization start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/personalization/personalization_wrapper.htm">
+			<#recover>
+			<!-- error loading module -->
+		</#attempt>
+		<!-- personalization end -->
+	<#break>
+
+	<#case "PRICELIST">
+		<!-- pricelist start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/pricelist/pricelist_wrapper.htm">
+			<#if PRICELIST_SHOW_DEFAULT == 1 || PRICELIST_SHOW_DEFAULT?isnull><#global PRICELIST_HAVE_CONTENT='NO'><#else><#global PRICELIST_HAVE_CONTENT='YES'></#if>
+			<#recover><#global PRICELIST_HAVE_CONTENT='NO'><!-- error loading module -->
+		</#attempt>
+		<!-- pricelist end -->
+	<#break>
+
+	<#case "TEXT">
+		<!-- text start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/text/text_wrapper.htm">
+			<#if TEXT_SHOW_DEFAULT == 1 || TEXT_SHOW_DEFAULT?isnull><#global TEXT_HAVE_CONTENT='NO'><#else><#global TEXT_HAVE_CONTENT='YES'></#if>
+			<#recover><#global TEXT_HAVE_CONTENT='NO'>
+			<!-- error loading module -->
+		</#attempt>
+		<!-- text end -->
+	<#break>
+
+	<#case "BANNER">
+		<!-- banner start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/banner/banner_wrapper.htm">
+			<#if BANNER_SHOW_DEFAULT == 1 || BANNER_SHOW_DEFAULT?isnull><#global BANNER_HAVE_CONTENT='NO'><#else><#global BANNER_HAVE_CONTENT='YES'></#if>
+			<#recover><#global BANNER_HAVE_CONTENT='NO'>
+			<!-- error loading module -->
+		</#attempt>
+		<!-- banner end -->
+	<#break>
+
+	<#case "ARTICLE">
+		<!-- article start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/article/article_wrapper.htm">
+			<#if ARTICLE_SHOW_DEFAULT == 1 || ARTICLE_SHOW_DEFAULT?isnull><#global ARTICLE_HAVE_CONTENT='NO'><#else><#global ARTICLE_HAVE_CONTENT='YES'></#if>
+			<#recover><#global ARTICLE_HAVE_CONTENT='NO'>
+			<!-- error loading module -->
+		</#attempt>
+		<!-- article end -->
+	<#break>
+
+	<#case "TWOCOLUMN">
+		<!-- twocolumn start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/twocolumn/twocolumn_wrapper.htm">
+			<#if TWOCOLUMN_SHOW_DEFAULT == 1 || TWOCOLUMN_SHOW_DEFAULT?isnull><#global TWOCOLUMN_HAVE_CONTENT='NO'><#else><#global TWOCOLUMN_HAVE_CONTENT='YES'></#if>
+			<#recover><#global TWOCOLUMN_HAVE_CONTENT='NO'>
+			<!-- error loading module -->
+		</#attempt>
+		<!-- twocolumn end -->
+	<#break>
+
+	<#case "FOURCOLUMN">
+		<!-- fourcolumn start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/fourcolumn/fourcolumn_wrapper.htm">
+			<#if FOURCOLUMN_SHOW_DEFAULT == 1 || FOURCOLUMN_SHOW_DEFAULT?isnull><#global FOURCOLUMN_HAVE_CONTENT='NO'><#else><#global FOURCOLUMN_HAVE_CONTENT='YES'></#if>
+			<#recover><#global FOURCOLUMN_HAVE_CONTENT='NO'>
+			<!-- error loading module -->
+		</#attempt>
+		<!-- fourcolumn end -->
+	<#break>
+
+	<#case "SEARCH">
+		<!-- search start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/search/search_wrapper.htm">
+			<#if SEARCH_SHOW_DEFAULT == 1 || SEARCH_SHOW_DEFAULT?isnull><#global SEARCH_HAVE_CONTENT='NO'><#else><#global SEARCH_HAVE_CONTENT='YES'></#if>
+			<#recover><#global SEARCH_HAVE_CONTENT='NO'>
+			<!-- error loading module -->
+		</#attempt>
+		<!-- search end -->
+	<#break>
+
+	<#case "SPACER">
+		<!-- spacer start -->
+		<#attempt>
+			<#include "cms://contentlibrary/!framework/emailcampaign/modules/spacer/spacer_d20t10.htm">
+			<#recover>
+			<!-- error loading module -->
+		</#attempt>
+		<!-- spacer end -->
+	<#break>
+
+</#switch>
