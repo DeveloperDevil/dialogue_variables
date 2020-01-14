@@ -1,0 +1,37 @@
+<!-- // PERSONALIZATION MODULE START --><tr><tr>
+<td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+        <table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+           <tr>
+                <td class="inner contents" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;" >
+                    <table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" ><tr><td class="Personalization_outer_top" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-weight:normal;font-size:14px;line-height:18px;mso-line-height-rule:exactly;color:#003d50;padding-right:20px;padding-left:20px;" ><table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" ><tr><td align="left" style="box-sizing:inherit;padding-top:10px;padding-bottom:10px;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;" ><p style="box-sizing:inherit;Margin:0;font-size:14px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:5px;line-height:18px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:2px;padding-right:0;padding-left:0; font-size:14px; line-height:18px;" ><!--[if (gte mso 9)|(IE)]><a href="<#if NAS_PROFILE_YN = 'N'>${clickthrough('PERSONALIZATION_1', 'URL='+CREATE_PROFILE_URL?exec)}<#else>${clickthrough('PERSONALIZATION_1', 'URL='+MY_PROFILE_URL?exec)}</#if>" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:14px;line-height:18px;padding-bottom:2px;font-weight:bold;" ><![endif]--><!--[if !mso]><!-->
+                    <a href="<#if NAS_PROFILE_YN = 'N'>${clickthrough('PERSONALIZATION_1', 'URL='+CREATE_PROFILE_URL?exec)}<#else>${clickthrough('PERSONALIZATION_1', 'URL='+MY_PROFILE_URL?exec)}</#if>" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:14px;line-height:18px;padding-bottom:0;font-weight:bold;mso-hide:all;"><!--><![endif]--><strong><#if NAS_PROFILE_YN = 'N'>${PROFILE_NO_CTA}<#else>${PROFILE_YES_CTA}</#if></strong>
+                    
+                    </a></span></p></td><td style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;color:#003d50;" ></td>
+                    <td align="right" class="Personalization_text_blue" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; font-size:14px; line-height:18px;color:#003d50;" ><p style="padding-top:0;padding-bottom:5px;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif; font-size:14px; line-height:18px;mso-line-height-rule:exactly;color:#003d50;"><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:2px;padding-right:0;padding-left:0; font-size:14px; line-height:18px;" ><!--[if (gte mso 9)|(IE)]><a href="<#if CONTACT.REWARD_YN?isnull>${clickthrough('PERSONALIZATION_1', 'URL='+CREATE_REWARD_PROFILE?exec)}<#elseif CONTACT.REWARD_YN?upper_case?trim == 'Y'>${clickthrough('PERSONALIZATION_1', 'URL='+HAS_REWARD_PROFILE?exec)}<#else>${clickthrough('PERSONALIZATION_1', 'URL='+CREATE_REWARD_PROFILE?exec)}</#if>" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:14px;line-height:18px;padding-bottom:2px;font-weight:bold;" ><![endif]--><!--[if !mso]><!-->
+                    <a href="<#if CONTACT.REWARD_YN?isnull>${clickthrough('PERSONALIZATION_1', 'URL='+CREATE_REWARD_PROFILE?exec)}<#elseif CONTACT.REWARD_YN?upper_case?trim == 'Y'>${clickthrough('PERSONALIZATION_1', 'URL='+HAS_REWARD_PROFILE?exec)}<#else>${clickthrough('PERSONALIZATION_1', 'URL='+CREATE_REWARD_PROFILE?exec)}</#if>" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:14px;line-height:18px;padding-bottom:0;font-weight:bold;mso-hide:all;"><!--><![endif]-->
+                    <strong> 
+<#-- 04/09/18 updated by JM. Peer.Bratlie@norwegian.com complained about email and webversion showing different things, the email showed 'Norwegian Reward', the webversion showed '0 cashpoints'. After discussion with Inigo it was decided if norwegian employees have 0 cashpoints, show them the 'Norwegian Reward' default text. CONTACT.CASHPOINTS_BALANCE is a number field that convert nulls to 0 so we have to use ?c to convert number to string and remove the ',' from numbers more than 1000. We decided to use ?string for the =='0' because it changes every type of value to string, as an extra safety measure.
+	 
+Scenarios:
+Reward Y and null/0 cashpoints AND email_address contains 'norwegian.com'> Norwegian reward login
+Reward Y and null/0 cashpoints NOT 'norwegian.com'> 0 cashpoints 
+Reward Y and  x cashpoints >    X cashpoints  
+Reward N > Norwegian reward sign UP  
+	 
+12/07/18 request to put back cashpoints but use CASHPOINTS_BALANCE field from contacts. 
+Print out CONTACT.CASHPOINTS_BALANCE, if this is null use "Norwegian Reward", if REWARD_YN == N use ${NOT_REWARDMEMBER_TXT}, if its null use "Norwegian Reward"-->
+	
+    <#if CONTACT.REWARD_YN?upper_case?trim == 'Y'>
+    	<#if CONTACT.CASHPOINTS_BALANCE?string == "0" && CONTACT.EMAIL_DOMAIN_ == "norwegian.com">Norwegian Reward
+        <#else>${CONTACT.CASHPOINTS_BALANCE?c} ${REWARDMEMBER_TXT}
+        </#if>
+    <#elseif CONTACT.REWARD_YN?upper_case?trim == 'N'>${NOT_REWARDMEMBER_TXT}
+    <#elseif CONTACT.REWARD_YN?isnull>Norwegian Reward
+    </#if>
+</strong>
+</a></span></p></td></tr></table></td></tr></table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>

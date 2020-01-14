@@ -1,0 +1,18 @@
+<#data CAMPAIGN_FRAMEWORK_1_COL as MODULE limit=1>
+			<#filter FRAMEWORK_CAMPAIGN=CAMPAIGN FRAMEWORK_MARKET=MARKET  FRAMEWORK_POSITION=CAMPAIGN_TEMPLATE.TEMPLATE_POSITION>
+
+			<#fields PERSONALIZATION_VARIANT PERSONALIZATION_DISPLAY_RULE PERSONALIZATION_SEGMENT_RULE PERSONALIZATION_PROFILE_Y_CTA PERSONALIZATION_PROFILE_Y_URL PERSONALIZATION_PROFILE_N_CTA PERSONALIZATION_PROFILE_N_URL  PERSONALIZATION_CASHPOINT_TXT PERSONALIZATION_NOT_REWARD_TXT PERSONALIZATION_A_DIVIDER_TOP PERSONALIZATION_A_DIVIDER_BTM PERSONALIZATION_YEAR PERSONALIZATION_WEEK>
+
+			<#if !MODULE.PERSONALIZATION_VARIANT?isnull>
+<#if !MODULE.PERSONALIZATION_DISPLAY_RULE?isnull>
+					<#attempt>
+						<#include "cms://contentlibrary/!framework/displayrules/"+MODULE.PERSONALIZATION_DISPLAY_RULE+".htm">
+					<#recover>
+						<!-- error loading display rule -->
+					</#attempt>
+				
+				</#if>
+<#if MODULE_EXCLUDE == 0>
+				<#attempt><#include "cms://contentlibrary/!framework/emailcampaign/modules/personalization/personalization_"+MODULE.PERSONALIZATION_VARIANT+"_1_col.htm"><#recover><tr><td height="0" style="height: 0; line-height: 0; font-size: 0"><!-- error loading perzonalization module --></td></tr></#attempt>
+			</#if></#if>
+</#data>

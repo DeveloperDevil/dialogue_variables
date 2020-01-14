@@ -1,0 +1,100 @@
+<!-- // PERSONALIZATION MODULE START // -->
+<!-- First row --><tr>
+<td class="one-column" style="box-sizing:inherit;padding-top:10px;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;">
+        <table bgcolor="${CAMPAIGN_BCG_CLR}" cellpadding="0" cellspacing="0" width="100%" align="center" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;background-color: ${CAMPAIGN_BCG_CLR};" >
+            <tr>
+                <td bgcolor="${CAMPAIGN_BCG_CLR}" class="inner contents" align="center" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;background-color: ${CAMPAIGN_BCG_CLR};" >
+                 <table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" ><tr><td width="20">&nbsp;</td><td align="left" style="font-family:Arial, Helvetica, Sans-serif;color:#003d50;font-size:14px;line-height:18px;padding:0;">
+                                   <p style="box-sizing:inherit;Margin:0;font-size:14px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:5px;line-height:24px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:2px;padding-right:0;padding-left:0; font-size:14px; line-height:24px;" ><!--[if (gte mso 9)|(IE)]><a href="<#if NAS_PROFILE_YN = 'N'>${clickthrough('PERSONALIZATION_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+CREATE_PROFILE_URL?exec)}<#else>${clickthrough('PERSONALIZATION_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MY_PROFILE_URL?exec)}</#if>" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:14px;line-height:24px;padding-bottom:2px;font-weight:bold;" ><![endif]--><!--[if !mso]><!-->
+                    <a href="<#if NAS_PROFILE_YN = 'N'>${clickthrough('PERSONALIZATION_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+CREATE_PROFILE_URL?exec)}<#else>${clickthrough('PERSONALIZATION_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+MY_PROFILE_URL?exec)}</#if>" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:14px;line-height:24px;padding-bottom:0;font-weight:bold;mso-hide:all;"><!--><![endif]--><strong><#if NAS_PROFILE_YN == 'N'>${MODULE.PERSONALIZATION_PROFILE_N_CTA?exec}<#else>${MODULE.PERSONALIZATION_PROFILE_Y_CTA?exec}</#if></strong>
+                    
+                    </a></span></p>
+                                </td><td width="20">&nbsp;</td><td align="right" style="font-family:Arial, Helvetica, Sans-serif;color:#003d50;font-size:14px;line-height:18px;padding:0;">
+                                    <p style="box-sizing:inherit;Margin:0;font-size:14px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:5px;line-height:24px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;" ><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:2px;padding-right:0;padding-left:0; font-size:14px; line-height:24px;" ><!--[if (gte mso 9)|(IE)]><a href="<#if CONTACT.REWARD_YN?isnull>${clickthrough('PERSONALIZATION_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+CREATE_REWARD_PROFILE?exec)}<#elseif CONTACT.REWARD_YN?upper_case?trim == 'Y'>${clickthrough('PERSONALIZATION_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+HAS_REWARD_PROFILE?exec)}<#else>${clickthrough('PERSONALIZATION_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+CREATE_REWARD_PROFILE?exec)}</#if>" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:14px;line-height:24px;padding-bottom:2px;font-weight:bold;" ><![endif]--><!--[if !mso]><!-->
+                    <a href="<#if CONTACT.REWARD_YN?isnull>${clickthrough('PERSONALIZATION_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+CREATE_REWARD_PROFILE?exec)}<#elseif CONTACT.REWARD_YN?upper_case?trim == 'Y'>${clickthrough('PERSONALIZATION_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+HAS_REWARD_PROFILE?exec)}<#else>${clickthrough('PERSONALIZATION_'+CAMPAIGN_TEMPLATE.TEMPLATE_POSITION, 'URL='+CREATE_REWARD_PROFILE?exec)}</#if>" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:14px;line-height:24px;padding-bottom:0;font-weight:bold;mso-hide:all;"><!--><![endif]-->
+                    <strong>
+                    
+                    <#-- 12/07/18 request to put back cashpoints but use CASHPOINTS_BALANCE field from contacts. 
+Plan is to print out CASHPOINTS_BALANCE, if this is null use "Norwegian Reward", if REWARD_YN N use PERSONALIZATION_NOT_REWARD_TXT, if its null use "Norwegian Reward"
+08/05/18 request to remove cashpoints due to wrong data being shown for cashpoints -->
+    <#if CONTACT.REWARD_YN?upper_case?trim == 'Y'>
+    	<#if CASHPOINTS_BALANCE?isnull>Norwegian Reward
+        <#else>${CASHPOINTS_BALANCE?c} ${MODULE.PERSONALIZATION_CASHPOINT_TXT?exec}
+        </#if>
+    <#elseif CONTACT.REWARD_YN?upper_case?trim == 'N'>${MODULE.PERSONALIZATION_NOT_REWARD_TXT?exec}
+    <#elseif CONTACT.REWARD_YN?isnull>Norwegian Reward
+    </#if>
+</strong>
+                    
+                    </a></span></p></td><td width="20">&nbsp;</td> </tr></table>  
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<!-- Second row -->
+
+<#if CAMPAIGN != "E_APOLOGY_SUMMER_UPSELL_2019"><tr>
+<td class="two-column" width="100%" style="text-align: left;
+    font-size: 0;">
+        <!--[if (gte mso 9)|(IE)]>
+        <table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+        <tr>
+        <td width="50%" valign="top">
+        <![endif]-->
+        <div class="column" style="width: 100%;
+    max-width: 300px;
+    display: inline-block;
+    vertical-align: top;float:left;">
+<table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+        <tr>
+            <td class="inner" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:left;background-color: ${CAMPAIGN_BCG_CLR};">
+               <table width="100%" cellpadding="0" cellspacing="0" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;"><tr><td width="20">&nbsp;</td><td align="left" style="font-family:Arial, Helvetica, Sans-serif;color:#003d50;font-size:14px;line-height:18px;padding:0;">
+<strong>
+		<#if ONEWAY_YN?string?trim == "1">${FROM_DEP} (${FROM_IATA}) - ${DESTINATION_NAME} (${DESTINATION}), ${BOOKING_ID}
+        <#elseif CAMPAIGN?contains('RET_HOME')>${RETURN_DEPARTURE_NAME} (${RETURN_DEPARTURE_IATA}) - ${FROM_DEP} (${FROM_IATA}), ${BOOKING_ID}<#else>${FROM_DEP} (${FROM_IATA}) - ${DESTINATION_NAME} (${DESTINATION}), ${BOOKING_ID}
+        </#if>
+        </strong></td><td width="20">&nbsp;</td></tr></table>
+            </td>
+        </tr>
+    </table>
+</div>
+        <!--[if (gte mso 9)|(IE)]>
+        </td><td width="50%" valign="top">
+        <![endif]-->
+        <div class="column gmail nextflight" style="width: 100%;
+    max-width: 300px;
+    display: inline-block;
+    vertical-align: top;">
+<table cellpadding="0" cellspacing="0" width="100%" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+        <tr>
+            <td class="inner gmail nextflight" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;background-color: ${CAMPAIGN_BCG_CLR};">
+               <table width="100%" cellpadding="0" cellspacing="0" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;color:#003d50;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;"><tr><td width="20">&nbsp;</td><td class="nextflight" style="font-family:Arial, Helvetica, Sans-serif;color:#003d50;font-size:14px;line-height:18px;padding:0;">
+                                 <div class="gmail"><strong> 
+									 
+									 
+					<#if !DAYS_TO_DEP?isnull>			 
+						<#if CAMPAIGN == "E_CES" || CAMPAIGN == "DOUBLE_CHARGED_BAGGAGE" || CAMPAIGN?contains('NEWTRIP') || CAMPAIGN?contains('WHOME') || CAMPAIGN?contains('SURVEY') || CAMPAIGN == "E_BECOME_REWARD_MEMBER_NORDICS" || CAMPAIGN == "E_APOLOGY_SUMMER_UPSELL_2019">
+						<#elseif CAMPAIGN?contains('RET_HOME')>
+						${RETURN_DAYS} - ${DAYS_TO_TAKEOFF}
+						<#else>
+						${DAYS_TO_DEP} - ${DAYS_TO_TAKEOFF}
+						</#if>
+					</#if>	</strong></div>
+                                </td><td width="20">&nbsp;</td></tr></table>
+            </td>
+        </tr>
+    </table>
+</div>
+     <!--[if (gte mso 9)|(IE)]> </td> </tr> </table> <![endif]-->
+    <table cellpadding="0" cellspacing="0" width="100%" border="0">
+      <tbody>
+        <tr>
+          <td height="14" style="height: 14px; line-height: 14px; font-size: 14px;">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- // PERSONALIZATION MODULE END // --> <!-- Main Module / HERO A-->
+</td>
+        </tr></#if>
+<!-- // PERSONALIZATION MODULE END // -->
