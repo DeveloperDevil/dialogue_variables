@@ -1,0 +1,75 @@
+
+<#attempt>
+
+<#include "click_tracking.htm">
+<#recover>
+<!-- error loading click_tracking -->
+</#attempt>
+<#macro minify>
+	<#if MINIFY = 'ON'>
+		<#compress>
+			<#join>
+				<#nested>
+			</#join>
+		</#compress>
+	<#else>
+		<#nested>
+	</#if>
+</#macro>
+
+
+<#macro price value market>
+	<#if !value?isnull>
+		<@currency_prefix market/><#if MARKET == "UK" || MARKET == "IE">${value?string("0.00")}*<#elseif MARKET == "US" || MARKET == "FR-CA" || MARKET == "EN-CA" || MARKET == "SG">${value?string("0")}*<#elseif MARKET == "ROW"><#if MARKET == "AR"><#setting locale="hu">${value?string(",##0.00")}<#else>${value?string("0.00")}</#if><#elseif MARKET == "PL" || MARKET == "NO" || MARKET == "DK" || MARKET == "SE">${value?c}<#elseif MARKET == 'AR'>${value?string("##0.00")?replace('.', ',')}<#else><#setting locale="hu">${value?string(",##0.00")}</#if><@currency_postfix market/></#if>
+</#macro>
+<#-- Outlook do not support nowrap style code. So in order to prevent price to break into two lines, we use this code for making white space: &nbsp; -->
+<#macro currency_prefix market>
+	<#switch market>
+	<#case "UK"> £<#break><#-- The empty space in front is to fix a problem in NAVER email client. If there is no space first, NAVER will print out html code instead of the currency symbol) -->
+    <#case "US"> $<#break><#-- The empty space in front is to fix a problem in NAVER email client. If there is no space first, NAVER will print out html code instead of the currency symbol) -->
+	<#case "IE"> €<#break><#-- The empty space in front is to fix a problem in NAVER email client. If there is no space first, NAVER will print out html code instead of the currency symbol) -->
+	<#case "NL"> €&nbsp;<#break><#-- The empty space in front is to fix a problem in NAVER email client. If there is no space first, NAVER will print out html code instead of the currency symbol). The &nbsp; behind, is to create a space between the currency and price without it breaking into two lines -->
+	<#case "SG">S$<#break>
+	
+    <#case "ROW"><#if SEGMENTED_ROW_YN == 'Y'><#if CONTACT.LANGUAGEID?lower_case == 'en-sg' || CONTACT.LANGUAGEID?lower_case == 'en_sg'>SGD&nbsp;<#elseif CONTACT.LANGUAGEID?lower_case == 'es-ar'>$&nbsp;<#elseif CONTACT.LANGUAGEID?lower_case == 'pt-br' || CONTACT.LANGUAGEID?lower_case == 'pt_br'>R$&nbsp;<#else> €</#if><#else> €</#if><#break><#-- The empty space in front of € is to fix a problem in NAVER email client. If there is no space first, NAVER will print out html code instead of the currency symbol) -->
+    </#switch>
+</#macro>
+
+<#macro currency_postfix market>
+	<#switch market>
+	<#case "NO">,-<#break>
+	<#case "DK">,-<#break>
+	<#case "SE">:-<#break>
+    <#case "ES">&nbsp;€<#break><#-- The &nbsp; in front, is to create a space between the currency and price without it breaking into two lines -->
+	<#case "FI">&nbsp;€<#break><#-- The &nbsp; in front, is to create a space between the currency and price without it breaking into two lines -->
+    <#case "DE">&nbsp;€<#break><#-- The &nbsp; in front, is to create a space between the currency and price without it breaking into two lines -->
+    <#case "IT">&nbsp;€<#break><#-- The &nbsp; in front, is to create a space between the currency and price without it breaking into two lines -->
+	<#case "EN">€<#break>
+    <#case "PL">&nbsp;zł<#break><#-- The &nbsp; in front, is to create a space between the currency and price without it breaking into two lines -->
+	<#case "FR-CA">&nbsp;$ CAD<#break><#-- The &nbsp; in front, is to create a space between the currency and price without it breaking into two lines -->
+	<#case "EN-CA">&nbsp;$ CAD<#break><#-- The &nbsp; in front, is to create a space between the currency and price without it breaking into two lines -->
+    <#case "AR">&nbsp;ARS<#break><#-- The &nbsp; behind, is to create a space between the currency and price without it breaking into two lines -->
+    <#case "SG"><#break>
+	<#case "US"><#break>
+	<#case "UK"><#break>
+	<#case "ROW"><#break>
+	<#case "NL"><#break>
+	<#case "IE"><#break>
+    <#case "FR"><#if CAMPAIGN = "2017_W43_FR_HALLOWEEN">&nbsp;€*<#else>&nbsp;€</#if><#break><#-- The &nbsp; in front, is to create a space between the currency and price without it breaking into two lines -->
+<#default>€</#switch>
+   
+</#macro>
+
+<#macro firstname>
+<#if CONTACT.FIRSTNAME?isnull>${CONTACT.FIRSTNAME == ''}
+<#elseif CONTACT.FIRSTNAME?upper_case == 'N/A'> ${CONTACT.FIRSTNAME == ''}
+<#else> ${CONTACT.FIRSTNAME?capitalize} 
+</#if>
+</#macro>
+
+<#macro lastname>
+
+<#if CONTACT.LASTNAME?upper_case == 'N/A'> ${CONTACT.LASTNAME == ''}
+<#else>${CONTACT.LASTNAME?capitalize} 
+</#if>
+</#macro>
