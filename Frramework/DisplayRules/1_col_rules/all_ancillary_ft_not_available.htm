@@ -1,0 +1,13 @@
+<#if FAST_TRACK_AIRPORTS?trim == "N" && FAST_TRACK_AIRPORTS_RETURN?trim == "N">
+	<#if HAS_FLEX == "N">
+		<#if TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0>
+		<#assign MODULE_EXCLUDE = 0>
+		<#else><#assign MODULE_EXCLUDE = 1></#if>
+	<#else><#assign MODULE_EXCLUDE = 1></#if>
+<#elseif HAS_FLEX == "N" && FAST_TRACK_AIRPORTS?trim == "N" && FAST_TRACK_AIRPORTS_RETURN?trim == "Y" && ONEWAY_YN == "1" && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0>
+		<#assign MODULE_EXCLUDE = 0>
+<#--new code added to handle if they have fastrack and all ancillarys 13/04/18 JM -->
+<#elseif FAST_TRACK_FLAG == "Y" && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0><#assign MODULE_EXCLUDE = 0>
+<#--new code JM ends here -->
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>

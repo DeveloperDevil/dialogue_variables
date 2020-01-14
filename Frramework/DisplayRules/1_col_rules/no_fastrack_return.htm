@@ -1,0 +1,4 @@
+<#if FAST_TRACK_AIRPORTS_RETURN?trim == "N" || ONEWAY_YN == "1"><#assign MODULE_EXCLUDE = 1>
+	<#elseif FAST_TRACK_FLAG?trim == "Y"><#assign MODULE_EXCLUDE = 1>
+	<#elseif HAS_FLEX == "N"><#assign MODULE_EXCLUDE = 0>
+<#else><#assign MODULE_EXCLUDE = 1></#if>

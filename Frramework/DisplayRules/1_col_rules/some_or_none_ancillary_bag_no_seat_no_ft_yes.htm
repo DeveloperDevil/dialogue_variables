@@ -1,0 +1,3 @@
+<#if HAS_FLEX == "Y"><#assign MODULE_EXCLUDE = 1>
+<#elseif TESTING_BOOKING_NUMBER_OF_BAGS?number == 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number == 0 && FAST_TRACK_FLAG == "Y"><#assign MODULE_EXCLUDE = 0>
+<#else><#assign MODULE_EXCLUDE = 1></#if>

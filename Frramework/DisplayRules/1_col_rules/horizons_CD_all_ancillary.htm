@@ -1,0 +1,4 @@
+<#if HORIZON != "A" && HORIZON != "B" && HAS_FLEX != "Y">
+    <#if TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0>
+        <#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1></#if>
+    <#else><#assign MODULE_EXCLUDE = 1></#if>

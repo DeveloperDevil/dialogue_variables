@@ -1,0 +1,16 @@
+<#-- BW code, I have not touched JM -->
+<#if FAST_TRACK_AIRPORTS?trim == "N" && FAST_TRACK_AIRPORTS_RETURN?trim == "N"><#assign MODULE_EXCLUDE = 1>
+<#elseif FAST_TRACK_AIRPORTS?trim == "N" && FAST_TRACK_AIRPORTS_RETURN?trim == "Y" && ONEWAY_YN == "1"><#assign MODULE_EXCLUDE = 1>
+<#elseif FAST_TRACK_AIRPORTS?trim == "Y" || FAST_TRACK_AIRPORTS_RETURN?trim == "Y">
+	<#if FAST_TRACK_FLAG?trim == "Y"><#assign MODULE_EXCLUDE = 1>
+	<#elseif HAS_FLEX == "N"><#assign MODULE_EXCLUDE = 0>
+	<#else><#assign MODULE_EXCLUDE = 1></#if>
+<#else><#assign MODULE_EXCLUDE = 1></#if>
+<#--JM code added 18/05/18 to fix fastrack showing departure airport(leg 1) for return dialogues
+We need to not look in DEPARTURE_IATA for return home dialogues, we need DESTINATION_IATA only.
+FAST_TRACK_AIRPORTS uses DEPARTURE_IATA 
+FAST_TRACK_AIRPORTS_RETURN uses DESTINATION_IATA
+for return home dialogues we want to ignore DEPARTURE_IATA so not use FAST_TRACK_AIRPORTS-->
+<#if CAMPAIGN == "E_SH_RET_HOME">
+	<#if FAST_TRACK_AIRPORTS_RETURN == "Y" && FAST_TRACK_FLAG?trim == "N" && HAS_FLEX == "N" && PREMIUM_YES == "N" && ONEWAY_YN == "0"><#assign MODULE_EXCLUDE = 0><#else><#assign MODULE_EXCLUDE = 1></#if>
+</#if>

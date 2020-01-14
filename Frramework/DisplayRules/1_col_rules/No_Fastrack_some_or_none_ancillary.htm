@@ -1,0 +1,8 @@
+<#if FAST_TRACK_AIRPORTS?trim == "Y" || FAST_TRACK_AIRPORTS_RETURN?trim == "Y">
+	<#if HAS_FLEX == "N" && FAST_TRACK_FLAG?trim == "N">
+		<#if ONEWAY_YN == "1" && FAST_TRACK_AIRPORTS?trim == "N" && FAST_TRACK_AIRPORTS_RETURN?trim == "Y"><#assign MODULE_EXCLUDE = 1>
+        <#elseif TESTING_BOOKING_NUMBER_OF_BAGS?number == 0 || TESTING_BOOKING_NUMBER_OF_SEATS?number == 0>
+		<#assign MODULE_EXCLUDE = 0>
+		<#else><#assign MODULE_EXCLUDE = 1></#if>
+	<#else><#assign MODULE_EXCLUDE = 1></#if>
+<#else><#assign MODULE_EXCLUDE = 1></#if>

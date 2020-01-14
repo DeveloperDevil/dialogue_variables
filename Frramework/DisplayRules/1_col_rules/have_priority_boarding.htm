@@ -1,0 +1,12 @@
+<#-- we hide PB for PREMIUM because they always board first -->
+<#if LH_OR_SH == "long_haul">
+	<#if PREMIUM_YES == "Y" || HAS_FLEX == "Y"><#assign MODULE_EXCLUDE = 1>
+	<#elseif HAVE_PRIORITY_BOARDING == "Y"><#assign MODULE_EXCLUDE = 0>
+	<#elseif HAS_FLEX == "Y" && AIR_HAS_PB == "Y"><#assign MODULE_EXCLUDE = 0>
+	<#else><#assign MODULE_EXCLUDE = 1></#if>
+<#else>
+	<#if PREMIUM_YES == "Y"><#assign MODULE_EXCLUDE = 1>
+	<#elseif HAVE_PRIORITY_BOARDING == "Y"><#assign MODULE_EXCLUDE = 0>
+	<#elseif HAS_FLEX == "Y" && AIR_HAS_PB == "Y"><#assign MODULE_EXCLUDE = 0>
+	<#else><#assign MODULE_EXCLUDE = 1></#if>
+</#if>

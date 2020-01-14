@@ -1,0 +1,4 @@
+<#-- we hide PB for PREMIUM because they always board first -->
+<#if PREMIUM_YES == "Y" || HAVE_PRIORITY_BOARDING == "Y" || HAS_FLEX == "Y"><#assign MODULE_EXCLUDE = 1>
+<#elseif HAVE_PRIORITY_BOARDING == "N" && AIR_HAS_PB == "Y"><#assign MODULE_EXCLUDE = 0>
+<#else><#assign MODULE_EXCLUDE = 1></#if>

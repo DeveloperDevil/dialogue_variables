@@ -1,0 +1,5 @@
+<#if HORIZON == "B" && HAS_FLEX == "N" && TESTING_BOOKING_NUMBER_OF_BAGS?number gt 0 && TESTING_BOOKING_NUMBER_OF_SEATS?number gt 0>
+<#if FAST_TRACK_FLAG?trim == "N"><#assign MODULE_EXCLUDE = 1>
+<#else ><#assign MODULE_EXCLUDE = 0><#if>
+<#else><#assign MODULE_EXCLUDE = 1>
+</#if>

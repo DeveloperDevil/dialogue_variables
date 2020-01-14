@@ -1,0 +1,10 @@
+<#if ONEWAY_YN?number == 0>
+    <#if LESS_24_DEP || LESS_24_RET == "Y"><#assign MODULE_EXCLUDE = 0>
+	<#else><#assign MODULE_EXCLUDE = 1>
+    </#if>
+<#elseif ONEWAY_YN?number == 1>
+    <#if LESS_24_DEP == "Y"><#assign MODULE_EXCLUDE = 0>
+	<#else><#assign MODULE_EXCLUDE = 1>
+    </#if>
+    <#else><#assign MODULE_EXCLUDE = 1>
+</#if>
