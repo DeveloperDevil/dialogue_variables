@@ -1,0 +1,12 @@
+<#data BOOKINGS_01 as BOOKINGS_01>
+<#filter BOOKING_GDSBOOKINGID= BOOKING_ID BOOKING_LOCALBOOKINGID_1 = LOCAL_BOOKING_ID>
+<#fields BOOKING_MAIN_DESTINATION>
+<#switch BOOKINGS_01.BOOKING_MAIN_DESTINATION>
+	<#case "SJU"><#assign MODULE_EXCLUDE = 0><#break>
+	<#case "STX"><#assign MODULE_EXCLUDE = 0><#break>
+	<#default><#assign MODULE_EXCLUDE = 1>
+</#switch>
+</#data>
+
+<#-- NEW TEMPLATE CODE -->
+<#-- <#switch DESTINATION_IATA><#case "SJU"><#assign MODULE_EXCLUDE = 0><#break><#case "STX"><#assign MODULE_EXCLUDE = 0><#break><#default><#assign MODULE_EXCLUDE = 1></#switch> -->

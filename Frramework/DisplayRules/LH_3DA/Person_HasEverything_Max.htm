@@ -1,0 +1,6 @@
+<#data SQL_MAX as SQL_MAX>
+<#filter BOOKING_GDSBOOKINGID= BOOKING_ID BOOKING_LOCALBOOKINGID_1 = LOCAL_BOOKING_ID> 
+<#fields BOOKING_HAS_EVERYTHING><#if SQL_MAX.BOOKING_HAS_EVERYTHING?string?trim == "Y"><#assign MODULE_EXCLUDE = 1></#if></#data>
+
+<#-- NEW TEMPLATE CODE -->
+<#-- <#if NUMBER_OF_PASSENGERS?string?trim == "1"  || ANCILLARY_ALL?number gt 0><#assign MODULE_EXCLUDE = 1></#if> -->
