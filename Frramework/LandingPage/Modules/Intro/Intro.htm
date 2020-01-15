@@ -1,0 +1,32 @@
+<!-- module intro start -->
+<div  class="page-section">
+    <div class="grid">
+		<div class="row">
+			<div class="col-8--lg">
+				<figure class="box  box--transparent  box--full-width">
+					<img width="100%" src="${MODULE.INTRO_IMAGE_1}">
+					<figcaption></figcaption>
+				</figure>
+
+				<h3>${MODULE.INTRO_HEADLINE?exec}</h3>
+				<p>${MODULE.INTRO_PARAGRAPH?exec}</p>
+				<h5><strong>${MODULE.INTRO_HEADLINE_SECONDARY?exec}</strong></h5>
+
+<#if !MODULE.INTRO_CALL_TO_ACTION?isnull>
+
+				<p><br /><a title=""  ><a href="${clickthrough('INTRO_'+PAGE_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.INTRO_URL?exec)}" target="_blank">${MODULE.INTRO_CALL_TO_ACTION}</a></p>
+
+</#if>
+
+				<hr />
+			</div>
+			<div class="col-4--lg">
+				<figure class="box  box--transparent  box--full-width">
+					<img width="100%" src="${MODULE.INTRO_IMAGE_2}">
+					<figcaption></figcaption>
+				</figure>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- module intro end -->
