@@ -1,0 +1,9 @@
+<#assign FROM_NAME_SET = 0>
+<#attempt><#data CAMPAIGN_FRAMEWORK_1_COL as CAMPAIGN_SETTINGS limit=1>
+<#filter FRAMEWORK_MARKET=MARKET FRAMEWORK_CAMPAIGN=CAMPAIGN>
+<#fields SETTINGS_FROM_NAME>
+<#if !CAMPAIGN_SETTINGS.SETTINGS_FROM_NAME?isnull>
+<#assign FROM_NAME_SET = 1>${CAMPAIGN_SETTINGS.SETTINGS_FROM_NAME}|
+<#else><#assign FROM_NAME_SET = 1>Norwegian|</#if>
+</#data><#recover><#assign FROM_NAME_SET = 1>Norwegian|</#attempt>
+<#if FROM_NAME_SET == 0>Norwegian|</#if>

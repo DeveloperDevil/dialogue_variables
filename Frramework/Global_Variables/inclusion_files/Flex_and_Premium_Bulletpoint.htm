@@ -1,0 +1,7 @@
+<#join><#compress><#switch MARKET>
+<#case "DK"><#global BP1_CTA ="<#if PREMIUM_YES == 'Y'>Et komfortabelt sæde med 140 cm benplads, USB-oplader og stikkontakt<#elseif HAS_FLEX == 'Y'>Sædereservation<#else></#if>"><#break>
+<#case "UK"><#global BP1_CTA ="<#if PREMIUM_YES == 'Y'>A comfortable seat with 140 cm (55 inches) legroom, USB charger and power outlet<#elseif HAS_FLEX == 'Y'>Seat reservation<#else></#if>"><#break>
+<#case "ES"><#global BP1_CTA ="<#if PREMIUM_YES == 'Y'>Un asiento cómodo con hasta 140 cm de espacio para las piernas, un cargador USB y una toma de corriente<#elseif HAS_FLEX == 'Y'>Reserva de asiento<#else></#if>"><#break>
+<#case "ROW"><#global BP1_CTA ="<#if PREMIUM_YES == 'Y'>A comfortable seat with 140 cm (55 inches) legroom, USB charger and power outlet<#elseif HAS_FLEX == 'Y'>Seat reservation<#else></#if>"><#break>
+<#default><#global BP1_CTA ="<#if PREMIUM_YES == 'Y'>A comfortable seat with 140 cm (55 inches) legroom, USB charger and power outlet<#elseif HAS_FLEX == 'Y'>Seat reservation<#else></#if>"><#break>
+</#switch></#compress></#join>

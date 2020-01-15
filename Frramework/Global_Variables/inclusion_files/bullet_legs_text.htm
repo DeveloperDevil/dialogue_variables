@@ -1,0 +1,9 @@
+<#-- All is dependant on and LONG_HAUL_LEG_DEP_OUTBOUND and LONG_HAUL_LEG_DEP_RETURN that is made in LEG_VARIABLES. OUTGOING_LEG_WITH_LOUNGE and INCOMING_LEG_WITH_LOUNGE display the airport name in full in the markets language JM 22/10/18 -->
+<#if ONEWAY_YN?string?trim == "0">
+    <#if OUTGOING_LEG_WITH_LOUNGE?isnull><#global LOUNGE_TEXT = "- " + INCOMING_LEG_WITH_LOUNGE>
+	<#elseif INCOMING_LEG_WITH_LOUNGE?isnull><#global LOUNGE_TEXT = "- " + OUTGOING_LEG_WITH_LOUNGE>
+	<#else><#global LOUNGE_TEXT = "- " + OUTGOING_LEG_WITH_LOUNGE + ", " + INCOMING_LEG_WITH_LOUNGE>
+	</#if>
+<#else>
+	<#global LOUNGE_TEXT = "- " + OUTGOING_LEG_WITH_LOUNGE>
+</#if>

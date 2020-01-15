@@ -1,0 +1,14 @@
+<#-- BW comment 23.01.2019: Customers complain if we use the first name of the booking person in our dialogues, when in fact that person is not among the passengers. So we need to check the passenger list to see if the booking person is on the plane or not. This script is included in the SQL Global part of the dialogue leg variable inclusion file. -->
+<#-- combine first name and last name the same way as it is done in the leg tables --><#assign BOOKING_NAME = CONTACT.LASTNAME + '/' + CONTACT.FIRSTNAME>
+<#-- Replace special characters, so it matches with the format from the leg table --> <#assign BOOKING_NAME = BOOKING_NAME?upper_case?replace('Å','AA')?replace('Æ','AE')?replace('Ä','AE')?replace('À','A')?replace('Á','A')?replace('Ã','A')?replace('Ā','A')?replace('Â','A')?replace('Ą','A')?replace('Ć','C')?replace('Ç','C')?replace('Ø','OE')?replace('Œ','OE')?replace('Ö','OE')?replace('È','E')?replace('É','E')?replace('Ê','E')?replace('Ë','E')?replace('Ē','E')?replace('Ę','E')?replace('Í','I')?replace('Ï','I')?replace('Î','I')?replace('Î','I')?replace('Ñ','N')?replace('Ń','N')?replace('Ï','I')?replace('Ł','L')?replace('Ò','O')?replace('Ó','O')?replace('Ô','O')?replace('Ō','O')?replace('Õ','O')?replace('Ŏ','O')?replace('Ô','O')?replace('Ř','R')?replace('ß','SS')?replace('Ś','S')?replace('Š','S')?replace('Ù','U')?replace('Û','U')?replace('Ú','U')?replace('Ū','U')?replace('Ü','U')?replace('Ü','U')?replace('Ÿ','Y')?replace('Ȳ','Y')?replace('Ż','Z')?replace('Ż','Z')?replace('Ź','Z')?replace('Ž','Z')?replace('-','')?replace(' ','')>
+
+<#if !PASSENGERS?seq_contains(SQL_GLOBAL.PASSENGER_NAME)>
+    <#assign PASSENGERS = PASSENGERS + [SQL_GLOBAL.PASSENGER_NAME]>
+ </#if>
+<#assign PASSENGER_NAMES = PASSENGER_NAMES + [PASSENGERS?join(", ")]>
+<#if HIDE_FIRSTNAME_YN == 'Y'><#if SQL_GLOBAL.BOOKING_NUMBER_OF_ADULTS?isnull><#elseif SQL_GLOBAL.BOOKING_NUMBER_OF_ADULTS?number gt 1>
+    <#list PASSENGER_NAMES as x>
+    <#if x?replace(' MR','')?replace(' MRS','')?replace(' MS','')?replace(' ','')?contains(BOOKING_NAME?upper_case)><#assign HIDE_FIRSTNAME_YN = 'N'><#else><#assign HIDE_FIRSTNAME_YN = 'Y'></#if><#if campaign.name == 'DEBUG_E_SH_2DA'><span style="color:red;">HIDE_FIRSTNAME_YN: ${HIDE_FIRSTNAME_YN}</span><br></#if>
+    </#list>
+<#else><#if SQL_GLOBAL.PASSENGER_NAME?replace(' MR','')?replace(' MRS','')?replace(' MS','')?replace(' ','')?contains(BOOKING_NAME?upper_case)><#assign HIDE_FIRSTNAME_YN = 'N'><#else><#assign HIDE_FIRSTNAME_YN = 'Y'></#if><#if campaign.name == 'DEBUG_E_SH_2DA'><span style="color:purple;">HIDE_FIRSTNAME_YN: ${HIDE_FIRSTNAME_YN}</span><br></#if>
+</#if></#if>

@@ -1,0 +1,81 @@
+<#if campaign.name == 'E_LH_20DB' || campaign.name == 'DEBUG_E_LH_20DB' || campaign.name == 'E_LH_20DB_MAX' || campaign.name == 'E_LH_40DB' || campaign.name == 'E_LH_5DB_MAX'>
+   <#if !LOCAL_BOOKING_ID?isnull || !BOOKING_ID?isnull>
+       <#data SQL_Universal as SQL_Universal><#filter BOOKING_GDSBOOKINGID_ = BOOKING_ID BOOKING_LOCALBOOKINGID = LOCAL_BOOKING_ID><#fields BOOKING_GDSBOOKINGID_ BOOKING_LOCALBOOKINGID>
+		<#-- UNIVERSAL_BOOKING_ID --><#assign UNIVERSAL_BOOKING_ID = SQL_Universal.BOOKING_GDSBOOKINGID_>
+		<#-- UNIVERSAL_LOCAL_BOOKING_ID --><#assign UNIVERSAL_LOCAL_BOOKING_ID = SQL_Universal.BOOKING_LOCALBOOKINGID>
+		</#data><#-- EXIST_IN_UNIVERSAL_YN -->
+    	<#if UNIVERSAL_BOOKING_ID == BOOKING_ID && UNIVERSAL_LOCAL_BOOKING_ID == LOCAL_BOOKING_ID><#global EXIST_IN_UNIVERSAL_YN = 'YES'><#else><#global EXIST_IN_UNIVERSAL_YN = 'NO'>
+        </#if>
+    <#else><#global EXIST_IN_UNIVERSAL_YN = 'NO'>
+    </#if>
+    	<#-- If the BOOKING ID exists in the audience, but not in the SQL_Universal view, it will not have access to the booking data. So we don't want to send an email in that case. -->
+		<#if EXIST_IN_UNIVERSAL_YN != 'YES'><#skip 'Campaign skipped. Reason: BOOKING_ID_ID or LOCAL_BOOKING_ID (or both) not in SQL_Universal.'>
+        </#if>
+<#-- E_LH_7DB uses diferent aliases -->
+<#elseif campaign.name == 'E_LH_7DB' || campaign.name == 'DEBUG_E_LH_7DB'>
+    <#if !LOCAL_BOOKING_ID?isnull || !BOOKING_ID?isnull>
+    	<#data SQL_Universal as SQL_Universal><#filter BOOKING_GDSBOOKINGID1 = BOOKING_ID BOOKING_LOCALBOOKINGID1 = LOCAL_BOOKING_ID><#fields BOOKING_GDSBOOKINGID1 BOOKING_LOCALBOOKINGID1>
+		<#-- UNIVERSAL_BOOKING_ID --><#assign UNIVERSAL_BOOKING_ID = SQL_Universal.BOOKING_GDSBOOKINGID1>
+		<#-- UNIVERSAL_LOCAL_BOOKING_ID --><#assign UNIVERSAL_LOCAL_BOOKING_ID = SQL_Universal.BOOKING_LOCALBOOKINGID1>
+		</#data><#-- EXIST_IN_UNIVERSAL_YN -->
+    	<#if UNIVERSAL_BOOKING_ID == BOOKING_ID && UNIVERSAL_LOCAL_BOOKING_ID == LOCAL_BOOKING_ID><#global EXIST_IN_UNIVERSAL_YN = 'YES'><#else><#global EXIST_IN_UNIVERSAL_YN = 'NO'>
+        </#if>
+   <#else><#global EXIST_IN_UNIVERSAL_YN = 'NO'>
+   </#if>
+    	<#-- If the BOOKING ID exists in the audience, but not in the SQL_Universal view, it will not have access to the booking data. So we don't want to send an email in that case. -->
+		<#if EXIST_IN_UNIVERSAL_YN != 'YES'><#skip 'Campaign skipped. Reason: BOOKING_ID_ID or LOCAL_BOOKING_ID (or both) not in SQL_Universal.'>
+        </#if>
+<#-- E_LH_3DA does not have SQL_Universal in DataSource-->
+<#elseif campaign.name == 'E_LH_3DA' || campaign.name == 'DEBUG_E_LH_3DA'>
+    <#if !LOCAL_BOOKING_ID?isnull || !BOOKING_ID?isnull>
+    	<#data BOOKINGS_01 as BOOKINGS_01><#filter BOOKING_GDSBOOKINGID = BOOKING_ID BOOKING_LOCALBOOKINGID_1 = LOCAL_BOOKING_ID><#fields BOOKING_GDSBOOKINGID BOOKING_LOCALBOOKINGID_1>
+			<#assign LOCAL_PNR_BOOKING_TABLE_1 = BOOKINGS_01.BOOKING_LOCALBOOKINGID_1>
+			<#assign PNR_BOOKING_TABLE_1 = BOOKINGS_01.BOOKING_GDSBOOKINGID>
+		</#data>
+		<#data BOOKINGS_02 as BOOKINGS_02><#filter BK_GDS_BOOKING_ID = BOOKING_ID BK_LOCAL_BOOKING_ID = LOCAL_BOOKING_ID><#fields BK_GDS_BOOKING_ID BK_LOCAL_BOOKING_ID>
+			<#assign LOCAL_PNR_BOOKING_TABLE_2 = BOOKINGS_02.BK_LOCAL_BOOKING_ID>
+			<#assign PNR_BOOKING_TABLE_2 = BOOKINGS_02.BK_GDS_BOOKING_ID>
+		</#data>
+	<#-- EXIST_IN_BOTH_BOOKING_TABLES_YN -->
+    	<#if BOOKING_ID == PNR_BOOKING_TABLE_2 && BOOKING_ID == PNR_BOOKING_TABLE_2 && LOCAL_BOOKING_ID == LOCAL_PNR_BOOKING_TABLE_2 && LOCAL_BOOKING_ID == LOCAL_PNR_BOOKING_TABLE_2><#global EXIST_IN_BOTH_BOOKING_TABLES_YN = 'YES'><#else><#global EXIST_IN_BOTH_BOOKING_TABLES_YN = 'NO'></#if>
+	<#else><#global EXIST_IN_BOTH_BOOKING_TABLES_YN = 'NO'>
+    </#if>
+	<#-- If the BOOKING ID exists in the audience, but not in both booking tables, it will not have access to the booking data. So we don't want to send an email in that case. --><#if EXIST_IN_BOTH_BOOKING_TABLES_YN != 'YES'><#skip 'Campaign skipped. Reason: BOOKING_ID or LOCAL_BOOKING_ID (or both) not in Booking tables.'>
+    </#if>
+<#-- E_LH_3DA_MAX does not have SQL_Universal in DataSource, but are using SQL_MAX -->
+<#elseif campaign.name == 'E_LH_3DA_MAX' || campaign.name == 'DEBUG_E_LH_3DA_MAX'>
+    <#if !LOCAL_BOOKING_ID?isnull || !BOOKING_ID?isnull>
+    	<#data SQL_MAX as SQL_MAX><#filter BOOKING_GDSBOOKINGID2 = BOOKING_ID BOOKING_LOCALBOOKINGID_1 = LOCAL_BOOKING_ID><#fields BOOKING_GDSBOOKINGID2 BOOKING_LOCALBOOKINGID_1>
+		<#-- SQL_MAX_BOOKING_ID --><#assign SQL_MAX_BOOKING_ID = SQL_MAX.BOOKING_GDSBOOKINGID2>
+		<#-- SQL_MAX_LOCAL_BOOKING_ID --><#assign SQL_MAX_LOCAL_BOOKING_ID = SQL_MAX.BOOKING_LOCALBOOKINGID_1>
+		</#data><#-- EXIST_IN_SQL_MAX_YN -->
+    	<#if SQL_MAX_BOOKING_ID == BOOKING_ID && SQL_MAX_LOCAL_BOOKING_ID == LOCAL_BOOKING_ID><#global EXIST_IN_SQL_MAX_YN = 'YES'><#else><#global EXIST_IN_SQL_MAX_YN = 'NO'>
+        </#if>
+    <#else><#global EXIST_IN_SQL_MAX_YN = 'NO'>
+    </#if>
+    <#-- If the BOOKING ID exists in the audience, but not SQL_MAX, it will not have access to the booking data. So we don't want to send an email in that case. --><#if EXIST_IN_SQL_MAX_YN != 'YES'><#skip 'Campaign skipped. Reason: BOOKING_ID_ID or LOCAL_BOOKING_ID (or both) not in SQL_Universal.'>
+    </#if>
+</#if>
+
+
+<#-- If the modules do not exist in the campaign template used for the campaign, they will produce NULL values in the module wrapper switch cases. This code will fix that issue and set those value to be 'NO' -->
+<#if HERO_HAVE_CONTENT?isnull><#assign HERO_HAVE_CONTENT = 'NO'></#if>
+<#if ICONLIST_HAVE_CONTENT?isnull><#assign ICONLIST_HAVE_CONTENT = 'NO'></#if>
+<#if PRICELIST_HAVE_CONTENT?isnull><#assign PRICELIST_HAVE_CONTENT = 'NO'></#if>
+<#if TWOCOLUMN_HAVE_CONTENT?isnull><#assign TWOCOLUMN_HAVE_CONTENT = 'NO'></#if>
+<#if FOURCOLUMN_HAVE_CONTENT?isnull><#assign FOURCOLUMN_HAVE_CONTENT = 'NO'></#if>
+<#if TEXT_HAVE_CONTENT?isnull><#assign TEXT_HAVE_CONTENT = 'NO'></#if>
+<#if BANNER_HAVE_CONTENT?isnull><#assign BANNER_HAVE_CONTENT = 'NO'></#if>
+<#if ARTICLE_HAVE_CONTENT?isnull><#assign ARTICLE_HAVE_CONTENT = 'NO'></#if>
+<#if SEARCH_HAVE_CONTENT?isnull><#assign SEARCH_HAVE_CONTENT = 'NO'></#if>
+
+
+
+
+<#-- Also, if all modules comes out with the value 'NO, it means that the campaign do not have any content other then header and footer, and we want to prevent it from beeing sent -->
+<#if HERO_HAVE_CONTENT!='YES' && ICONLIST_HAVE_CONTENT!='YES' && PRICELIST_HAVE_CONTENT!='YES' && TWOCOLUMN_HAVE_CONTENT!='YES' && FOURCOLUMN_HAVE_CONTENT!='YES' && TEXT_HAVE_CONTENT!='YES' && BANNER_HAVE_CONTENT!='YES' && ARTICLE_HAVE_CONTENT!='YES' && BULLETPOINTS_HAVE_CONTENT!='YES' && SEARCH_HAVE_CONTENT!='YES'><#global CAMPAIGN_SKIP = 'YES'><#else><#global CAMPAIGN_SKIP = 'NO'></#if>
+
+<#if CAMPAIGN_SKIP = 'YES'><#skip 'Modules skipped. Reason: no content loaded from module wrapper.'></#if>
+
+<#-- while testing, we can set DEBUG_MODE in the campaign data source variables to be 'Y' and print out the values. we don't want to send emails containing test variables either, so we add a skip if DEBUG_MODE is activated. This needs to be removed when testing.-->
+<#if DEBUG_MODE == 'Y'><#skip 'Modules skipped. Reason: Debug mode is activated.'></#if>

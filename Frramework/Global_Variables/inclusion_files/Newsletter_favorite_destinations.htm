@@ -1,0 +1,47 @@
+<#--/////////////NOTES START/////////////////-->
+<#-- Here we make a list of the most popular destinations, based on web search, for each market. Those IATA will have their own special hero image, while the rest will have a default image.-->
+
+<#--/////////////NOTES END/////////////////-->
+
+<#-- we need AIR_HAS_IMG to be "N" FIRST-->
+<#global AIR_HAS_IMG = "N">
+
+<#--here we make a sequence of the most popular IATAS for each market-->
+<#global SEGMENTED_AIRPORTS = ["AGP", "ARN", "BCN", "CPH", "HEL", "MAD", "OSL", "PMI"]>
+
+<#--here we loop through the IATAS, -->
+<#-- Test IATA, for it to work before we have the booking destination SQL. Remove this when we go live with the code <#global DESTINATION_IATA = 'OSL'> -->
+
+<#--<#data AUDIENCE as AUDIENCE><#filter AUDIENCE_RIID_ = CONTACT.RIID_><#fields AUDIENCE_DESTINATION_IATA>
+<#global AUDIENCE_DESTINATION_IATA = AUDIENCE.AUDIENCE_DESTINATION_IATA>
+</#data>-->
+
+
+
+<#if campaign.name != 'DEBUG_2018_W42_EUROPE_S_SAME-DESTINATION' || campaign.name != '2018_W42_EUROPE_S_SAME-DESTINATION'><#list SEGMENTED_AIRPORTS as SEGMENTED_AIRPORTS><#if SEGMENTED_AIRPORTS?contains(AUDIENCE_DESTINATION_IATA)>
+		<#global AIR_HAS_IMG = "Y">
+        <#if campaign.name == 'DEBUG_2018_W42_EUROPE_S_SAME-DESTINATION'><#global SEGMENTED_IMAGE = '/contentlibrary/z_img/destination_images/e_nl_640x320_' + MARKET?lower_case + '_' + AUDIENCE_DESTINATION_IATA?lower_case + '.jpg'></#if>
+		<#else><#if campaign.name == 'DEBUG_2018_W42_EUROPE_S_SAME-DESTINATION'><#global SEGMENTED_IMAGE = '/contentlibrary/z_img/destination_images/e_nl_640x320_default.jpg'></#if></#if>
+</#list></#if>
+
+<#if campaign.name == '2018_W42_EUROPE_S_SAME-DESTINATION'>
+    <#if MARKET == 'UK'>
+        <#if AUDIENCE_DESTINATION_IATA == 'AGP'><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/SPAIN-Malaga-Mijas-473019090-640x320.jpg'>
+        <#elseif AUDIENCE_DESTINATION_IATA == 'ARN'><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/SWEDEN_Stockholm_2018.12.01_585386319_640x320.jpg'>
+        <#elseif AUDIENCE_DESTINATION_IATA == 'BCN'><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/SPAIN_Barcelona_Sagrada_Familia_People_2019.07.01_522926606_640x320.jpg'>
+        <#elseif AUDIENCE_DESTINATION_IATA == 'CPH'><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/DENMARK_Copenhagen_642182416_640x320.jpg'>
+        <#elseif AUDIENCE_DESTINATION_IATA == 'HEL'><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/FINLAND_Helsinki_Harbour_Sunset_2019.03.01_613762532_640x320.jpg'>
+        <#elseif AUDIENCE_DESTINATION_IATA == 'MAD'><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/SPAIN-Madrid-catedral-809081458-640x320.jpg'>
+        <#elseif AUDIENCE_DESTINATION_IATA == 'OSL'><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/norway-oslo-2019-02-01-531511051-640x320.jpg'>
+        <#elseif AUDIENCE_DESTINATION_IATA == 'PMI'><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/SPAIN-Majorca-610968446-640x320.jpg'>
+        <#else><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/norway-oslo-2019-02-01-531511051-640x320.jpg'>
+        </#if><#else><#global POPULAR_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/norway-oslo-2019-02-01-531511051-640x320.jpg'>
+    </#if>
+<#else><#global SEGMENTED_IMAGE = 'https://static.cdn.responsys.net/i2/responsysimages/content/nas/norway-oslo-2019-02-01-531511051-640x320.jpg'>
+</#if>
+
+
+
+
+
+

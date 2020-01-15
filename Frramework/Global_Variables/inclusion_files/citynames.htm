@@ -1,0 +1,73 @@
+<#if REVENUE_PRICES.FROM_IATA == "OAK"><#assign DEP_CITY = "Oakland/San Francisco"></#if>
+<#if REVENUE_PRICES.TO_IATA == "OAK"><#assign DEST_CITY = "Oakland/San Francisco"></#if>
+<#if REVENUE_PRICES.TO_IATA == "FLL"><#assign DEST_CITY = "Fort Lauderdale/Miami"></#if>
+
+<#if MARKET == "US">
+	<#if REVENUE_PRICES.FROM_IATA == "FLL"><#assign DEP_CITY = "Ft. Lauderdale/Miami"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "JFK"><#assign DEP_CITY = "New York/JFK"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "PVD"><#assign DEP_CITY = "Boston/Providence"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "SWF"><#assign DEP_CITY = "New York/Stewart"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "FDF"><#assign DEST_CITY = "Martinique"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "PTP"><#assign DEST_CITY = "Guadeloupe"></#if> 
+    <#if REVENUE_PRICES.FROM_IATA == "EWR"><#assign DEP_CITY = "New York/Newark"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "BDL"><#assign DEP_CITY = "Hartford-Bradley"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "CDG"><#assign DEST_CITY = "Paris/Charles De Gaulle"></#if>   
+    <#if REVENUE_PRICES.TO_IATA == "ORY"><#assign DEST_CITY = "Paris/Orly"></#if> 
+    
+</#if>
+<#if MARKET == "ES">
+	<#if REVENUE_PRICES.TO_IATA == "AGP"><#assign DEST_CITY = "Málaga"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "AGP"><#assign DEP_CITY = "Málaga"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "EWR"><#assign DEST_CITY = "Nueva York/Newark"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "JFK"><#assign DEST_CITY = "Nueva York/JFK"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "CDG"><#assign DEST_CITY = "Colonia"></#if>
+</#if>
+<#if MARKET == "FR">
+	<#if REVENUE_PRICES.TO_IATA == "OSL"><#assign DEST_CITY = "Oslo"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "ARN"><#assign DEST_CITY = "Stockholm"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "ORY"><#assign DEP_CITY = "Paris"></#if>
+     <#if REVENUE_PRICES.FROM_IATA == "CDG"><#assign DEP_CITY = "Paris"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "PARALL"><#assign DEP_CITY = "Paris"></#if>
+</#if>
+<#if MARKET == "IT">
+	<#if REVENUE_PRICES.TO_IATA == "OSL"><#assign DEST_CITY = "Oslo"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "EWR"><#assign DEST_CITY = "New York/Newark"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "ARN"><#assign DEST_CITY = "Stoccolma"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "GOT"><#assign DEST_CITY = "Göteborg"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "FCO"><#assign DEP_CITY = "Roma"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "MXP"><#assign DEP_CITY = "Milano"></#if>
+</#if>
+<#if MARKET == "PL">
+	<#if REVENUE_PRICES.TO_IATA == "OSL"><#assign DEST_CITY = "Oslo"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "ARN"><#assign DEST_CITY = "Sztokholm"></#if>
+</#if>
+<#if MARKET == "NL">
+	<#if REVENUE_PRICES.TO_IATA == "OSL"><#assign DEST_CITY = "Oslo"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "ARN"><#assign DEST_CITY = "Stockholm"></#if>
+</#if>
+<#if MARKET == "DE">
+	<#if REVENUE_PRICES.TO_IATA == "CGN"><#assign DEST_CITY = "Köln-Bonn"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "CGN"><#assign DEP_CITY = "Köln-Bonn"></#if>
+</#if>
+<#if MARKET == "ROW">
+	<#if REVENUE_PRICES.TO_IATA == "ARN"><#assign DEST_CITY = "Stockholm"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "OSL"><#assign DEST_CITY = "Oslo"></#if>
+</#if>
+<#if MARKET == "SE">
+    <#if REVENUE_PRICES.TO_IATA == "FCO"><#assign DEST_CITY = "Rom"></#if>
+	<#if REVENUE_PRICES.FROM_IATA == "MMX"><#assign DEP_CITY = "Malmö"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "ARN"><#assign DEP_CITY = "Stockholm"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "GOT"><#assign DEP_CITY = "Göteborg"></#if>
+</#if>
+<#if MARKET == "NO">
+    <#if REVENUE_PRICES.FROM_IATA == "OSL"><#assign DEP_CITY = "Oslo"></#if>
+</#if>
+<#if MARKET == "UK">
+	<#if REVENUE_PRICES.TO_IATA == "ARN"><#assign DEST_CITY = "Stockholm"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "GOT"><#assign DEST_CITY = "Gothenburg"></#if>
+    <#if REVENUE_PRICES.FROM_IATA == "LGW"><#assign DEP_CITY = "London"></#if>
+</#if>
+<#if MARKET == "IE">
+	<#if REVENUE_PRICES.TO_IATA == "OSL"><#assign DEST_CITY = "Oslo"></#if>
+    <#if REVENUE_PRICES.TO_IATA == "PVD"><#assign DEST_CITY = "Providence/Boston"></#if>
+</#if>

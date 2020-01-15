@@ -1,0 +1,28 @@
+<#if campaign.name == '2019_W12_NORDICS_BIG-SALE_1_B' || campaign.name == '2019_W12_NORDICS_BIG-SALE_2_B'>
+    <#if MARKET == 'NO'><#assign gpt_subj = "Stort salg på alle destinasjoner"><#elseif MARKET == 'SE'><#assign gpt_subj = "Stor rea på ALLA resmål"><#elseif MARKET == 'DK'><#assign gpt_subj = "Vores store udsalg er i gang!"><#elseif MARKET == 'FI'><#assign gpt_subj = "Ale on nyt käynnissä!"><#else><#assign gpt_subj = "Stort salg på alle destinasjoner"></#if>
+	<#if MARKET == 'NO'><#assign gpt_desc = "Opptil 15%* rabatt"><#elseif MARKET == 'SE'><#assign gpt_desc = "Upp till 15%* rabatt"><#elseif MARKET == 'DK'><#assign gpt_desc = "Få op til 15%* rabat"><#elseif MARKET == 'FI'><#assign gpt_desc = "Jopa 15%* alennusta"><#else><#assign gpt_desc = "Opptil 15%* rabatt"></#if>
+	<#assign gpt_disc = "1912BIGSALE">
+	<#assign gpt_start = "2019-03-21T00:01:00+00:00">
+	<#assign gpt_end = "2019-03-24T23:59:00+00:00">
+	<#if MARKET == 'FI'><#assign gpt_img = "https://static.cdn.responsys.net/i2/responsysimages/content/nas/640x170-Valentines-banner-stripes.png"><#else><#assign gpt_img = "https://static.cdn.responsys.net/i2/responsysimages/content/nas/640x170-BigSale-banner.png"></#if>
+
+
+<div itemscope itemtype="http://schema.org/Organization">
+
+  <meta itemprop="name" content="Gmail" />
+
+  <meta itemprop="logo" content="https://static.cdn.responsys.net/i2/responsysimages/content/nas/E_75x61_Logo_Mobile_transparent_circular.png" />
+</div>
+<div itemscope itemtype="http://schema.org/EmailMessage">
+  <meta itemprop="subjectLine" content="${gpt_subj?exec}" />
+</div>
+<div itemscope itemtype="http://schema.org/DiscountOffer">
+  <meta itemprop="description" content="${gpt_desc?exec}" />
+  <meta itemprop="discountCode" content="${gpt_disc?exec}" />
+  <meta itemprop="availabilityStarts" content="${gpt_start?exec}" />
+  <meta itemprop="availabilityEnds" content="${gpt_end?exec}" />
+</div>
+<div itemscope itemtype="http://schema.org/PromotionCard">
+  <meta itemprop="image" content="${gpt_img?exec}" />
+</div>
+</#if>

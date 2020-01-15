@@ -1,0 +1,20 @@
+<#-- we need IATA_COUNTRY_IS_SET to be "N" FIRST-->
+<#assign IATA_COUNTRY= "DEFAULT">
+<#assign IATA_COUNTRY_IS_SET= "N">
+<#assign IATA_CODE = [{"segment":"LAST_DEST_NO", "destination":"BGO"},{"segment":"LAST_DEST_NO", "destination":"TRD"},{"segment":"LAST_DEST_NO", "destination":"SVG"},{"segment":"LAST_DEST_ES", "destination":"ALC"},{"segment":"LAST_DEST_ES", "destination":"AGP"}]>
+
+    
+ <#if IATA_COUNTRY_IS_SET == 'N'>   
+     <#data TEST_AUD as TEST_AUD><#filter AUDIENCE_RIID_ = RIID_ AUDIENCE_MARKET = MARKET><#fields AUDIENCE_DESTINATION_IATA AUDIENCE_MARKET>
+    <#--here we make a sequence of the IATAS-->
+    
+    
+<#--here we loop through the IATAS-->
+		<#list IATA_CODE as IATA_CODE>
+            <#if IATA_CODE.destination?exec?trim == TEST_AUD.AUDIENCE_DESTINATION_IATA>
+			<#assign IATA_COUNTRY = IATA_CODE.segment><#assign AUDIENCE_DESTINATION_IATA = TEST_AUD.AUDIENCE_DESTINATION_IATA><#assign IATA_COUNTRY_IS_SET= "Y">
+			</#if>
+        </#list>
+     <#if AUDIENCE_DESTINATION_IATA?isnull><#assign AUDIENCE_DESTINATION_IATA = TEST_AUD.AUDIENCE_DESTINATION_IATA></#if>
+    </#data>
+ </#if>
