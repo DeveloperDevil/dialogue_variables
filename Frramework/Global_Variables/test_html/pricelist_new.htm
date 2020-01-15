@@ -1,0 +1,65 @@
+<#data PRICELIST_INPUT as PRICELIST_INPUT><#filter REVENUE_CAMPAIGN = CAMPAIGN REVENUE_MARKET = MARKET><#fields ARRIVAL_CITY ARRIVAL_DISPLAYNAME CORRECT_DATE DEPARTURE_CITY DEPARTURE_DISPLAYNAME DESTINATION_NUMBER DESTINATION_URL DIRECT_ONLY DISCLAIMER_EXTRA_TXT_RPT FROM_IATA LINK_TO_MONTH LINK_TYPE LOWFARE_PRICE PREMIUM_PRICE PROMO_YN REVENUE_CAMPAIGN REVENUE_MARKET SALES_PERIOD_END SALES_PERIOD_START SEATS_AVAILABLE SEGMENTATION_RULE SUB_TEXT TO_IATA TRAVEL_DAYS TRAVEL_PERIOD2_END TRAVEL_PERIOD2_START TRAVEL_PERIOD_END TRAVEL_PERIOD_START><tr>
+<td class="one-column" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" >
+        <table cellpadding="0" cellspacing="0" width="100%" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+            <tr>
+                <td class="inner contents" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;" >
+                    <table cellpadding="0" cellspacing="0" align="left" width="100%"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+           
+                    
+            
+              <tr>
+                <td align="left" class="Pricelist_outer" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-weight:normal;font-size:16px;line-height:18px;mso-line-height-rule:exactly;color:#003d50;padding-top:0;padding-bottom:0;padding-right:20px;padding-left:20px;" >
+                  <table cellpadding="0" cellspacing="0" width="100%"  border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                     
+                     
+                      <tr>
+                        <td align="left" class="Pricelist_text" width="100%" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:16px;line-height:22px;mso-line-height-rule:exactly;padding-top:0;padding-bottom:5px;padding-right:0;padding-left:0;width:100%;vertical-align:top;" ><table width="100%" cellpadding="0" cellspacing="0" border="0" style="box-sizing:inherit;border-spacing:0;font-family:Arial, Helvetica, Sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-style:none;min-width:100% !important;" >
+                          <tr>
+                            <td align="left" class="Pricelist_text Pricelist_Font" style="box-sizing:inherit;padding-right:15px;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:16px;line-height:22px;mso-line-height-rule:exactly;padding-top:0;padding-bottom:5px;padding-left:0;vertical-align:top;font-weight:bold;color:#003D50;" >PRICELIST HEADLINE</td>
+                            <#if PRICELIST_INPUT.PROMO_YN?upper_case == "Y"><td align="right" class="Pricelist_text Pricelist_Font" style="box-sizing:inherit;padding-right:15px;width:100px;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:16px;line-height:22px;mso-line-height-rule:exactly;padding-top:0;padding-bottom:5px;padding-left:0;vertical-align:top;font-weight:bold;text-wrap:none !important;white-space:nowrap !important;color:#003D50;" nowrap="nowrap" >PREMIUM HEADLINE</td></#if>
+                            <!-- End if premium prices -->
+                            <td align="right" class="Pricelist_text Pricelist_Font" style="box-sizing:inherit;width:100px;color:#D81939;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:16px;line-height:22px;mso-line-height-rule:exactly;padding-top:0;padding-bottom:5px;padding-right:0;padding-left:0;vertical-align:top;font-weight:bold;text-wrap:none !important;white-space:nowrap !important;" nowrap="nowrap" >LOWFARE HEADLINE</td>
+                          </tr><#if PRICELIST_INPUT.PROMO_YN?upper_case == "Y"><tr>
+                            <td colspan="3" bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+                          </tr><#else><tr>
+                            <td colspan="2" bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+                          </tr></#if>
+                          <#list PRICELIST_INPUT.REVENUE_CAMPAIGN?split(",") as x><tr>
+                            <td style="box-sizing:inherit;padding-right:15px;padding-top:5px;padding-bottom:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;" ><p style="box-sizing:inherit;Margin:0;font-size:16px;padding-left:0;padding-right:0;padding-top:0;padding-bottom:5px;line-height:22px;mso-line-height-rule:exactly;font-family:Arial, Helvetica, Sans-serif;color:#003D50;font-weight:bold;" ><span class="owa_link_span_blue" style="box-sizing:inherit;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#003d50;padding-top:0;padding-bottom:2px;padding-right:0;padding-left:0;font-weight:bold;" ><!--[if (gte mso 9)|(IE)]><a href="#" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:underline;color:#003d50;font-size:16px;line-height:22px;padding-bottom:2px;font-weight:bold;" ><![endif]--><!--[if !mso]><!--><a href="#" target="_blank" class="Pricelist_text_blue_Link" style="box-sizing:inherit;font-family:Arial, Helvetica, Sans-serif;text-decoration:none;color:#003d50;font-size:16px;line-height:22px;padding-bottom:0;font-weight:bold;mso-hide:all; font-weight:bold;"><!--><![endif]--><#if !MODULE.PRICELIST_BEFORE_DEP_TXT?isnull>${MODULE.PRICELIST_BEFORE_DEP_TXT} </#if><#if PRICELIST_INPUT.DEPARTURE_DISPLAYNAME?isnull>${PRICELIST_INPUT.DEPARTURE_CITY}><#else>${PRICELIST_INPUT.DEPARTURE_DISPLAYNAME?trim}> </#if><#if !MODULE.PRICELIST_BEFORE_DEST_TXT?isnull>${MODULE.PRICELIST_BEFORE_DEST_TXT} <#else>- </#if><#if PRICELIST_INPUT.ARRIVAL_DISPLAYNAME?isnull>${PRICELIST_INPUT.ARRIVAL_CITY}><#else>${PRICELIST_INPUT.ARRIVAL_DISPLAYNAME?trim}></#if><#if !MODULE.PRICELIST_AFTER_DEST_TXT?isnull> ${MODULE.PRICELIST_AFTER_DEST_TXT}</#if></a></span></p></td>
+                            <!-- If premium prices --><#if PRICELIST_INPUT.PROMO_YN?upper_case == "Y"><td align="right" class="Pricelist_text Price" style="box-sizing:inherit;padding-right:15px;line-height:22px;width:100px;border-style:none;mso-line-height-rule:exactly;padding-left:0;font-family:Arial, Helvetica, Sans-serif;text-align:right;vertical-align:top;font-size:18px;color:#003d50;font-weight:bold;padding-bottom:2px;padding-top:5px;" ><#if !PRICELIST_INPUT.PREMIUM_PRICE?isnull><@nas.price PRICELIST_INPUT.PREMIUM_PRICE/></#if></td></#if>
+                            <!-- End if premium prices -->
+                           <#if PRICELIST_INPUT.PROMO_YN?upper_case == "Y"> <td align="right" class="Pricelist_text_red Price_red" style="box-sizing:inherit;line-height:22px;width:100px;mso-line-height-rule:exactly;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-align:right;vertical-align:top;font-size:18px;color:#D81939 !important;font-weight:bold;padding-bottom:2px;padding-top:5px;" ><!--[if (gte mso 9)|(IE)]><font color="#D81939" style="color:#D81939 !important;"><![endif]--><#if !PRICELIST_INPUT.LOWFARE_PRICE?isnull><@nas.price PRICELIST_INPUT.LOWFARE_PRICE/></#if><!--[if (gte mso 9)|(IE)]></font><![endif]--></td><#else><td align="right" class="Pricelist_text_red Price_blue" style="box-sizing:inherit;line-height:22px;width:100px;mso-line-height-rule:exactly;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;text-align:right;vertical-align:top;font-size:18px;color:#003d50 !important;font-weight:bold;padding-bottom:2px;padding-top:5px;" ><!--[if (gte mso 9)|(IE)]><font color="#003d50" style="color:#003d50 !important;"><![endif]--><#if !PRICELIST_INPUT.LOWFARE_PRICE?isnull><@nas.price PRICELIST_INPUT.LOWFARE_PRICE/></#if><!--[if (gte mso 9)|(IE)]></font><![endif]--></td></#if>
+                          </tr>
+                          <!-- If destination text -->
+                          <#if !PRICELIST_INPUT.SUB_TEXT?isnull || !MODULE.PRICELIST_SUB_TXT?isnull><tr>
+                            <td class="Pricelist_subtext" style="box-sizing:inherit;padding-top:0;padding-right:0;padding-left:0;border-style:none;font-family:Arial, Helvetica, Sans-serif;font-size:16px;color:#003D50;padding-bottom:5px;" ><#if !PRICELIST_INPUT.SUB_TEXT?isnull>${PRICELIST_INPUT.SUB_TEXT}<#else>${MODULE.PRICELIST_SUB_TXT}</#if></td><#if PRICELIST_INPUT.PROMO_YN?upper_case == "Y"><td colspan="2"></td><#else><td></td></#if>
+                          </tr></#if>
+                          <!-- End if destination text --><#if PRICELIST_INPUT.PROMO_YN?upper_case == "Y"><tr>
+                            <td colspan="3" bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+                          </tr><#else><tr>
+                            <td colspan="2" bgcolor="#d8d8d8" height="1" class="Spacerline_Grey" style="box-sizing:inherit;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:Arial, Helvetica, Sans-serif;font-size:1px;line-height:1px;background-color:#d8d8d8;mso-line-height-rule:exactly;border-style:none;" >&nbsp;</td>
+                          </tr></#if></#list>
+                          
+                          
+                          <!-- If small text --><#if !MODULE.PRICELIST_SMALL_TXT?isnull><#if PRICELIST_INPUT.PROMO_YN?upper_case == "Y"><tr>
+
+                        <td colspan="3" class="Pricelist_smalltext" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;color:#003d50;padding-top:10px;padding-bottom:10px;padding-right:0;padding-left:0;font-size:16px;" >${MODULE.PRICELIST_SMALL_TXT}</td></tr><#else><tr><td colspan="2" class="Pricelist_smalltext" style="box-sizing:inherit;border-style:none;font-family:Arial, Helvetica, Sans-serif;color:#003d50;padding-top:10px;padding-bottom:10px;padding-right:0;padding-left:0;font-size:16px;" >${MODULE.PRICELIST_SMALL_TXT}</td>
+                      </tr></#if></#if><!-- End if small text -->
+                        </table></td>
+                        
+                        
+                      </tr>
+                     
+                        
+                      
+                     
+                     
+                  </table>
+                </td>
+              </tr>
+            </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr></#data>

@@ -1,0 +1,93 @@
+<#--<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<table align="left" border="1">
+    <tr><td align="left">DESTINATION_ID</td><td style="padding-left:10px;"> ${DESTINATION_ID}</td></tr>
+    <tr><td align="left">MARKET:</td><td style="padding-left:10px;"> ${MARKET}</td></tr>
+<tr ><td  align="left" style="color: red;">DEPARTURE IATA:</td><td  style="padding-left:10px;color: red;"> ${DEPARTURE_IATA}</td></tr>
+<tr><td align="left">DESTINATION_IATA:</td><td style="padding-left:10px;"> ${DESTINATION_IATA}</td></tr>
+<tr ><td  align="left" style="color: red;">NEXT_FLIGHT:</td><td  style="padding-left:10px;color: red;"> ${NEXT_FLIGHT}</td></tr>
+<tr><td align="left">RETURN_DATE:</td><td style="padding-left:10px;"> ${RETURN_DATE}</td></tr>
+<tr ><td  align="left" style="color: red;">DEPARTURE_DATE_HOTEL:</td><td  style="padding-left:10px;color: red;"> ${DEPARTURE_DATE_HOTEL}</td></tr>
+<tr><td align="left">DEPARTURE_DATE_RETURN:</td><td style="padding-left:10px;"> ${DEPARTURE_DATE_RETURN}</td></tr>
+<tr><td  align="left" style="color: red;">DEPARTURE_DATE_SEARCH_INPUT:</td><td  style="padding-left:10px;color: red;"> ${DEPARTURE_DATE_SEARCH_INPUT}</td></tr>
+    <tr><td align="left" >ARRIVAL_TIME_MAIN_DEST:</td><td style="padding-left:10px;"> ${ARRIVAL_TIME_MAIN_DEST}</td></tr>
+    <tr ><td  align="left" style="color: red;">TRIP_TOO_LONG:</td><td  style="padding-left:10px;color: red;"> ${TRIP_TOO_LONG}</td></tr>
+<tr><td align="left">RETURN_DATE_HOTEL:</td><td style="padding-left:10px;"> ${RETURN_DATE_HOTEL}</td></tr>
+<tr ><td  align="left" style="color: red;">RETURN_DATE_SEARCH_INPUT:</td><td  style="padding-left:10px;color: red;"> ${RETURN_DATE_SEARCH_INPUT}</td></tr>
+<tr><td align="left">RETURN_DAY_CAR:</td><td style="padding-left:10px;"> ${RETURN_DAY_CAR}</td></tr>
+<tr><td  align="left" style="color: red;">ISO Locale outbound:</td><td  style="padding-left:10px;color: red;"> ${aDateTime}</td></tr>
+    <tr><td align="left" >ISO Locale return:</td><td style="padding-left:10px;"> ${bDateTime}</td></tr>
+    <tr><td  align="left" style="color: red;">ONEWAY_YN:</td><td  style="padding-left:10px;color: red;"> ${ONEWAY_YN}</td></tr>
+    <tr><td align="left" >DEPARTURE_HOUR:</td><td style="padding-left:10px;"> ${DEPARTURE_HOUR}</td></tr>
+    <tr><td  align="left" style="color: red;">RETURN_HOUR:</td><td  style="padding-left:10px;color: red;"> ${RETURN_HOUR}</td></tr>
+    <tr><td align="left" >CAR_URL:</td><td style="padding-left:10px;"><a href ='${CAR_URL}' target='_blank'> ${CAR_URL}</a></td></tr>
+     <tr><td  align="left" style="color: red;">HOTEL_URL:</td><td  style="padding-left:10px;color: red;"><a href ='${HOTEL_URL}' target='_blank'> ${HOTEL_URL}</a></td></tr>
+    
+</table>
+</body>
+</html>-->
+<#--<#data SQL_GLOBAL as SQL_GLOBAL limit=1><#filter BOOKING_GDSBOOKINGID = BOOKING_ID BOOKING_LOCALBOOKINGID = LOCAL_BOOKING_ID>
+<#fields BOOKING_DATE LEG_ID FIRST_LEG_YN BOOKING_NUMBER_OF_ADULTS BOOKING_NUMBER_OF_CHILDREN BOOKING_NUMBER_OF_INFANTS BOOKING_DEPARTURE_TIME BOOKING_RETURN_DEPARTURE_TIME1 BOOKING_START_AIRPORT BK_SOLD_IN_CURRENCY BOOKING_DEPARTURE_TIME BOOKING_MAIN_DESTINATION BOOKING_LAST_DESTINATION BOOKING_ROUND_TRIP LEG_ID BK_NO_OF_NOT_PREMIUM_ON_LH BOOKING_LONGHAUL BOOKING_NUMBER_OF_BAGS BOOKING_NUMBER_OF_SEATS FAST_TRACK_FLAG BK_NUMBER_OF_ADULTS_INFANTS WIFI_YN BOOKING_HAS_EVERYTHING PRODUCT_CODE BOOKING_HOTEL BOOKING_ROUTE_AREA BOOKING_START_COUNTRY_CD BOOKING_RENTALCAR BOOKING_NUMBER_OF_LEGS LAST_LEG_YN LEG_NUMBER MAIN_DESTINATION BK_NO_OF_APIS_NOT_SATISFIED BOOKING_NUMBER_OF_MEALS HORIZON_TYPE LEG_DEPARTURE_TIME LEG_ARRIVAL_DATE ORIGIN_LEG DESTINATION_LEG MOBILE_OS BOOKING_LOCALBOOKINGID BOOKING_GDSBOOKINGID PASSENGER_NAME VERSION_PLANNED>
+
+
+<#if ONEWAY_YN == "1">
+    <#if  SQL_!GLOBAL.LAST_LEG_YN == "Y">
+        <#if SQL_GLOBAL.LEG_ARRIVAL_DATE?isnull>
+            <#if MARKET == "US"><#global MAIN_LEG_ARRIVAL_DATE = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("MM/dd/yyyy HH:mm")>
+            <#else><#global MAIN_LEG_ARRIVAL_DATE = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("dd/MM/yyyy HH:mm")>
+            </#if><#global MAIN_LEG_ARRIVAL_YEAR = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("yyyy")><#global MAIN_LEG_ARRIVAL_MONTH = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("MM")><#global MAIN_LEG_ARRIVAL_DAY = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("dd")><#global MAIN_LEG_ARRIVAL_TIME = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("HH:mm")>
+        <#else>
+            <#if MARKET == "US"><#global MAIN_LEG_ARRIVAL_DATE = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("MM/dd/yyyy HH:mm")>
+			<#else><#global MAIN_LEG_ARRIVAL_DATE = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("dd/MM/yyyy HH:mm")>
+			</#if><#global MAIN_LEG_ARRIVAL_YEAR = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("yyyy")><#global MAIN_LEG_ARRIVAL_MONTH = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("MM")><#global MAIN_LEG_ARRIVAL_DAY = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("dd")><#global MAIN_LEG_ARRIVAL_TIME = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("HH:mm")>	
+		</#if>
+    <#else><#global MAIN_LEG_ARRIVAL_DATE = "not_main_dest_leg"><#global MAIN_LEG_ARRIVAL_YEAR = "not_main_dest_leg"><#global MAIN_LEG_ARRIVAL_MONTH = "not_main_dest_leg"><#global MAIN_LEG_ARRIVAL_DAY = "not_main_dest_leg"><#global MAIN_LEG_ARRIVAL_TIME = "not_main_dest_leg">
+    </#if>
+
+<#else>
+    
+    <#if !SQL_GLOBAL.MAIN_DESTINATION?isnull && SQL_GLOBAL.MAIN_DESTINATION?string == "1">
+        <#if SQL_GLOBAL.LEG_ARRIVAL_DATE?isnull>
+            <#if MARKET == "US"><#global MAIN_LEG_ARRIVAL_DATE = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("MM/dd/yyyy HH:mm")>
+            <#else><#global MAIN_LEG_ARRIVAL_DATE = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("dd/MM/yyyy HH:mm")>
+            </#if><#global MAIN_LEG_ARRIVAL_YEAR = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("yyyy")><#global MAIN_LEG_ARRIVAL_MONTH = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("MM")><#global MAIN_LEG_ARRIVAL_DAY = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("dd")><#global MAIN_LEG_ARRIVAL_TIME = houradd(SQL_GLOBAL.DEPARTURE_DATE?exec,1)?datetime?string("HH:mm")>
+        <#else>
+            <#if MARKET == "US"><#global MAIN_LEG_ARRIVAL_DATE = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("MM/dd/yyyy HH:mm")>
+			<#else><#global MAIN_LEG_ARRIVAL_DATE = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("dd/MM/yyyy HH:mm")>
+			</#if><#global MAIN_LEG_ARRIVAL_YEAR = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("yyyy")><#global MAIN_LEG_ARRIVAL_MONTH = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("MM")><#global MAIN_LEG_ARRIVAL_DAY = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("dd")><#global MAIN_LEG_ARRIVAL_TIME = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("HH:mm")>	
+		</#if>
+    <#else><#global MAIN_LEG_ARRIVAL_DATE = "not_main_dest_leg"><#global MAIN_LEG_ARRIVAL_YEAR = "not_main_dest_leg"><#global MAIN_LEG_ARRIVAL_MONTH = "not_main_dest_leg"><#global MAIN_LEG_ARRIVAL_DAY = "not_main_dest_leg"><#global MAIN_LEG_ARRIVAL_TIME = "not_main_dest_leg">
+    </#if></#if></#data>-->
+
+<#data SQL_GLOBAL as SQL_GLOBAL limit=1><#filter BOOKING_GDSBOOKINGID = BOOKING_ID BOOKING_LOCALBOOKINGID = LOCAL_BOOKING_ID DESTINATION_LEG = DESTINATION_IATA>
+<#fields BOOKING_DEPARTURE_TIME BOOKING_RETURN_DEPARTURE_TIME1 BOOKING_MAIN_DESTINATION BOOKING_LAST_DESTINATION BOOKING_ROUND_TRIP BOOKING_LONGHAUL BOOKING_ROUTE_AREA BOOKING_NUMBER_OF_LEGS LAST_LEG_YN LEG_NUMBER MAIN_DESTINATION LEG_DEPARTURE_TIME LEG_ARRIVAL_DATE DESTINATION_LEG BOOKING_LOCALBOOKINGID BOOKING_GDSBOOKINGID>
+<#if SQL_GLOBAL.DESTINATION_LEG?isnull>
+	<#else>
+        <#if DESTINATION_IATA == SQL_GLOBAL.DESTINATION_LEG>
+            <#global MAIN_LEG_ARRIVAL_DATE = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("MM/dd/yyyy HH:mm")><#global MAIN_LEG_ARRIVAL_YEAR = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("yyyy")><#global MAIN_LEG_ARRIVAL_MONTH = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("MM")><#global MAIN_LEG_ARRIVAL_DAY = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("dd")><#global MAIN_LEG_ARRIVAL_TIME = SQL_GLOBAL.LEG_ARRIVAL_DATE?datetime?string("HH:mm")>	<#global LEGNUMBER_INSIDE_LOOP = SQL_GLOBAL.LEG_NUMBER>
+        </#if>
+    </#if> <#global LEGNUMBER = SQL_GLOBAL.LEG_NUMBER><#global DESTINATION = SQL_GLOBAL.DESTINATION_LEG>
+</#data>
+<#global CAR_URL_TEST = "https://cars.cartrawler.com/norwegian-new/" + CARTRAWLER_LANG_LID?trim + "/book?clientID=" + CAR_CLIENT_ID?trim + "&residencyId=" + AIRPORT_LANG?lower_case?trim + "&currency=" + BOOKING_CURRENCY?trim + "&lang=" + CARTRAWLER_LANG_LID?trim + "&pickupIATACode=" + DESTINATION_IATA?trim + "&returnIATACode=" + DESTINATION_IATA?trim + "&pickupDateTime=" +MAIN_LEG_ARRIVAL_YEAR?trim + "-" + MAIN_LEG_ARRIVAL_MONTH?trim + "-" + MAIN_LEG_ARRIVAL_DAY?trim + "T" + MAIN_LEG_ARRIVAL_TIME?trim + "&returnDateTime=" + RETURN_YEAR_CAR?trim + "-" + RETURN_MONTH_CAR?trim + "-" + RETURN_DAY_CAR?trim + "T" + RETURN_TIME + "&oneway=" + ONEWAY_YN?trim>
+
+MAIN_LEG_ARRIVAL_DATE: ${MAIN_LEG_ARRIVAL_DATE}<br>
+MAIN_LEG_ARRIVAL_YEAR: ${MAIN_LEG_ARRIVAL_YEAR}<br>
+MAIN_LEG_ARRIVAL_MONTH: ${MAIN_LEG_ARRIVAL_MONTH}<br>
+MAIN_LEG_ARRIVAL_DAY: ${MAIN_LEG_ARRIVAL_DAY}<br>
+ONEWAY_YN: ${ONEWAY_YN}<br>
+DESTINATION_IATA: ${DESTINATION_IATA}<br>
+BOOKING_ID: ${BOOKING_ID}<br>
+LEGNUMBER: ${LEGNUMBER}<br>
+LEGNUMBER_INSIDE_LOOP: ${LEGNUMBER_INSIDE_LOOP}<br>
+DESTINATION: ${DESTINATION}<br>
+DESTINATION_IN_GLOBAL: ${DESTINATION_IN_GLOBAL}<br>
+RETURN_TIME: ${RETURN_TIME}<br>
+CAR_URL: <a href="${CAR_URL}">${CAR_URL_TEST}</a><br>
+
+

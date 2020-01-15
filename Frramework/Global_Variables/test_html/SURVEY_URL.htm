@@ -1,0 +1,5 @@
+OPT_AIRCRAFT: ${OPT_AIRCRAFT}<br />
+BK_PERSON_AGE:<#if BK_PERSON_AGE == 0>0<#elseif !BK_PERSON_AGE?isnull>${BK_PERSON_AGE?number?int}<#else>0</#if><br />
+BK_PERSON_GENDER: ${BK_PERSON_GENDER}<br />
+Contact list gender: ${CONTACT.GENDER}<br />
+SURVEY_LINK2: <a href="${SURVEY_LINK2?exec}" target="_blank">${SURVEY_LINK2?exec}</a>
