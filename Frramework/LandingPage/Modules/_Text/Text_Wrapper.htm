@@ -1,0 +1,11 @@
+<#assign ELEMENT_LOADED=0>
+<#list SEGMENT?replace(" ","")?split("|") as CURRENT_SEGMENT>
+	<#if ELEMENT_LOADED=0>
+		<#data MODULE_TEXT as MODULE limit=1>
+			<#filter TEXT_PAGE=PAGE TEXT_MARKET=MARKET TEXT_SEGMENT=CURRENT_SEGMENT TEXT_POSITION=PAGE_TEMPLATE.TEMPLATE_POSITION>
+			<#fields TEXT_HEADLINE TEXT_PARAGRAPH TEXT_CALL_TO_ACTION TEXT_URL TEXT_IMAGE>
+			<#include "cms://contentlibrary/!framework/landingpage/modules/text/text.htm">
+			<#assign ELEMENT_LOADED=1>
+		</#data>
+	</#if>
+</#list>
