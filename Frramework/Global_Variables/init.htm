@@ -1,0 +1,18 @@
+<#-- States are TEST, DEV and PROD (default)-->
+<#if !DV_CAMPAIGN_STATE?isnull>
+<#if DV_CAMPAIGN_STATE = "PROD">
+<#assign G_CAMPAIGN_STATE = "">
+<#else>
+<#assign G_CAMPAIGN_STATE = DV_CAMPAIGN_STATE>
+</#if>
+<#else>
+<#assign G_CAMPAIGN_STATE = "">
+</#if>
+<#if !G_CAMPAIGN_STATE?isnull>
+<#assign G_CAMPAIGN_STATE_PREFIX = "_" + G_CAMPAIGN_STATE?upper_case>
+<#else>
+    <#assign G_CAMPAIGN_STATE_PREFIX = "">
+</#if>
+<#--
+G_CAMPAIGN_STATE: ${G_CAMPAIGN_STATE}<br />
+G_CAMPAIGN_STATE_PREFIX: ${G_CAMPAIGN_STATE_PREFIX}<br />-->
