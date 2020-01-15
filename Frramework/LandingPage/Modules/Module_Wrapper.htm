@@ -1,0 +1,73 @@
+<#assign MODULE_LOADED=0>
+<#assign MODULE_EXCLUDE=0>
+<#if MODULE_EXCLUDE==0>
+
+	<#switch PAGE_TEMPLATE.TEMPLATE_MODULE>
+
+		<#case "INTRO">
+			<!-- intro start -->
+			<#attempt>
+				<#include "cms://contentlibrary/!framework/landingpage/modules/intro/intro_wrapper.htm">
+				<#recover>
+				<!-- error loading module -->
+			</#attempt>
+			<!-- intro end -->
+		<#break>
+
+
+		<#case "BOXES">
+			<!-- boxes start -->
+			<#attempt>
+				<#include "cms://contentlibrary/!framework/landingpage/modules/boxes/boxes_wrapper.htm">
+				<#recover>
+				<!-- error loading module -->
+			</#attempt>
+			<!-- boxes end -->
+		<#break>
+
+
+		<#case "LIST">
+			<!-- list start -->
+			<#attempt>
+				<#include "cms://contentlibrary/!framework/landingpage/modules/list/list_wrapper.htm">
+				<#recover>
+				<!-- error loading module -->
+			</#attempt>
+			<!-- list end -->
+		<#break>
+
+
+		<#case "TEXT">
+			<!-- text start -->
+			<#attempt>
+				<#include "cms://contentlibrary/!framework/landingpage/modules/text/text_wrapper.htm">
+				<#recover>
+				<!-- error loading module -->
+			</#attempt>
+			<!-- text end -->
+		<#break>
+
+
+		<#case "SIGNUP">
+			<!-- signup start -->
+			<#attempt>
+				<#include "cms://contentlibrary/!framework/landingpage/modules/signup/signup_wrapper.htm">
+				<#recover>
+				<!-- error loading module -->
+			</#attempt>
+			<!-- signup end -->
+		<#break>
+
+
+		<#case "QUICKPOLL">
+			<!-- quickpoll start -->
+			<#attempt>
+				<#include "cms://contentlibrary/!framework/landingpage/modules/quickpoll/quickpoll.htm">
+				<#recover>
+				<!-- error loading module -->
+			</#attempt>
+			<!-- quickpoll end -->
+		<#break>
+
+	</#switch>
+</#if>
