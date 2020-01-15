@@ -1,0 +1,11 @@
+<#assign ELEMENT_LOADED=0>
+<#list SEGMENT?replace(" ","")?split("|") as CURRENT_SEGMENT>
+	<#if ELEMENT_LOADED=0>
+		<#data MODULE_UPSELL as MODULE limit=1>
+			<#filter UPSELL_PAGE=PAGE UPSELL_MARKET=MARKET UPSELL_SEGMENT=CURRENT_SEGMENT UPSELL_POSITION=PAGE_TEMPLATE.TEMPLATE_POSITION>
+			<#fields UPSELL_HEADLINE UPSELL_PARAGRAPH UPSELL_NAME UPSELL_OPTION_LIMIT>
+			<#include "cms://contentlibrary/!framework/landingpage/modules/upsell/upsell.htm">
+			<#assign ELEMENT_LOADED=1>
+		</#data>
+	</#if>
+</#list>
