@@ -1,0 +1,11 @@
+<!-- module text start -->
+<section  class="page-section">
+	<div class="grid">
+		<h3>${MODULE.TEXT_HEADLINE?exec}</h3>
+<#if !MODULE.TEXT_PARAGRAPH?isnull>
+		<p>${MODULE.TEXT_PARAGRAPH?exec}</p>
+</#if>
+		<p><a href="${clickthrough('TEXT_'+PAGE_TEMPLATE.TEMPLATE_POSITION, 'URL='+MODULE.TEXT_URL?exec)}" target="_blank">${MODULE.TEXT_CALL_TO_ACTION}</a><br /><br /><strong>${MODULE.TEXT_HEADLINE_SECONDARY?exec}</strong></p>
+    </div>
+</section>            
+<!-- module text end -->
