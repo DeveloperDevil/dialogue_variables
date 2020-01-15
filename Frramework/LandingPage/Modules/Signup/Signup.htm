@@ -1,0 +1,48 @@
+ <div class="grid">
+        <div class="row">
+    
+
+
+<div class="col-12">
+    
+
+<div class="box">
+        <h2>${MODULE.SIGNUP_HEADLINE?exec}</h2>
+
+        <p class="normal">${MODULE.SIGNUP_PARAGRAPH?exec}</p>
+
+    <form class="ng-pristine ng-valid-email ng-invalid ng-invalid-required" action="http://www.norwegian.com/technical-pages/signupnewsletter/" method="GET" name="newslettersignupform" data-ng-controller="NewsletterblockCtrl" data-ng-submit="submit($event)" novalidate>
+        <fieldset>
+            <div class="row">
+                <div class="col-7 col-12--md  col-7--lg">
+                    <div class="input" data-ng-class="{'input--error': submitPressed &amp;&amp; newslettersignupform.newsletterEmail.$invalid}">
+                        <label for="newsletterEmail" class="input__label">${MODULE.SIGNUP_LABEL}</label>
+                        <input aria-invalid="true" aria-required="true" id="newsletterEmail" class="input__text ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" name="email" data-ng-model="email" required="" type="email">
+                        <div class="input__line"></div>
+                    </div>
+                </div>
+                <div class="col-5  col-12--md  col-5--lg">
+                    <span class="input__label">&nbsp;</span>
+                    <button type="submit" class="button button--secondary">${MODULE.SIGNUP_SUBMIT}</button>
+                </div>
+            </div>
+                <div>
+                    <label class="checkbox" style="display: inline-block">
+                        <input aria-invalid="true" aria-required="true" aria-checked="false" class="ng-pristine ng-untouched ng-invalid ng-invalid-required" id="newsletterconfirm" name="newsletterconfirm" data-ng-model="confirm" value="true" required="" type="checkbox">
+                        <span class="checkbox__control-indicator"></span>${MODULE.SIGNUP_CONDITIONS}
+                    </label>
+                    <div style="display: inline-block">
+                            <button class="link" data-ng-click="openModal('/infourl/infoidprivacypolicy/', 'betingelsene.')">${MODULE.SIGNUP_CONDITIONS_READMORE}</button>
+                    </div>
+                    <!-- ngIf: submitPressed -->
+                </div>
+            <!-- ngIf: submitPressed -->
+        </fieldset>
+
+    </form>
+</div>
+
+</div>
+</div>
+
+    </div>
