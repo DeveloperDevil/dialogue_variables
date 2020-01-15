@@ -1,0 +1,33 @@
+<html><#import "cms://contentlibrary/!framework/common/common.htm" as nas>
+<head>
+   <title>Norwegian.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://www.norwegian.no/Content/Styles/cms-brand.css?v=9_G_cqey0bpUcljasjfOOLievK01vproUx7o7QB71Wo1" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/png" href="https://www.norwegian.no/Content/img/favicon.png" />
+<script type="text/javascript">
+//<![CDATA[
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-9004708-1']);
+//]]>
+</script>
+<script type="text/javascript" src="http://www.norwegian.com/Scripts/Tracking/ga-se-async.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+_gaq.push(['_setDomainName', '.norwegian.com']);
+_gaq.push(['_setAllowAnchor', true]);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+_gaq.push(['_trackPageLoadTime']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+//]]>
+</script>
+</head>
+<body>M: ${MARKET} / S: ${SEGMENT} / <a href="${form(campaign.name, "MARKET", "EMAIL_ADDRESS_", "PERSONID", "CONTACT.FIRSTNAME")}" target="_blank">webversion</a>
+<hr /> 
+<#include "cms://contentlibrary/!framework/landingpage/template/content.htm">
+</body>
+</html>
