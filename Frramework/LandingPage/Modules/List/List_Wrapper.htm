@@ -1,0 +1,13 @@
+<#list SEGMENT?replace(" ","")?split("|") as CURRENT_SEGMENT>
+	<#if MODULE_LOADED=0>
+		<#data PAGE_FRAMEWORK as MODULE limit=1>
+			<#filter FRAMEWORK_PAGE=PAGE FRAMEWORK_MARKET=MARKET FRAMEWORK_SEGMENT=CURRENT_SEGMENT FRAMEWORK_POSITION=PAGE_TEMPLATE.TEMPLATE_POSITION>
+
+			<#fields LIST_VARIANT LIST_HEADLINE LIST_BULLET_1 LIST_BULLET_2 LIST_BULLET_3 LIST_BULLET_4 LIST_BULLET_5>
+		<#if !MODULE.LIST_HEADLINE?isnull>
+				<#include "cms://contentlibrary/!framework/landingpage/modules/list/list.htm">
+				<#assign MODULE_LOADED=1>
+			</#if>
+		</#data>
+	</#if>
+</#list>
