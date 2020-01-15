@@ -1,0 +1,14 @@
+<#-- Copy code to include: <#include "cms://contentlibrary/!framework/global_variables/subject_variables.htm"> -->
+
+
+
+<#-- LANGUAGEID FIX --><#global LANGUAGEID = LANGUAGEID?replace("_","-")?replace("no-no","nb-no")?replace("se-no","sv-se")?replace("se-se","sv-se")?replace("se-fi","sv-se")?lower_case?trim>
+
+<#-- //////////////////////// MARKET_VARIABLES SUP TABLE /////////////////////////////////////// --><#data MARKET_VARIABLES as MARKET_VARIABLES limit=1><#filter LANGUAGE_ID = LANGUAGEID?lower_case><#fields AIRPORT_LANGUAGE LANGUAGE_ID HOTEL_CAR_LANGUAGE_ID MARKET2>
+<#-- MARKET_LID --><#if !MARKET_VARIABLES.MARKET2?isnull><#global MARKET_LID = MARKET_VARIABLES.MARKET2><#elseif !MARKET_VARIABLES.MARKET2??><#global MARKET_LID = "ROW"><#else><#global MARKET_LID = "ROW"></#if>
+
+<#-- MARKET (with missing languageid fix) --><#if MARKET_LID?isnull><#global MARKET = "ROW"><#else><#global MARKET = MARKET_LID?trim></#if></#data>
+
+<#-- //////////////////////// CAMPAIGN_FRAMEWORK_1_COL SQL TABLE ///////////////////////////////////-->
+<#data CAMPAIGN_FRAMEWORK_1_COL as CAMPAIGN_SETTINGS limit=1>
+<#filter FRAMEWORK_CAMPAIGN = CAMPAIGN FRAMEWORK_MARKET = MARKET><#fields SETTINGS_SUBJECT><#-- SUBJECT --><#if !CAMPAIGN_SETTINGS.SETTINGS_SUBJECT?isnull><#if CONTACT.FIRSTNAME?isnull><#global SUBJECT = CAMPAIGN_SETTINGS.SETTINGS_SUBJECT?exec?cap_first><#else><#global SUBJECT = CONTACT.FIRSTNAME?capitalize + ", " + CAMPAIGN_SETTINGS.SETTINGS_SUBJECT?exec></#if></#if></#data>

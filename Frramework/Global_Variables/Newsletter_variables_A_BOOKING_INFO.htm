@@ -1,0 +1,25 @@
+<#-- Copy code to include: <#include "cms://contentlibrary/!framework/global_variables/newsletter_variables_a_booking_info.htm"> -->
+<#-- Use this file to include booking information needed in newsletters. -->
+
+<#-- Added 04-10-2019: The option to change the bacground color from grey to white. This field needs to be added as a custom variable in the Datasource: CAMPAIGN_BCG_COLOR. If left with no value, the background will continue to stay grey. But by adding White as a value, the background changes to white for the header section and all modules included in the campaign. The footer part is not affected, and will stay gray. -->
+<#attempt><#if CAMPAIGN_BCG_COLOR?lower_case == "white"><#assign CAMPAIGN_BCG_CLR = "#fffffe"><#else><#assign CAMPAIGN_BCG_CLR = "#f1f1f1"></#if>
+    <#recover>
+    <#assign CAMPAIGN_BCG_CLR = "#f1f1f1">
+    </#attempt>
+
+<#-- SERVER TIME CORRECTION --><#setting time_zone='US/Pacific-New'>
+<#-- An array of popular destinations, that have their own special images: <#include "cms://contentlibrary/!framework/global_variables/inclusion_files/newsletter_favorite_destinations.htm">  -->
+<#--<#if BOOKING_ID?isnull>
+   <#assign BOOKING_ID = BOOKING_ID_DV>
+   Setting BOOKING_ID = BOOKING_ID_DV 
+</#if>-->
+
+
+<#-- <#if LOCAL_BOOKING_ID?isnull>
+   <#assign LOCAL_BOOKING_ID = LOCAL_BOOKING_ID_DV>
+   Setting LOCAL_BOOKING_ID = LOCAL_BOOKING_ID_DV 
+</#if>-->
+
+<#-- //////////////////////// TEST AUDIENCE SQL VIEW ///////////////////////////////////-->
+<#--<#data TEST_AUDIENCE as TEST_AUDIENCE><#filter TEST_RIID_ = RIID_><#fields TEST_EMAIL_ADDRESS_ TEST_BOOKING_GDSBOOKINGID TEST_BOOKING_LOCALBOOKINGID TEST_BOOKING_START_AIRPORT TEST_BOOKING_MAIN_DESTINATION TEST_BOOKING_LAST_DESTINATION TEST_BOOKING_ROUTE_AREA> TEST_BOOKING_LONGHAUL TEST_LANGUAGEID TEST_BOOKING_DATE TEST_FULL_NAME>
+TEST, CUSTOMER FULL NAME: ${TEST_AUDIENCE.TEST_FULL_NAME}</#data>-->
