@@ -1,0 +1,11 @@
+<#assign ELEMENT_LOADED=0>
+<#list SEGMENT?replace(" ","")?split("|") as CURRENT_SEGMENT>
+	<#if ELEMENT_LOADED=0>
+		<#data MODULE_FORM as MODULE limit=1>
+			<#filter FORM_PAGE=PAGE FORM_MARKET=MARKET FORM_SEGMENT=CURRENT_SEGMENT FORM_POSITION=PAGE_TEMPLATE.TEMPLATE_POSITION>
+			<#fields FORM_HEADLINE FORM_PARAGRAPH FORM_SUBMIT FORM_RECEIPT_URL FORM_LABEL_FIRSTNAME>
+			<#include "cms://contentlibrary/!framework/landingpage/modules/form/form.htm">
+			<#assign ELEMENT_LOADED=1>
+		</#data>
+	</#if>
+</#list>
