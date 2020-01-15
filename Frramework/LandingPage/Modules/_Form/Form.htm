@@ -1,0 +1,16 @@
+<h1>${MODULE.FORM_HEADLINE}</h1>
+<p>${MODULE.FORM_PARAGRAPH}</p>
+
+<form action="https://air.norwegian.com/pub/rf">
+	<input type="hidden" name="_ri_" value="X0Gzc2X%3DYQpglLjHJlTQGrhoOHzazfAj3tzeeSzaKoqKRtT7pcPzbM3WpPnVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlTQGs231Rhq7tszaPzbX9zazbhvwv5HdyPzguKzaa9O">
+	<input type="hidden" name="EMAIL_ADDRESS_" value="${EMAIL_ADDRESS_}">
+	<input type="hidden" name="PERSONID" value="${PERSONID?c}">
+	<input type="hidden" name="RECEIPT_URL" value="${MODULE.FORM_RECEIPT_URL}">
+	
+	<label for="FIRSTNAME">${MODULE.FORM_LABEL_FIRSTNAME}:</label>
+	<input type="text" name="FIRSTNAME" id="FIRSTNAME">
+	
+	<input type="submit" value="${MODULE.FORM_SUBMIT}">
+</form>
+
+<hr>
