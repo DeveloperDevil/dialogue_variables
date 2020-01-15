@@ -1,0 +1,12 @@
+<#list SEGMENT?replace(" ","")?split("|") as CURRENT_SEGMENT>
+	<#if MODULE_LOADED=0>
+		<#data PAGE_FRAMEWORK as MODULE limit=1>
+			<#filter FRAMEWORK_PAGE=PAGE FRAMEWORK_MARKET=MARKET FRAMEWORK_SEGMENT=CURRENT_SEGMENT FRAMEWORK_POSITION=PAGE_TEMPLATE.TEMPLATE_POSITION>
+			<#fields INTRO_VARIANT INTRO_IMAGE_1 INTRO_IMAGE_2 INTRO_HEADLINE INTRO_PARAGRAPH INTRO_HEADLINE_SECONDARY INTRO_CALL_TO_ACTION INTRO_URL>
+		<#if !MODULE.INTRO_HEADLINE?isnull>
+				<#include "cms://contentlibrary/!framework/landingpage/modules/intro/intro.htm">
+				<#assign MODULE_LOADED=1>
+			</#if>
+		</#data>
+	</#if>
+</#list>
