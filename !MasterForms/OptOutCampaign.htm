@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Abandon basket unsubscribe</title>
+<link rel="stylesheet" type="text/css" href="https://www.norwegian.com/style-bundle/cms-brand.css">
+<style>
+.content-box {
+	background-color: white;
+	padding: 10px 20px 10px 20px;
+}
+.right{
+	float:right;
+	}
+.left{
+	float:left;
+	}
+	
+	@media (max-width: 400px) {
+	.right{
+		float:left;
+		}
+	.left-clear{
+		clear:left;
+		}
+}
+
+</style>
+</head>
+<body>
+<article class="page-content">
+  <div class="grid">
+    <div class="row">
+      <div class="content-box">
+        <h2>Confirm cancellation period</h2>
+        <hr class="page-cover__divider">
+        <p class="normal" style="margin-top: 20px;">If you wish to avoid future communication similar to the one received you can unsubscribe from receiving this kind of email for a period of your choice. If you wish to receive communications like this, simply close this window or tab in your browser.</p>
+        <p class="normal">Unsubscribing does not include notification of travel receipts or travel documents, newsletters or travel-related emails.</p>
+  
+  <form method="get" action="http://air.norwegian.com/pub/rf" id="form2">
+          <label class="radio"><input type="radio" name="OPTOUT_ABANDON" value="W" required><span class="radio__control-indicator"></span>1 Week</label><br>
+  <label class="radio"><input type="radio" name="OPTOUT_ABANDON" value="M" required><span class="radio__control-indicator"></span>1 Month</label><br>
+  <label class="radio"><input type="radio" name="OPTOUT_ABANDON" value="Y" required><span class="radio__control-indicator"></span>1 Year
+         </label><br>
+  <label class="radio"><input type="radio" name="OPTOUT_ABANDON" value="F" checked required><span class="radio__control-indicator"></span>Forever</label><br>
+			 <input type="hidden" name="OPTOUT_ABANDON_DATE" value="$todayformat(0, yyyy-MM-dd HH:mm:ssz)$">
+           <!-- <input type="date" name="OPTOUT_ABANDON_DATE" valueAsDate required>-->
+         
+          <input type="hidden" name="_ri_" value="X0Gzc2X%3DYQpglLjHJlTQGpB9fM7BB3aaNIeltEJ4qKnemcdzgiJstzafVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlTQGuOoI0BzfnFzeiT8JMzeY3Lzf5f6B7WmsbMu3f">
+          <input type="hidden" name="EMAIL_ADDRESS_" value="$lookup(EMAIL_ADDRESS_)$" />
+          <input type="hidden" name="PERSONID" value="$lookup(PERSONID)$"/>
+      	  <input type="hidden" name="RIID_" value="$RIID_$"></input>
+          
+          <div id="buttons">
+             <button class="button button--primary left" type="submit">Unsubscribe</button>
+             <div class="right left-clear"><a href="https://norwegian.com" class="button button--primary right">Cancel</a>
+             </div>
+          </div>
+        </form>	
+    	
+    </div></div>
+  </div>
+</article>
+</body>
+</html>

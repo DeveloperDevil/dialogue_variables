@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Confirm opt-out</title>
+
+<style>
+body {
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: 14px;
+	color: #333;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1.4;
+	background-color: #f1f1f1;
+	margin:0px;
+}
+h2 {
+	margin: 0px;
+}
+.button:before, .numberfield__button:before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 3px;
+	bottom: -6px;
+	left: 0;
+	background-color: #c3c3c3;
+	-webkit-transition: all .15s cubic-bezier(0, 0, .1, 1);
+	transition: all .15s cubic-bezier(0, 0, .1, 1);
+}
+.button--primary:hover, .button--primary:focus {
+	color: #fff;
+	background-color: #c11633;
+}
+.button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	box-sizing: border-box;
+	position: relative;
+	display: inline-block;
+	border: 0;
+	padding: 14px 36px 12px 12px;
+	border-radius: 0;
+	margin-bottom: 24px;
+	font-family: Arial, Helvetica, Sans-serif;
+	font-weight: normal;
+	font-size: 16px;
+	text-align: left;
+	color: #003d50;
+	background-color: #d8d8d8;
+	-webkit-transition: all .15s cubic-bezier(0, 0, .1, 1);
+	transition: all .15s cubic-bezier(0, 0, .1, 1);
+	text-shadow: none;
+}
+.button--primary {
+	color: #fff;
+	background-color: #d81939;
+}
+.button--primary:before {
+	background-color: #003d50;
+}
+.content-box {
+	width: 640px;
+	margin: 20px;
+	background-color: white;
+	padding: 10px 20px 10px 20px;
+}
+
+@media screen and (max-width: 640px) {
+.content-box {
+	width: auto;
+	margin: 0px;
+	padding: 10px 20px 10px 20px;
+}
+}
+</style>
+</head>
+<body>
+<article class="page-content">
+  <div class="grid">
+    <div class="row">
+      <div class="content-box">
+        <h2> Please confirm</h2>
+        <hr class="page-cover__divider">
+        <p></p>
+        <p class="normal">Please choose one of the options below and then click the 'unsubscribe' button below if you wish to avoid future communication similar to the one received. If you unsubscribe from this email, you will unsubscribe from getting this kind of email for the periode of your choice. </p>
+        <p class="normal">This does not include notification of travel receipts or travel documents, newsletters and travel-related emails. If you still would like to receive communications like this, simply close this window or tab in your browser. Choose the periode you want to unsubscribe from this email:</p>
+        <form method="get" action="http://air.norwegian.com/pub/rf" id="form2">
+          <input type="radio" name="OPTOUT_ABANDON" value="W" required>1 Week<br>
+  <input type="radio" name="OPTOUT_ABANDON" value="M" required>1 Month<br>
+  <input type="radio" name="OPTOUT_ABANDON" value="Y" required>1 Year
+         <br>
+  <input type="radio" name="OPTOUT_ABANDON" value="F" checked required>Forever<br><br>Choose the date you want to be unsubscribed from:<br>
+        <input type="hidden" name="OPTOUT_ABANDON_DATE" valueAsDate="$$DBDATETIME$,todayformat(0, yyyyMMddHHmmssS)$">
+         <br><br>
+          <input type="hidden" name="_ri_" value="X0Gzc2X%3DYQpglLjHJlTQGpB9fM7BB3aaNIeltEJ4qKnemcdzgiJstzafVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlTQGuOoI0BzfnFzeiT8JMzeY3Lzf5f6B7WmsbMu3f">
+          
+          <input type="hidden" name="PERSONID" value="$lookup(PERSONID)$"/>
+          
+          <div id="buttons">
+            <button class="button button--primary" type="submit">Unsubscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</article>
+</body>
+</html>
+
+

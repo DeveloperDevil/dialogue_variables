@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	Confirm opt-out
+</title>
+<style>
+html, body {
+    font-family: Arial, Sans-Serif;
+    font-size: 12px;
+    color: 1F1F1F;
+    line-height: 16px;
+    background-color: #f3f3f3;
+}
+
+
+H2 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+
+.content-box {
+    background-color: #FFFFFF;
+    border: 1px solid #D7D7D7;
+    border-radius: 5px 5px 5px 5px;
+    color: #1F1F1F;
+    font-size: 12px;
+    margin: 2em auto;
+    padding: 4em;
+    width: 40em;
+}
+
+
+.unsubscribe-button-submit {
+    background-color: #4D90FE;
+    background-image: -moz-linear-gradient(center top , #4D90FE, #4787ED);
+    border: 1px solid #3079ED;
+    color: #FFFFFF;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.unsubscribe-button-submit:hover {
+    background-color: #2a68dc;
+    background-image: -moz-linear-gradient(center top , #3c7bf9, #2967db);
+    border: 1px solid #255cbf;
+    color: #FFFFFF;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.unsubscribe-button-submit:focus:hover {
+    box-shadow: 0 0 0 1px #FFFFFF inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.unsubscribe-button {
+    -moz-transition: all 0.218s ease 0s;
+    -moz-user-select: none;
+    background-color: #4D90FE;
+    background-image: -moz-linear-gradient(center top , #4D90FE, #357AE8);
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    cursor: default;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    height: 32px;
+    line-height: 32px;
+    min-width: 54px;
+    padding: 4px 8px 8px 8px;
+    text-align: center;
+}
+
+.unsubscribe-box input[type="submit"] {
+    display: inline-block;
+    font-size: 13px;
+    height: 32px;
+    min-width: 70px;
+}
+
+#buttons {
+  text-align: center;
+  margin-top: 2em;
+}
+</style>
+
+</head>
+<body>
+  <form method="post" action="" id="form1">
+    <div class="content-box">
+      <h2>
+        Please confirm
+      </h2>
+      Please click the 'unsubscribe' button below if you do not wish to receive our newsletter anymore. If you still would like to receive our newsletter, simply close this window or tab in your browser.
+      <div id="buttons">
+        <input type="submit" name="ctl05" value="Unsubscribe" class="unsubscribe-button unsubscribe-button-submit" />
+        <input type="hidden" name="EMAIL_PERMISSION_STATUS_" value="O" />
+        <input type="hidden" name="EMAIL_ADDRESS_" value="EMAIL_ADDRESS_" />
+      </div>
+    </div>
+  </form>
+</body>
+</html>
+
+
+
+
+

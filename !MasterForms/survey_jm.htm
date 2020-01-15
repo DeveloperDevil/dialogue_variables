@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Questionaire</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://www.norwegian.com/style-bundle/cms-brand.css">
+<style>
+.content-box {
+	background-color: white;
+	padding: 10px 20px 10px 20px;
+	overflow: hidden;
+}
+.normal {
+	margin-bottom: 0px;
+}
+.question {
+	margin-bottom: 10px;
+}
+.right {
+	float: right;
+}
+.left {
+	float: left;
+}
+.grid {
+	max-width: 680px;
+}
+.hide_q {
+	visibility:hidden;
+}
+
+.hide_v {
+	visibility:hidden;
+	position:absolute;
+}
+.show_v {
+	visibility:visible;
+	position:absolute;
+}
+
+.question-text{
+	margin-right: 5px;
+	}
+
+@media (max-width: 400px) {
+.right {
+	float: left;
+}
+.left-clear {
+	clear: left;
+}
+.clear-left {
+	clear: left;
+}
+}
+
+@media (max-width: 360px) {
+label.radio {
+	margin-right: 14px;
+}
+}
+</style>
+</head>
+<body>
+<article chartset="utf-8" class="page-content">
+  <div class="grid">
+    <form method="get" action="http://air.norwegian.com/pub/rf" id="form2">
+      <div class="row">
+        <div class="content-box">
+          <h2>Leisure questionaire </h2>
+          <hr class="page-cover__divider">
+          <div style="margin-top: 15px; font-style: italic;" >
+            <div class="normal left">1 - Strongly Disagree</div>
+            <div class="normal right clear-left">5 - Strongly Agree</div>
+          </div>
+        </div>
+      </div>
+      
+      <!--  question 1-->
+      <div class="row">
+        <div class="content-box">
+          <p class="normal question"><strong class="question-text">1)</strong> I prefer to take holidays in my own country rather than abroad </p>
+          <div class="fluid">
+            <label class="radio">
+              <input type="radio" name="A1" value="1" required>
+              <span class="radio__control-indicator"></span>1</label>
+            <label class="radio">
+              <input type="radio" name="A1" value="2" required>
+              <span class="radio__control-indicator"></span>2</label>
+            <label class="radio">
+              <input type="radio" name="A1" value="3" required>
+              <span class="radio__control-indicator"></span>3</label>
+            <label class="radio">
+              <input type="radio" name="A1" value="4" required>
+              <span class="radio__control-indicator"></span>4</label>
+            <label class="radio">
+              <input type="radio" name="A1" value="5" required>
+              <span class="radio__control-indicator"></span>5</label>
+          </div>
+          <a class="button button--primary right next-one">Next</a>
+        </div>
+      </div>
+      
+      <!-- question 2-->
+      <div class="row hide_q">
+        <div class="content-box">
+          <p class="normal question"><strong class="question-text">2)</strong>I like the idea of travelling abroad </p>
+          <div class="fluid">
+            <label class="radio">
+              <input type="radio" name="A2" value="1" required>
+              <span class="radio__control-indicator"></span>1</label>
+            <label class="radio">
+              <input type="radio" name="A2" value="2" required>
+              <span class="radio__control-indicator"></span>2</label>
+            <label class="radio">
+              <input type="radio" name="A2" value="3" required>
+              <span class="radio__control-indicator"></span>3</label>
+            <label class="radio">
+              <input type="radio" name="A2" value="4" required>
+              <span class="radio__control-indicator"></span>4</label>
+            <label class="radio">
+              <input type="radio" name="A2" value="5" required>
+              <span class="radio__control-indicator"></span>5</label>
+            <input type="hidden" name="INPUT_DATE" value="$todayformat(0, yyyy-MM-dd HH:mm:ssz)$">
+            <!-- <input type="date" name="OPTOUT_ABANDON_DATE" valueAsDate required>-->
+          </div>
+          <div id="buttons">
+            <a class="button button--primary left prev">Prev</a>
+            <div class="right left-clear">
+              <a class="button button--primary right next">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end question--> 
+      
+      <!-- question 3-->
+      <div class="row hide_q">
+        <div class="content-box">
+          <p class="normal question"><strong class="question-text">3)</strong>I like the idea of questions</p>
+          <div class="fluid">
+            <label class="radio">
+              <input type="radio" name="A3" value="1" required>
+              <span class="radio__control-indicator"></span>1</label>
+            <label class="radio">
+              <input type="radio" name="A3" value="2" required>
+              <span class="radio__control-indicator"></span>2</label>
+            <label class="radio">
+              <input type="radio" name="A3" value="3" required>
+              <span class="radio__control-indicator"></span>3</label>
+            <label class="radio">
+              <input type="radio" name="A3" value="4" required>
+              <span class="radio__control-indicator"></span>4</label>
+            <label class="radio">
+              <input type="radio" name="A3" value="5" required>
+              <span class="radio__control-indicator"></span>5</label>
+           
+          </div>
+          <div>
+            <a class="button button--primary left prev">Prev</a>
+            <div class="right left-clear">
+            
+             <input type="hidden" name="INPUT_DATE" value="$todayformat(0, yyyy-MM-dd HH:mm:ssz)$">
+            <!-- <input type="date" name="OPTOUT_ABANDON_DATE" valueAsDate required>-->
+            
+            <input type="hidden" name="_ri_" value="X0Gzc2X%3DYQpglLjHJlTQGsWzazc2IDCd1zeI3kadRYNzd7bfeqdcHtXWwWysVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlTQGmAH5zgyu4zaX26TzdiORSgHo6feqdcHtXWwWys">
+            <input type="hidden" name="EMAIL_ADDRESS_" value="$lookup(EMAIL_ADDRESS_)$" />
+            <input type="hidden" name="PERSONID" value="$lookup(PERSONID)$"/>
+            <input type="hidden" name="RIID_" value="$RIID_$">
+              <button class="button button--primary right" type="submit">Submit Questionaire</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- close main container--> 
+</article>
+</body>
+<script>
+
+$("a.next-one").click(function(){
+ $(this).parent().parent().addClass("hide_v");
+ $(this).parent().parent().next(".hide_q").addClass("show_v");
+}); 
+
+$("a.next").click(function(){
+ $(this).parent().parent().parent().parent().addClass("hide_v");
+ $(this).parent().parent().parent().parent().next(".hide_q").addClass("show_v");
+}); 
+
+$("a.prev").click(function(){
+ $(this).parent().parent().parent().prev(".row").addClass("show_v");
+ $(this).parent().parent().parent().addClass("hide_v");
+ 
+}); 
+
+</script>
+</html>
+
