@@ -1,0 +1,19 @@
+<html>
+<head> <title>Untitled</title></head>
+<body>
+    
+<#assign baseFormUrl =" https://air.norwegian.com/pub/rf">
+<#assign formUrl = baseFormUrl + "?_ri_=X0Gzc2X%3DYQpglLjHJlTQGtDq0PzbizbNkDH9sI40iXIAW6zgJ91azgjRHYSGhgWVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlTQGgYq9zg0quvgmkrTs7ya0sH36zgJ91azgjRHYSGhgW">
+<#assign formUrl = formUrl + "&RIID_=" + RIID_?c>
+<#assign formUrl = formUrl + "&CAMPAIGN_NAME=" + campaign.name>
+<#assign formUrl = formUrl + "&EMAIL=" + EMAIL_ADDRESS_>
+	
+
+<a href="${formUrl}&Q_LIKE=Y">YES</a><br>
+    <hr>
+<a href="${formUrl}&Q_LIKE=N">NO</a><br> 
+    
+    
+  RIID_: ${RIID_?c}
+</body>
+</html>

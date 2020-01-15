@@ -1,0 +1,545 @@
+$setvars(HOMEPAGE_URL, cond(eq(G_MARKET, NO), https://www.norwegian.no, cond(eq(G_MARKET, ROW),   https://www.norwegian.com, concat(https://www.norwegian.com/, lowercase(lookup(G_MARKET))))))$
+$setvars(CAMPAIGN_NAME, Agent_Corp_Travel_Exhibition_Survey)$
+$setvars(G_MARKET, SE)$
+
+<!--link to form using ${form('wifi_form', "CAMPAIGN_NAME=" + CAMPAIGN, "G_MARKET=" + MARKET, "EMAIL_ADDRESS=" + EMAIL_ADDRESS_)} as href-->
+<html>
+<head>
+<title>Norwegian Tävling</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+   
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link href="https://surveyjs.azureedge.net/1.0.63/survey.css" type="text/css" rel="stylesheet" />
+<link rel="shortcut icon" type="image/png" href="https://www.norwegian.no/Content/img/favicon.png">
+<script src="https://surveyjs.azureedge.net/1.0.63/survey.jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://www.norwegian.com/style-bundle/cms-brand.css">
+<style>
+element.style{float: left!important;}
+.wifi-logo {
+    background: url(https://brand.norwegian.com/norwegian-assets/img/icons/large/destinations.svg)no-repeat;
+    background-size: 243px;
+    top: -30px;
+    left: -62px;
+    height: 100px;
+    margin: 0;
+    float: left;
+    width: 60%;
+    position: relative;
+	
+}
+
+.wifi-text {
+    position: relative;
+    top: 56px;
+    left: 260px;
+    font-size: 14px;
+    width: 300px;
+    color: #003251;
+    font-weight: bold;
+}
+
+.button, .numberfield__button {
+	padding: 0;
+}
+.button-pad {
+	padding: 17px 16px 11px 16px;
+	margin-top: 30px;
+}
+.sv_main .sv_container .sv_body .sv_p_root .sv_q .sv_q_radiogroup > label, .sv_main .sv_container .sv_body .sv_p_root .sv_q .sv_q_checkbox > label {
+	white-space: inherit;
+}
+span {
+	color: #6d7072;
+	font-size: 14px;display:inline;clear: both;
+}
+	
+}
+	
+.sv_main, .sv_main .sv_custom_header {
+	background-color: #e6e6e6;
+}
+	form {background-color: #e6e6e6!important;}
+.sv_main .sv_container .sv_header {
+	padding: 0;
+	
+}
+.sv_container {
+	max-width: 50%;
+	margin: auto;
+	padding: 0 1em;
+}
+.sv_main .sv_container .sv_body .sv_p_root .sv_q_title {
+	margin: 0;
+	color: #003d50;
+	padding-bottom: 10px;
+}
+.sv_main .sv_container .sv_body .sv_p_root .sv_q {
+	padding: 1.5em 1em 0.5em 1em;
+}
+.sv_main .sv_container {
+	padding: 0em 1em 1.5em 1em;
+}
+p {
+	font-family: "ApercuProRegular", Helvetica, sans-serif;
+	margin: 0 0em 1em 0em;
+}
+.sv_main input[type="button"], .sv_main button {
+	font-family: "ApercuProRegular", Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	border: none;
+	cursor: pointer;
+	padding: 14px 36px 12px 12px;
+	min-width: auto;
+	line-height: normal;
+}
+.sv_main .sv_progress_bar, .sv_main input[type="button"], .sv_main button {
+	background-color: #d81939;
+}
+.button--primary:hover .sv_main input[type="button"], .button--primary:focus .sv_main button {
+	background-color: #c11633;
+}
+.sv_main input[type="button"]:hover, .sv_main button:hover {
+	background-color: #c11633;
+}
+.sv_main .sv_body {
+	background-color: white;
+	border-top: none;
+}
+.sv_main .sv_container .sv_body .sv_progress .sv_progress_bar > span {
+	width: 200px;
+}
+.sv_main .sv_container .sv_body .sv_p_root table.sv_q_matrix td {
+	min-width: 1em;
+}
+.sv_main .sv_container .sv_body .sv_nav {
+	padding: 2em 1em 4em 1em;
+}
+.sv_main .sv_container .sv_body {
+	padding: 1em 1em 1em 1em;
+}
+.sv_main .sv_p_root > .sv_row {
+	border-bottom: 0;
+}
+.sv_main .sv_p_root > .sv_row:nth-child(even) {
+	background-color: #ffffff;
+}
+.legend {
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid #e7e7e7;
+	float: right;
+	font-style: italic;
+	text-align: right;
+}
+.sv_main .sv_container .sv_body.sv_completed_page {
+	text-align: center;
+	padding: 6.5em 1em 5em 1em;
+}
+.margin_lr_10 {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+.sv_main .sv_container .sv_body.sv_completed_page > h3 {
+	margin: 0;
+	font-size: 30px;
+	font-weight: 300;
+	line-height: 110%;
+}
+	
+.sv_main .sv_q_rating_item.active .sv_q_rating_item_text {
+    background-color: #d81939;
+    border-color: #d81939;
+}
+	
+.sv_main .sv_q_rating_item.active .sv_q_rating_item_text span {
+    color: white;
+}
+	
+.sv_main .sv_q_rating_item .sv_q_rating_item_text:hover {
+    border: 1px solid #6d7072;
+}
+	.sv_q_rating, .sv_qcbc{float:left!important;clear:both!important;margin-top:0.3em!important;}
+.sv_main .sv_q_other input:focus, .sv_main .sv_q_text_root:focus, .sv_main .sv_q_dropdown_control:focus, .sv_main input[type="text"]:focus, .sv_main select:focus, .sv_main textarea:focus {
+    border: 1px solid #6d7072;
+}
+
+.sv_main .sv_select_wrapper:before {
+    background-color: #d81939;
+}
+span.button.button--medium.button--primary:nth-child(2) {
+float:right;
+}
+
+span.button.button--medium.button--primary:nth-child(3) {
+float:right;
+}
+
+.sv_completed_page h3 {
+    display: -webkit-inline-box;
+}
+
+.sv_completed_page {
+    padding-bottom: 6em !important;
+}
+
+
+@media only screen and (min-width: 680px) and (max-width: 1400px) {
+.sv_container {
+	max-width: 80%;
+}
+}
+
+@media (max-width: 680px) {
+.sv_main input[type="button"]:hover, .sv_main button:hover {
+	background-color: #d81939;
+}
+.sv_main .sv_container {
+	max-width: 100%;
+	margin: auto;
+	padding: 0;
+}
+
+.sv_main .sv_container .sv_body .sv_p_root .sv_q {
+	padding: 1em 1em 1.5em 1em;
+}
+.sv_main .sv_container .sv_body .sv_p_root table.sv_q_matrix td {
+	min-width: 1em;
+}
+.sv_main .sv_container .sv_body .sv_p_root table td {
+	padding: 0.5em 0.2em 0.5em 0em;
+}
+	
+.sv_q_description{float: left;  margin-top: 0.6em;
+}
+	
+} 
+.make-bold{
+font-weight:bold;
+} 
+	.small{background-color: white;}
+	
+	
+div[data-bind="css: data.css.pageDescription"] {
+ 
+display:inline-block!important;
+}
+.sv_main, .sv_container, .sv_body, .sv_p_root, .sv_q_description {
+    margin-top: 0;
+    margin-bottom: 0.6em;
+	
+}	
+.page-header__logo--md{width:161px;}
+	@media screen and (max-width: 480px){
+   .wifi-logo{
+    background-size: 133px;
+    top: 0;
+    left: -42px;}
+   .wifi-text{
+       width:unset;
+       left: 150px;
+       top: 20px;
+       position: absolute;
+   }
+}
+</style>
+<script type="text/javascript">
+	
+	$( document ).ready(function() {
+    
+    var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+    
+var surveyJSON = {
+ "locale": "sv",
+ "completedHtml": {
+  "sv": "<h3>Tack för din medverkan</h3>"
+ },
+ "pages": [
+  {
+   "name": "1.1",
+   "elements": [
+    {
+     "type": "text",
+     "name": "Q1_1",
+     "title": {
+      "sv": "1. Norwegian har en av världens yngsta flygplansflottor, vilken genomsnittsålder har flottan?"
+     },
+     "isRequired": true
+    }
+   ]
+  },
+  {
+   "name": "2.1",
+   "elements": [
+    {
+     "type": "text",
+     "name": "Q2_1",
+     "title": {
+      "sv": "2. År 2018 utsågs Norwegian för andra gången till världens mest bränsleeffektiva flygbolag på flygningar mellan Europa och USA av den erkända miljöorganisationen ICCT med 33 procent lägre koldioxidutsläpp än genomsnittet. \nMed hur många procent per passagerarkilometer har Norwegian minskat utsläppen från sina flygplan sedan 2008?"
+     },
+     "isRequired": true
+    }
+   ]
+  },
+  {
+   "name": "3.1",
+   "elements": [
+    {
+     "type": "html",
+     "name": "info",
+     "html": {
+      "sv": "<strong>Dina uppgifter:</strong>"
+     }
+    },
+    {
+     "type": "text",
+     "name": "Q3_1",
+     "title": {
+      "sv": "Namn:"
+     },
+     "isRequired": true,
+     "requiredErrorText": {
+      "sv": "Vänligen, fyll i ditt för- och efternamn"
+     }
+    },
+    {
+     "type": "text",
+     "name": "Q3_2",
+     "title": {
+      "sv": "Företag:"
+     },
+     "isRequired": true,
+     "requiredErrorText": {
+      "sv": "Vänligen, fyll i namnet på ditt företag"
+     }
+    },
+    {
+     "type": "text",
+     "name": "Q3_3",
+     "title": {
+      "sv": "E-post adress:"
+     },
+     "isRequired": true,
+     "requiredErrorText": {
+      "sv": "Vänligen, fyll i din e-post adress"
+     }
+    },
+    {
+     "type": "text",
+     "name": "Q3_4",
+     "title": {
+      "sv": "Telefonnummer:"
+     },
+     "isRequired": true,
+     "requiredErrorText": {
+      "sv": "Vänligen, fyll i ditt telefonnummer"
+     }
+    }
+   ]
+  }
+ ],
+ "sendResultOnPageNext": true,
+ "showQuestionNumbers": "off",
+ "showProgressBar": "bottom",
+ "completeText": {
+  "sv": "Klar"
+ }
+}
+//from here starts code from older survey
+        
+        
+ 
+        
+
+var survey = new Survey.Model(surveyJSON);
+
+var sessionId = MakeId();
+
+if(document.cookie.indexOf("noSessionId") >0) {
+  var myCookie = ReadCookie("noSessionId");
+}
+else {
+  SetCookie("noSessionId",sessionId,1);
+}                                                                                                                               
+
+console.log("cookie: " + myCookie);
+
+var xhttp;
+
+$("#surveyContainer").Survey({    
+    model: survey,    
+      onComplete: sendDataToServerFinish
+});
+
+
+function MakeId() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 16; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
+function SetCookie(cookieName,cookieValue,nDays) {
+   var today = new Date();
+   var expire = new Date();
+   if (nDays==null || nDays==0) nDays=1;
+   expire.setTime(today.getTime() + 3600000*24*nDays);
+   document.cookie = cookieName+"="+escape(cookieValue)
+                     + ";expires="+expire.toGMTString();
+}
+
+function ReadCookie(cookieName) {
+   var theCookie=" "+document.cookie;
+   var ind=theCookie.indexOf(" "+cookieName+"=");
+   if (ind==-1) ind=theCookie.indexOf(";"+cookieName+"=");
+   if (ind==-1 || cookieName=="") return "";
+   var ind1=theCookie.indexOf(";",ind+1);
+   if (ind1==-1) ind1=theCookie.length; 
+   return unescape(theCookie.substring(ind+cookieName.length+2,ind1));
+}
+
+function DeleteCookie(CookieName) {
+      document.cookie = CookieName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}  
+    
+function sendDataToServer(survey) {  
+
+   // console.log(survey.data);
+  sendDataToResponsys(survey);
+}
+
+function sendDataToResponsysOnload() {
+  //console.log("Sending data - START");    
+        
+  var url = "https://air.norwegian.com/pub/rf" + "?_ri_=X0Gzc2X%3DYQpglLjHJlTQGphPSt7Ljzc89tb90zbA63SfNflce6SlzdGHzcDPPzfhVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlTQGzbTYKzf6J6WzgJkDE0TqltGirflce6SlzdGHzcDPPzfh";
+  url = url + "&SESSION_ID=" + sessionId;
+  url = url + "&CAMPAIGN_NAME=Agent_Corp_Travel_Exhibition_Survey";
+  url = url + "&EMAIL=$EMAIL_ADDRESS$"
+  url = url + "&MARKET=$G_MARKET$"
+  console.log(url);  
+   $.get(url);
+  //console.log("Sending data - END");      
+}
+    
+function sendDataToResponsys(survey) {
+  //console.log(survey.data);
+  var url = "https://air.norwegian.com/pub/rf" + "?_ri_=X0Gzc2X%3DYQpglLjHJlTQGphPSt7Ljzc89tb90zbA63SfNflce6SlzdGHzcDPPzfhVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlTQGzbTYKzf6J6WzgJkDE0TqltGirflce6SlzdGHzcDPPzfh";
+  
+	//we need to post the RIID and CAMPAIGN because they are the SURVEY_LIKE data checks
+	url = url + "&SESSION_ID=" + sessionId;
+	url = url + "&CAMPAIGN_NAME=Agent_Corp_Travel_Exhibition_Survey";
+    
+var postData = {};	
+for (var mainkey in survey.data) {
+
+	console.log(mainkey + " - " + survey.data[mainkey]);
+
+ if(typeof survey.data[mainkey] === 'object'){
+     var sendkey = '';
+     var multiselect = '';
+     var iterationcount = 0;
+     for (var key in survey.data[mainkey]) {
+         console.log(" - " + key + " - " + survey.data[mainkey][key]);
+     	if(typeof survey.data[mainkey][key] === 'object'){
+        	for(var subkey in survey.data[mainkey][key]) {
+                console.log(" - - " + subkey + " - " + survey.data[mainkey][key][subkey]);
+            	if(iterationcount == 0) {
+                	multiselect = multiselect + survey.data[mainkey][key][subkey];
+                }else{
+                    multiselect = multiselect + ',' + survey.data[mainkey][key][subkey];
+                }
+                iterationcount = iterationcount + 1;
+			}
+		}else{
+            // url = url + "&" + key + "=" + survey.data[mainkey][key];
+            
+            if(iterationcount == 0) {
+                multiselect = multiselect + survey.data[mainkey][key];
+            }else{
+                multiselect = multiselect + ',' + survey.data[mainkey][key];
+            }
+            iterationcount = iterationcount + 1;
+         } 
+         sendkey = mainkey.replace(/[^a-zA-Z0-9]/g,'_');
+         postData[sendkey.toUpperCase()] = multiselect;
+     }
+ }else{
+     //url = url + "&" + mainkey + "=" + survey.data[mainkey];
+     sendkey = mainkey.replace(/[^a-zA-Z0-9]/g,'_');
+     postData[sendkey.toUpperCase()] = survey.data[mainkey];
+ }
+
+}
+    
+    //console.log(postData);
+    // console.log("Json: " + JSON.stringify(postData));
+    $.post(url, postData);
+	
+   // $.post(url, {"QUESTION1":"Text content","QUESTION2":3,"QUESTION3":"1213"});
+   
+
+}
+        
+
+function sendDataToServerFinish(survey) { 
+  // console.log(survey.data);
+  sendDataToResponsys(survey);
+  DeleteCookie("noSessionId");
+	setTimeout(function(){window.location.href='https://www.norwegian.com/se'},5000);
+}
+
+	sendDataToResponsysOnload();
+ 
+	$("div.sv_container").prepend(" <div class='page-header__branding'><a href='https://www.norwegian.com/se' title='Norwegian' style='border-bottom-style: none;' target='_blank'><img src='https://www.norwegian.com/Content/img/ident.svg' class='page-header__logo  page-header__logo--md' alt='Norwegian Air Shuttle ASA'><img src='https://www.norwegian.com/Content/img/ident-mobile.svg' class='page-header__logo' alt='Norwegian Air Shuttle ASA'></a></div>");
+	
+	//add norwegian buttons
+	$("input[type='button']").wrap("<span class='button button--medium button--primary'>");
+
+	$("td[data-bind='visible: question.hasRows']").css("min-width", "100px");
+	
+	/*on click of span
+	$("span.button--primary").click(function(){
+	if ($("div.sv_body.sv_completed_page").length){
+			$("div.sv_body.sv_completed_page").append("<a class='button button--primary' target='_blank' href='https://www.norwegian.com/se'>Visit Norwegian.com</a>");
+		}
+	
+	});*/
+	
+	$("div.sv_container").prepend("<div class='wifi-logo'><div class ='wifi-text'><h3>Norwegian Tävling</h3>Svara på två enkla frågor och var med och tävla om en fin vinst. Lycka till!<br></div></div>");
+	
+	$("div.sv_completed_page").append("<a class='button button--primary' target='_blank' href='https://www.norwegian.com/se'>Visit Norwegian.com</a>");
+		
+		
+        
+        
+//page load end
+});
+</script>
+
+</head>
+<body style="background-color: #fffffe;">
+<!--
+RIID_: $RIID_$<br />
+EMAIL: $EMAIL_ADDRESS$ <br />
+HOMEPAGE_URL: https://www.norwegian.com/se <br />
+CAMPAIGN_NAME: $lookup(CAMPAIGN_NAME)$ <br />
+G_MARKET=$lookup(G_MARKET)$ <br />
+   -->
+<div id="surveyContainer"></div>
+</body>
+</html>

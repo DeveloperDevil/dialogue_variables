@@ -1,0 +1,690 @@
+$setvars(HOMEPAGE_URL, cond(eq(G_MARKET, NO), https://www.norwegian.no, cond(eq(G_MARKET, ROW),   https://www.norwegian.com, concat(https://www.norwegian.com/, lowercase(lookup(G_MARKET))))))$
+$setvars(CAMPAIGN_NAME, SURVEY_AGENT_CORP)$
+$setvars(G_MARKET, SE)$
+
+<!--link to form using ${form('wifi_form', "CAMPAIGN_NAME=" + CAMPAIGN, "G_MARKET=" + MARKET, "EMAIL_ADDRESS=" + EMAIL_ADDRESS_)} as href-->
+<html>
+<head>
+<title>Norwegian Survey</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+   
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link href="https://surveyjs.azureedge.net/1.0.63/survey.css" type="text/css" rel="stylesheet" />
+<script src="https://surveyjs.azureedge.net/1.0.63/survey.jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://www.norwegian.com/style-bundle/cms-brand.css">
+<style>
+element.style{float: left!important;}
+.wifi-logo {
+    background: url(https://brand.norwegian.com/norwegian-assets/img/icons/large/destinations.svg)no-repeat;
+    background-size: 243px;
+    top: -30px;
+    left: -62px;
+    height: 100px;
+    margin: 0;
+    float: left;
+    width: 60%;
+    position: relative;
+	
+}
+
+.wifi-text {
+    position: relative;
+    top: 56px;
+    left: 232px;
+    font-size: 14px;
+    width: 100px;
+    color: #003251;
+    font-weight: bold;
+}
+
+.button, .numberfield__button {
+	padding: 0;
+}
+.button-pad {
+	padding: 17px 16px 11px 16px;
+	margin-top: 30px;
+}
+.sv_main .sv_container .sv_body .sv_p_root .sv_q .sv_q_radiogroup > label, .sv_main .sv_container .sv_body .sv_p_root .sv_q .sv_q_checkbox > label {
+	white-space: inherit;
+}
+span {
+	color: #6d7072;
+	font-size: 14px;display:inline;clear: both;
+}
+	
+}
+	
+.sv_main, .sv_main .sv_custom_header {
+	background-color: #e6e6e6;
+}
+	form {background-color: #e6e6e6!important;}
+.sv_main .sv_container .sv_header {
+	padding: 0;
+	
+}
+.sv_container {
+	max-width: 50%;
+	margin: auto;
+	padding: 0 1em;
+}
+.sv_main .sv_container .sv_body .sv_p_root .sv_q_title {
+	margin: 0;
+	color: #003d50;
+	padding-bottom: 10px;
+}
+.sv_main .sv_container .sv_body .sv_p_root .sv_q {
+	padding: 1.5em 1em 0.5em 1em;
+}
+.sv_main .sv_container {
+	padding: 0em 1em 1.5em 1em;
+}
+p {
+	font-family: "ApercuProRegular", Helvetica, sans-serif;
+	margin: 0 0em 1em 0em;
+}
+.sv_main input[type="button"], .sv_main button {
+	font-family: "ApercuProRegular", Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	border: none;
+	cursor: pointer;
+	padding: 14px 36px 12px 12px;
+	min-width: auto;
+	line-height: normal;
+}
+.sv_main .sv_progress_bar, .sv_main input[type="button"], .sv_main button {
+	background-color: #d81939;
+}
+.button--primary:hover .sv_main input[type="button"], .button--primary:focus .sv_main button {
+	background-color: #c11633;
+}
+.sv_main input[type="button"]:hover, .sv_main button:hover {
+	background-color: #c11633;
+}
+.sv_main .sv_body {
+	background-color: white;
+	border-top: none;
+}
+.sv_main .sv_container .sv_body .sv_progress .sv_progress_bar > span {
+	width: 200px;
+}
+.sv_main .sv_container .sv_body .sv_p_root table.sv_q_matrix td {
+	min-width: 1em;
+}
+.sv_main .sv_container .sv_body .sv_nav {
+	padding: 2em 1em 2em 1em;
+}
+.sv_main .sv_container .sv_body {
+	padding: 1em 1em 1em 1em;
+}
+.sv_main .sv_p_root > .sv_row {
+	border-bottom: 0;
+}
+.sv_main .sv_p_root > .sv_row:nth-child(even) {
+	background-color: #ffffff;
+}
+.legend {
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid #e7e7e7;
+	float: right;
+	font-style: italic;
+	text-align: right;
+}
+.sv_main .sv_container .sv_body.sv_completed_page {
+	text-align: center;
+	padding: 6.5em 1em 5em 1em;
+}
+.margin_lr_10 {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+.sv_main .sv_container .sv_body.sv_completed_page > h3 {
+	margin: 0;
+	font-size: 30px;
+	font-weight: 300;
+	line-height: 110%;
+}
+	
+.sv_main .sv_q_rating_item.active .sv_q_rating_item_text {
+    background-color: #d81939;
+    border-color: #d81939;
+}
+	
+.sv_main .sv_q_rating_item.active .sv_q_rating_item_text span {
+    color: white;
+}
+	
+.sv_main .sv_q_rating_item .sv_q_rating_item_text:hover {
+    border: 1px solid #6d7072;
+}
+	.sv_q_rating, .sv_qcbc{float:left!important;clear:both!important;margin-top:0.3em!important;}
+.sv_main .sv_q_other input:focus, .sv_main .sv_q_text_root:focus, .sv_main .sv_q_dropdown_control:focus, .sv_main input[type="text"]:focus, .sv_main select:focus, .sv_main textarea:focus {
+    border: 1px solid #6d7072;
+}
+
+.sv_main .sv_select_wrapper:before {
+    background-color: #d81939;
+}
+span.button.button--medium.button--primary:nth-child(2) {
+float:right;
+}
+
+span.button.button--medium.button--primary:nth-child(3) {
+float:right;
+}
+
+.sv_completed_page h3 {
+    display: -webkit-inline-box;
+}
+
+.sv_completed_page {
+    padding-bottom: 6em !important;
+}
+
+
+@media only screen and (min-width: 680px) and (max-width: 1400px) {
+.sv_container {
+	max-width: 80%;
+}
+}
+
+@media (max-width: 680px) {
+.sv_main input[type="button"]:hover, .sv_main button:hover {
+	background-color: #d81939;
+}
+.sv_main .sv_container {
+	max-width: 100%;
+	margin: auto;
+	padding: 0;
+}
+
+.sv_main .sv_container .sv_body .sv_p_root .sv_q {
+	padding: 1em 1em 1.5em 1em;
+}
+.sv_main .sv_container .sv_body .sv_p_root table.sv_q_matrix td {
+	min-width: 1em;
+}
+.sv_main .sv_container .sv_body .sv_p_root table td {
+	padding: 0.5em 0.2em 0.5em 0em;
+}
+	
+.sv_q_description{float: left;  margin-top: 0.6em;
+}
+	
+} 
+.make-bold{
+font-weight:bold;
+} 
+	.small{background-color: white;}
+	
+	
+div[data-bind="css: data.css.pageDescription"] {
+ 
+display:inline-block!important;
+}
+.sv_main, .sv_container, .sv_body, .sv_p_root, .sv_q_description {
+    margin-top: 0;
+    margin-bottom: 0.6em;
+	
+}	
+.page-header__logo--md{width:161px;}
+</style>
+<script type="text/javascript">
+	
+	$( document ).ready(function() {
+    
+    var qs = (function(a) {
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=', 2);
+        if (p.length == 1)
+            b[p[0]] = "";
+        else
+            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+})(window.location.search.substr(1).split('&'));
+    
+var surveyJSON = {
+ locale: "sv",
+ pages: [
+  {
+   name: "1. Bakgrundsfrågor",
+   elements: [
+    {
+     type: "radiogroup",
+     name: "Q1_1",
+     title: {
+      sv: "1.1 Hur många flygresor inom Norden och Europa (tur & retur) gör ert företag totalt per år?"
+     },
+     description: {
+      sv: "Välj ett alternativ."
+     },
+     isRequired: true,
+     choices: [
+      "0-2000",
+      "2000-5000",
+      "5000-10000",
+      "10000+"
+     ],
+     colCount: 2
+    }
+   ],
+   description: "Här vill vi veta lite mer om dig och ditt företag, så att vi kan ge en så bra service som möjligt anpassade efter era behov"
+  },
+  {
+   name: "1.2",
+   elements: [
+    {
+     type: "radiogroup",
+     name: "Q1_2",
+     title: {
+      sv: "1.2\tHur stor andel resor inom Norden och Europa uppskattar du att ni har med Norwegian totalt per år?"
+     },
+     description: {
+      sv: "Välj ett alternativ."
+     },
+     isRequired: true,
+     choices: [
+      "0-25%",
+      "25-50%",
+      "50-75%",
+      "100%"
+     ],
+     colCount: 2
+    }
+   ]
+  },
+  {
+   name: "1.3",
+   elements: [
+    {
+     type: "radiogroup",
+     name: "Q1_3",
+     title: {
+      sv: "1.3 Vilken avdelningen ansvarar för flygavtal på ert företag?"
+     },
+     description: {
+      sv: "Välj ett alternativ."
+     },
+     isRequired: true,
+     hasOther: true,
+     choices: [
+      "Inköpsavdelningen",
+      "VD",
+      "HR",
+      "Extern part"
+     ],
+     choicesOrder: "asc",
+     colCount: 2
+    }
+   ]
+  },
+  {
+   name: "1.4",
+   elements: [
+    {
+     type: "radiogroup",
+     name: "Q1_4",
+     title: {
+      sv: "1.4\tHar ni en dedikerad Travel Manager på ert företag? "
+     },
+     description: {
+      sv: "Välj ett alternativ."
+     },
+     isRequired: true,
+     choices: [
+      "Ja",
+      "Nej"
+     ]
+    }
+   ]
+  },
+  {
+   name: "2. Din kontakt med Norwegian",
+   elements: [
+    {
+     type: "radiogroup",
+     name: "Q2_1",
+     title: {
+      sv: "2.1 Hur ofta önskar du en avstämning/möte (t.ex. fysiskt möte eller via telefon) med din kontaktperson på Norwegian?"
+     },
+     description: {
+      sv: "Välj ett alternativ."
+     },
+     isRequired: true,
+     hasOther: true,
+     choices: [
+      {
+       value: "Månad",
+       text: "En gång per månad"
+      },
+      {
+       value: "Kvartal",
+       text: "En gång per kvartal"
+      },
+      {
+       value: "Halvår",
+       text: "En gång per halvår"
+      },
+      {
+       value: "Helår",
+       text: "En gång per helår"
+      }
+     ],
+     colCount: 2
+    }
+   ],
+   description: "Du är en viktig kund för oss och vi vill göra vår kontakt med dig så bra som möjligt utifrån dina behov och förutsättningar. Hjälp oss till en bättre kommunikation som passar dig."
+  },
+  {
+   name: "2.2",
+   elements: [
+    {
+     type: "html",
+     name: "Q2_2",
+     width: "100%",
+     html: {
+      sv: "<h5><span style=\"position: static;\" data-bind=\"text: koRenderedHtml\">* 2.2 På vilket sätt önskar du att hålla kontakt med din Norwegian - representant under ett löpande år? </span></h5><span class=\"sv_main small\">Rangordna alla alternativ nedan med 1-3, där 3 är viktigast.</span>"
+     }
+    },
+    {
+     type: "dropdown",
+     name: "Q2_2a",
+     title: {
+      sv: "2.2 a) Telefon"
+     },
+     isRequired: true,
+     choices: [
+      {
+       value: "1",
+       visibleIf: "{Q2_2b} <> \"1\""
+      },
+      {
+       value: "2",
+       visibleIf: "{Q2_2c} <> \"2\" and {Q2_2b} <> \"2\""
+      },
+      {
+       value: "3",
+       visibleIf: "{Q2_2c} <> \"3\" and {Q2_2b} <> \"3\""
+      }
+     ]
+    },
+    {
+     type: "dropdown",
+     name: "Q2_2b",
+     title: {
+      sv: "2.2 b) Mail"
+     },
+     isRequired: true,
+     choices: [
+      {
+       value: "1",
+       visibleIf: "{Q2_2c} <> \"1\" and {Q2_2a} <> \"1\""
+      },
+      {
+       value: "2",
+       visibleIf: "{Q2_2c} <> \"2\" and {Q2_2a} <> \"2\""
+      },
+      {
+       value: "3",
+       visibleIf: "{Q2_2c} <> \"3\" and {Q2_2a} <> \"3\""
+      }
+     ]
+    },
+    {
+     type: "dropdown",
+     name: "Q2_2c",
+     title: {
+      sv: "2.2 c) Fysiskt möte"
+     },
+     isRequired: true,
+     choices: [
+      {
+       value: "1",
+       visibleIf: "{Q2_2a} <> \"1\" and {Q2_2b} <> \"1\""
+      },
+      {
+       value: "2",
+       visibleIf: "{Q2_2a} <> \"2\" and {Q2_2b} <> \"2\""
+      },
+      {
+       value: "3",
+       visibleIf: "{Q2_2a} <> \"3\" and {Q2_2b} <> \"3\""
+      }
+     ]
+    },
+    {
+     type: "comment",
+     name: "Q2_2d",
+     title: {
+      sv: "Övriga kommentarer, skriv i rutan nedan"
+     }
+    }
+   ]
+  },
+  {
+   name: "2.3",
+   elements: [
+    {
+     type: "comment",
+     name: "Q2_3",
+     title: {
+      sv: "2.3\tVilken information är relevant för er under avstämningarna? "
+     },
+     description: {
+      default: "Skriv ditt svar öppet i rutan nedan, rangordna gärna om du har möjlighet",
+      sv: "Skriv ditt svar öppet i rutan nedan, rangordna gärna om du har möjlighet."
+     }
+    }
+   ]
+  },
+  {
+   name: "2.4",
+   elements: [
+    {
+     type: "rating",
+     name: "Q2_4",
+     title: {
+      sv: "2.4\tHur nöjd är du med din kontaktperson på Norwegian?"
+     },
+     description: {
+      sv: "Ge betyg 1-5, där 5 är Mycket nöjd och 1 är Mycket missnöjd."
+     },
+     isRequired: true
+    }
+   ]
+  },
+ ],
+ sendResultOnPageNext: true,
+ showQuestionNumbers: "off",
+ showProgressBar: "bottom"
+}
+//from here starts code from older survey
+        
+        
+        
+     
+        
+
+var survey = new Survey.Model(surveyJSON);
+
+var sessionId = MakeId();
+
+if(document.cookie.indexOf("noSessionId") >0) {
+  var myCookie = ReadCookie("noSessionId");
+}
+else {
+  SetCookie("noSessionId",sessionId,1);
+}                                                                                                                               
+
+console.log("cookie: " + myCookie);
+
+var xhttp;
+
+$("#surveyContainer").Survey({    
+    model: survey,    
+      onComplete: sendDataToServerFinish
+});
+
+
+function MakeId() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 16; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
+function SetCookie(cookieName,cookieValue,nDays) {
+   var today = new Date();
+   var expire = new Date();
+   if (nDays==null || nDays==0) nDays=1;
+   expire.setTime(today.getTime() + 3600000*24*nDays);
+   document.cookie = cookieName+"="+escape(cookieValue)
+                     + ";expires="+expire.toGMTString();
+}
+
+function ReadCookie(cookieName) {
+   var theCookie=" "+document.cookie;
+   var ind=theCookie.indexOf(" "+cookieName+"=");
+   if (ind==-1) ind=theCookie.indexOf(";"+cookieName+"=");
+   if (ind==-1 || cookieName=="") return "";
+   var ind1=theCookie.indexOf(";",ind+1);
+   if (ind1==-1) ind1=theCookie.length; 
+   return unescape(theCookie.substring(ind+cookieName.length+2,ind1));
+}
+
+function DeleteCookie(CookieName) {
+      document.cookie = CookieName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}  
+    
+function sendDataToServer(survey) {  
+   // console.log(survey.data);
+  sendDataToResponsys(survey);
+}
+
+function sendDataToResponsysOnload() {
+  //console.log("Sending data - START");    
+        
+  var url = "https://air.norwegian.com/pub/rf" + "?_ri_=X0Gzc2X%3DYQpglLjHJlTQGzbwu5w041zgzbhAzeI2f3s0zbcvpsLqr0gk88ORHrLfVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlTQGhT3uwJtoS0uECPk0HTnBzfzgpsLqr0gk88ORHrLf";
+  url = url + "&SESSION_ID=" + sessionId;
+  url = url + "&CAMPAIGN_NAME=SURVEY_AGENT_CORP";
+  url = url + "&EMAIL=$EMAIL_ADDRESS$"
+  url = url + "&MARKET=$G_MARKET$"
+  console.log(url);  
+   $.get(url);
+  //console.log("Sending data - END");      
+}
+    
+function sendDataToResponsys(survey) {
+  //console.log(survey.data);
+  var url = "https://air.norwegian.com/pub/rf" + "?_ri_=X0Gzc2X%3DYQpglLjHJlTQGzbwu5w041zgzbhAzeI2f3s0zbcvpsLqr0gk88ORHrLfVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlTQGhT3uwJtoS0uECPk0HTnBzfzgpsLqr0gk88ORHrLf";
+  
+	//we need to post the RIID and CAMPAIGN because they are the SURVEY_LIKE data checks
+	url = url + "&SESSION_ID=" + sessionId;
+	url = url + "&CAMPAIGN_NAME=SURVEY_AGENT_CORP";
+    
+var postData = {};
+for (var mainkey in survey.data) {
+
+	console.log(mainkey + " - " + survey.data[mainkey]);
+    
+ if(typeof survey.data[mainkey] === 'object'){
+     var sendkey = '';
+     var multiselect = '';
+     var iterationcount = 0;
+     for (var key in survey.data[mainkey]) {
+         console.log(" - " + key + " - " + survey.data[mainkey][key]);
+    	
+     	if(typeof survey.data[mainkey][key] === 'object'){
+        	for(var subkey in survey.data[mainkey][key]) {
+                console.log(" - - " + subkey + " - " + survey.data[mainkey][key][subkey]);
+            	if(iterationcount == 0) {
+                	multiselect = multiselect + survey.data[mainkey][key][subkey];
+                }else{
+                    multiselect = multiselect + ',' + survey.data[mainkey][key][subkey];
+                }
+                iterationcount = iterationcount + 1;
+			}
+		}else{
+            // url = url + "&" + key + "=" + survey.data[mainkey][key];
+            
+            if(iterationcount == 0) {
+                multiselect = multiselect + survey.data[mainkey][key];
+            }else{
+                multiselect = multiselect + ',' + survey.data[mainkey][key];
+            }
+            iterationcount = iterationcount + 1;
+         }
+         sendkey = mainkey.replace(/[^a-zA-Z0-9]/g,'_');
+         postData[sendkey.toUpperCase()] = multiselect;
+     }
+ }else{
+     //url = url + "&" + mainkey + "=" + survey.data[mainkey];
+     sendkey = mainkey.replace(/[^a-zA-Z0-9]/g,'_');
+     postData[sendkey.toUpperCase()] = survey.data[mainkey];
+ }
+
+}
+    
+    console.log(postData);
+    // console.log("Json: " + JSON.stringify(postData));
+    $.post(url, postData);
+	
+   // $.post(url, {"QUESTION1":"Text content","QUESTION2":3,"QUESTION3":"1213"});
+   
+
+}
+        
+
+function sendDataToServerFinish(survey) { 
+  // console.log(survey.data);
+  sendDataToResponsys(survey);
+  DeleteCookie("noSessionId");
+	setTimeout(function(){window.location.href='https://www.norwegian.com/se'},5000);
+}
+
+	sendDataToResponsysOnload();
+ 
+	$("div.sv_container").prepend(" <div class='page-header__branding'><a href='https://www.norwegian.com/se' title='Norwegian' style='border-bottom-style: none;' target='_blank'><img src='https://www.norwegian.com/Content/img/ident.svg' class='page-header__logo  page-header__logo--md' alt='Norwegian Air Shuttle ASA'><img src='https://www.norwegian.com/Content/img/ident-mobile.svg' class='page-header__logo' alt='Norwegian Air Shuttle ASA'></a></div>");
+	
+	//add norwegian buttons
+	$("input[type='button']").wrap("<span class='button button--medium button--primary'>");
+
+	$("td[data-bind='visible: question.hasRows']").css("min-width", "100px");
+	
+	/*on click of span
+	$("span.button--primary").click(function(){
+	if ($("div.sv_body.sv_completed_page").length){
+			$("div.sv_body.sv_completed_page").append("<a class='button button--primary' target='_blank' href='https://www.norwegian.com/se'>Visit Norwegian.com</a>");
+		}
+	
+	});*/
+	
+	$("div.sv_container").prepend("<div class='wifi-logo'><div class ='wifi-text'>Agent&nbsp/&nbspCorp&nbspKundundersökning</div></div>");
+	
+	$("div.sv_completed_page").append("<a class='button button--primary' target='_blank' href='https://www.norwegian.com/se'>Visit Norwegian.com</a>");
+        
+        
+//page load end
+});
+</script>
+
+</head>
+<body style="background-color: #e6e6e6;">
+<!--
+RIID_: $RIID_$<br />
+EMAIL: $EMAIL_ADDRESS$ <br />
+HOMEPAGE_URL: https://www.norwegian.com/se <br />
+CAMPAIGN_NAME: $lookup(CAMPAIGN_NAME)$ <br />
+G_MARKET=$lookup(G_MARKET)$ <br />
+   -->
+<div id="surveyContainer"></div>
+</body>
+</html>

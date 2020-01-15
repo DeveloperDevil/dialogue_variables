@@ -1,0 +1,1340 @@
+
+<#--use ${form('SURVEY_LB_1', {'usedb':true})} as the link url to the survey, it is made in SURVEY_LB_1 campaign in !frameworkSurveys.
+The form used is SURVEY-POC-->
+<#data MARKET_VARIABLES as DATA>    
+    <#filter LANGUAGE_ID = LANGUAGEID>
+    <#fields MARKET2 HOTEL_CAR_LANGUAGE_ID>
+    <#assign G_MARKET = DATA.MARKET2>
+	<#assign G_LOCALE = DATA.HOTEL_CAR_LANGUAGE_ID>
+	<#--HOTEL_CAR_LANGUAGE_ID is being used to change the locale of the form inside surveyJSON, the locale controls the error code messages and page number text-->	
+	
+	
+<#-- HOMEPAGE_URL --><#if G_MARKET?upper_case == "NO"><#global HOMEPAGE_URL ="https://www.norwegian.no"><#elseif G_MARKET?upper_case == "ROW"><#global HOMEPAGE_URL ="https://www.norwegian.com/en"><#else><#global HOMEPAGE_URL ="https://www.norwegian.com/" + G_MARKET?lower_case></#if>
+</#data>
+<#-- TEST VALUES
+<br>HOMEPAGE_URL: ${HOMEPAGE_URL}
+<br>RIID_:${RIID_?c}
+<br>MARKET: ${G_MARKET}, G_LOCALE: ${G_LOCALE?lower_case}
+<br>languageid: ${LANGUAGEID}
+<br>S_EMAIL_ADDRESS: ${EMAIL_ADDRESS_}
+<br>form link : <a href="${form(campaign.name, {'usedb':true})}" target="_blank">Survey link</a>-->
+<#macro text_raw element default>
+    <#assign usecontent="">
+	<#data SURVEY_CONTENT as CONTENT>
+    	<#filter S_MARKET = G_MARKET S_CONTENT_ELEMENT=element>
+    	<#fields S_CONTENT_ELEMENT S_CONTENT_VALUE>
+    	
+		<#assign usecontent=CONTENT.S_CONTENT_VALUE>
+	
+	</#data>
+	<#if !usecontent?isnull>${usecontent}<#else>${default}</#if>
+</#macro>  
+<#macro text element default><#assign value><@text_raw element=element default=default/></#assign>${value?trim}</#macro>   
+
+
+
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link href="https://surveyjs.azureedge.net/1.0.14/survey.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://www.norwegian.com/style-bundle/cms-brand.css">
+<script src="https://surveyjs.azureedge.net/1.0.14/survey.jquery.min.js"></script>
+<style>
+.button, .numberfield__button {
+	padding: 0;
+}
+
+.button-pad {
+    padding: 17px 16px 11px 16px;
+    margin-top: 30px;
+}
+.sv_main .sv_container .sv_body .sv_p_root .sv_q .sv_q_radiogroup > label, .sv_main .sv_container .sv_body .sv_p_root .sv_q .sv_q_checkbox > label {
+    white-space: inherit;
+}
+
+span {
+    color: #6d7072;
+    font-size: 14px;
+}
+.sv_main, .sv_main .sv_custom_header {
+	background-color: #f1f1f1;
+}
+
+.sv_main .sv_container .sv_header {
+    padding: 0;
+}
+
+.sv_container {
+	max-width: 50%;
+	margin: auto;
+	padding: 0 1em;
+}
+.sv_main .sv_container .sv_body .sv_p_root .sv_q_title {
+	margin: 0;
+	color: #003d50;
+	padding-bottom: 10px;
+}
+.sv_main .sv_container .sv_body .sv_p_root .sv_q {
+	padding: 1.5em 1em 0.5em 1em;
+}
+.sv_main .sv_container {
+	padding: 0em 1em 1.5em 1em;
+}
+p {
+	font-family: "ApercuProRegular", Helvetica, sans-serif;
+	margin: 0 0em 1em 0em;
+}
+
+.sv_main input[type="button"], .sv_main button {
+	font-family: "ApercuProRegular", Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	border: none;
+	cursor: pointer;
+	padding: 14px 36px 12px 12px;
+	min-width: auto;
+	line-height: normal;
+}
+.sv_main .sv_progress_bar, .sv_main input[type="button"], .sv_main button {
+	background-color: #d81939;
+}
+.button--primary:hover .sv_main input[type="button"], .button--primary:focus .sv_main button {
+	background-color: #c11633;
+}
+.sv_main input[type="button"]:hover, .sv_main button:hover {
+	background-color: #c11633;
+}
+.sv_main .sv_body {
+	background-color: white;
+	border-top: none;
+}
+.sv_main .sv_container .sv_body .sv_progress .sv_progress_bar > span {
+	width: 200px;
+}
+.sv_main .sv_container .sv_body .sv_p_root table.sv_q_matrix td {
+	min-width: 1em;
+}
+.sv_main .sv_container .sv_body .sv_nav {
+	padding: 2em 1em 2em 1em;
+}
+.sv_main .sv_container .sv_body {
+	padding: 1em 1em 1em 1em;
+}
+
+.sv_main .sv_p_root > .sv_row {
+   border-bottom: 0;
+}
+
+.sv_main .sv_p_root > .sv_row:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.legend {
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #e7e7e7;
+	float:right;
+	font-style:italic;
+	text-align:right;
+	}
+
+.sv_main .sv_container .sv_body.sv_completed_page {
+    text-align: center;
+    padding: 6.5em 1em 5em 1em;
+}
+
+.margin_lr_10{
+	margin-left:15px;
+	margin-right:15px;
+}
+
+.sv_main .sv_container .sv_body.sv_completed_page > h3 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 110%;
+}
+
+@media only screen and (min-width: 680px) and (max-width: 1400px) {
+.sv_container {
+	max-width: 80%;
+}
+}
+
+@media (max-width: 680px) {
+
+.sv_main input[type="button"]:hover, .sv_main button:hover {
+    background-color: #d81939;
+}
+.sv_main .sv_container {
+	max-width: 100%;
+	margin: auto;
+	padding: 0;
+}
+.sv_main .sv_container .sv_body {
+	padding: 1em 0em 2em 0em;
+}
+.sv_main .sv_container .sv_body .sv_p_root .sv_q {
+	padding: 1em 1em 1.5em 1em;
+}
+.sv_main .sv_container .sv_body .sv_p_root table.sv_q_matrix td {
+	min-width: 1em;
+}
+.sv_main .sv_container .sv_body .sv_p_root table td {
+	padding: 0.5em 0.2em 0.5em 0em;
+}
+}
+
+
+</style>
+<title>Norwegian Survey</title>
+</head>
+
+<body>
+<div id="surveyContainer"></div>
+<script>
+
+$( document ).ready(function() {
+	
+	//add logo
+	$("div.sv_container").prepend("<div class='page-header__branding'><a href='${HOMEPAGE_URL}' title='Norwegian' style='border-bottom-style: none;' target='_blank'><img src='https://www.norwegian.com/Content/img/ident.svg' class='page-header__logo  page-header__logo--md' alt='Norwegian Air Shuttle ASA'><img src='https://www.norwegian.com/Content/img/ident-mobile.svg' class='page-header__logo' alt='Norwegian Air Shuttle ASA'></a></div>");
+	
+	
+	
+	
+	//add norwegian buttons
+	$("input[type='button']").wrap("<span class='button button--medium button--primary'>");
+	//add after page 2
+	$("input[type='button']").click(function() {
+	
+	
+	
+	if ($("input[type='button'][style*='display: none']").length){	
+		$("input[type='button']").wrap("<span class='button button--medium button--primary'>");
+		$("div.sv_progress").parent().addClass("margin_lr_10");
+		
+		
+		
+		};
+	if ($("input.sv_next_btn").length){
+		$("input.sv_next_btn").parent("span").css("float", "right");
+		};
+		
+			
+	});
+	
+	$("td[data-bind='visible: question.hasRows']").css("min-width", "100px");
+	
+	
+	/*on click of span
+	$("span.button--primary").click(function(){
+	if ($("div.sv_body.sv_completed_page").length){
+			$("div.sv_body.sv_completed_page").append("<a class='button button--primary' target='_blank' href='${HOMEPAGE_URL}'>Visit Norwegian.com</a>");
+		}
+	
+	});*/
+	
+	$("div.sv_completed_page").append("<a class='button button--primary' target='_blank' href='${HOMEPAGE_URL}'>Visit Norwegian.com</a>");
+	
+//page load end
+});
+
+var surveyJSON = {
+ locale: "${G_LOCALE?lower_case}",
+ pages: [
+  {
+   name: "startpage",
+   elements: [
+    {
+     type: "html",
+     name: "Introduction",
+     html: "<p><strong><@text element='hello' default='Hello!'/></strong> <@text element='intro1' default=' Here at Norwegian, we are always striving to improve the services we provide. We would therefore like to ask you to participate in a short survey to help us continue to provide the best possible travel opportunities.'/></p><p><@text element='intro2' default='All responses will be held in strict confidence and your answers will be presented anonymously in our reports. Your information will not be distributed to any other party or used for any other purpose.'/></p><p><@text element='intro3' default='We hope you enjoy the survey!'/></p><p><@text element='intro4' default='Thank you for your participation.'/></p>"
+    }
+   ]
+  },
+  {
+   name: "page1_age",
+   elements: [
+    {
+     type: "radiogroup",
+     name: "s_age", 
+     title: "<@text element='Qc1' default='Qc1. Which of the following age groups do you fall into?'/>",
+     isRequired: true,
+	 
+	choices: [
+	 {
+       value: "UNDER_18",
+       text:  "<@text element='UNDER_18' default='Under 18'/>"
+      },
+      {
+       value: "18_24",
+       text: "<@text element='a18_24' default='18 to 24'/>"
+      },
+      {
+       value: "25_34",
+       text: "<@text element='a25_34' default='25 to 34'/>"
+      },
+      {
+       value: "35_44",
+       text:"<@text element='a35_44' default='35 to 44'/>"
+      },
+      {
+       value: "45_54",
+       text: "<@text element='a45_54' default='45 to 54'/>"
+      },
+      {
+       value: "55_64",
+       text: "<@text element='a55_64' default='55 to 64'/>"
+      },
+      {
+       value: "65_",
+       text: "<@text element='a65_' default='65+'/>"
+      },
+      {
+       value: "refused",
+       text: "<@text element='refused' default='Refused'/>"
+      }
+     ]
+	 
+    }
+   ]
+  },
+  {
+   name: "page2_gender",
+   elements: [
+    {
+     type: "radiogroup",
+     name: "s_gender",
+     title: "<@text element='Qc2' default='Qc2. Are you?'/>",
+     isRequired: true,
+     choices: [	 
+	 {
+       value: "Male",
+       text: "<@text element='Male' default='Male'/>"
+      },
+      {
+       value: "Female",
+       text: "<@text element='Female' default='Female'/>"
+      },
+      {
+       value: "Transgender",
+       text: "<@text element='Transgender' default='Transgender'/>"
+      },
+      {
+       value: "I do not identify as female, male or transgender ",
+       text: "<@text element='nongender' default='I do not identify as female, male or transgender'/>"
+      },
+      {
+       value: "No comment",
+       text: "<@text element='no_comment' default='No comment'/>"
+      }
+     ]
+    }
+   ],
+   visibleIf: "{s_age} != 'UNDER_18'"
+  },
+  {
+   name: "page3_B_or_L",
+   elements: [
+    {
+     type: "radiogroup",
+     name: "s_business",
+     title: "<@text element='Qc3B' default='Qc3B. Have you travelled abroad for BUSINESS in the last 12 months by airplane (including at least 1 overnight stay) that you helped to plan or that you were at least a joint decision maker for?'/>",
+     isRequired: true,
+	 
+     choices: [
+      {
+       value: "Yes",
+       text: "<@text element='Yes' default='Yes'/>"
+      },
+      {
+       value: "No",
+       text: "<@text element='No' default='No'/>"
+      }
+	 ]
+    },
+    {
+     type: "radiogroup",
+     name: "s_leisure",
+     title: "<@text element='Qc3L' default='Qc3L.Have you travelled abroad for LEISURE in the last 12 months by airplane (including at least 1 overnight stay) that you helped to plan or that you were at least a joint decision maker for?'/>",
+     isRequired: true,
+     choices: [
+      {
+       value: "Yes",
+       text: "<@text element='Yes' default='Yes'/>"
+      },
+      {
+       value: "No",
+       text: "<@text element='No' default='No'/>"
+      }	  
+     ]
+    }
+   ],
+   visibleIf: "{s_age} != 'UNDER_18'"
+  },
+  {
+   name: "page4_Q1_L",
+   elements: [
+    {
+     type: "html",
+     name: "question1",
+     visible: false,
+     visibleIf: "{s_leisure} == 'Yes'",
+     html: "<div class=\"legend\"><@text element='legend1' default='Please state your level of agreement with each statement'/><br><strong>1</strong>&nbsp;<@text element='legend2' default='Strongly disagree'/> &nbsp; <strong>2</strong>&nbsp;<@text element='legend3' default='Disagree'/> &nbsp; <strong>3</strong>&nbsp;<@text element='legend4' default='Neutral'/> &nbsp; <strong>4</strong>&nbsp;<@text element='legend5' default='Agree'/> &nbsp; <strong>5</strong>&nbsp;<@text element='legend6' default='Strongly agree'/></div>"
+    },
+    {
+     type: "matrix",
+     name: "Leisure1",
+     visible: false,
+     visibleIf: "{s_leisure} == 'Yes'",
+     title: "<@text element='QL1' default='QL1. The following are attitudes you may or may not have about TRAVELLING AND HOLIDAYS.'/>",
+     isRequired: true,
+	 
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "L1_1",
+       text: "<@text element='L1_1' default='I prefer to take holidays in my own country rather than abroad'/>"
+     
+      },
+      {
+       value: "L1_2",
+       text:"<@text element='L1_2' default='I like the idea of travelling abroad'/>"
+      },
+      {
+       value: "L1_3",
+       text: "<@text element='L1_3' default='I would never think of taking a package holiday'/>"
+      },
+      {
+       value: "L1_4",
+       text: "<@text element='L1_4' default='I prefer to go on holidays where activities are organised for me'/>"
+      },
+      {
+       value: "L1_5",
+       text: "<@text element='L1_5' default='When on holiday I only want to eat, drink and sunbathe'/>"
+      },
+      {
+       value: "L1_6",
+       text: "<@text element='L1_6' default='Holidays are an important part of my life'/>"
+      },
+      {
+       value: "L1_7",
+       text: "<@text element='L1_7' default='I prefer to travel to places that do not require taking a plane flight'/>"
+      },
+      {
+       value: "L1_8",
+       text: "<@text element='L1_8' default='I try to have as many holidays as possible'/>"
+      }
+     ],
+     isAllRowRequired: true
+    },
+    {
+     type: "html",
+     name: "question8",
+     visible: false,
+     visibleIf: "{s_leisure} == 'No' && {s_business} == 'No'",
+     html: "<div class=\"legend\"><@text element='legend1' default='Please state your level of agreement with each statement'/><br><strong>1</strong>&nbsp;<@text element='legend2' default='Strongly disagree'/> &nbsp; <strong>2</strong>&nbsp;<@text element='legend3' default='Disagree'/> &nbsp; <strong>3</strong>&nbsp;<@text element='legend4' default='Neutral'/> &nbsp; <strong>4</strong>&nbsp;<@text element='legend5' default='Agree'/> &nbsp; <strong>5</strong>&nbsp;<@text element='legend6' default='Strongly agree'/></div>"
+    },
+    {
+     type: "matrix",
+     name: "leisure1",
+     visible: false,
+     visibleIf: "{s_leisure} == 'No' && {s_business} == 'No'",
+     title: "<@text element='QL1' default='QL1. The following are attitudes you may or may not have about TRAVELLING AND HOLIDAYS.'/>",
+     isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "L1_1",
+       text: "<@text element='L1_1' default='I prefer to take holidays in my own country rather than abroad'/>"
+      },
+      {
+       value: "L1_2",
+       text:  "<@text element='L1_2' default='I like the idea of travelling abroad'/>"
+      },
+      {
+       value: "L1_3",
+       text: "<@text element='L1_3' default='I would never think of taking a package holiday'/>"
+      },
+      {
+       value: "L1_4",
+       text: "<@text element='L1_4' default='I prefer to go on holidays where activities are organised for me'/>"
+      },
+      {
+       value: "L1_5",
+       text: "<@text element='L1_5' default='When on holiday I only want to eat, drink and sunbathe'/>"
+      },
+      {
+       value: "L1_6",
+       text: "<@text element='L1_6' default='Holidays are an important part of my life'/>"
+      },
+      {
+       value: "L1_7",
+       text: "<@text element='L1_7' default='I prefer to travel to places that do not require taking a plane flight'/>"
+      },
+      {
+       value: "L1_8",
+       text: "<@text element='L1_8' default='I try to have as many holidays as possible'/>"
+      }
+     ],
+     isAllRowRequired: true
+    }
+   ],
+   visibleIf: "{s_age} != 'UNDER_18'"
+  },
+  {
+   name: "page5_segmented",
+   elements: [
+    {
+     type: "html",
+     name: "question2",
+     html: "<div class=\"legend\"><@text element='legend1' default='Please state your level of agreement with each statement'/><br><strong>1</strong>&nbsp;<@text element='legend2' default='Strongly disagree'/> &nbsp; <strong>2</strong>&nbsp;<@text element='legend3' default='Disagree'/> &nbsp; <strong>3</strong>&nbsp;<@text element='legend4' default='Neutral'/> &nbsp; <strong>4</strong>&nbsp;<@text element='legend5' default='Agree'/> &nbsp; <strong>5</strong>&nbsp;<@text element='legend6' default='Strongly agree'/></div>"
+    },
+    {
+     type: "matrix",
+     name: "Leisure2",
+     visible: false,
+     visibleIf: "{s_leisure} == 'Yes'",
+     title: "<@text element='QL2' default='QL2. The following are attitudes you may or may not have about TRAVEL AND HOLIDAY PLANNING.'/>",
+	 isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "L2_1",
+       text: "<@text element='L2_1' default='It\'s difficult to find the best offers for flights from airline websites'/>"
+      },
+      {
+       value: "L2_2",
+       text: "<@text element='L2_2' default='I research holiday destinations in great detail'/>"
+      },
+      {
+       value: "L2_3",
+       text: "<@text element='L2_3' default='It\'s difficult to find the best offers for flights from airline websites'/>"
+      }
+     ],
+     isAllRowRequired: true
+    },
+    {
+     type: "matrix",
+     name: "Leisure2",
+     visible: false,
+     visibleIf: "{s_leisure} == 'No' && {s_business} == 'No'",
+     title: "<@text element='QL2' default='QL2. The following are attitudes you may or may not have about TRAVEL AND HOLIDAY PLANNING.'/>",
+     isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "L2_1",
+       text: "<@text element='L2_1' default='It\'s difficult to find the best offers for flights from airline websites'/>"
+      },
+      {
+       value: "L2_2",
+       text: "<@text element='L2_2' default='I research holiday destinations in great detail'/>"
+      },
+      {
+       value: "L2_3",
+       text: "<@text element='L2_3' default='It\'s difficult to know where to look for the right information when planning a holiday'/>"
+      }
+     ],
+     isAllRowRequired: true
+    },
+    {
+     type: "matrix",
+     name: "business2",
+     visible: false,
+     visibleIf: "{s_business} == 'Yes'",
+     title: "<@text element='QB2' default='QB2. The following are attitudes you may or may not have about BUSINESS TRAVEL PLANNING.'/>",
+     isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "B2_1",
+       text: "<@text element='B2_1' default='It\'s difficult to find the best offers for flights from airline websites'/>"
+      },
+      {
+       value: "B2_2",
+       text: "<@text element='B2_2' default='I research holiday destinations in great detail'/>"
+      }
+     ],
+     isAllRowRequired: true
+    }
+   ],
+   visibleIf: "{s_age} != 'UNDER_18'"
+  },
+  {
+   name: "page6_segmented",
+   elements: [
+    {
+     type: "html",
+     name: "question5",
+     visible: false,
+     visibleIf: "{s_leisure} == 'Yes'",
+     html: "<div class=\"legend\"><@text element='legend1' default='Please state your level of agreement with each statement'/><br><strong>1</strong>&nbsp;<@text element='legend2' default='Strongly disagree'/> &nbsp; <strong>2</strong>&nbsp;<@text element='legend3' default='Disagree'/> &nbsp; <strong>3</strong>&nbsp;<@text element='legend4' default='Neutral'/> &nbsp; <strong>4</strong>&nbsp;<@text element='legend5' default='Agree'/> &nbsp; <strong>5</strong>&nbsp;<@text element='legend6' default='Strongly agree'/></div>"
+    },
+    {
+     type: "matrix",
+     name: "leisure3",
+     visible: false,
+     visibleIf: "{s_leisure} == 'Yes'",
+     title: "<@text element='QL3' default='QL3. The following are attitudes you may or may not have about TRAVELLING COSTS AND PRICES.'/>",
+     isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "L3_1",
+       text: "<@text element='L3_1' default='When planning my holidays, it is important to me to shop around and look for the best offer'/>"
+      },
+      {
+       value: "L3_2",
+       text: "<@text element='L3_2' default='Price is more important to me than the destination'/>"
+      },
+      {
+       value: "L3_3",
+       text: "<@text element='L3_3' default='I will always book the lowest possible flight price regardless of the flight time'/>"
+      },
+      {
+       value: "L3_4",
+       text: "<@text element='L3_4' default='I will always travel in economy class regardless of the length of journey'/>"
+      },
+      {
+       value: "L3_5",
+       text: "<@text element='L3_5' default='I will always travel in economy class regardless of the length of journey'/>"
+      },
+      {
+       value: "L3_6",
+       text: "<@text element='L3_6' default='It\'s worth paying extra so my long-haul flight is more comfortable'/>"
+      },
+      {
+       value: "L3_7",
+       text: "<@text element='L3_7' default='It\'s worth paying extra so my short haul flight is more comfortable'/>"
+      },
+      {
+       value: "L3_8",
+       text: "<@text element='L3_8' default='I spare no expense in making travel arrangements as easy and comfortable as possible'/>"
+      },
+      {
+       value: "L3_9",
+       text: "<@text element='L3_9' default='I am happy to pay a little extra for my fare for a non-budget airline experience'/>"
+      }
+     ],
+     isAllRowRequired: true
+    },
+    {
+     type: "html",
+     name: "question9",
+     visible: false,
+     visibleIf: "{s_leisure} == 'No' && {s_business} == 'No'",
+     html: {
+      en: "<div class=\"legend\">Please state your level of agreement with each statement - <strong>1</strong> Strongly disagree &nbsp; <strong>2</strong> Disagree &nbsp; <strong>3</strong> Neutral &nbsp; <strong>4</strong> Agree &nbsp; <strong>5</strong> Strongly agree</div>"
+     }
+    },
+    {
+     type: "matrix",
+     name: "leisure3",
+     visible: false,
+     visibleIf: "{s_leisure} == 'No' && {s_business} == 'No'",
+     title: "<@text element='QL3' default='QL3. The following are attitudes you may or may not have about TRAVELLING COSTS AND PRICES.'/>",
+     isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "L3_1",
+       text: {
+      en: "<@text element='L3_1' default='When planning my holidays, it is important to me to shop around and look for the best offer'/>"
+      }
+      },
+      {
+       value: "L3_2",
+       text: {
+      en: "<@text element='L3_2' default='Price is more important to me than the destination'/>"
+      }
+      },
+      {
+       value: "L3_3",
+       text: {
+      en: "<@text element='L3_3' default='I will always book the lowest possible flight price regardless of the flight time'/>"
+      }
+      },
+      {
+       value: "L3_4",
+       text: {
+      en: "<@text element='L3_4' default='I don\t mind if the flight is indirect as long as I can get the best price'/>"
+      }
+      },
+      {
+       value: "L3_5",
+       text: {
+      en: "<@text element='L3_5' default='I will always travel in economy class regardless of the length of journey'/>"
+      }
+      },
+      {
+       value: "L3_6",
+       text: {
+      en: "<@text element='L3_6' default='It\'s worth paying extra so my long-haul flight is more comfortable'/>"
+      }
+      },
+      {
+       value: "L3_7",
+       text: {
+      en: "<@text element='L3_7' default='It\'s worth paying extra so my short haul flight is more comfortable'/>"
+      }
+      },
+      {
+       value: "L3_8",
+       text: {
+      en: "<@text element='L3_8' default='I spare no expense in making travel arrangements as easy and comfortable as possible'/>"
+      }
+      },
+      {
+       value: "L3_9",
+       text: {
+      en: "<@text element='L3_9' default='I am happy to pay a little extra for my fare for a non-budget airline experience'/>"
+      }
+      }
+     ],
+     isAllRowRequired: true
+    }
+   ],
+   visibleIf: "{s_age} != 'UNDER_18'"
+  },
+  {
+   name: "page7_business",
+   elements: [
+    {
+     type: "html",
+     name: "question7",
+     visible: false,
+     visibleIf: "{s_business} == 'Yes'",
+     html: {
+      en: "<div class=\"legend\"><@text element='legend1' default='Please state your level of agreement with each statement'/><br><strong>1</strong>&nbsp;<@text element='legend2' default='Strongly disagree'/> &nbsp; <strong>2</strong>&nbsp;<@text element='legend3' default='Disagree'/> &nbsp; <strong>3</strong>&nbsp;<@text element='legend4' default='Neutral'/> &nbsp; <strong>4</strong>&nbsp;<@text element='legend5' default='Agree'/> &nbsp; <strong>5</strong>&nbsp;<@text element='legend6' default='Strongly agree'/></div>"
+     }
+    },
+    {
+     type: "matrix",
+     name: "business3",
+     visible: false,
+     visibleIf: "{s_business} == 'Yes'",
+     title: "<@text element='QB3' default='QB3. The following are attitudes you may or may not have about BUSINESS TRAVELLING COSTS AND PRICES.'/>",
+     isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "B3_1",
+       text: "<@text element='B3_1' default='It\'s difficult to find the best offers for flights from airline websites'/>"
+      },
+      {
+       value: "B3_2",
+       text: "<@text element='B3_2' default='I research holiday destinations in great detail'/>"
+      },
+      {
+       value: "B3_3",
+       text: "<@text element='B3_3' default='It\'s difficult to know where to look for the right information when planning a holiday'/>"
+      },
+      {
+       value: "B3_4",
+       text:  "<@text element='B3_4' default='I always travel business class when travelling short haul'/>"
+      }
+     ],
+     isAllRowRequired: true
+    }
+   ],
+   visibleIf: "{s_age} != 'UNDER_18'"
+  },
+  {
+   name: "page7_leisure",
+   elements: [
+    {
+     type: "html",
+     name: "question3",
+     visible: false,
+     visibleIf: "{s_leisure} == 'Yes'",
+     html: "<div class=\"legend\"><@text element='legend1' default='Please state your level of agreement with each statement'/><br><strong>1</strong>&nbsp;<@text element='legend2' default='Strongly disagree'/> &nbsp; <strong>2</strong>&nbsp;<@text element='legend3' default='Disagree'/> &nbsp; <strong>3</strong>&nbsp;<@text element='legend4' default='Neutral'/> &nbsp; <strong>4</strong>&nbsp;<@text element='legend5' default='Agree'/> &nbsp; <strong>5</strong>&nbsp;<@text element='legend6' default='Strongly agree'/></div>"
+    },
+    {
+     type: "matrix",
+     name: "leisure4",
+     visible: false,
+     visibleIf: "{s_leisure} == 'Yes'",
+     title:"<@text element='QL4' default='QL4. The following are attitudes you may or may not have about AIRLINES AND AIR FLIGHTS.'/>",
+     isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "L4_1",
+       text: "<@text element='L4_1' default='I like to travel with low cost airlines'/>"
+      },
+      {
+       value: "L4_2",
+       text: "<@text element='L4_2' default='I do not mind travelling with low cost airlines if the price is acceptable'/>"
+      },
+      {
+       value: "L4_3",
+       text: "<@text element='L4_3' default='I never travel with low cost airlines'/>"
+      },
+      {
+       value: "L4_4",
+       text: "<@text element='L4_4' default='All airlines are the same'/>"
+      },
+      {
+       value: "L4_5",
+       text: "<@text element='L4_5' default='During travelling long haul (5+ hours) the comfort of my seat is more important than other elements (e.g. entertainment, food, staff)'/>"
+      },
+      {
+       value: "L4_6",
+       text: "<@text element='L4_6' default='I look for flexibility when booking tickets in case I need to change my plans'/>"
+      },
+      {
+       value: "L4_7",
+       text: "<@text element='L4_7' default='I expect the airline to make sure the airport experience is as quick and easy as possible'/>"
+      },
+      {
+       value: "L4_8",
+       text: "<@text element='L4_8' default='The airline must provide good service at the airport (check-in, boarding and disembarking)'/>"
+      },
+      {
+       value: "L4_9",
+       text: "<@text element='L4_9' default='I do not mind being delayed as long as the airline communicate the reasons why'/>" 
+      },
+      {
+       value: "L4_10",
+       text: "<@text element='L4_10' default='Delays are sometimes inevitable and it\'s important that the airline looks after its customers'/>"
+      }
+     ],
+     isAllRowRequired: true
+    },
+    {
+     type: "html",
+     name: "question10",
+     visible: false,
+     visibleIf: "{s_leisure} == 'No' && {s_business} == 'No'",
+     html: "<div class=\"legend\"><@text element='legend1' default='Please state your level of agreement with each statement'/><br><strong>1</strong>&nbsp;<@text element='legend2' default='Strongly disagree'/> &nbsp; <strong>2</strong>&nbsp;<@text element='legend3' default='Disagree'/> &nbsp; <strong>3</strong>&nbsp;<@text element='legend4' default='Neutral'/> &nbsp; <strong>4</strong>&nbsp;<@text element='legend5' default='Agree'/> &nbsp; <strong>5</strong>&nbsp;<@text element='legend6' default='Strongly agree'/></div>"
+    },
+    {
+     type: "matrix",
+     name: "leisure4",
+     visible: false,
+     visibleIf: "{s_leisure} == 'No' && {s_business} == 'No'",
+     title: "<@text element='QL4' default='QL4. The following are attitudes you may or may not have about AIRLINES AND AIR FLIGHTS.'/>",
+     isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "L4_1",
+       text:"<@text element='L4_1' default='I like to travel with low cost airlines'/>"
+      },
+      {
+       value: "L4_2",
+       text: "<@text element='L4_2' default='I do not mind travelling with low cost airlines if the price is acceptable'/>"
+      },
+      {
+       value: "L4_3",
+       text:  "<@text element='L4_3' default='I never travel with low cost airlines'/>"
+      },
+      {
+       value: "L4_4",
+       text: "<@text element='L4_4' default='All airlines are the same'/>"
+      },
+      {
+       value: "L4_5",
+       text: "<@text element='L4_5' default='During travelling long haul (5+ hours) the comfort of my seat is more important than other elements (e.g. entertainment, food, staff)'/>"
+      },
+      {
+       value: "L4_6",
+       text: "<@text element='L4_6' default='I look for flexibility when booking tickets in case I need to change my plans'/>"
+      },
+      {
+       value: "L4_7",
+       text:  "<@text element='L4_7' default='I expect the airline to make sure the airport experience is as quick and easy as possible'/>"
+      },
+      {
+       value: "L4_8",
+       text: "<@text element='L4_8' default='The airline must provide good service at the airport (check-in, boarding and disembarking)'/>"
+      },
+      {
+       value: "L4_9",
+       text: "<@text element='L4_9' default='I do not mind being delayed as long as the airline communicate the reasons why'/>"
+      },
+      {
+       value: "L4_10",
+       text: "<@text element='L4_10' default='Delays are sometimes inevitable and it\'s important that the airline looks after its customers'/>"
+      }
+     ],
+     isAllRowRequired: true
+    }
+   ],
+   visibleIf: "{s_age} != 'UNDER_18'"
+  },
+  {
+   name: "page8_business",
+   elements: [
+    {
+     type: "html",
+     name: "question6",
+     visible: false,
+     visibleIf: "{s_business} == 'Yes'",
+     html:  "<div class=\"legend\"><@text element='legend1' default='Please state your level of agreement with each statement'/><br><strong>1</strong>&nbsp;<@text element='legend2' default='Strongly disagree'/> &nbsp; <strong>2</strong>&nbsp;<@text element='legend3' default='Disagree'/> &nbsp; <strong>3</strong>&nbsp;<@text element='legend4' default='Neutral'/> &nbsp; <strong>4</strong>&nbsp;<@text element='legend5' default='Agree'/> &nbsp; <strong>5</strong>&nbsp;<@text element='legend6' default='Strongly agree'/></div>"
+    },
+    {
+     type: "matrix",
+     name: "business4",
+     visible: false,
+     visibleIf: "{s_business} == 'Yes'",
+     title: "<@text element='QB4' default='QB4. The following are attitudes you may or may not have about AIRLINES AND AIR FLIGHTS WHEN TRAVELLING FOR BUSINESS.'/>",
+	 isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "B4_1",
+       text:  "<@text element='B4_1' default='It\'s difficult to find the best offers for flights from airline websites'/>"
+      },
+      {
+       value: "B4_2",
+       text:  "<@text element='B4_2' default='I research holiday destinations in great detail'/>"
+      },
+      {
+       value: "B4_3",
+       text:  "<@text element='B4_3' default='It\'s difficult to know where to look for the right information when planning a holiday'/>"
+      },
+      {
+       value: "B4_4",
+       text: "<@text element='B4_4' default='The airline must provide good service at the airport (check-in, boarding and disembarking)'/>"
+      },
+      {
+       value: "B4_5",
+       text:  "<@text element='B4_5' default='It\'s important that the staff make me feel like a valued customer'/>"
+      },
+      {
+       value: "B4_6",
+       text: "<@text element='B4_6' default='Delays are sometimes inevitable and it\'s important that the airline looks after its customers'/>"
+      }
+     ],
+     isAllRowRequired: true
+    }
+   ],
+   visibleIf: "{s_age} != 'UNDER_18'"
+  },
+  {
+   name: "page9",
+   elements: [
+    {
+     type: "html",
+     name: "question4",
+     html: "<div class=\"legend\"><@text element='legend1' default='Please state your level of agreement with each statement'/><br> <strong>1</strong>&nbsp;<@text element='legend2' default='Strongly disagree'/> &nbsp; <strong>2</strong>&nbsp;<@text element='legend3' default='Disagree'/> &nbsp; <strong>3</strong>&nbsp;<@text element='legend4' default='Neutral'/> &nbsp; <strong>4</strong>&nbsp;<@text element='legend5' default='Agree'/> &nbsp; <strong>5</strong>&nbsp;<@text element='legend6' default='Strongly agree'/></div>"
+    },
+    {
+     type: "matrix",
+     name: "Q5LandB",
+     title: "<@text element='Q5LandB' default='Q5. The following are attitudes you may or may not have about your overall LIFESTYLE TRAITS.'/>",
+     isRequired: true,
+     columns: [
+      {
+       value: "1",
+       text: "1"
+      },
+      {
+       value: "2",
+       text: "2"
+      },
+      {
+       value: "3",
+       text: "3"
+      },
+      {
+       value: "4",
+       text: "4"
+      },
+      {
+       value: "5",
+       text: "5"
+      }
+     ],
+     rows: [
+      {
+       value: "Q5_1",
+       text: "<@text element='Q5_1' default='I read travel blogs regularly'/>"
+      },
+      {
+       value: "Q5_2",
+       text: "<@text element='Q5_2' default='I am an adventurous person'/>"
+      },
+      {
+       value: "Q5_3",
+       text:  "<@text element='Q5_3' default='I am more of a cautious person than a carefree person'/>"
+      },
+      {
+       value: "Q5_4",
+       text: "<@text element='Q5_4' default='I have to go on holiday from time to time get away from it all'/>"
+      },
+      {
+       value: "Q5_5",
+       text:  "<@text element='Q5_5' default='I enjoy experiencing a sense of danger on a holiday'/>"
+      },
+      {
+       value: "Q5_6",
+       text: "<@text element='Q5_6' default='I use my mobile device or smartphone for most of my holiday or travel planning'/>"
+      }
+     ],
+     isAllRowRequired: true
+    }
+   ],
+   visibleIf: "{s_age} != 'UNDER_18'"
+  },
+  {
+   name: "Too Young",
+   elements: [
+    {
+     type: "html",
+     name: "Under 18",
+     html: "<p><@text element='too_young' default='Unfortunately you are too young to participate in this survey'/></p>"
+    }
+   ],
+   visible: false,
+   visibleIf: "{s_age} == 'UNDER_18'"
+  },
+  
+ ],
+ triggers: [
+  {
+   type: "complete",
+   operator: "equal",
+   value: "refused",
+   name: "s_age"
+  }
+ ],
+ sendResultOnPageNext: true,
+ showQuestionNumbers: "off",
+ showProgressBar: "bottom",
+ startSurveyText: "<@text element='Start' default='Start'/>",
+ completeText: "<@text element='Submit' default='Submit'/>",
+ completedHtml: "<h3><@text element='Completed' default='Thank you for completing the survey!'/></h3><div><a class='button button--primary button--large button-pad' href='${HOMEPAGE_URL}'><@text element='Visit' default='Visit norwegian.com'/></a></div>",
+ firstPageIsStarted: true
+ 
+}
+
+var survey = new Survey.Model(surveyJSON);
+
+var xhttp;
+
+$("#surveyContainer").Survey({    
+    model: survey,    
+      onPartialSend: sendDataToServer
+});
+
+$("#surveyContainer").Survey({    
+    model: survey,    
+      onComplete: sendDataToServerFinish
+});
+
+function MakeId() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 16; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
+function SetCookie(cookieName,cookieValue,nDays) {
+   var today = new Date();
+   var expire = new Date();
+   if (nDays==null || nDays==0) nDays=1;
+   expire.setTime(today.getTime() + 3600000*24*nDays);
+   document.cookie = cookieName+"="+escape(cookieValue)
+                     + ";expires="+expire.toGMTString();
+}
+
+function ReadCookie(cookieName) {
+   var theCookie=" "+document.cookie;
+   var ind=theCookie.indexOf(" "+cookieName+"=");
+   if (ind==-1) ind=theCookie.indexOf(";"+cookieName+"=");
+   if (ind==-1 || cookieName=="") return "";
+   var ind1=theCookie.indexOf(";",ind+1);
+   if (ind1==-1) ind1=theCookie.length; 
+   return unescape(theCookie.substring(ind+cookieName.length+2,ind1));
+}
+
+function DeleteCookie(CookieName) {
+      document.cookie = CookieName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function sendDataToServer(survey) {  
+    //console.log(survey.data);
+  sendDataToResponsys(survey);
+}
+
+function sendDataToServerFinish(survey) { 
+    //console.log(survey.data);
+  sendDataToResponsys(survey);
+  setTimeout(function(){window.location.href='${HOMEPAGE_URL}'},5000);
+}
+
+function sendDataToResponsys(survey) {
+//console.log(survey.data);
+  var url = "https://air.norwegian.com/pub/rf" + "?_ri_=X0Gzc2X%3DYQpglLjHJlTQGuaKDesszaYNzclzdmdzeghKYdEvvqGrgHb5sai8VXMtX%3DYQpglLjHJlTQGjzf7eucmtrwczcTND9w363r8vvqGrgHb5sai8" + "&_ei_=Eth-Ah9Sar_wRktynOSnKLc";
+  url = url + "&S_SURVEY_ID=1";
+  url = url + "&S_RIID_=" + "${RIID_?c}";
+  url = url + "&S_DATA_ID=" + 1;
+  url = url + "&S_EMAIL_ADDRESS=${EMAIL_ADDRESS_}" 
+  url = url + "&S_MARKET=${G_MARKET}"
+  url = url + "&S_SURVEY_NAME=L_B_SURVEY"
+  url = url + "&S_CAMPAIGN_NAME=${campaign.name}"   
+
+for (var mainkey in survey.data) {
+
+// console.log(mainkey + " - " + survey.data[mainkey]);
+ 
+  if(typeof survey.data[mainkey] === 'object'){
+    for (var key in survey.data[mainkey]) {
+      url = url + "&" + key + "=" + survey.data[mainkey][key];
+    }   
+  }else{
+    url = url + "&" + mainkey + "=" + survey.data[mainkey];
+  }
+
+}
+    
+    console.log(url);
+
+      $.get(url,function(data,status){
+      //  alert(url);
+      });
+   
+
+}
+</script>
+
+</body>
+</html>
