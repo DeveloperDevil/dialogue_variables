@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="nas" data-ng-strict-di>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <script src='https://www.norwegian.com/Scripts/Tracking/tealeaf.js' language='javascript' type='text/javascript'></script>
+    <title>Norwegian.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://www.norwegian.com/Content/Styles/cms-brand.css?v=Kx-J0L0bCw3BLWzJtwDgGlRPu2DjuM6CFxl1Q8FaFes1" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/png" href="https://www.norwegian.com/Content/img/favicon.png" />
+    <script src="https://www.norwegian.com/ClientResources/angular-libs.js?v=4WW2L6QR1N1L3jU4mnxAy0FNuYhkfogKff-2Da0E9Eo1"></script>
+    <script src="https://www.norwegian.com/Scripts/instant.js?v=31ttM4QIeFGrBwtPrzSNL2xVwAZGWddl44RC7WtpKRg1"></script>
+    <script src="https://www.norwegian.com/Scripts/lang.en.js?v=A1bOUJgTX7Lpc2JgkNJrfX25TaDKj69nwvyORJlK88w1"></script>
+    <script src="https://www.norwegian.com/js/siteMap?culture=en-GB&version=1&isresponsive=True&v=8ce82af8-fb0a-4cf4-ab03-c9e3a058a05f"></script>
+    <script src="https://www.norwegian.com/Scripts/cmstemplates.js?v=zMF_Ki2q9tmtbD1qEiuZysHgxrsC5onTLRjWJpysxXA1"></script>
+    <script src="https://www.norwegian.com/Scripts/bootstraptemplates.js?v=RwDVYhUpehbPy3ZsS99o_0gH-PJ690uQeGTxBpN9i6o1"></script>
+	<script src="https://www.norwegian.com/Scripts/angular-locale_en.js?v=NgKtXLMCdv7fFa7y_t4EIllqSRVOo9tK7l5noeFmNtQ1"></script>
+	<script type="text/javascript">
+		//<![CDATA[
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-9004708-1']);
+		//]]>
+	</script>
+	<script type="text/javascript" src="https://www.norwegian.com/Scripts/Tracking/ga-se-async.js"></script>
+	<script type="text/javascript">
+		//<![CDATA[
+		_gaq.push(['_setDomainName', '.norwegian.com']);
+		_gaq.push(['_setAllowAnchor', true]);
+		_gaq.push(['_setAllowLinker', true]);
+		_gaq.push(['_trackPageview']);
+		_gaq.push(['_trackPageLoadTime']);
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		//]]>
+	</script>
+</head>
+<body class="ng-cloak nasbody" data-ng-controller="PageCtrl" data-nas-api-request-verification-token="f_AikY8Bn3CXjPZuN5Wzs1D8IplPMfWIGDJMaQ0BAu-HptLG4En_1zC1yjxf5lyeEH-1XrG0h0XDHyADQMInezX32l01:DEEf6EmZIe4fGFE7BPbhR-B-AyxsZYHNP8UgFRaEfI3htNrvTLW7lxQHgqgClMrjfFVxT7bafvv8AOyuAN7etgvEwB01" aria-busy='{{isBusy}}' data-ng-class="{'block-scrolling': isBusy}">
+    <main>
+		<img src="https://www.norwegian.com/Content/Styles/sprites/sprite.css.svg" style="display: none;" alt="" />
+        <div data-nas-progress-spinner></div>
+        <noscript>
+            <div class="box">This page requires Javascript to be enabled in your browser.</div>
+        </noscript>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function (event) {
+				var accessibilityCookie = 'OVERRIDE_DISPLAY_MODE=UseMobile';
+				if (document.cookie.indexOf(accessibilityCookie) > -1) {
+					var elem = document.getElementById('accessibility-info');
+					if (elem.parentNode) {
+						elem.parentNode.removeChild(elem);
+					}
+				}
+			});
+		</script>
+	<header id="responsivePageHeader" class="page-header" >
+
+    <div class="page-header__content">
+            <a id="pageHeaderMenuLink" onclick="return NasPlainMenuController.toggleMenu()" aria-expanded="false" class="page-header__menu-link" href="">
+                <div class="page-header__menu-link__icon">
+                    <i id="menuIconHamburger" class="icon-hamburger">
+                        <span class="icon-hamburger__bar  icon-hamburger__bar--first"></span>
+                        <span class="icon-hamburger__bar"></span>
+                        <span class="icon-hamburger__bar  icon-hamburger__bar--last"></span>
+                    </i>
+                </div>
+                Menu
+            </a>
+        
+        <span id="accessibility-info" data-translate="FrontPageAccessibilityMode" class="nodisplay"></span>
+        
+        <div class="page-header__content-right">
+            <!-- Search -->
+                <div class="page-header__search">
+                    <a href="" onclick="return NasPlainMenuController.showSearch()" class="page-header__search__trigger">Search</a>
+                    <div class="page-header__search__content ng-scope" style="display: none;">
+                        <form class="ng-pristine ng-valid" action="/uk/sitesearch/" method="get">
+                            <input id="q" name="q" class="page-header__search__input" type="text" placeholder="Search">
+                            <input id="page" type="hidden" value="1" name="page">
+                            <button id="epiSearchButton" class="input__action" type="submit">
+                                <i class="icon-small icon-small--search"></i>
+                            </button>
+                            <!--<input name="__RequestVerificationToken" type="hidden" value="H2pI1WSQa0pUORuiGiFTT5qtS3sMbleQjwIvAoJnBjeMb_sK-7xsBbg2Avq89gS3m8mwNKrdEcsfCyi8PmKzsL6HwDA1" />-->
+                        </form>
+                    </div>
+                </div>
+            
+            <!-- Sign in/up -->
+                <div class="page-header__profile">
+                        <a class="page-header__profile__trigger" href="https://www.norwegian.com/ssl/uk/my-travels/#/mytravels">Sign in</a>
+                </div>
+
+            <!-- Branding -->
+                <a href="https://www.norwegian.com/uk/"
+                   class="page-header__branding"
+                   title="Home">
+                        <img src="https://www.norwegian.com/Content/img/ident.svg" class="page-header__logo  page-header__logo--md" alt="Norwegian Air Shuttle ASA" />
+                                            <img src="https://www.norwegian.com/Content/img/ident-mobile.svg" class="page-header__logo" alt="Norwegian Air Shuttle ASA" />
+                </a>
+
+        </div>
+    </div>
+
+    <!-- The menu -->
+    <nav id="pageHeaderMenu" class="page-header__menu">
+        <div class="grid">
+            <div class="col-6--md">
+                <ul class="is-hidden--md">
+                        <li>
+                            <a id="loginLink" class="page-header__link" href="https://www.norwegian.com/ssl/uk/my-travels/#/mytravels">
+                                Sign in
+                            </a>
+                        </li>
+                </ul>
+                <ul class="is-visible--md">
+                    
+    <li>
+        <a href="https://www.norwegian.com/uk/" class="page-header__link">Home</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/booking/" class="page-header__link">Booking</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/destinations/" class="page-header__link">Destinations</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/flight-status/" class="page-header__link">Flight status</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/ssl/uk/my-travels/" class="page-header__link">My Travels</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/technical-pages/corporateredirect/" class="page-header__link">Corporate portal</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/norwegian-reward/" class="page-header__link">Norwegian Reward</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/help-contact/" class="page-header__link">Help and contact</a>
+    </li>
+
+
+                </ul>
+                <ul class="is-hidden--md">
+                    
+    <li>
+        <a href="https://www.norwegian.com/uk/" class="page-header__link">Home</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/booking/" class="page-header__link">Booking</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/destinations/" class="page-header__link">Destinations</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/travel-info/" class="page-header__link">Travelling with us</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/flight-status/" class="page-header__link">Flight status</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/ssl/uk/my-travels/" class="page-header__link">My Travels</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/technical-pages/corporateredirect/" class="page-header__link">Corporate portal</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/norwegian-reward/" class="page-header__link">Norwegian Reward</a>
+    </li>
+    <li>
+        <a href="https://www.norwegian.com/uk/help-contact/" class="page-header__link">Help and contact</a>
+    </li>
+
+
+                </ul>
+            </div>
+            <div class="col-6--md is-visible--md">
+                    <a href="https://www.norwegian.com/uk/travel-info/" class="page-header__link">Travelling with us</a>
+                <ul class="list  list--image-list  list--image-list--menu">
+                    
+    <li>
+<i role="presentation" class="icon-medium icon-medium--baggage-checked-in"></i>            <a href="https://www.norwegian.com/uk/travel-info/baggage/" class="page-header__link  page-header__link--small">Baggage</a>
+
+<p><span style="color: #ffffff; font-family: ApercuProRegular, Helvetica, sans-serif; font-size: 16px; line-height: 26px; background-color: #d81939;">How much baggage you can bring, protecting your baggage for travel, and what not to pack.</span></p>
+<p>&nbsp;</p>    </li>
+    <li>
+<i role="presentation" class="icon-medium icon-medium--fast-track"></i>            <a href="https://www.norwegian.com/uk/travel-info/check-in-and-boarding/" class="page-header__link  page-header__link--small">Check-in and boarding</a>
+
+<p><span style="color: #ffffff; font-family: ApercuProRegular, Helvetica, sans-serif; font-size: 16px; line-height: 26px; background-color: #d81939;">When, where and how to check in, whether you’re online, at the airport, or going directly to your gate.</span></p>    </li>
+    <li>
+<i role="presentation" class="icon-medium icon-medium--special-needs"></i>            <a href="https://www.norwegian.com/uk/travel-info/special-needs-assistance/" class="page-header__link  page-header__link--small">Special assistance</a>
+
+<p><span style="color: #ffffff; font-family: ApercuProRegular, Helvetica, sans-serif; font-size: 16px; line-height: 26px; background-color: #d81939;">Find out about requesting special assistance if you have reduced mobility or a disability.</span></p>    </li>
+
+                    
+    <li>
+        <div class="heading3">
+            <a href="https://www.norwegian.com/uk/travel-info/" class="page-header__link  page-header__link--small">See all travel info</a>
+        </div>
+    </li>
+
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div data-nas-busy-wait></div>
+<div data-nas-error-message></div>
+<div data-ui-view="header"></div>
