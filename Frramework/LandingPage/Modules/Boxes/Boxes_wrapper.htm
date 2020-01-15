@@ -1,0 +1,14 @@
+<#list SEGMENT?replace(" ","")?split("|") as CURRENT_SEGMENT>
+	<#if MODULE_LOADED=0>
+		<#data PAGE_FRAMEWORK as MODULE limit=1>
+			<#filter FRAMEWORK_PAGE=PAGE FRAMEWORK_MARKET=MARKET FRAMEWORK_SEGMENT=CURRENT_SEGMENT FRAMEWORK_POSITION=PAGE_TEMPLATE.TEMPLATE_POSITION>
+
+			<#fields BOXES_VARIANT BOXES_HEADLINE_1 BOXES_PARAGRAPH_1 BOXES_CALL_TO_ACTION_1 BOXES_URL_1 BOXES_HEADLINE_2 BOXES_PARAGRAPH_2 BOXES_CALL_TO_ACTION_2 BOXES_URL_2>
+
+		<#if !MODULE._HEADLINE_1?isnull>
+				<#include "cms://contentlibrary/!framework/landingpage/modules/boxes/boxes.htm">
+				<#assign MODULE_LOADED=1>
+			</#if>
+		</#data>
+	</#if>
+</#list>
