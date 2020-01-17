@@ -13,7 +13,7 @@ A. This data call has no limit=1 because the different variables needs to collec
 <#assign WIFI_IS_SET = 0>
 <#assign MAX_IS_SET = 0>
 <#assign PRIO_COUNT_IS_SET = 0><#-- PRIO_COUNT tells if a passenger have already booked priority boarding or not -->
-<#assign PRIB_COUNT_IS_SET = 0><#-- PRIB_COUNT tells if a passenger have boarding included in a bundle or not -->
+<#assign PRIB_COUNT_IS_SET = 0><#-- PRIB_COUNT tells if a passenger have priority boarding included in a bundle or not -->
 <#assign VERSION_IS_SET = 0>
 <#--VERSION is the aircraft type
 ///////////QUESTIONS/////////////////
@@ -48,6 +48,8 @@ A. used the survey campaign E_DREAMLINER_SURVEY_2017, E_MAX_SURVEY_2017, survey 
 <#assign LOW_FARE_PLUS_IS_SET = 0>
 <#assign LOW_FARE_PLUS_UNBUNDLED_IS_SET = 0>
 <#assign RETURN_DEPARTURE_IATA_IS_FOUND = 0>
+<#assign MAIN_LEG_FOUND = 0>
+<#assign FIRST_LEG_RETURN_TRAVEL_YN_FOUND = 0>
 
 <#-- ///////////COMMENT HELPER/////////////////
 ARRIVAL_DATE_IS_SET and RETURN_DATE_IS_SET effects the SEARCH MODULE, CAR MODULE, HOTEL MODULE (which is the Hotel feed not currently being used (written 28/03/17)). Also used in the generation of the URLS for debug_assignments_nas_api_2_log.txt, debug_assignments_nas_api_2.txt,
@@ -61,7 +63,7 @@ If xxx_IS_SET = 1, means its either null or Y
 <#fields FAST_TRACK_FLAG WIFI_YN MAX_YN VERSION_PLANNED FIRST_LEG_YN LEG_NUMBER BOOKING_DEPARTURE_TIME BOOKING_RETURN_DEPARTURE_TIME1 BOOKING_MAIN_DESTINATION BOOKING_LAST_DESTINATION BOOKING_ROUND_TRIP BOOKING_LONGHAUL BOOKING_ROUTE_AREA BOOKING_NUMBER_OF_LEGS LAST_LEG_YN MAIN_DESTINATION LEG_DEPARTURE_TIME LEG_ARRIVAL_DATE DESTINATION_LEG BOOKING_LOCALBOOKINGID BOOKING_GDSBOOKINGID ORIGIN_LEG BOOKING_START_AIRPORT PRIO_COUNT PRIB_COUNT TICKETCLASS_CODE BOOKING_ROUTE_AREA BOOKING_LONGHAUL LONGHAUL_LEG_YN UPGRADEDTOSEGMENT_FLG REMOVED_STATE FLIGHT_MEAL COUNTRY_CODES PASSENGER_NAME BOOKING_NUMBER_OF_ADULTS BNDL_PLUS_COUNT FIRST_LEG_RETURN_TRAVEL_YN>
 
 <#-- UPGRADEDTOSEGMENT_FLG gets the value 1 if a leg is cancelled or upgraded/changed. So any record with UPGRADEDTOSEGMENT_FLG == 1 is not valid/current, and needs to be removed. If the value is missing (NULL) we include it, as we don't know if it is cancelled or not. -->
-<#if SQL_GLOBAL.UPGRADEDTOSEGMENT_FLG?isnull || SQL_GLOBAL.UPGRADEDTOSEGMENT_FLG?number != 1>
+<#if SQL_GLOBAL.UPGRADEDTOSEGMENT_FLG?isnull || SQL_GLOBAL.UPGRADEDTOSEGMENT_FLG?number == 0>
     
  <#-- RETURN_DEPARTURE_IATA (In some cases, the return might depart from a different airport than the main destination arrival airport. I.e: Main destination IATA is FLL, while the return is from MCO) -->
 <#if RETURN_DEPARTURE_IATA_IS_FOUND == 0>
@@ -208,6 +210,36 @@ If xxx_IS_SET = 1, means its either null or Y
  <#-- BW code  added 23.10.2018: CODE TO EXCLUDE PASSENGERS for cancelled routes -->
 <#-- ROUTE_CANCELLED_YN -->
 <#include "cms://contentlibrary/!framework/global_variables/inclusion_files/cancelled_routes.htm">
+
+<#-- BW code  added 15.01.2020: For Cartrawler URL, we need to check if the return date is the same day as the arrival, for roundtrips only -->
+<#if ROUNDTRIP == 'Y'>
+    <#-- If any dates are missing in the data tables, it will crash the script. So we only want to run it if both dates are available -->
+    <#if !SQL_GLOBAL.LEG_ARRIVAL_DATE?isnull || !SQL_GLOBAL.LEG_DEPARTURE_TIME?isnull>
+        <#-- Find the arrival date for the main destination, but exclude the time of day -->
+    	<#if !SQL_GLOBAL.BOOKING_MAIN_DESTINATION?isnull && !SQL_GLOBAL.DESTINATION_LEG?isnull>
+            <#if SQL_GLOBAL.BOOKING_MAIN_DESTINATION?trim == SQL_GLOBAL.DESTINATION_LEG?trim>
+                <#if MAIN_LEG_FOUND == 0>
+        			<#global CT_ARRIVAL_DATE = SQL_GLOBAL.LEG_ARRIVAL_DATE?date?string('YYYYMMdd')><#assign MAIN_LEG_FOUND = 1>
+                </#if>
+            </#if>
+        </#if>
+        <#-- Find the departure date for the first return leg, but exclude the time of day -->
+    	<#if FIRST_LEG_RETURN_TRAVEL_YN_FOUND == 0>
+            <#if !SQL_GLOBAL.FIRST_LEG_RETURN_TRAVEL_YN?isnull>
+                <#if SQL_GLOBAL.FIRST_LEG_RETURN_TRAVEL_YN == 'Y'>
+    			<#global CT_RETURN_DATE = SQL_GLOBAL.LEG_DEPARTURE_TIME?date?string('YYYYMMdd')><#global CT_RETURN_DEATAILED = SQL_GLOBAL.LEG_DEPARTURE_TIME?datetime?string('HH:mm')><#assign FIRST_LEG_RETURN_TRAVEL_YN_FOUND = 1>
+                </#if>
+            </#if>
+        </#if>
+        <#-- Compare the arrivel date found with the return date found -->
+       <#if !CT_ARRIVAL_DATE?isnull || !CT_RETURN_DATE?isnull>
+           <#if CT_ARRIVAL_DATE == CT_RETURN_DATE><#global RETURN_SAME_DAY = 'Y'><#else><#global RETURN_SAME_DAY = 'N'>
+           </#if>
+       </#if>
+    </#if>
+<#else><#global RETURN_SAME_DAY = 'N'>
+</#if>
+
     
 <#-- FAST_TRACK_FLAG -->
 <#if FASTTRACK_IS_SET == 0>
