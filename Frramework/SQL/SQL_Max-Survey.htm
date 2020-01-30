@@ -1,0 +1,55 @@
+Tables:
+!MasterData/CONTACT_LIST_CONS 	 $A$ 
+ !MasterData/BOOKINGS_01 	 $B$ 
+ !MasterData/BOOKINGS_02 	 $C$ 
+ !MasterData/LEG_01 	 $D$ 
+ !MasterData/FLIGHT_DATA 	 $E$ 
+ !MasterData/CRM_PERSON_PREFERENCES 	 $F$ 
+ 
+ Code:
+ SELECT DISTINCT contact.riid_, 
+                contact.email_address_, 
+                booking.booking_gdsbookingid   AS BOOKING_ID, 
+                booking.booking_localbookingid AS LOCAL_BOOKING_ID, 
+                booking.booking_gdsbookingid, 
+                booking.booking_localbookingid, 
+                booking.booking_start_airport, 
+                booking.booking_main_destination, 
+                booking.booking_route_area, 
+                booking.bk_sale_to_departure, 
+                booking.booking_number_of_children, 
+                booking.booking_number_of_bags, 
+                booking.booking_number_of_meals, 
+                booking.booking_number_of_seats, 
+                booking.booking_has_everything, 
+                booking.booking_number_of_infants, 
+                booking.booking_departure_time, 
+                booking.booking_max_stay_minutes, 
+                booking.booking_round_trip, 
+                booking.booking_last_dest_country, 
+                booking.booking_international_travel, 
+                booking2.bk_last_dest_arrival_date 
+FROM   $a$ contact 
+       INNER JOIN $b$ booking 
+               ON ( contact.customer_id_ = booking.booking_email ) 
+       INNER JOIN $c$ booking2 
+               ON ( booking.pk_booking_dim = booking2.pk_booking_dim ) 
+       INNER JOIN $d$ leg 
+               ON ( ( booking.booking_gdsbookingid = leg.gds_booking_id ) 
+                    AND ( booking.booking_localbookingid = leg.local_booking_id 
+                        ) ) 
+       INNER JOIN $e$ Flight 
+               ON ( flight.fk_flight_fac = leg.fk_flight_fac ) 
+       INNER JOIN $f$ preferences 
+               ON ( contact.riid_ = preferences.riid_ ) 
+WHERE  contact.languageid IN ( 'en-US', 'en-IE', 'en-GB', 'nb-NO' ) 
+       AND booking.booking_start_country_cd IN ( 'US', 'IE', 'GB', 'NO' ) 
+       AND booking.booking_active_yn = 'Y' 
+       AND ( ( Trunc(sysdate) + ( 9 / 24 ) ) - 
+             Trunc(booking2.bk_last_dest_arrival_date) ) 
+           BETWEEN 1 AND 7 
+       AND contact.account_disabled = 'N' 
+       AND booking.booking_exclude_flag = 'N' 
+       AND contact.nas_employee = 'N' 
+       AND FLight.country_codes = 'MAX' 
+       AND preferences.postal_permission_status = 'Y' 
