@@ -1,0 +1,51 @@
+Tables:
+!MasterData/CONTACT_LIST_CONS 	 $A$ 
+ !MasterData/BOOKINGS_01 	 $B$ 
+ !MasterData/BOOKINGS_02 	 $C$ 
+ !MasterData/CRM_PERSON_PREFERENCES 	 $D$ 
+ 
+ Code:
+ SELECT a.riid_, 
+       a.email_address_, 
+       b.booking_start_country_cd, 
+       b.booking_gdsbookingid, 
+       b.booking_localbookingid, 
+       b.booking_start_airport, 
+       b.booking_main_destination, 
+       b.booking_route_area, 
+       b.bk_sale_to_departure, 
+       b.booking_number_of_children, 
+       b.booking_number_of_bags, 
+       b.booking_number_of_meals, 
+       b.booking_number_of_seats, 
+       b.booking_has_everything, 
+       b.booking_number_of_infants, 
+       b.booking_departure_time, 
+       b.booking_max_stay_minutes, 
+       b.booking_round_trip, 
+       b.booking_last_dest_country, 
+       b.booking_international_travel, 
+       c.bk_sold_in_currency, 
+       C.bk_sold_in_language, 
+       c.bk_rewardtrip_yn, 
+       c.bk_last_travel_home_date, 
+       c.bk_last_dest_arrival_date 
+FROM   $a$ a 
+       INNER JOIN $b$ b 
+               ON a.email_address_ = b.booking_email 
+       INNER JOIN $c$ c 
+               ON b.pk_booking_dim = c.pk_booking_dim 
+       INNER JOIN $d$ d 
+               ON a.riid_ = d.riid_ 
+WHERE  b.booking_start_country_cd IN ( 'NO', 'SE', 'DK', 'FI', 
+                                       'ES', 'DE', 'GB', 'FR', 
+                                       'US', 'IT', 'IE' ) 
+       AND b.booking_active_yn = 'Y' 
+       AND ( ( Trunc(sysdate) + ( 9 / 24 ) ) - 
+             Trunc(c.bk_last_dest_arrival_date) ) 
+           BETWEEN 
+           1 AND 7 
+       AND a.account_disabled = 'N' 
+       AND booking_exclude_flag = 'N' 
+       AND a.nas_employee = 'N' 
+       AND d.postal_permission_status = 'Y' 
