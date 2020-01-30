@@ -1,0 +1,153 @@
+Tables:
+ !MasterData/CONTACT_LIST_CONS 	 $A$ 
+ !MasterData/BOOKINGS_01 	 $B$ 
+ !MasterData/BOOKINGS_02 	 $C$ 
+ !MasterData/LEG_01 	 $D$ 
+ !MasterData/LEG_02 	 $E$ 
+ !MasterData/FLIGHT_DATA 	 $F$ 
+ !MasterData/CRM_PERSON_PREFERENCES 	 $G$ 
+ 
+ Code:
+ SELECT contact.riid_, 
+       contact.email_address_, 
+       preferences.postal_permission_status, 
+       booking.booking_gdsbookingid 
+       || '-' 
+       || booking.booking_localbookingid   AS bid, 
+       booking.pk_booking_dim, 
+       booking.booking_active_yn, 
+       booking.booking_gdsbookingid, 
+       booking.booking_localbookingid, 
+       booking.booking_number_of_legs, 
+       booking.booking_start_airport, 
+       booking.booking_main_destination, 
+       booking.booking_last_destination, 
+       booking.bk_number_of_adults_infants, 
+       booking.booking_round_trip, 
+       booking.booking_number_of_adults, 
+       booking.booking_number_of_children, 
+       booking.booking_number_of_infants, 
+       booking.booking_longhaul, 
+       booking.booking_holiday, 
+       booking.booking_rentalcar, 
+       booking.booking_hotel, 
+       booking.booking_route_area, 
+       booking.booking_number_of_bags, 
+       booking.booking_number_of_meals, 
+       booking.booking_number_of_seats, 
+       booking.booking_date, 
+       booking.booking_has_everything, 
+       booking.booking_departure_time, 
+       booking.booking_start_country_cd, 
+       booking.plusgrade_flag, 
+       booking2.bk_main_dest_departure_time, 
+       booking2.booking_return_departure_time, 
+       booking2.bk_no_of_apis_not_satisfied, 
+       booking2.bk_no_of_not_premium_on_lh AS prem, 
+       booking2.bk_last_dest_arrival_date, 
+       booking2.bk_sold_in_currency, 
+       contact.mobile_os, 
+       leg.leg_id, 
+       leg.upgradedtosegment_flg, 
+       leg.removed_state, 
+       leg.ticketclass_code, 
+       leg.passenger_name, 
+       leg.email_bk_leg, 
+       leg.gds_booking_id, 
+       leg.local_booking_id, 
+       leg.product_name, 
+       leg.passenger_type, 
+       leg.first_leg_yn, 
+       leg.last_leg_yn, 
+       leg.leg_number, 
+       leg.main_destination, 
+       leg.first_leg_return_travel_yn, 
+       leg.home_flag_yn, 
+       leg.longhaul_leg_yn, 
+       leg.transit, 
+       leg.first_leg_in_transit, 
+       leg.product_code, 
+       leg.prio_count, 
+       leg.bndl_plus_count, 
+       leg.prib_count, 
+       leg2.email_booking_leg, 
+       leg2.gds_bookingid, 
+       leg2.local_bookingid, 
+       leg2.golf_clubs_count, 
+       leg2.ski_count, 
+       leg2.flight_luggage, 
+       leg2.flight_meal, 
+       leg2.flight_seat, 
+       leg2.har_alt, 
+       leg2.fast_track_flag, 
+       leg2.origin_leg, 
+       leg2.destination_leg, 
+       leg2.leg_departure_time, 
+       leg2.leg_arrival_date, 
+       CASE 
+         WHEN ( leg2.bndl_prio_count IS NOT NULL 
+                AND leg2.bndl_prio_count >= 1 ) 
+               OR ( leg2.cbag_count IS NOT NULL 
+                    AND leg2.cbag_count >= 1 ) THEN 'Y' 
+         ELSE 'N' 
+       END                                 AS CBAG, 
+       flight.wifi_yn, 
+       flight.cancelled_yn, 
+       flight.fk_flight_fac, 
+       flight.version_planned, 
+       flight.country_codes, 
+       CASE 
+         WHEN flight.version_planned = '7M8' THEN 'Y' 
+         ELSE 'N' 
+       END                                 AS max_yn, 
+       CASE 
+         WHEN ( ( ( booking.booking_number_of_seats > 0 ) 
+                  AND ( booking.booking_number_of_bags > 0 ) 
+                  AND ( booking.ft_first_leg_flag = 'Y' ) ) 
+                 OR leg.product_code = 'FL' ) THEN 'Y' 
+         ELSE 'N' 
+       END                                 AS extra_all, 
+       CASE 
+         WHEN Trunc(booking.booking_departure_time) - 
+              Trunc(booking.booking_date) 
+              BETWEEN 0 
+              AND 3 THEN 'A' 
+         WHEN Trunc(booking.booking_departure_time) - 
+              Trunc(booking.booking_date) 
+              BETWEEN 4 
+              AND 6 THEN 'B' 
+         WHEN Trunc(booking.booking_departure_time) - 
+              Trunc(booking.booking_date) 
+              BETWEEN 7 
+              AND 11 THEN 'C' 
+         WHEN Trunc(booking.booking_departure_time) - 
+              Trunc(booking.booking_date) 
+              BETWEEN 12 
+              AND 19 THEN 'D' 
+         WHEN Trunc(booking.booking_departure_time) - 
+              Trunc(booking.booking_date) 
+              BETWEEN 20 
+              AND 28 THEN 'E' 
+         WHEN Trunc(booking.booking_departure_time) - 
+              Trunc(booking.booking_date) > 28 
+       THEN 'F' 
+       END                                 AS horizon_type 
+FROM   $a$ contact 
+       INNER JOIN $b$ booking 
+               ON ( contact.customer_id_ = booking.booking_email ) 
+       INNER JOIN $c$ booking2 
+               ON ( booking.pk_booking_dim = booking2.pk_booking_dim ) 
+       INNER JOIN $d$ leg 
+               ON ( ( booking.booking_gdsbookingid = leg.gds_booking_id ) 
+                    AND ( booking.booking_localbookingid = leg.local_booking_id 
+                        ) ) 
+       INNER JOIN $e$ leg2 
+               ON ( leg.leg_id = leg2.leg_id ) 
+       INNER JOIN $f$ flight 
+               ON ( flight.fk_flight_fac = leg.fk_flight_fac ) 
+       INNER JOIN $g$ preferences 
+               ON ( contact.riid_ = preferences.riid_ ) 
+WHERE  /*booking.booking_active_yn = 'Y'         AND */ 
+  leg.product_name NOT IN ( 'GROUP' ) 
+  AND ( flight.version_planned = '7M8' ) 
+  AND ( sysdate - booking.booking_date ) < 380 
