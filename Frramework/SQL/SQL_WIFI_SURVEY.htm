@@ -1,0 +1,105 @@
+Tables:
+!MasterData/CONTACT_LIST_CONS 	 $A$ 
+ !MasterData/BOOKINGS_01 	 $B$ 
+ !MasterData/BOOKINGS_02 	 $C$ 
+ !MasterData/LEG_02 	 $D$ 
+ !MasterData/FLIGHT_DATA 	 $E$ 
+ !MasterData/CRM_PERSON_PREFERENCES 	 $F$ 
+ !MasterData/LEG_01 	 $G$ 
+ 
+ Code:
+ SELECT DISTINCT contact.riid_, 
+                contact.email_address_, 
+                /*  booking.booking_gdsbookingid                  || '-'                  || booking.booking_localbookingid AS BID, */ 
+                leg.gds_bookingid                                         AS 
+                BOOKING_ID, 
+                leg.local_bookingid                                       AS 
+                LOCAL_BOOKING_ID, 
+                leg.leg_arrival_date, 
+                flight.aircraft_id, 
+                CASE 
+                  WHEN flight.aircraft_id IN ( 'SERTA', 'SERTB', 'SERTC', 
+                                               'GCKWA', 
+                                               'GCKWP', 'GCKWB', 'LNLNN', 
+                                               'LNLNX', 
+                                               'GCKWE', 'GCKWC', 'GCKWD', 
+                                               'GCKWT', 
+                                               'LNLNJ', 'LNLNK', 'LNLNO', 
+                                               'GCKWU' ) THEN 
+                  'Collins WiFi' 
+                  ELSE 'Global Eagle Wifi' 
+                END                                                       AS 
+                WIFI_SUPPLIER, 
+                To_number( To_char(leg.leg_arrival_date, 'HH24') ) 
+                + 2                                                       AS 
+                hora, 
+                /* booking.booking_date,     booking2.bk_last_dest_arrival_date,                     booking.booking_start_airport,                  booking.booking_main_destination,                  booking.booking_departure_time,                  booking.bk_sale_to_departure, */
+                flight.cancelled_yn,/* booking.pk_booking_dim, */ 
+                origin_leg, 
+                destination_leg, 
+                Trunc(sysdate) + ( 9 / 24 ) - Trunc(leg.leg_arrival_date) AS 
+                difdays, 
+                sysdate + ( 9 / 24 )                                      AS 
+                today 
+FROM   $a$ contact 
+       INNER JOIN $b$ booking 
+               ON ( contact.customer_id_ = booking.booking_email ) 
+       INNER JOIN $c$ booking2 
+               ON ( booking.pk_booking_dim = booking2.pk_booking_dim ) 
+       INNER JOIN $d$ leg 
+               ON ( ( booking.booking_gdsbookingid = leg.gds_bookingid ) 
+                    AND ( booking.booking_localbookingid = leg.local_bookingid ) 
+                  ) 
+       INNER JOIN $e$ Flight 
+               ON ( flight.fk_flight_fac = leg.fk_flight_fac ) 
+       INNER JOIN $f$ preferences 
+               ON ( contact.riid_ = preferences.riid_ ) 
+       INNER JOIN $g$ leg1 
+               ON ( ( booking.booking_gdsbookingid = leg1.gds_booking_id ) 
+                    AND ( booking.booking_localbookingid = leg1.local_booking_id 
+                        ) ) 
+WHERE  contact.account_disabled = 'N' 
+       AND booking.booking_active_yn = 'Y' 
+       AND booking.booking_exclude_flag = 'N' 
+       AND ( ( Trunc(sysdate) + ( 12 / 24 ) ) - Trunc(leg.leg_arrival_date) ) 
+           BETWEEN 0 
+           AND 
+           1 
+       AND flight.cancelled_yn = 'N' 
+       AND leg1.removed_state = 0 
+       AND flight.aircraft_id IN ( 'SERTA', 'SERTB', 'SERTC', 'GCKWA', 
+                                   'GCKWP', 'GCKWB', 'LNLNN', 'LNLNX', 
+                                   'GCKWE', 'GCKWC', 'GCKWD', 'GCKWT', 
+                                   'LNLNJ', 'LNLNK', 'LNLNO', 'GCKWU', 
+                                   'EIFHA', 'EIFHD', 'EIFHE', 'EIFHJ', 
+                                   'EIFHK', 'EIFHL', 'EIFHM', 'EIFHN', 
+                                   'EIFHP', 'EIFHR', 'EIFHS', 'EIFHT', 
+                                   'EIFHU', 'EIFHV', 'EIFHW', 'EIFHX', 
+                                   'EIFHY', 'EIFHZ', 'EIFJA', 'EIFJB', 
+                                   'EIFJD', 'EIFJE', 'EIFJH', 'EIFJJ', 
+                                   'EIFJK', 'EIFJL', 'EIFJM', 'EIFJN', 
+                                   'EIFJO', 'EIFJP', 'EIFJS', 'EIFJT', 
+                                   'EIFJU', 'EIFJV', 'EIFJW', 'EIFJX', 
+                                   'EIFJY', 'EIFJZ', 'EIFVH', 'EIFVI', 
+                                   'EIFVJ', 'EIFVK', 'EIFVL', 'EIFVM', 
+                                   'EIFVN', 'EIFVR', 'EIFVU', 'EIFVV', 
+                                   'EIFVW', 'EIFVX', 'EIFVY', 'EIFVZ', 
+                                   'EIGBB', 'EIGBF', 'EIGBG', 'EIGBI', 
+                                   'GNRWY', 'LNDYA', 'LNDYB', 'LNDYC', 
+                                   'LNDYD', 'LNDYE', 'LNDYF', 'LNDYG', 
+                                   'LNDYN', 'LNDYO', 'LNDYP', 'LNDYQ', 
+                                   'LNDYT', 'LNDYU', 'LNNGB', 'LNNGC', 
+                                   'LNNGD', 'LNNGE', 'LNNGF', 'LNNGG', 
+                                   'LNNGN', 'LNNGO', 'LNNGP', 'LNNGQ', 
+                                   'LNNGR', 'LNNGS', 'LNNGT', 'LNNGU', 
+                                   'LNNGV', 'LNNGW', 'LNNGX', 'LNNGY', 
+                                   'LNNGZ', 'LNNHA', 'LNNHB', 'LNNHC', 
+                                   'LNNHD', 'LNNHE', 'LNNHF', 'LNNHG', 
+                                   'LNNIA', 'LNNIB', 'LNNIC', 'LNNID', 
+                                   'LNNIE', 'LNNIG', 'LNNIH', 'LNNII', 
+                                   'LNNIJ', 'LVHQH', 'LVIQZ', 'LVISQ', 'LVITK' ) 
+       AND postal_permission_status = 'Y' /* */ 
+       /*AND leg.product_name NOT IN ( 'GROUP' ) */ 
+       /* AND leg.removed_state = 0 */ 
+       AND contact.nas_employee = 'N' 
+ORDER  BY leg.leg_arrival_date 
