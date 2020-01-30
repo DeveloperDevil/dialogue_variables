@@ -1,0 +1,65 @@
+Tables:
+ !MasterData/CONTACT_LIST_CONS 	 $A$ 
+ !MasterData/BOOKINGS_01 	 $B$ 
+ !MasterData/BOOKINGS_02 	 $C$ 
+ !MasterData/LEG_01 	 $D$ 
+ !MasterData/LEG_02 	 $E$ 
+ !MasterData/FLIGHT_DATA 	 $F$ 
+ !MasterData/CRM_PERSON_PREFERENCES 	 $G$ 
+ !MasterData/MARKET_VARIABLES 	 $H$ 
+ 
+ Code:
+ SELECT DISTINCT contact.riid_, 
+                contact.email_address_, 
+                booking.booking_gdsbookingid 
+                AS BOOKING_ID, 
+                booking.booking_gdsbookingid 
+                || '-' 
+                || booking.booking_localbookingid 
+                AS BID, 
+                booking.booking_localbookingid 
+                AS LOCAL_BOOKING_ID, 
+                booking.booking_date, 
+                booking.booking_start_airport, 
+                booking.booking_main_destination, 
+                booking.pk_booking_dim, 
+                booking.booking_departure_time, 
+                booking.bk_sale_to_departure, 
+                booking2.bk_no_of_not_premium_on_lh 
+                AS PREM, 
+                ( Trunc(booking.booking_departure_time) - 
+                  Trunc(sysdate + 9 / 24) ) AS 
+                days_to_fly, 
+                sysdate 
+                AS today 
+FROM   $a$ contact 
+       INNER JOIN $b$ booking 
+               ON ( contact.customer_id_ = booking.booking_email ) 
+       INNER JOIN $c$ booking2 
+               ON ( booking.pk_booking_dim = booking2.pk_booking_dim ) 
+       INNER JOIN $d$ leg 
+               ON ( ( booking.booking_gdsbookingid = leg.gds_booking_id ) 
+                    AND ( booking.booking_localbookingid = leg.local_booking_id 
+                        ) ) 
+       INNER JOIN $f$ Flight 
+               ON ( flight.fk_flight_fac = leg.fk_flight_fac ) 
+       INNER JOIN $g$ preferences 
+               ON ( contact.riid_ = preferences.riid_ ) 
+       INNER JOIN $h$ f 
+               ON( contact.languageid = f.language_id ) 
+WHERE  contact.account_disabled = 'N' 
+       AND booking.booking_active_yn = 'Y' 
+       AND booking.booking_exclude_flag = 'N' 
+       AND ( booking.booking_longhaul = 'Y' 
+              OR booking.booking_route_area = 'Long haul' ) 
+       AND Flight.version_planned <> '7M8' 
+       AND ( ( Trunc(booking.booking_departure_time) - 
+               Trunc(booking.booking_date) ) 
+             BETWEEN 
+                 12 AND 19 ) 
+       AND Trunc(booking.booking_departure_time) - Trunc(sysdate + 9 / 24) = 9 
+       AND postal_permission_status = 'Y' /* */ 
+       AND leg.product_name NOT IN ( 'GROUP' ) 
+       AND leg.removed_state = 0 
+       AND contact.nas_employee = 'N' 
+ORDER  BY riid_ 
