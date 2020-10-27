@@ -1,7 +1,7 @@
  <!-- BANNER VARIANT F. BANNER_IMG and BANNER_IMG_SWAP are made in the BANNER module wrapper -->
-  <#attempt><#data AIRPORTS as AIRPORTS><#filter LANGUAGECODE = AIRPORT_LANG?upper_case?trim><#fields AIRPORTCODE_IATA><#if MODULE.BANNER_URL?lower_case?contains('a_city=' + AIRPORTS.AIRPORTCODE_IATA) || MODULE.BANNER_URL?lower_case?lower_case?contains('destination=' + AIRPORTS.AIRPORTCODE_IATA)><#assign DESTINATION_IATA_TRACKING=AIRPORTS.AIRPORTCODE_IATA></#if></#data>
-  <#recover>	  
-  </#attempt>
+ <#attempt><#data AIRPORTS as AIRPORTS><#filter LANGUAGECODE = AIRPORT_LANG?upper_case?trim><#fields AIRPORTCODE_IATA><#if MODULE.BANNER_URL?lower_case?contains('a_city=' + AIRPORTS.AIRPORTCODE_IATA?lower_case) || MODULE.BANNER_URL?lower_case?contains('destination=' + AIRPORTS.AIRPORTCODE_IATA?lower_case)><#assign DESTINATION_IATA_TRACKING=AIRPORTS.AIRPORTCODE_IATA></#if></#data>
+  <#recover>  
+</#attempt>
  <#assign BANNER_URL = MODULE.BANNER_URL?exec>
 <#if BANNER_URL?contains('&currency=')><#assign BANNER_URL = BANNER_URL?replace('&currency=', '&amp;currency=')></#if>
  <#if BANNER_URL?contains('utm_term=')><#elseif BANNER_URL?contains('#')><#assign BANNER_URL = BANNER_URL + '#'></#if> 
